@@ -1,0 +1,64 @@
+---
+import type { Service } from '../../data/services';
+
+interface Props {
+  service: Service;
+  index?: number;
+}
+
+const { service, index = 0 } = Astro.props;
+---
+
+<a
+  href={`/${service.slug}`}
+  class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
+  style={`--i:${index}`}
+>
+  <span
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(140px,20vw,300px)] font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-300 group-hover:text-white/10 lg:block"
+  >
+    {service.num}
+  </span>
+  <div class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]">
+    <span
+      class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
+    >
+      {service.num}
+    </span>
+    <div>
+      <h3
+        class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-ink transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
+      >
+        {service.name}
+      </h3>
+      <p
+        class="max-h-0 overflow-hidden text-[15px] leading-6 text-muted opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100 group-hover:text-white/60"
+      >
+        {service.desc}
+      </p>
+    </div>
+    <div class="flex items-center gap-6">
+      <span
+        class="hidden text-ink transition-colors duration-300 group-hover:text-white/80 md:block"
+      >
+        <svg
+          width="34"
+          height="34"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          set:html={service.icon}
+        />
+      </span>
+      <span
+        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-ink transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
+      >
+        →
+      </span>
+    </div>
+  </div>
+</a>

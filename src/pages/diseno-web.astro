@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServicePage from '../components/ServicePage.astro';
+import { getServicePage } from '../data/servicePages';
+
+const data = getServicePage('diseno-web');
+---
+
+{
+  data && (
+    <BaseLayout title={data.seo.title} description={data.seo.description}>
+      <ServicePage data={data} />
+    </BaseLayout>
+  )
+}

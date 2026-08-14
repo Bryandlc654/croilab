@@ -1,0 +1,39 @@
+---
+interface Props {
+  kicker?: string;
+  description?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const { kicker, description, align = 'left', class: className } = Astro.props;
+---
+
+<div class:list={['reveal-up', align === 'center' && 'mx-auto text-center', className]}>
+  {
+    kicker && (
+      <div class:list={['mb-8 flex items-center gap-4', align === 'center' && 'justify-center']}>
+        <span class="h-px w-9 bg-accent" />
+        <span class="text-[11px] font-medium uppercase tracking-[.24em] text-muted">{kicker}</span>
+        {align === 'center' && <span class="h-px w-9 bg-accent" />}
+      </div>
+    )
+  }
+  <h2
+    class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-ink"
+  >
+    <slot />
+  </h2>
+  {
+    description && (
+      <p
+        class:list={[
+          'mt-8 max-w-md text-[15px] leading-7 text-muted',
+          align === 'center' && 'mx-auto',
+        ]}
+      >
+        {description}
+      </p>
+    )
+  }
+</div>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Contact from '../components/Contact.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import Container from '../components/ui/Container.astro';
+---
+
+<BaseLayout
+  title="Contacto | Croilab — Hablemos de tu crecimiento"
+  description="Escríbenos o agenda un diagnóstico gratuito. Croilab responde en menos de 24 horas."
+>
+  <section class="relative overflow-hidden border-t border-black/10 bg-white">
+    <div class="grid-bg absolute inset-0"></div>
+    <Container class="relative z-10 pt-10">
+      <Breadcrumb items={[{ label: 'Contacto' }]} />
+      <div class="mt-12 max-w-[880px] pb-16 lg:pb-20">
+        <div class="mb-8 flex items-center gap-4">
+          <span class="h-px w-9 bg-accent"></span>
+          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-muted">Contacto</span
+          >
+        </div>
+        <h1
+          class="text-[clamp(3.2rem,6.5vw,6.8rem)] font-semibold leading-[.9] tracking-[-.065em] text-ink"
+        >
+          Hablemos de tu <span class="text-accent">crecimiento</span>
+        </h1>
+        <p class="mt-8 max-w-2xl text-[15px] leading-7 text-black/50 md:text-[17px]">
+          Cuéntanos dónde está tu negocio hoy y hacia dónde quieres llevarlo. Respondemos en menos
+          de 24 horas.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Contact />
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import Container from './Container.astro';
+import Button from './Button.astro';
+---
+
+<section class="border-t border-black/10 bg-black">
+  <Container class="py-24 text-center lg:py-32">
+    <div class="reveal-up mx-auto max-w-3xl">
+      <div class="mb-8 flex items-center justify-center gap-4">
+        <span class="h-px w-9 bg-accent"></span>
+        <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/50"
+          >Contacto</span
+        >
+        <span class="h-px w-9 bg-accent"></span>
+      </div>
+      <h2
+        class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-white"
+      >
+        ¿Listo para <span class="text-accent">convertir</span> tu tráfico en clientes?
+      </h2>
+      <p class="mx-auto mt-8 max-w-md text-[15px] leading-7 text-white/50">
+        Agenda un diagnóstico gratuito y descubre dónde están las oportunidades de crecimiento de tu
+        negocio.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Agenda tu diagnóstico →</Button>
+        <Button
+          href="/servicios"
+          variant="ghost"
+          size="lg"
+          class="!text-white/70 hover:!text-white"
+        >
+          Ver servicios
+        </Button>
+      </div>
+    </div>
+  </Container>
+</section>

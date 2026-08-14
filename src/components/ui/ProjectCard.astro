@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  description?: string;
+  tags?: string[];
+  index?: number;
+  href?: string;
+}
+
+const { title, category, description, tags = [], index, href = '#' } = Astro.props;
+---
+
+<article
+  class="group relative flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition duration-300 hover:border-black/25 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]"
+>
+  <div
+    class="relative flex aspect-[4/3] items-end justify-end overflow-hidden bg-gradient-to-br from-black/[.03] to-accent/[.08]"
+  >
+    {
+      index !== undefined && (
+        <span class="absolute -right-3 -top-8 text-[clamp(80px,10vw,160px)] font-semibold leading-none tracking-tighter text-black/[.04] transition duration-500 group-hover:text-accent/15">
+          {String(index).padStart(2, '0')}
+        </span>
+      )
+    }
+  </div>
+
+  <div class="flex flex-1 items-start justify-between gap-4 p-6 lg:p-7">
+    <div>
+      <span class="text-[10px] font-medium uppercase tracking-[.2em] text-accent">{category}</span>
+      <h3
+        class="mt-2 text-xl font-semibold tracking-tight text-ink transition group-hover:text-accent"
+      >
+        {title}
+      </h3>
+      {description && <p class="mt-2 text-sm leading-6 text-muted">{description}</p>}
+      {
+        tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span class="rounded-full border border-black/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[.12em] text-black/45">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <a
+      href={href}
+      aria-label={`Ver proyecto: ${title}`}
+      class="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 text-ink transition duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
+    >
+      →
+    </a>
+  </div>
+</article>

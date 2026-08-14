@@ -1,0 +1,28 @@
+---
+import { differentiators } from '../data/differentiators';
+import Container from './ui/Container.astro';
+import SectionTitle from './ui/SectionTitle.astro';
+---
+
+<section class="border-t border-black/10 bg-[#f8fafc]">
+  <Container class="py-24 lg:py-32">
+    <SectionTitle
+      kicker="Diferenciales"
+      align="center"
+      description="Lo que hace que trabajar con Croilab sea diferente: método, datos y ejecución."
+    >
+      Por qué <span class="text-accent">marca la diferencia</span>
+    </SectionTitle>
+    <div class="mt-16 grid gap-x-16 gap-y-12 md:grid-cols-2">
+      {
+        differentiators.map((d, i) => (
+          <div class="reveal-up border-t border-black/10 pt-8" style={`--i:${i}`}>
+            <span class="text-xs font-medium tracking-[.2em] text-accent">{d.num}</span>
+            <h3 class="mt-4 text-2xl font-semibold tracking-tight text-ink">{d.title}</h3>
+            <p class="mt-3 text-[15px] leading-7 text-muted">{d.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

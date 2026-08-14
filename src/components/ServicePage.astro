@@ -1,0 +1,290 @@
+---
+import { projects } from '../data/projects';
+import { whatsappLink } from '../data/site';
+import type { ServicePageData } from '../data/servicePages';
+import Breadcrumb from './ui/Breadcrumb.astro';
+import Button from './ui/Button.astro';
+import Container from './ui/Container.astro';
+import ProjectCard from './ui/ProjectCard.astro';
+import SectionTitle from './ui/SectionTitle.astro';
+
+interface Props {
+  data: ServicePageData;
+}
+
+const { data } = Astro.props;
+
+const related = projects.filter((project) => data.relatedProjects.includes(project.title));
+const waLink = whatsappLink();
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: data.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<article>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-white">
+    <div class="grid-bg absolute inset-0"></div>
+    <div class="relative z-10 mx-auto max-w-[1400px] px-6 pb-16 pt-10 lg:px-10 lg:pb-24">
+      <Breadcrumb items={[{ label: 'Servicios', href: '/servicios' }, { label: data.name }]} />
+      <div class="mt-12 max-w-[880px] lg:mt-16">
+        <div class="mb-8 flex items-center gap-4">
+          <span class="h-px w-9 bg-accent"></span>
+          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-muted">
+            {data.hero.kicker}
+          </span>
+        </div>
+        <h1
+          class="text-[clamp(3.2rem,6.5vw,6.8rem)] font-semibold leading-[.9] tracking-[-.065em] text-ink"
+        >
+          {data.hero.title}
+          <span class="text-accent">{data.hero.highlight}</span>
+        </h1>
+        <p class="mt-8 max-w-2xl text-[15px] leading-7 text-black/50 md:text-[17px]">
+          {data.hero.intro}
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <Button href="/contacto" size="lg">Diagnóstico gratuito →</Button>
+          <Button
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
+            size="lg"
+          >
+            Hablar por WhatsApp
+          </Button>
+        </div>
+      </div>
+      <div class="mt-16 grid max-w-[720px] grid-cols-3 gap-4 border-t border-black/10 pt-6">
+        {
+          data.hero.stats.map((stat, i) => (
+            <div class:list={[i > 0 && 'border-l border-black/10 pl-5']}>
+              <div class="text-[23px] font-semibold tracking-tight text-ink">{stat.value}</div>
+              <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">
+                {stat.label}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section class="border-t border-black/10 bg-[#f8fafc]">
+    <Container class="py-24 lg:py-32">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
+        <SectionTitle kicker="El problema" class="lg:sticky lg:top-28 lg:self-start">
+          {data.problem.title}
+        </SectionTitle>
+        <div>
+          <p class="text-[15px] leading-7 text-muted">{data.problem.intro}</p>
+          <ul class="mt-8 space-y-4">
+            {
+              data.problem.points.map((point, i) => (
+                <li
+                  class="reveal-up flex items-start gap-4 rounded-2xl border border-black/10 bg-white p-5"
+                  style={`--i:${i}`}
+                >
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-black text-[11px] font-semibold text-white"
+                  >
+                    ×
+                  </span>
+                  <span class="text-[15px] leading-6 text-black/70">{point}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- SOLUCIÓN -->
+  <section class="border-t border-black/10 bg-white">
+    <Container class="py-24 lg:py-32">
+      <SectionTitle kicker="La solución" description={data.solution.intro}>
+        {data.solution.title}
+      </SectionTitle>
+      <div class="mt-16 grid gap-6 md:grid-cols-3">
+        {
+          data.solution.points.map((point, i) => (
+            <div class="reveal-up rounded-2xl border border-black/10 p-8" style={`--i:${i}`}>
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-white">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-6 text-lg font-semibold tracking-tight text-ink">{point.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{point.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="border-t border-black/10 bg-[#f8fafc]">
+    <Container class="py-24 lg:py-32">
+      <SectionTitle kicker="Beneficios" align="center">
+        ¿Qué obtienes con {data.name}?
+      </SectionTitle>
+      <div
+        class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 md:grid-cols-2"
+      >
+        {
+          data.benefits.map((benefit, i) => (
+            <div class="reveal-up bg-white p-8" style={`--i:${i}`}>
+              <span class="text-xs font-medium tracking-[.2em] text-accent">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-4 text-xl font-semibold tracking-tight text-ink">{benefit.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{benefit.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="border-t border-black/10 bg-white">
+    <Container class="py-24 lg:py-32">
+      <SectionTitle
+        kicker="Proceso"
+        description="Un método claro de cuatro fases: sin vueltas, con medición constante."
+      >
+        Cómo <span class="text-accent">lo hacemos</span>
+      </SectionTitle>
+      <ol class="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          data.process.map((step, i) => (
+            <li class="reveal-up" style={`--i:${i}`}>
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-black text-sm font-semibold text-white">
+                {step.num}
+              </div>
+              <h3 class="mt-6 text-lg font-semibold tracking-tight text-ink">{step.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{step.description}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </Container>
+  </section>
+
+  <!-- CARACTERÍSTICAS -->
+  <section class="border-t border-black/10 bg-[#f8fafc]">
+    <Container class="py-24 lg:py-32">
+      <SectionTitle kicker="Características" align="center">
+        Todo lo que <span class="text-accent">incluye</span>
+      </SectionTitle>
+      <div
+        class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {
+          data.features.map((feature, i) => (
+            <div class="reveal-up bg-white p-7" style={`--i:${i}`}>
+              <span class="flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-sm text-accent">
+                ✓
+              </span>
+              <h3 class="mt-5 text-base font-semibold tracking-tight text-ink">{feature.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{feature.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-black/10 bg-black">
+    <Container class="py-24 text-center lg:py-32">
+      <div class="reveal-up mx-auto max-w-3xl">
+        <h2
+          class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-white"
+        >
+          {data.cta.title}
+          <span class="text-accent">{data.cta.highlight}</span>
+        </h2>
+        <p class="mx-auto mt-8 max-w-md text-[15px] leading-7 text-white/50">
+          {data.cta.subtitle}
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Button href="/contacto" variant="primary" size="lg">Agenda tu diagnóstico →</Button>
+          <Button
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="ghost"
+            size="lg"
+            class="!text-white/70 hover:!text-white"
+          >
+            WhatsApp
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- PROYECTOS RELACIONADOS -->
+  {
+    related.length > 0 && (
+      <section class="border-t border-black/10 bg-white">
+        <Container class="py-24 lg:py-32">
+          <SectionTitle
+            kicker="Proyectos relacionados"
+            description="Casos reales donde este servicio marcó la diferencia."
+          >
+            Resultados <span class="text-accent">reales</span>
+          </SectionTitle>
+          <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {related.map((project, i) => (
+              <ProjectCard {...project} index={i + 1} />
+            ))}
+          </div>
+        </Container>
+      </section>
+    )
+  }
+
+  <!-- FAQ -->
+  <section class="border-t border-black/10 bg-[#f8fafc]">
+    <Container class="py-24 lg:py-32">
+      <SectionTitle kicker="Preguntas frecuentes" align="center">
+        Resolvemos tus <span class="text-accent">dudas</span>
+      </SectionTitle>
+      <div class="mx-auto mt-16 max-w-3xl">
+        {
+          data.faq.map((item, i) => (
+            <details class="reveal-up group border-b border-black/10 py-6" style={`--i:${i}`}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold tracking-tight text-ink">
+                {item.question}
+                <span
+                  aria-hidden="true"
+                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/15 text-lg text-black/50 transition duration-300 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="mt-4 max-w-2xl text-[15px] leading-7 text-muted">{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+</article>

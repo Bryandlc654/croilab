@@ -1,0 +1,93 @@
+---
+import Container from './ui/Container.astro';
+
+const serviceLinks = [
+  { label: 'SEO', href: '/seo' },
+  { label: 'Meta Ads', href: '/meta-ads' },
+  { label: 'Diseño Web', href: '/diseno-web' },
+  { label: 'Ecommerce', href: '/ecommerce' },
+  { label: 'Método Conversiones', href: '/conversiones' },
+];
+
+const companyLinks = [
+  { label: 'Proyectos', href: '/proyectos' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contacto', href: '/contacto' },
+];
+---
+
+<footer class="border-t border-black/10 bg-[#f8fafc]">
+  <Container class="py-16 lg:py-20">
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div>
+        <a href="/" class="group flex items-center gap-3" aria-label="Croilab — inicio">
+          <div class="relative flex h-9 w-9 items-center justify-center">
+            <span
+              class="absolute h-4 w-4 rotate-45 rounded-[3px] bg-black transition duration-500 group-hover:rotate-[135deg]"
+            ></span>
+            <span class="relative z-10 h-2 w-2 rounded-full bg-white"></span>
+          </div>
+          <span class="text-[21px] font-semibold tracking-[-0.055em]">
+            Croilab
+            <sup class="ml-0.5 text-[8px] text-black/40">®</sup>
+          </span>
+        </a>
+        <p class="mt-5 max-w-xs text-sm leading-6 text-muted">
+          Ingeniería de conversiones digitales: estrategia, tecnología y adquisición trabajando
+          juntos.
+        </p>
+      </div>
+
+      <nav aria-label="Servicios">
+        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-black/40">Servicios</h3>
+        <ul class="mt-5 space-y-3">
+          {
+            serviceLinks.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-muted transition hover:text-accent">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-label="Compañía">
+        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-black/40">Compañía</h3>
+        <ul class="mt-5 space-y-3">
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-muted transition hover:text-accent">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-black/40">Contacto</h3>
+        <p class="mt-5 text-sm leading-6 text-muted">hola@croilab.com</p>
+        <div class="mt-2 flex items-center gap-2 text-sm text-muted">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+          Disponible para nuevos proyectos
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-6 md:flex-row"
+    >
+      <span class="text-[10px] uppercase tracking-[.2em] text-black/35">
+        © 2026 Croilab. Todos los derechos reservados.
+      </span>
+      <span class="text-[10px] uppercase tracking-[.2em] text-black/35"
+        >Digital conversion laboratory</span
+      >
+    </div>
+  </Container>
+</footer>

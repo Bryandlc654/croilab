@@ -1,0 +1,32 @@
+---
+import { clients } from '../data/clients';
+import Container from './ui/Container.astro';
+---
+
+<section class="border-t border-black/10 bg-[#f8fafc] py-14" aria-label="Clientes">
+  <Container>
+    <p
+      class="reveal-up mb-10 text-center text-[11px] font-medium uppercase tracking-[.24em] text-muted"
+    >
+      Confían en nosotros
+    </p>
+  </Container>
+  <div class="marquee marquee-mask">
+    <div class="marquee-track">
+      {
+        clients.map((client) => (
+          <span class={`mr-20 whitespace-nowrap ${client.classes}`} set:html={client.name} />
+        ))
+      }
+      {
+        clients.map((client) => (
+          <span
+            class={`mr-20 whitespace-nowrap ${client.classes}`}
+            aria-hidden="true"
+            set:html={client.name}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
