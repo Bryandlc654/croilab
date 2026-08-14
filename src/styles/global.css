@@ -94,6 +94,16 @@
     -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
   }
 
+  /* GRID INVERTIDA (sobre fondos oscuros) */
+  .grid-bg-invert {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 65px 65px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+  }
+
   /* BLUE LIGHT */
   .blue-light {
     position: absolute;
