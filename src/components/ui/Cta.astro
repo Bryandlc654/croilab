@@ -1,11 +1,20 @@
 ---
+import { whatsappLink } from '../../data/site';
 import Container from './Container.astro';
 import Button from './Button.astro';
+
+const waLink = whatsappLink();
+
+const words = ['Diagnóstico', 'Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crecimiento'];
 ---
 
-<section class="border-t border-black/10 bg-black">
-  <Container class="py-24 text-center lg:py-32">
-    <div class="reveal-up mx-auto max-w-3xl">
+<section class="relative overflow-hidden border-t border-black/10 bg-black">
+  <div class="grid-bg-invert absolute inset-0" aria-hidden="true"></div>
+  <div class="blue-light -top-56 left-1/2 -translate-x-1/2 opacity-50" aria-hidden="true"></div>
+  <div class="blue-light -bottom-56 right-[-8%] opacity-40" aria-hidden="true"></div>
+
+  <Container class="relative z-10 pt-24 lg:pt-36">
+    <div class="reveal-up text-center">
       <div class="mb-8 flex items-center justify-center gap-4">
         <span class="h-px w-9 bg-accent"></span>
         <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/50"
@@ -13,26 +22,69 @@ import Button from './Button.astro';
         >
         <span class="h-px w-9 bg-accent"></span>
       </div>
-      <h2
-        class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-white"
+    </div>
+
+    <h2
+      class="reveal-up mx-auto mt-10 max-w-6xl text-center text-[clamp(3rem,9vw,9rem)] font-semibold leading-[.9] tracking-[-.06em] text-white"
+    >
+      <span class="block">¿Listo para <span class="text-accent">convertir</span></span>
+      <span class="block"
+        ><span class="text-white/20">tu tráfico</span> en
+        <span class="underline decoration-accent decoration-[.05em] underline-offset-[.09em]"
+          >clientes?</span
+        ></span
       >
-        ¿Listo para <span class="text-accent">convertir</span> tu tráfico en clientes?
-      </h2>
-      <p class="mx-auto mt-8 max-w-md text-[15px] leading-7 text-white/50">
-        Agenda un diagnóstico gratuito y descubre dónde están las oportunidades de crecimiento de tu
-        negocio.
-      </p>
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <Button href="/contacto" variant="primary" size="lg">Agenda tu diagnóstico →</Button>
-        <Button
-          href="/servicios"
-          variant="ghost"
-          size="lg"
-          class="!text-white/70 hover:!text-white"
+    </h2>
+
+    <p class="reveal-up mx-auto mt-10 max-w-lg text-center text-[15px] leading-7 text-white/50">
+      Agenda un diagnóstico gratuito y descubre dónde están las oportunidades de crecimiento de tu
+      negocio.
+    </p>
+
+    <div class="reveal-up mt-14 flex flex-col items-center gap-8">
+      <a
+        href="/contacto"
+        class="group inline-flex items-center gap-6 rounded-full border border-white/15 px-10 py-6 text-xl font-semibold text-white transition-all duration-300 hover:border-accent hover:bg-accent hover:shadow-[0_25px_70px_rgba(8,120,249,.45)] lg:px-14 lg:py-7 lg:text-2xl"
+      >
+        Agenda tu diagnóstico gratuito
+        <span
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-xl text-white transition-transform duration-300 group-hover:rotate-45"
+          >→</span
         >
-          Ver servicios
-        </Button>
-      </div>
+      </a>
+      <Button
+        href={waLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="ghost"
+        class="!text-white/60 hover:!text-white"
+      >
+        o escríbenos por WhatsApp
+      </Button>
     </div>
   </Container>
+
+  <div class="marquee marquee-mask mt-20 border-y border-white/10 py-6 lg:mt-28">
+    <div class="marquee-track">
+      {
+        words.map((word) => (
+          <span
+            class="mr-12 flex items-center whitespace-nowrap text-[clamp(2.4rem,5vw,5rem)] font-semibold leading-none tracking-tighter text-white/10"
+          >
+            {word}<span class="ml-12 text-accent">✳</span>
+          </span>
+        ))
+      }
+      {
+        words.map((word) => (
+          <span
+            aria-hidden="true"
+            class="mr-12 flex items-center whitespace-nowrap text-[clamp(2.4rem,5vw,5rem)] font-semibold leading-none tracking-tighter text-white/10"
+          >
+            {word}<span class="ml-12 text-accent">✳</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
 </section>

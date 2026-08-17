@@ -2,13 +2,13 @@
 import { projects } from '../data/projects';
 import Button from './ui/Button.astro';
 import Container from './ui/Container.astro';
-import ProjectCard from './ui/ProjectCard.astro';
 import SectionTitle from './ui/SectionTitle.astro';
 ---
 
-<section id="proyectos" class="border-t border-black/10 bg-white">
-  <Container class="py-24 lg:py-32">
-    <div class="flex flex-wrap items-end justify-between gap-8">
+<section id="proyectos" class="relative overflow-hidden border-t border-black/10 bg-white">
+  <Container class="relative z-10 py-24 lg:py-32">
+    <!-- HEADER -->
+    <div class="reveal-up flex flex-wrap items-end justify-between gap-8">
       <SectionTitle
         kicker="Proyectos"
         description="Casos reales con resultados medibles: diseño, adquisición y optimización trabajando juntos."
@@ -17,8 +17,146 @@ import SectionTitle from './ui/SectionTitle.astro';
       </SectionTitle>
       <Button href="/proyectos" variant="outline" class="mb-2">Ver todos los proyectos →</Button>
     </div>
-    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project, i) => <ProjectCard {...project} index={i + 1} />)}
+
+    <!-- BENTO MOSAICO -->
+    <div class="mt-16 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
+      {
+        projects.map((project, i) => {
+          const num = String(i + 1).padStart(2, '0');
+          return i === 0 ? (
+            <article
+              class="reveal-up group relative flex min-h-[460px] flex-col overflow-hidden rounded-[2rem] bg-black shadow-[0_40px_80px_rgba(0,0,0,0.12)] lg:row-span-2"
+              style={`--i:${i}`}
+            >
+              <!-- IMAGEN -->
+              <div class="relative min-h-[240px] flex-1 overflow-hidden lg:min-h-0">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              <!-- CONTENIDO -->
+              <div class="relative z-10 flex flex-1 flex-col gap-8 bg-black p-8 transition-colors duration-500 group-hover:bg-accent lg:p-10">
+                <span
+                  aria-hidden="true"
+                  class="pointer-events-none absolute -top-6 right-4 select-none text-[clamp(80px,9vw,150px)] font-semibold leading-none tracking-tighter text-white/[.05] transition-colors duration-500 group-hover:text-white/10"
+                >
+                  {num}
+                </span>
+
+                <div class="flex items-center gap-2.5">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span class="text-[11px] font-medium uppercase tracking-[.22em] text-white/60">
+                    {project.category}
+                  </span>
+                </div>
+
+                <div class="mt-auto">
+                  <h3
+                    class="max-w-[14ch] text-[clamp(1.9rem,3.2vw,3.2rem)] font-semibold leading-[.98] tracking-[-.04em] text-white transition-transform duration-500 group-hover:translate-x-2"
+                  >
+                    {project.title}
+                  </h3>
+                  <p class="mt-4 max-w-md text-[15px] leading-7 text-white/55">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap items-end justify-between gap-4 border-t border-white/10 pt-6">
+                  <div class="flex flex-wrap gap-2">
+                    {
+                      project.tags.map((tag) => (
+                        <span
+                          class="rounded-full border border-white/15 px-3 py-1 text-[10px] font-medium uppercase tracking-[.12em] text-white/60"
+                        >
+                          {tag}
+                        </span>
+                      ))
+                    }
+                  </div>
+                  <a
+                    href="#"
+                    aria-label={`Ver proyecto: ${project.title}`}
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 text-lg text-white transition-all duration-300 group-hover:rotate-45 group-hover:border-white group-hover:bg-white group-hover:text-ink"
+                  >
+                    ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+          ) : (
+            <article
+              class="reveal-up group relative flex flex-col overflow-hidden rounded-[2rem] border border-black/10 bg-white transition-colors duration-500 hover:border-accent"
+              style={`--i:${i}`}
+            >
+              <!-- IMAGEN -->
+              <div class="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              <!-- CONTENIDO -->
+              <div class="relative z-10 flex flex-1 flex-col bg-white p-6 transition-colors duration-500 group-hover:bg-accent lg:p-8">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent transition-colors duration-500 group-hover:bg-white" />
+                    <span
+                      class="text-[11px] font-medium uppercase tracking-[.22em] text-accent transition-colors duration-500 group-hover:text-white"
+                    >
+                      {project.category}
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="select-none text-5xl font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-500 group-hover:text-white/20"
+                  >
+                    {num}
+                  </span>
+                </div>
+
+                <div class="mt-6">
+                  <h3
+                    class="text-2xl font-semibold tracking-tight text-ink transition-colors duration-500 group-hover:text-white lg:text-[1.7rem]"
+                  >
+                    {project.title}
+                  </h3>
+                  <p class="mt-2 text-sm leading-6 text-muted transition-colors duration-500 group-hover:text-white/70">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div class="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-black/10 pt-5">
+                  <div class="flex flex-wrap gap-2">
+                    {
+                      project.tags.map((tag) => (
+                        <span
+                          class="rounded-full border border-black/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[.12em] text-black/45 transition-colors duration-500 group-hover:border-white/25 group-hover:text-white/80"
+                        >
+                          {tag}
+                        </span>
+                      ))
+                    }
+                  </div>
+                  <a
+                    href="#"
+                    aria-label={`Ver proyecto: ${project.title}`}
+                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-ink transition-all duration-300 group-hover:rotate-45 group-hover:border-white/40 group-hover:bg-white group-hover:text-ink"
+                  >
+                    ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
     </div>
   </Container>
 </section>

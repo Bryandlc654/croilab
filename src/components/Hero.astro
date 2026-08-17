@@ -1,5 +1,24 @@
 ---
 
+const icons: Record<string, string> = {
+  person:
+    '<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  bag: '<path d="M6 8h12l-1.2 10a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+  spark: '<path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2Z"/>',
+  trend: '<path d="M3 17l5-6 4 3 6-8"/><path d="M14 6h5v5"/>',
+  search:
+    '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+  leaf: '<path d="M4 20C4 10 10 4 20 4 20 14 14 20 4 20Z"/><path d="M4 20C8 14 12 10 16 7"/>',
+  dress:
+    '<path d="M8 3l1 5-4 3 3 10h8l3-10-4-3 1-5-2 2h-4Z"/><path d="M9 12h6"/>',
+};
+
+const notifications = [
+  { icon: 'person', color: 'bg-accent', title: 'Nuevo visitante', meta: 'hace unos segundos', delay: 0 },
+  { icon: 'bag', color: 'bg-emerald-500', title: 'Venta realizada', meta: '+$140', delay: 2 },
+  { icon: 'spark', color: 'bg-violet-500', title: 'Conversión', meta: '+3.2%', delay: 4 },
+  { icon: 'trend', color: 'bg-amber-500', title: 'Tráfico orgánico', meta: '+18%', delay: 6 },
+];
 ---
 
 <section id="hero" class="relative min-h-[calc(100vh-85px)] overflow-hidden bg-white">
@@ -9,18 +28,9 @@
 
   <!-- HERO -->
   <div
-    class="relative z-20 mx-auto flex min-h-[calc(100vh-85px)] max-w-[1400px] items-center px-6 pb-20 pt-8 lg:px-10"
+    class="relative z-20 mx-auto flex min-h-[calc(100vh-85px)] max-w-[1400px] items-center px-6 pb-32 pt-8 lg:px-10 lg:pb-20"
   >
-    <div class="grid w-full items-center lg:grid-cols-[1.05fr_.95fr]">
-      <!-- LEFT -->
-      <div class="relative z-30">
-        <div class="mb-8 flex items-center gap-4 animate-appear">
-          <span class="h-px w-9 bg-accent"></span>
-          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/40">
-            Laboratorio de conversiones
-          </span>
-        </div>
-
+    <div class="w-full lg:max-w-[46%]">
         <h1
           class="max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em]"
         >
@@ -60,120 +70,228 @@
             <span class="ml-2">↘</span>
           </a>
         </div>
-
-        <div class="mt-16 flex max-w-[570px] border-t border-black/10 pt-6">
-          <div class="w-1/3">
-            <div class="text-[23px] font-semibold tracking-tight">+42%</div>
-            <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">Conversión</div>
-          </div>
-          <div class="w-1/3 border-l border-black/10 pl-7">
-            <div class="text-[23px] font-semibold tracking-tight">3.8x</div>
-            <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">ROAS</div>
-          </div>
-          <div class="w-1/3 border-l border-black/10 pl-7">
-            <div class="text-[23px] font-semibold tracking-tight">+18</div>
-            <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">Proyectos</div>
-          </div>
-        </div>
       </div>
 
-      <!-- RIGHT VISUAL -->
-      <div class="relative flex min-h-[520px] items-center justify-center lg:min-h-[650px]">
-        <div class="blue-light animate-pulseSoft"></div>
-        <div
-          class="ring h-[320px] w-[320px] animate-spinSlow sm:h-[430px] sm:w-[430px] lg:h-[560px] lg:w-[560px]"
-        >
-        </div>
-        <div class="ring h-[240px] w-[240px] sm:h-[340px] sm:w-[340px] lg:h-[430px] lg:w-[430px]">
-        </div>
-        <div
-          class="dashed-ring absolute h-[200px] w-[200px] animate-spinSlow sm:h-[280px] sm:w-[280px] lg:h-[350px] lg:w-[350px]"
-        >
-        </div>
-        <div id="orb" class="z-10 transition-transform duration-300 ease-out">
-          <div class="orb animate-float"></div>
-        </div>
-
-        <div
-          class="absolute z-20 flex h-[90px] w-[90px] items-center justify-center rounded-full border border-white/70 bg-white/50 shadow-xl backdrop-blur-md"
-        >
-          <div
-            class="h-3 w-3 rounded-full bg-accent shadow-[0_0_25px_rgba(8,120,249,.8)] animate-pulse"
-          >
-          </div>
-        </div>
-
-        <div
-          class="floating-card absolute left-[2%] top-[15%] z-30 w-[190px] rounded-2xl p-4 animate-floatSlow"
-        >
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] uppercase tracking-[.15em] text-black/35">Conversion</span>
-            <span class="text-[11px] font-semibold text-accent">+128%</span>
-          </div>
-          <div class="mt-5 flex items-end gap-[5px]">
-            <span class="h-5 w-2 rounded-full bg-black/10"></span>
-            <span class="h-8 w-2 rounded-full bg-black/10"></span>
-            <span class="h-11 w-2 rounded-full bg-black/15"></span>
-            <span class="h-14 w-2 rounded-full bg-accent/50"></span>
-            <span class="h-20 w-2 rounded-full bg-accent"></span>
-          </div>
-        </div>
-
-        <div
-          class="floating-card absolute bottom-[15%] right-[0%] z-30 w-[205px] rounded-2xl p-4 animate-float"
-        >
-          <div class="flex items-center gap-3">
-            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-accent">
-              ↗
-            </div>
-            <div>
-              <div class="text-[10px] uppercase tracking-[.12em] text-black/35">Tráfico</div>
-              <div class="mt-0.5 text-sm font-semibold">84.2K</div>
-            </div>
-          </div>
-          <div class="mt-4 h-[3px] overflow-hidden rounded-full bg-black/5">
-            <div class="h-full w-[75%] rounded-full bg-accent animate-lineMove"></div>
-          </div>
-        </div>
-
-        <div
-          class="absolute right-[4%] top-[23%] hidden rounded-full border border-black/10 bg-white/80 px-4 py-2 text-[9px] font-medium uppercase tracking-[.2em] text-black/40 shadow-lg backdrop-blur-md md:block"
-        >
-          SEO · ADS · ECOMMERCE
-        </div>
-
-        <div class="absolute left-[12%] top-[40%] h-2 w-2 rounded-full bg-accent"></div>
-        <div class="absolute right-[18%] bottom-[38%] h-1.5 w-1.5 rounded-full bg-black/30"></div>
-      </div>
-    </div>
   </div>
 
-  <!-- BOTTOM BAR -->
+  <!-- MOCKUP DE CELULAR (mitad visible, saliendo desde el borde inferior derecho) -->
   <div
-    class="absolute bottom-0 left-0 right-0 border-t border-black/10 bg-white/70 backdrop-blur-xl"
+    class="pointer-events-none absolute bottom-0 right-4 z-10 w-[330px] translate-x-[6%] translate-y-1/2 rounded-[2.8rem] border border-black/15 bg-black p-3 shadow-[0_50px_120px_rgba(0,0,0,0.3)] sm:w-[390px] lg:right-14 lg:w-[440px]"
+    aria-hidden="true"
   >
-    <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:px-10">
-      <span class="text-[9px] font-medium uppercase tracking-[.25em] text-black/30">
-        Digital conversion laboratory
-      </span>
-      <div class="flex items-center gap-2 text-[10px] text-black/40">
-        <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
-        Disponible para nuevos proyectos
+    <!-- botones laterales -->
+    <span class="absolute -left-[3px] top-24 h-10 w-[3px] rounded-l-md bg-black/60"></span>
+    <span class="absolute -left-[3px] top-40 h-14 w-[3px] rounded-l-md bg-black/60"></span>
+    <span class="absolute -right-[3px] top-32 h-16 w-[3px] rounded-r-md bg-black/60"></span>
+
+    <!-- pantalla -->
+    <div class="relative flex aspect-[9/19] flex-col overflow-hidden rounded-[2rem] bg-white">
+      <!-- brillo -->
+      <div
+        class="pointer-events-none absolute inset-0 z-20 bg-gradient-to-br from-white/30 via-transparent to-transparent"
+      ></div>
+
+      <!-- barra de estado -->
+      <div class="relative flex items-center justify-between px-5 pt-3">
+        <span class="text-[9px] font-semibold tracking-tight text-black">9:41</span>
+        <span
+          class="absolute left-1/2 top-2 h-4 w-16 -translate-x-1/2 rounded-full bg-black"
+        ></span>
+        <span class="flex items-center gap-[3px]">
+          <span class="h-[7px] w-[7px] rounded-full bg-black/70"></span>
+          <span class="h-[7px] w-[7px] rounded-full bg-black/70"></span>
+          <span class="h-[7px] w-[7px] rounded-full bg-black/70"></span>
+          <span class="ml-1 flex h-3 w-4 items-center rounded-[3px] border border-black/50 p-[1.5px]">
+            <span class="h-full w-2/3 rounded-[1px] bg-black"></span>
+          </span>
+        </span>
       </div>
+
+      <!-- tienda ecommerce -->
+      <div class="flex-1 p-4">
+        <!-- navbar -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1">
+            <span class="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-2 w-2 text-white"
+                set:html={icons.leaf}
+              />
+            </span>
+            <span class="text-[8px] font-bold tracking-tight text-black">atelier</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-black/5 text-black/40">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-2.5 w-2.5"
+                set:html={icons.search}
+              />
+            </span>
+            <span class="relative flex h-5 w-5 items-center justify-center rounded-full bg-black/5 text-black/40">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-2.5 w-2.5"
+                set:html={icons.bag}
+              />
+              <span
+                class="absolute -right-0.5 -top-0.5 flex h-3 w-3 items-center justify-center rounded-full bg-emerald-500 text-[5px] font-bold text-white"
+                >2</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <!-- banner promo -->
+        <div class="relative mt-3.5 overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-400 p-3">
+          <span class="absolute -right-4 -top-6 h-16 w-16 rounded-full bg-white/20"></span>
+          <span class="absolute -bottom-8 right-8 h-14 w-14 rounded-full bg-white/10"></span>
+          <p class="relative text-[5px] font-semibold uppercase tracking-[.18em] text-white/70">
+            Nuevo · Otoño 2026
+          </p>
+          <h3 class="relative mt-1 text-[11px] font-bold leading-tight text-white">
+            Hasta 40% OFF<br />en tu primera compra
+          </h3>
+          <span
+            class="relative mt-2 inline-block rounded-full bg-white px-2 py-0.5 text-[5.5px] font-bold text-emerald-700"
+            >Comprar ahora →</span
+          >
+        </div>
+
+        <!-- categorías -->
+        <div class="mt-2.5 flex gap-1">
+          <span class="rounded-full bg-black px-2 py-0.5 text-[5.5px] font-semibold text-white"
+            >Nuevo</span
+          >
+          <span class="rounded-full bg-black/5 px-2 py-0.5 text-[5.5px] font-medium text-black/60"
+            >Vestidos</span
+          >
+          <span class="rounded-full bg-black/5 px-2 py-0.5 text-[5.5px] font-medium text-black/60"
+            >Zapatos</span
+          >
+          <span class="rounded-full bg-black/5 px-2 py-0.5 text-[5.5px] font-medium text-black/60"
+            >Accesorios</span
+          >
+        </div>
+
+        <!-- productos -->
+        <div class="mt-2.5 grid grid-cols-2 gap-2">
+          <div class="overflow-hidden rounded-xl border border-black/[.06] bg-white shadow-sm">
+            <div class="relative flex h-16 items-center justify-center bg-gradient-to-br from-emerald-100 to-teal-50">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-7 w-7 text-emerald-600/60"
+                set:html={icons.dress}
+              />
+              <span
+                class="absolute left-1.5 top-1.5 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[4.5px] font-bold uppercase text-white"
+                >-40%</span
+              >
+            </div>
+            <div class="p-1.5">
+              <div class="text-[6px] font-semibold text-black">Vestido Lino</div>
+              <div class="flex items-baseline justify-between">
+                <span class="text-[6.5px] font-bold text-black">$89.00</span>
+                <span class="text-[4px] text-black/30">$148.00</span>
+              </div>
+              <span
+                class="mt-1 flex h-4 items-center justify-center rounded-full bg-emerald-500 text-[5px] font-semibold text-white"
+                >Agregar +</span
+              >
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-black/[.06] bg-white shadow-sm">
+            <div class="relative flex h-16 items-center justify-center bg-gradient-to-br from-amber-100 to-orange-50">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-7 w-7 text-amber-600/60"
+                set:html={icons.bag}
+              />
+              <span
+                class="absolute right-1.5 top-1.5 rounded-full bg-white/80 px-1 py-0.5 text-[4.5px] font-bold text-amber-700"
+                >★ 4.9</span
+              >
+            </div>
+            <div class="p-1.5">
+              <div class="text-[6px] font-semibold text-black">Bolso Piel</div>
+              <div class="flex items-baseline justify-between">
+                <span class="text-[6.5px] font-bold text-black">$129.00</span>
+                <span class="text-[4px] text-black/30">Nuevo</span>
+              </div>
+              <span
+                class="mt-1 flex h-4 items-center justify-center rounded-full bg-black text-[5px] font-semibold text-white"
+                >Agregar +</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- notificaciones (fuera y arriba del celular, en una sola ubicación) -->
+    <div
+      class="pointer-events-none absolute bottom-full right-0 z-30 h-16 w-60 pb-10"
+      aria-hidden="true"
+    >
+      {
+        notifications.map((n) => (
+          <div
+            class="notif absolute inset-x-0 top-0 flex w-full items-center gap-3 rounded-2xl border border-black/5 bg-white/95 p-3 shadow-[0_18px_44px_rgba(0,0,0,.16)] backdrop-blur"
+            style={`animation-delay:${n.delay}s`}
+          >
+            <span
+              class={`relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white ${n.color}`}
+            >
+              <span
+                class={`absolute inset-0 rounded-full ${n.color} opacity-40 animate-ping`}
+              ></span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="relative h-4 w-4"
+                set:html={icons[n.icon]}
+              />
+            </span>
+            <div class="min-w-0">
+              <div class="truncate text-[11px] font-semibold leading-tight text-black/85">
+                {n.title}
+              </div>
+              <div class="text-[9px] leading-tight text-black/45">{n.meta}</div>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
-
-<script>
-  // Parallax del orb (transform en el wrapper para no chocar con animate-float)
-  const hero = document.getElementById('hero');
-  const orb = document.getElementById('orb');
-
-  if (hero && orb) {
-    hero.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 18;
-      const y = (e.clientY / window.innerHeight - 0.5) * 18;
-      orb.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    });
-  }
-</script>

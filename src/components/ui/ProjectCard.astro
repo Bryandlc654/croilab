@@ -4,11 +4,12 @@ interface Props {
   category: string;
   description?: string;
   tags?: string[];
+  image?: string;
   index?: number;
   href?: string;
 }
 
-const { title, category, description, tags = [], index, href = '#' } = Astro.props;
+const { title, category, description, tags = [], image, index, href = '#' } = Astro.props;
 ---
 
 <article
@@ -18,10 +19,19 @@ const { title, category, description, tags = [], index, href = '#' } = Astro.pro
     class="relative flex aspect-[4/3] items-end justify-end overflow-hidden bg-gradient-to-br from-black/[.03] to-accent/[.08]"
   >
     {
-      index !== undefined && (
-        <span class="absolute -right-3 -top-8 text-[clamp(80px,10vw,160px)] font-semibold leading-none tracking-tighter text-black/[.04] transition duration-500 group-hover:text-accent/15">
-          {String(index).padStart(2, '0')}
-        </span>
+      image ? (
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        index !== undefined && (
+          <span class="absolute -right-3 -top-8 text-[clamp(80px,10vw,160px)] font-semibold leading-none tracking-tighter text-black/[.04] transition duration-500 group-hover:text-accent/15">
+            {String(index).padStart(2, '0')}
+          </span>
+        )
       )
     }
   </div>
