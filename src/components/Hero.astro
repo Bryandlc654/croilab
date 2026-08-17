@@ -24,11 +24,11 @@ const notifications = [
 <section id="hero" class="relative min-h-[calc(100vh-85px)] overflow-hidden bg-white">
   <!-- BACKGROUND -->
   <div class="grid-bg absolute inset-0"></div>
-  <div class="blue-light right-[-100px] top-[100px]"></div>
+  <div class="blue-light right-[-100px] top-[100px]" data-parallax="0.2"></div>
 
   <!-- HERO -->
   <div
-    class="relative z-20 mx-auto flex min-h-[calc(100vh-85px)] max-w-[1400px] items-center px-6 pb-32 pt-8 lg:px-10 lg:pb-20"
+    class="relative z-20 mx-auto flex min-h-[calc(100vh-85px)] max-w-[1400px] items-center px-6 pb-16 pt-8 lg:px-10 lg:pb-20"
   >
     <div class="w-full lg:max-w-[46%]">
         <h1
@@ -76,7 +76,8 @@ const notifications = [
 
   <!-- MOCKUP DE CELULAR (mitad visible, saliendo desde el borde inferior derecho) -->
   <div
-    class="pointer-events-none absolute bottom-0 right-4 z-10 w-[330px] translate-x-[6%] translate-y-1/2 rounded-[2.8rem] border border-black/15 bg-black p-3 shadow-[0_50px_120px_rgba(0,0,0,0.3)] sm:w-[390px] lg:right-14 lg:w-[440px]"
+    class="pointer-events-none relative z-10 mx-auto mt-14 w-[270px] rounded-[2.8rem] border border-black/15 bg-black p-3 shadow-[0_50px_120px_rgba(0,0,0,0.3)] sm:w-[320px] lg:absolute lg:bottom-0 lg:right-14 lg:mt-0 lg:w-[440px] lg:translate-x-[6%] lg:translate-y-1/2"
+    data-parallax="0.1"
     aria-hidden="true"
   >
     <!-- botones laterales -->

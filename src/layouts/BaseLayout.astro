@@ -102,5 +102,44 @@ const orgSchema = {
       );
       document.querySelectorAll('.reveal-up').forEach((el) => revealObserver.observe(el));
     </script>
+
+    <script>
+      // Parallax suave: elementos con [data-parallax] se desplazan a distinta velocidad
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const parallaxEls = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-parallax]'),
+      );
+
+      if (!reduceMotion && parallaxEls.length > 0) {
+        parallaxEls.forEach((el) => {
+          el.style.willChange = 'transform';
+        });
+
+        let ticking = false;
+        const update = () => {
+          const vh = window.innerHeight;
+          parallaxEls.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.bottom < -200 || rect.top > vh + 200) return;
+            const center = rect.top + rect.height / 2;
+            const speed = parseFloat(el.dataset.parallax || '0.2');
+            const y = (vh / 2 - center) * speed;
+            el.style.transform = `translate3d(0, ${y}px, 0)`;
+          });
+          ticking = false;
+        };
+
+        const onScroll = () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        };
+
+        update();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+      }
+    </script>
   </body>
 </html>

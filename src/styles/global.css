@@ -267,6 +267,59 @@
     transform: none;
   }
 
+  /* QUOTE ROTATIVO (testimonios) */
+  .quote-block {
+    opacity: 0;
+    visibility: hidden;
+    animation: quoteCycle 18s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite backwards;
+    animation-delay: calc(var(--i, 0) * 6s);
+    will-change: opacity, transform;
+  }
+
+  @keyframes quoteCycle {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(24px);
+    }
+    5% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    28% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    33% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-24px);
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-24px);
+    }
+  }
+
+  .quote-bar {
+    transform: scaleX(0);
+    animation: quoteBar 6s linear infinite;
+    animation-delay: calc(var(--i, 0) * 6s);
+    will-change: transform;
+  }
+
+  @keyframes quoteBar {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
   /* MENÚ MÓVIL */
   #menu-toggle span {
     transition:
@@ -314,5 +367,21 @@
   .reveal-up {
     opacity: 1;
     transform: none;
+  }
+
+  .quote-block {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    animation: none;
+  }
+
+  .quote-block:not(:first-child) {
+    display: none;
+  }
+
+  .quote-bar {
+    transform: scaleX(1);
+    animation: none;
   }
 }
