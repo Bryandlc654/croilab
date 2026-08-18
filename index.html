@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -21,9 +21,11 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
+              heading: ['Be Vietnam Pro', 'sans-serif'],
+              serif: ['Instrument Serif', 'serif'],
             },
             colors: {
-              accent: '#0878F9',
+              accent: '#090909',
             },
             animation: {
               float: 'float 6s ease-in-out infinite',
@@ -100,8 +102,21 @@
       body {
         margin: 0;
         font-family: 'Inter', sans-serif;
-        background: #ffffff;
-        color: #0a0a0a;
+        background: #f3f3f1;
+        color: #090909;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        font-weight: 300 !important;
+      }
+      h1 .text-accent, h2 .text-accent, h3 .text-accent, h4 .text-accent, h5 .text-accent, h6 .text-accent {
+        font-family: 'Instrument Serif', serif;
+        font-style: italic;
+        font-weight: 400;
+      }
+      .font-serif {
+        font-family: 'Instrument Serif', serif;
       }
 
       /* GRID */
@@ -116,7 +131,7 @@
         mask-image: linear-gradient(to bottom, black, transparent 90%);
       }
 
-      /* BLUE LIGHT */
+      /* NEUTRAL LIGHT */
 
       .blue-light {
         position: absolute;
@@ -126,9 +141,9 @@
 
         background: radial-gradient(
           circle,
-          rgba(8, 120, 249, 0.16) 0%,
-          rgba(8, 120, 249, 0.08) 35%,
-          rgba(8, 120, 249, 0.025) 60%,
+          rgba(0, 0, 0, 0.08) 0%,
+          rgba(0, 0, 0, 0.04) 35%,
+          rgba(0, 0, 0, 0.01) 60%,
           transparent 72%
         );
 
@@ -146,16 +161,16 @@
         background: radial-gradient(
           circle at 32% 28%,
           #ffffff 0%,
-          #eaf4ff 18%,
-          #7ebcff 38%,
-          #0878f9 58%,
-          #0054ba 72%,
-          #dceeff 100%
+          #f3f3f1 18%,
+          #d4d4d4 38%,
+          #a3a3a3 58%,
+          #525252 72%,
+          #e5e5e5 100%
         );
 
         box-shadow:
-          0 35px 80px rgba(8, 120, 249, 0.22),
-          inset -30px -40px 70px rgba(0, 55, 130, 0.18),
+          0 35px 80px rgba(0, 0, 0, 0.15),
+          inset -30px -40px 70px rgba(0, 0, 0, 0.1),
           inset 25px 20px 45px rgba(255, 255, 255, 0.65);
 
         position: relative;
@@ -208,7 +223,7 @@
       /* DASHED CIRCLE */
 
       .dashed-ring {
-        border: 1px dashed rgba(8, 120, 249, 0.3);
+        border: 1px dashed rgba(0, 0, 0, 0.15);
 
         border-radius: 50%;
       }
@@ -279,7 +294,7 @@
   </head>
 
   <body>
-    <section class="relative min-h-screen overflow-hidden bg-white">
+    <section id="hero" class="relative min-h-screen overflow-hidden bg-transparent">
       <!-- BACKGROUND -->
 
       <div class="grid-bg absolute inset-0"></div>
@@ -288,45 +303,45 @@
 
       <!-- NAVBAR -->
 
-      <header class="relative z-50">
+      <header class="absolute top-0 w-full z-50 bg-transparent text-white">
         <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 lg:px-10">
           <!-- LOGO -->
 
           <a href="#" class="group flex items-center gap-3">
             <div class="relative flex h-9 w-9 items-center justify-center">
               <span
-                class="absolute h-4 w-4 rotate-45 rounded-[3px] bg-black transition duration-500 group-hover:rotate-[135deg]"
+                class="absolute h-4 w-4 rotate-45 rounded-[3px] bg-white transition duration-500 group-hover:rotate-[135deg]"
               ></span>
 
-              <span class="relative z-10 h-2 w-2 rounded-full bg-white"></span>
+              <span class="relative z-10 h-2 w-2 rounded-full bg-[#090909]"></span>
             </div>
 
-            <span class="text-[21px] font-semibold tracking-[-0.055em]">
+            <span class="text-[21px] font-semibold tracking-[-0.055em] text-white">
               Croilab
 
-              <sup class="ml-0.5 text-[8px] text-black/40"> ® </sup>
+              <sup class="ml-0.5 text-[8px] text-white/40"> ® </sup>
             </span>
           </a>
 
           <!-- MENU -->
 
-          <nav class="hidden items-center gap-9 text-[13px] font-medium text-black/55 md:flex">
-            <a href="#" class="transition hover:text-black"> Proyectos </a>
+          <nav class="hidden items-center gap-9 text-[13px] font-medium text-white/60 md:flex">
+            <a href="#" class="transition hover:text-white"> Proyectos </a>
 
-            <a href="#" class="transition hover:text-black"> Servicios </a>
+            <a href="#" class="transition hover:text-white"> Servicios </a>
 
-            <a href="#" class="transition hover:text-black"> Nosotros </a>
+            <a href="#" class="transition hover:text-white"> Nosotros </a>
 
-            <a href="#" class="transition hover:text-black"> Blog </a>
+            <a href="#" class="transition hover:text-white"> Blog </a>
           </nav>
 
           <!-- CONTACT -->
 
-          <a href="#contacto" class="group flex items-center gap-3 text-[13px] font-semibold">
+          <a href="#contacto" class="group flex items-center gap-3 text-[13px] font-semibold text-white">
             Contacto
 
             <span
-              class="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition duration-300 group-hover:bg-accent"
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#090909] transition duration-300 group-hover:opacity-80"
             >
               →
             </span>
@@ -337,7 +352,7 @@
       <!-- HERO -->
 
       <main
-        class="relative z-20 mx-auto flex min-h-[calc(100vh-85px)] max-w-[1400px] items-center px-6 pb-20 pt-8 lg:px-10"
+        class="relative z-20 mx-auto flex min-h-screen max-w-[1400px] items-center px-6 pb-20 pt-56 lg:px-10"
       >
         <div class="grid w-full items-center lg:grid-cols-[1.05fr_.95fr]">
           <!-- LEFT -->
@@ -348,24 +363,22 @@
             <div class="mb-8 flex items-center gap-4 animate-appear">
               <span class="h-px w-9 bg-accent"></span>
 
-              <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/40">
+              <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/40">
                 Laboratorio de conversiones
               </span>
             </div>
 
             <!-- TITLE -->
 
-            <h1
-              class="max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em]"
-            >
+            <h1 class="title-reveal max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em] text-white">
               No diseñamos
 
-              <span class="block text-black/20"> páginas. </span>
+              <span class="block text-white/20 font-serif italic font-normal"> páginas. </span>
 
               <span class="block">
                 Creamos
 
-                <span class="relative inline-block text-accent">
+                <span class="relative inline-block text-accent font-serif italic font-normal">
                   conversiones
 
                   <span
@@ -377,7 +390,7 @@
 
             <!-- DESCRIPTION -->
 
-            <p class="mt-9 max-w-[580px] text-[15px] leading-7 text-black/50 md:text-[17px]">
+            <p class="mt-9 max-w-[580px] text-[15px] leading-7 text-white/50 md:text-[17px]">
               Diseñamos sistemas digitales donde estrategia, tecnología y adquisición trabajan
               juntos para transformar tráfico en clientes.
             </p>
@@ -392,7 +405,7 @@
                 Ver proyectos
 
                 <span
-                  class="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition group-hover:bg-white group-hover:text-accent"
+                  class="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition group-hover:bg-[#090909] group-hover:text-white"
                 >
                   →
                 </span>
@@ -400,7 +413,7 @@
 
               <a
                 href="#servicios"
-                class="rounded-full px-4 py-3.5 text-[13px] font-medium text-black/50 transition hover:text-black"
+                class="rounded-full px-4 py-3.5 text-[13px] font-medium text-white/50 transition hover:text-white"
               >
                 Cómo trabajamos
                 <span class="ml-2"> ↘ </span>
@@ -409,25 +422,25 @@
 
             <!-- METRICS -->
 
-            <div class="mt-16 flex max-w-[570px] border-t border-black/10 pt-6">
+            <div class="mt-16 flex max-w-[570px] border-t border-white/10 pt-6">
               <div class="w-1/3">
                 <div class="text-[23px] font-semibold tracking-tight">+42%</div>
 
-                <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">
+                <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-white/35">
                   Conversión
                 </div>
               </div>
 
-              <div class="w-1/3 border-l border-black/10 pl-7">
+              <div class="w-1/3 border-l border-white/10 pl-7">
                 <div class="text-[23px] font-semibold tracking-tight">3.8x</div>
 
-                <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">ROAS</div>
+                <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-white/35">ROAS</div>
               </div>
 
-              <div class="w-1/3 border-l border-black/10 pl-7">
+              <div class="w-1/3 border-l border-white/10 pl-7">
                 <div class="text-[23px] font-semibold tracking-tight">+18</div>
 
-                <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">
+                <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-white/35">
                   Proyectos
                 </div>
               </div>
@@ -473,7 +486,7 @@
               class="floating-card absolute left-[2%] top-[15%] z-30 w-[190px] rounded-2xl p-4 animate-floatSlow"
             >
               <div class="flex items-center justify-between">
-                <span class="text-[10px] uppercase tracking-[.15em] text-black/35">
+                <span class="text-[10px] uppercase tracking-[.15em] text-white/35">
                   Conversion
                 </span>
 
@@ -481,9 +494,9 @@
               </div>
 
               <div class="mt-5 flex items-end gap-[5px]">
-                <span class="h-5 w-2 rounded-full bg-black/10"></span>
-                <span class="h-8 w-2 rounded-full bg-black/10"></span>
-                <span class="h-11 w-2 rounded-full bg-black/15"></span>
+                <span class="h-5 w-2 rounded-full bg-white/10"></span>
+                <span class="h-8 w-2 rounded-full bg-white/10"></span>
+                <span class="h-11 w-2 rounded-full bg-white/15"></span>
                 <span class="h-14 w-2 rounded-full bg-accent/50"></span>
                 <span class="h-20 w-2 rounded-full bg-accent"></span>
               </div>
@@ -496,19 +509,19 @@
             >
               <div class="flex items-center gap-3">
                 <div
-                  class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-accent"
+                  class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-accent"
                 >
                   ↗
                 </div>
 
                 <div>
-                  <div class="text-[10px] uppercase tracking-[.12em] text-black/35">Tráfico</div>
+                  <div class="text-[10px] uppercase tracking-[.12em] text-white/35">Tráfico</div>
 
                   <div class="mt-0.5 text-sm font-semibold">84.2K</div>
                 </div>
               </div>
 
-              <div class="mt-4 h-[3px] overflow-hidden rounded-full bg-black/5">
+              <div class="mt-4 h-[3px] overflow-hidden rounded-full bg-white/5">
                 <div class="h-full w-[75%] rounded-full bg-accent animate-lineMove"></div>
               </div>
             </div>
@@ -516,7 +529,7 @@
             <!-- FLOATING TAG -->
 
             <div
-              class="absolute right-[4%] top-[23%] hidden rounded-full border border-black/10 bg-white/80 px-4 py-2 text-[9px] font-medium uppercase tracking-[.2em] text-black/40 shadow-lg backdrop-blur-md md:block"
+              class="absolute right-[4%] top-[23%] hidden rounded-full border border-white/10 bg-white/80 px-4 py-2 text-[9px] font-medium uppercase tracking-[.2em] text-white/40 shadow-lg backdrop-blur-md md:block"
             >
               SEO · ADS · ECOMMERCE
             </div>
@@ -526,7 +539,7 @@
             <div class="absolute left-[12%] top-[40%] h-2 w-2 rounded-full bg-accent"></div>
 
             <div
-              class="absolute right-[18%] bottom-[38%] h-1.5 w-1.5 rounded-full bg-black/30"
+              class="absolute right-[18%] bottom-[38%] h-1.5 w-1.5 rounded-full bg-white/30"
             ></div>
           </div>
         </div>
@@ -535,14 +548,14 @@
       <!-- BOTTOM BAR -->
 
       <div
-        class="absolute bottom-0 left-0 right-0 border-t border-black/10 bg-white/70 backdrop-blur-xl"
+        class="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-white/70 backdrop-blur-xl"
       >
         <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:px-10">
-          <span class="text-[9px] font-medium uppercase tracking-[.25em] text-black/30">
+          <span class="text-[9px] font-medium uppercase tracking-[.25em] text-white/30">
             Digital conversion laboratory
           </span>
 
-          <div class="flex items-center gap-2 text-[10px] text-black/40">
+          <div class="flex items-center gap-2 text-[10px] text-white/40">
             <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
 
             Disponible para nuevos proyectos
@@ -552,425 +565,567 @@
     </section>
 
     <!-- ===== MARQUEE DE CLIENTES ===== -->
-    <section class="border-t border-black/10 bg-[#f8fafc] py-14" aria-label="Clientes">
+    <section class="border-t border-white/10 bg-[#090909] py-14" aria-label="Clientes">
       <p
-        class="reveal-up mb-10 px-6 text-center text-[11px] font-medium uppercase tracking-[.24em] text-black/40"
+        class="reveal-up mb-10 px-6 text-center text-[11px] font-medium uppercase tracking-[.24em] text-white/40"
       >
         Confían en nosotros
       </p>
       <div class="marquee marquee-mask">
         <div class="marquee-track">
-          <span class="mr-20 whitespace-nowrap text-2xl font-semibold tracking-[.3em] text-black/55"
-            >NOVACORE</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-3xl font-bold italic tracking-tight text-black/50"
-            >Meridian</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-xl font-medium lowercase tracking-[.12em] text-black/60"
-            >altawind</span
-          >
-          <span class="mr-20 whitespace-nowrap text-2xl font-semibold tracking-tight text-black/55"
-            >VOLTEX<sup class="text-[10px]">®</sup></span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-light tracking-[.22em] uppercase text-black/50"
-            >Lumina</span
-          >
-          <span class="mr-20 whitespace-nowrap text-2xl font-bold italic text-black/60"
-            >orbito</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-3xl font-semibold tracking-[-.05em] text-black/55"
-            >Hépton</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-xl font-medium tracking-[.28em] uppercase text-black/50"
-            >Vertex.</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-black italic tracking-tight text-black/55"
-            >KANDIA</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-semibold lowercase tracking-wide text-black/50"
-            >fluido</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-semibold tracking-[.3em] text-black/55"
-            aria-hidden="true"
-            >NOVACORE</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-3xl font-bold italic tracking-tight text-black/50"
-            aria-hidden="true"
-            >Meridian</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-xl font-medium lowercase tracking-[.12em] text-black/60"
-            aria-hidden="true"
-            >altawind</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-semibold tracking-tight text-black/55"
-            aria-hidden="true"
-            >VOLTEX<sup class="text-[10px]">®</sup></span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-light tracking-[.22em] uppercase text-black/50"
-            aria-hidden="true"
-            >Lumina</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-bold italic text-black/60"
-            aria-hidden="true"
-            >orbito</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-3xl font-semibold tracking-[-.05em] text-black/55"
-            aria-hidden="true"
-            >Hépton</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-xl font-medium tracking-[.28em] uppercase text-black/50"
-            aria-hidden="true"
-            >Vertex.</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-black italic tracking-tight text-black/55"
-            aria-hidden="true"
-            >KANDIA</span
-          >
-          <span
-            class="mr-20 whitespace-nowrap text-2xl font-semibold lowercase tracking-wide text-black/50"
-            aria-hidden="true"
-            >fluido</span
-          >
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170543.336.png" alt="Cliente 1" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171106.320.png" alt="Cliente 2" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171121.941.png" alt="Cliente 3" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171147.100.png" alt="Cliente 4" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T184616.193.png" alt="Cliente 5" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170517.880.png" alt="Cliente 6" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170600.928.png" alt="Cliente 7" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171121.941.png" alt="Cliente 8" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" />
+          
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170543.336.png" alt="Cliente 1" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171106.320.png" alt="Cliente 2" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171121.941.png" alt="Cliente 3" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171147.100.png" alt="Cliente 4" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T184616.193.png" alt="Cliente 5" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170517.880.png" alt="Cliente 6" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170600.928.png" alt="Cliente 7" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+          <img src="https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171121.941.png" alt="Cliente 8" class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" loading="lazy" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ACERCA DE NOSOTROS ===== -->
+    <style>
+    .glow-agency {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8, 120, 249, 0.15) 0%, rgba(100, 200, 255, 0.05) 40%, transparent 70%);
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    </style>
+    <section class="relative overflow-hidden border-t border-white/10 bg-[#090909] py-24 lg:py-40">
+      
+      <!-- GRID & TEXTURES -->
+      <div class="grid-bg-invert absolute inset-0 opacity-15 z-0"></div>
+      <div class="noise-overlay z-0" style="position: absolute; inset: 0; pointer-events: none; background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;); opacity: 0.04; mix-blend-mode: overlay;"></div>
+      
+      <!-- BLUE ILLUMINATION (AURA) -->
+      <div class="glow-agency"></div>
+
+      <!-- DECORATIVE FLOATING ELEMENTS -->
+      <!-- Left floating elements -->
+      <div class="absolute left-[10%] top-[20%] h-[300px] w-[300px] rounded-full border border-white/5 opacity-50 animate-float" aria-hidden="true" data-speed="0.2"></div>
+      <div class="absolute left-[15%] top-[15%] h-[150px] w-[150px] rounded-full border border-dashed border-white/10 opacity-40 animate-spinSlow" aria-hidden="true" data-speed="0.5"></div>
+      <div class="absolute left-[5%] top-[50%] h-3 w-3 rounded-full bg-blue-400/40 shadow-[0_0_15px_rgba(100,200,255,0.8)] animate-pulseSoft" aria-hidden="true" data-speed="-0.3"></div>
+      <div class="absolute left-[20%] bottom-[20%] h-[60px] w-[60px] rounded-full border border-blue-500/20 opacity-60 animate-floatSlow" aria-hidden="true" data-speed="0.4"></div>
+
+      <!-- Right floating elements -->
+      <div class="absolute right-[5%] bottom-[10%] h-[400px] w-[400px] rounded-full border border-white/5 opacity-30 animate-floatSlow" aria-hidden="true" data-speed="-0.1"></div>
+      <div class="absolute right-[12%] bottom-[30%] h-2 w-2 rounded-full bg-white opacity-60 animate-pulseSoft" aria-hidden="true" style="animation-delay: 1s;" data-speed="-0.5"></div>
+      <div class="absolute right-[25%] top-[25%] h-[120px] w-[120px] rounded-full border border-dashed border-blue-400/20 opacity-50 animate-spinSlow" aria-hidden="true" style="animation-delay: 2s; animation-direction: reverse;" data-speed="0.3"></div>
+      
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10 relative z-10 flex flex-col items-center text-center">
+        <!-- LEFT/TOP COLUMN: TEXT & CTA -->
+        <div class="flex flex-col items-center mb-16 w-full max-w-[900px]">
+          <!-- KICKER -->
+          <div class="reveal-up mb-8 flex items-center gap-4">
+            <span class="h-px w-9 bg-blue-400/50"></span>
+            <span class="text-[11px] font-medium uppercase tracking-[.24em] text-blue-300/60">Acerca de nosotros</span>
+            <span class="h-px w-9 bg-blue-400/50"></span>
+          </div>
+
+          <!-- MAIN TEXT -->
+          <h2 class="title-reveal max-w-[800px] text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-white">
+            Obsesionados con la 
+            <span class="text-white font-serif italic font-normal drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">data</span>.
+            <span class="block text-white/40 mt-2">
+              Creadores de
+            </span>
+            <span class="relative inline-block mt-2">
+              conversiones
+              <span class="absolute -right-4 top-2 h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulseSoft shadow-[0_0_10px_rgba(8,120,249,0.8)]"></span>
+            </span>.
+          </h2>
+
+          <!-- DESCRIPTION -->
+          <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-white/50">
+            Diseñamos ecosistemas digitales donde la estética premium se encuentra con estrategias de adquisición implacables. Olvídate de proyectos interminables; construimos para escalar tu negocio hoy.
+          </p>
+
+          <!-- CTA -->
+          <div class="reveal-up mt-12">
+            <a
+              href="#contacto"
+              class="group flex items-center gap-5 rounded-full bg-white px-8 py-4 text-[14px] font-semibold text-[#090909] shadow-[0_10px_30px_rgba(255,255,255,.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(255,255,255,.25)]"
+            >
+              Agendar una llamada
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-[#090909]/15 transition group-hover:bg-[#090909] group-hover:text-white"
+                >→</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT/BOTTOM COLUMN: IMAGE / VISUALS -->
+        <div class="reveal-up relative w-full max-w-[900px] perspective-1000">
+          <!-- Floating badge -->
+          <div class="absolute -left-6 -top-12 z-20 hidden md:flex animate-floatSlow">
+            <div class="relative flex h-32 w-32 items-center justify-center rounded-full bg-[#111111] border border-white/10 shadow-2xl">
+              <!-- Circular text SVG -->
+              <svg class="absolute inset-0 h-full w-full animate-spinSlow" viewBox="0 0 100 100">
+                <path id="textPath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+                <text class="fill-white/60 text-[10px] font-medium tracking-[0.28em] uppercase">
+                  <textPath href="#textPath" startOffset="0%">Croilab • Digital Lab • Croilab •</textPath>
+                </text>
+              </svg>
+              <span class="text-blue-400 drop-shadow-[0_0_10px_rgba(100,200,255,0.8)]">✦</span>
+            </div>
+          </div>
+
+          <!-- Image Container -->
+          <div class="glass-panel relative aspect-video w-full overflow-hidden rounded-3xl animate-float" data-speed="-0.15">
+            <!-- Glow behind image -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-transparent mix-blend-screen opacity-50"></div>
+            
+            <img 
+              src="/images/video-cover.jpg" 
+              alt="Croilab Cover" 
+              class="h-full w-full object-cover object-center opacity-80 mix-blend-luminosity hover:mix-blend-normal transition duration-700" 
+            />
+            
+            <!-- Inner Shadow / Frame -->
+            <div class="absolute inset-0 rounded-3xl border border-white/10 ring-1 ring-inset ring-white/5 pointer-events-none"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ===== SERVICIOS ===== -->
-    <section id="servicios" class="border-t border-black/10 bg-white">
-      <div class="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
-        <div class="grid gap-16 lg:grid-cols-[.9fr_1.1fr]">
-          <!-- HEADER STICKY -->
-          <div class="reveal-up lg:sticky lg:top-10 lg:self-start">
-            <div class="mb-8 flex items-center gap-4">
-              <span class="h-px w-9 bg-accent"></span>
-              <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/40"
-                >Servicios</span
-              >
-            </div>
-            <h2
-              class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em]"
-            >
-              No vendemos horas,
-              <span class="block text-black/20">buscamos</span>
-              <span class="block text-accent">crecimiento.</span>
-            </h2>
-            <p class="mt-8 max-w-md text-[15px] leading-7 text-black/50">
-              Nos alejamos del modelo de agencia 360 que intenta hacerlo todo en lugar de enfocarse
-              en crecer el negocio. Cinco disciplinas, un único objetivo: convertir tráfico en
-              ingresos.
-            </p>
-            <div class="mt-10 flex items-center gap-6">
-              <span
-                class="font-display text-6xl font-semibold leading-none tracking-tight text-accent"
-                >05</span
-              >
-              <div class="text-[10px] uppercase leading-4 tracking-[.12em] text-black/35">
-                disciplinas<br />un sistema
-              </div>
-            </div>
+    <section id="servicios" class="border-t border-white/10 bg-[#090909] relative overflow-hidden">
+      <!-- Textura de fondo sutil -->
+      <div class="grid-bg-invert absolute inset-0 opacity-10"></div>
+      
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-40 relative z-10 flex flex-col items-center">
+        
+        <!-- HEADER CENTERED -->
+        <div class="flex flex-col items-center text-center mb-20 w-full max-w-[900px]">
+          <div class="reveal-up mb-8 flex items-center gap-4">
+            <span class="h-px w-9 bg-blue-400/50"></span>
+            <span class="text-[11px] font-medium uppercase tracking-[.24em] text-blue-300/60">Servicios</span>
+            <span class="h-px w-9 bg-blue-400/50"></span>
           </div>
-
-          <!-- LISTA DE SERVICIOS -->
-          <div class="border-t border-black/10">
-            <a
-              href="#contacto"
-              class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
-              style="--i: 0"
-            >
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(140px,20vw,300px)] font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-300 group-hover:text-white/10 lg:block"
-                >01</span
-              >
-              <div
-                class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]"
-              >
-                <span
-                  class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
-                  >01</span
-                >
-                <div>
-                  <h3
-                    class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-black transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
-                  >
-                    SEO
-                  </h3>
-                  <p
-                    class="max-h-0 overflow-hidden text-[15px] leading-6 text-black/50 opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100 group-hover:text-white/60"
-                  >
-                    Posicionamiento técnico y de contenido para llevar tu marca al primer resultado.
-                  </p>
-                </div>
-                <div class="flex items-center gap-6">
-                  <span
-                    class="hidden text-black transition-colors duration-300 group-hover:text-white/80 md:block"
-                  >
-                    <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <circle cx="10.5" cy="10.5" r="6.5" />
-                      <path d="M20 20l-5-5" />
-                      <path d="M8 12l2-2.5 2 1.5 2.5-3" />
-                    </svg>
-                  </span>
-                  <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-black transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
-                    >→</span
-                  >
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="#contacto"
-              class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
-              style="--i: 1"
-            >
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(140px,20vw,300px)] font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-300 group-hover:text-white/10 lg:block"
-                >02</span
-              >
-              <div
-                class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]"
-              >
-                <span
-                  class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
-                  >02</span
-                >
-                <div>
-                  <h3
-                    class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-black transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
-                  >
-                    Meta Ads
-                  </h3>
-                  <p
-                    class="max-h-0 overflow-hidden text-[15px] leading-6 text-black/50 opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100 group-hover:text-white/60"
-                  >
-                    Campañas que captan tráfico cualificado y lo convierten en ingresos reales.
-                  </p>
-                </div>
-                <div class="flex items-center gap-6">
-                  <span
-                    class="hidden text-black transition-colors duration-300 group-hover:text-white/80 md:block"
-                  >
-                    <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <circle cx="12" cy="12" r="9" />
-                      <path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor" stroke="none" />
-                    </svg>
-                  </span>
-                  <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-black transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
-                    >→</span
-                  >
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="#contacto"
-              class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
-              style="--i: 2"
-            >
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(140px,20vw,300px)] font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-300 group-hover:text-white/10 lg:block"
-                >03</span
-              >
-              <div
-                class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]"
-              >
-                <span
-                  class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
-                  >03</span
-                >
-                <div>
-                  <h3
-                    class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-black transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
-                  >
-                    Diseño Web
-                  </h3>
-                  <p
-                    class="max-h-0 overflow-hidden text-[15px] leading-6 text-black/50 opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100 group-hover:text-white/60"
-                  >
-                    Páginas rápidas, claras y diseñadas para vender desde el primer segundo.
-                  </p>
-                </div>
-                <div class="flex items-center gap-6">
-                  <span
-                    class="hidden text-black transition-colors duration-300 group-hover:text-white/80 md:block"
-                  >
-                    <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect x="3" y="4" width="18" height="16" rx="2" />
-                      <path d="M3 9h18" />
-                      <path d="M7 6.5h.01M10 6.5h.01" />
-                    </svg>
-                  </span>
-                  <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-black transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
-                    >→</span
-                  >
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="#contacto"
-              class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
-              style="--i: 3"
-            >
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(140px,20vw,300px)] font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-300 group-hover:text-white/10 lg:block"
-                >04</span
-              >
-              <div
-                class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]"
-              >
-                <span
-                  class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
-                  >04</span
-                >
-                <div>
-                  <h3
-                    class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-black transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
-                  >
-                    Ecommerce
-                  </h3>
-                  <p
-                    class="max-h-0 overflow-hidden text-[15px] leading-6 text-black/50 opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100 group-hover:text-white/60"
-                  >
-                    Tiendas online optimizadas para maximizar ventas y ticket medio.
-                  </p>
-                </div>
-                <div class="flex items-center gap-6">
-                  <span
-                    class="hidden text-black transition-colors duration-300 group-hover:text-white/80 md:block"
-                  >
-                    <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M6 8h12l-1 12H7z" />
-                      <path d="M9 8V6a3 3 0 016 0v2" />
-                    </svg>
-                  </span>
-                  <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-black transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
-                    >→</span
-                  >
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="#contacto"
-              class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
-              style="--i: 4"
-            >
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(140px,20vw,300px)] font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-300 group-hover:text-white/10 lg:block"
-                >05</span
-              >
-              <div
-                class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]"
-              >
-                <span
-                  class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
-                  >05</span
-                >
-                <div>
-                  <h3
-                    class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-black transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
-                  >
-                    Método Conversiones
-                  </h3>
-                  <p
-                    class="max-h-0 overflow-hidden text-[15px] leading-6 text-black/50 opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100 group-hover:text-white/60"
-                  >
-                    Un sistema probado para analizar, optimizar y escalar todo tu embudo digital.
-                  </p>
-                </div>
-                <div class="flex items-center gap-6">
-                  <span
-                    class="hidden text-black transition-colors duration-300 group-hover:text-white/80 md:block"
-                  >
-                    <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <circle cx="12" cy="5" r="2.2" />
-                      <circle cx="5" cy="18" r="2.2" />
-                      <circle cx="19" cy="18" r="2.2" />
-                      <path d="M11 7l-4.5 9.2M13 7l4.5 9.2M7.2 18h9.6" />
-                    </svg>
-                  </span>
-                  <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-black transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
-                    >→</span
-                  >
-                </div>
-              </div>
-            </a>
-          </div>
+          
+          <h2 class="title-reveal text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-white">
+            No vendemos horas,
+            <span class="block text-white/40 mt-2">buscamos</span>
+            <span class="relative inline-block mt-2 font-serif italic text-white drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">
+              crecimiento.
+              <span class="absolute -right-4 top-2 h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulseSoft shadow-[0_0_10px_rgba(8,120,249,0.8)]"></span>
+            </span>
+          </h2>
+          
+          <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-white/50">
+            Nos alejamos del modelo de agencia 360 que intenta hacerlo todo en lugar de enfocarse en crecer el negocio. Cinco disciplinas, un único objetivo: convertir tráfico en ingresos.
+          </p>
         </div>
+
+        <!-- BENTO GRID -->
+        <div class="grid w-full grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+          
+          <!-- 01: SEO (Grande) -->
+          <a href="/seo" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-2 md:row-span-2" data-speed="0.03">
+            <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+            <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+            <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">01</span>
+            
+            <!-- MOCKUP: SEARCH CONSOLE PREMIUM -->
+            <div class="absolute right-8 top-12 w-[340px] rounded-2xl border border-white/10 bg-[#0f0f0f]/80 backdrop-blur-xl p-5 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+              
+              <!-- Header / Filters -->
+              <div class="flex justify-between items-center mb-4">
+                <div class="flex gap-2 items-center">
+                  <div class="h-4 w-4 bg-blue-500 rounded-sm flex items-center justify-center shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  </div>
+                  <div class="h-3 w-24 bg-white/20 rounded-full"></div>
+                </div>
+                <div class="h-3 w-12 bg-white/10 rounded-full"></div>
+              </div>
+
+              <!-- 4 Metric Cards -->
+              <div class="grid grid-cols-4 gap-2 mb-4">
+                <!-- Clicks (Active) -->
+                <div class="bg-blue-500/10 border border-blue-500/30 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-75">
+                  <span class="text-[8px] text-blue-400/70 uppercase font-semibold leading-none">Clics</span>
+                  <span class="text-sm font-bold text-blue-400 leading-none" style="text-shadow: 0 0 8px rgba(96,165,250,0.4)">124K</span>
+                </div>
+                <!-- Impressions (Active) -->
+                <div class="bg-purple-500/10 border border-purple-500/30 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-150">
+                  <span class="text-[8px] text-purple-400/70 uppercase font-semibold leading-none">Impres.</span>
+                  <span class="text-sm font-bold text-purple-400 leading-none">2.4M</span>
+                </div>
+                <!-- CTR (Inactive) -->
+                <div class="bg-white/5 border border-white/5 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-200">
+                  <span class="text-[8px] text-white/40 uppercase font-semibold leading-none">CTR</span>
+                  <span class="text-sm font-bold text-white/80 leading-none">5.2%</span>
+                </div>
+                <!-- Position (Inactive) -->
+                <div class="bg-white/5 border border-white/5 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-300">
+                  <span class="text-[8px] text-white/40 uppercase font-semibold leading-none">Pos.</span>
+                  <span class="text-sm font-bold text-white/80 leading-none">12.4</span>
+                </div>
+              </div>
+
+              <!-- Chart Area -->
+              <div class="relative h-28 w-full mt-2 border-t border-white/5 pt-3">
+                <!-- Grid Lines -->
+                <div class="absolute inset-0 flex flex-col justify-between pt-3 pb-1">
+                  <div class="w-full h-px bg-white/5"></div>
+                  <div class="w-full h-px bg-white/5"></div>
+                  <div class="w-full h-px bg-white/5"></div>
+                </div>
+
+                <!-- SVG Line Chart -->
+                <svg class="absolute inset-0 h-full w-full" viewBox="0 0 100 40" preserveAspectRatio="none">
+                  <defs>
+                    <!-- Blue Gradient for Clicks -->
+                    <linearGradient id="gscBlue2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+                    </linearGradient>
+                    <!-- Purple Gradient for Impressions -->
+                    <linearGradient id="gscPurple2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.15" />
+                      <stop offset="100%" stop-color="#a855f7" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  
+                  <!-- Purple Area & Line (Impressions) -->
+                  <path d="M0,38 C15,35 25,25 40,28 C55,30 70,15 85,10 L100,2 L100,40 L0,40 Z" fill="url(#gscPurple2)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
+                  <path d="M0,38 C15,35 25,25 40,28 C55,30 70,15 85,10 L100,2" fill="none" stroke="#a855f7" stroke-width="1" stroke-dasharray="4" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
+
+                  <!-- Blue Area & Line (Clicks) -->
+                  <path d="M0,35 C20,35 30,15 50,25 C70,35 85,10 100,5 L100,40 L0,40 Z" fill="url(#gscBlue2)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
+                  <path d="M0,35 C20,35 30,15 50,25 C70,35 85,10 100,5" fill="none" stroke="#60a5fa" stroke-width="1.5" class="stroke-dasharray-150 stroke-dashoffset-150 group-hover:animate-[draw_1.5s_ease-out_forwards]" style="animation-delay: 200ms;" />
+                </svg>
+                
+                <!-- Animated Scanner / Tooltip Line -->
+                <div class="absolute top-3 bottom-0 w-[1px] bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-[scan-x_6s_ease-in-out_infinite] delay-1000">
+                  <div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_12px_#60a5fa] border-2 border-[#161616]"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+              <div class="flex items-start justify-between">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-5-5"/><path d="M8 12l2-2.5 2 1.5 2.5-3"/></svg>
+                </div>
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+              </div>
+              <div>
+                <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">01 — Disciplina</span>
+                <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">SEO</h3>
+                <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Posicionamiento técnico y de contenido para llevar tu marca al primer resultado.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- 02: Meta Ads (Pequeño) -->
+          <a href="/meta-ads" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="-0.03">
+            <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+            <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+            <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">02</span>
+            
+            <!-- MOCKUP: META ADS PREMIUM -->
+            <div class="absolute right-6 top-8 w-[200px] rounded-xl border border-white/10 bg-[#161616]/80 backdrop-blur-md p-4 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+              
+              <!-- Status Bar -->
+              <div class="flex items-center gap-2 mb-3">
+                <div class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </div>
+                <div class="h-2 w-20 bg-white/30 rounded"></div>
+              </div>
+
+              <!-- Metric: ROAS -->
+              <div class="bg-blue-500/10 border border-blue-500/20 rounded p-2 mb-2 flex justify-between items-end transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                <div class="flex flex-col gap-1.5">
+                  <div class="h-1.5 w-8 bg-blue-400/50 rounded"></div>
+                  <div class="flex items-center gap-1">
+                    <span class="text-[11px] font-bold text-blue-400 leading-none">4.8x ROAS</span>
+                  </div>
+                </div>
+                <div class="flex gap-0.5 items-end h-4">
+                  <div class="w-1 bg-blue-500/40 h-[40%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out]"></div>
+                  <div class="w-1 bg-blue-500/60 h-[70%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out_0.1s]"></div>
+                  <div class="w-1 bg-blue-400 h-[100%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out_0.2s]"></div>
+                </div>
+              </div>
+
+              <!-- Metric: CPA -->
+              <div class="bg-white/5 border border-white/5 rounded p-2 mb-3 flex justify-between items-center transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+                <div class="flex flex-col gap-1.5">
+                  <div class="h-1.5 w-8 bg-white/20 rounded"></div>
+                  <span class="text-[10px] font-semibold text-white/70 leading-none">$12.50 CPA</span>
+                </div>
+                <div class="h-4 w-4 rounded-full border-2 border-white/20 border-t-green-400 animate-spin" style="animation-duration: 2s;"></div>
+              </div>
+
+              <!-- Target Audience Dots -->
+              <div class="relative h-12 w-full border-t border-white/5 pt-2 flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300">
+                <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                  <div class="w-8 h-8 rounded-full border border-blue-500/50 absolute"></div>
+                  <div class="w-16 h-16 rounded-full border border-blue-500/30 absolute"></div>
+                </div>
+                <div class="h-1.5 w-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_#60a5fa] animate-pulse"></div>
+                <div class="absolute w-1 h-1 bg-white rounded-full top-3 left-4 animate-ping"></div>
+                <div class="absolute w-1 h-1 bg-white rounded-full bottom-3 right-5 animate-ping" style="animation-duration: 1.5s;"></div>
+              </div>
+              
+            </div>
+
+            <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+              <div class="flex items-start justify-between">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor" stroke="none"/></svg>
+                </div>
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+              </div>
+              <div>
+                <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">02 — Disciplina</span>
+                <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Meta Ads</h3>
+                <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Campañas que captan tráfico cualificado y lo convierten en ingresos reales.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- 03: Diseño Web (Pequeño) -->
+          <a href="/diseno-web" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03">
+            <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+            <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+            <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">03</span>
+            
+            <!-- MOCKUP: PREMIUM WEB DESIGN (UI EDITOR) -->
+            <div class="absolute right-4 top-8 w-[180px] rounded-lg border border-white/10 bg-[#0f0f0f]/80 backdrop-blur-md overflow-hidden pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+              
+              <!-- MacOS Toolbar -->
+              <div class="flex items-center gap-1.5 border-b border-white/5 px-3 py-2 bg-white/[0.02]">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400/80"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-yellow-400/80"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-green-400/80"></div>
+              </div>
+
+              <!-- Editor Canvas -->
+              <div class="p-3 flex flex-col gap-2 relative">
+                
+                <!-- Hero Block -->
+                <div class="w-full flex gap-2">
+                  <div class="flex-1 flex flex-col gap-1.5">
+                    <div class="h-2 w-full bg-white/20 rounded-sm"></div>
+                    <div class="h-2 w-3/4 bg-white/10 rounded-sm"></div>
+                    <div class="h-1.5 w-1/2 bg-white/5 rounded-sm mt-1"></div>
+                    <!-- CTA -->
+                    <div class="h-3 w-10 bg-blue-500 rounded-sm mt-1 relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+                  </div>
+                  <!-- Image Block -->
+                  <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center border border-white/5 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500"></div>
+                    <svg class="w-4 h-4 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                  </div>
+                </div>
+
+                <!-- Features Row -->
+                <div class="flex gap-2 w-full mt-1">
+                  <div class="flex-1 h-6 bg-white/5 rounded-sm border border-white/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
+                  <div class="flex-1 h-6 bg-white/5 rounded-sm border border-white/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300"></div>
+                  <div class="flex-1 h-6 bg-white/5 rounded-sm border border-white/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-400"></div>
+                </div>
+
+                <!-- Mouse Cursor Animation -->
+                <div class="absolute bottom-[-5px] right-[-5px] opacity-0 group-hover:animate-[cursor-move_3s_ease-in-out_infinite] z-20">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M4 2v20l5.5-5.5H18L4 2z"/></svg>
+                  <!-- Click Ripple -->
+                  <div class="absolute top-[-2px] left-[-2px] w-4 h-4 rounded-full border border-blue-400 scale-0 group-hover:animate-[click-ripple_3s_ease-in-out_infinite]"></div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+              <div class="flex items-start justify-between">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>
+                </div>
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+              </div>
+              <div>
+                <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">03 — Disciplina</span>
+                <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Diseño Web</h3>
+                <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Páginas rápidas, claras y diseñadas para vender desde el primer segundo.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- 04: Ecommerce (Horizontal) -->
+          <a href="/ecommerce" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-2 md:row-span-1" data-speed="-0.03">
+            <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+            <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+            <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">04</span>
+            
+            <!-- MOCKUP: ECOMMERCE PREMIUM (FAN OUT) -->
+            <div class="absolute right-8 top-1/2 -translate-y-1/2 w-[120px] h-[120px] pointer-events-none flex items-center justify-center z-10">
+              
+              <!-- Card 1 (Bottom, moves left) -->
+              <div class="absolute w-[110px] bg-[#161616]/90 border border-white/10 rounded-lg p-2 shadow-xl backdrop-blur-md transition-all duration-700 ease-out transform group-hover:-translate-x-16 group-hover:translate-y-2 group-hover:-rotate-12 opacity-0 group-hover:opacity-60 z-10 delay-100">
+                <div class="w-full h-10 bg-white/5 rounded mb-2"></div>
+                <div class="h-1.5 w-3/4 bg-white/20 rounded mb-1"></div>
+                <div class="h-2.5 w-1/3 bg-blue-500/30 rounded"></div>
+              </div>
+
+              <!-- Card 2 (Middle, moves right) -->
+              <div class="absolute w-[110px] bg-[#161616]/90 border border-white/10 rounded-lg p-2 shadow-xl backdrop-blur-md transition-all duration-700 ease-out transform group-hover:translate-x-16 group-hover:translate-y-2 group-hover:rotate-12 opacity-0 group-hover:opacity-60 z-20 delay-150">
+                <div class="w-full h-10 bg-white/5 rounded mb-2"></div>
+                <div class="h-1.5 w-3/4 bg-white/20 rounded mb-1"></div>
+                <div class="h-2.5 w-1/3 bg-purple-500/30 rounded"></div>
+              </div>
+
+              <!-- Card 3 (Top, Main) -->
+              <div class="absolute w-[130px] bg-[#0f0f0f]/95 border border-white/20 rounded-lg p-2.5 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out transform translate-y-4 group-hover:-translate-y-8 group-hover:scale-110 opacity-30 group-hover:opacity-100 z-30 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+                <div class="w-full h-14 bg-gradient-to-tr from-blue-500/20 to-transparent border border-blue-500/20 rounded mb-2.5 relative overflow-hidden flex items-center justify-center">
+                  <svg class="w-5 h-5 text-blue-400 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                  <!-- Shine -->
+                  <div class="absolute top-0 bottom-0 w-6 bg-white/20 skew-x-[-20deg] -left-10 group-hover:animate-[shine_2s_ease-in-out_infinite]"></div>
+                </div>
+                <div class="h-1.5 w-full bg-white/30 rounded mb-1.5"></div>
+                <div class="h-1.5 w-2/3 bg-white/10 rounded mb-2.5"></div>
+                <div class="flex justify-between items-center border-t border-white/5 pt-2">
+                  <span class="text-[9px] font-bold text-white/90 leading-none">$129</span>
+                  <div class="h-3 w-12 bg-blue-500 rounded shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+              <div class="flex items-start justify-between">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+                </div>
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+              </div>
+              <div>
+                <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">04 — Disciplina</span>
+                <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Ecommerce</h3>
+                <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Tiendas online optimizadas para maximizar ventas y ticket medio.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- 05: Conversiones (Pequeño) -->
+          <a href="/conversiones" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03">
+            <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+            <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+            <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">05</span>
+            
+            <!-- MOCKUP: CONVERSIONS PREMIUM -->
+            <div class="absolute right-8 top-10 w-[180px] rounded-xl border border-white/10 bg-[#161616]/80 backdrop-blur-md p-4 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:flex flex-col items-center gap-2">
+              
+              <!-- Level 1: Traffic -->
+              <div class="w-full h-8 rounded bg-blue-500/10 border border-blue-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 flex items-center justify-between px-2">
+                <span class="text-[9px] uppercase font-bold text-blue-400">Tráfico</span>
+                <span class="text-[10px] font-bold text-white/80">100%</span>
+              </div>
+              
+              <!-- Level 2: Leads -->
+              <div class="w-3/4 h-8 rounded bg-purple-500/10 border border-purple-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200 flex items-center justify-between px-2">
+                <span class="text-[9px] uppercase font-bold text-purple-400">Leads</span>
+                <span class="text-[10px] font-bold text-white/80">45%</span>
+              </div>
+
+              <!-- Level 3: Sales -->
+              <div class="w-1/2 h-8 rounded bg-green-500/10 border border-green-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300 flex items-center justify-between px-2 shadow-[0_0_15px_rgba(74,222,128,0.2)]">
+                <span class="text-[9px] uppercase font-bold text-green-400">Ventas</span>
+                <span class="text-[10px] font-bold text-white/80">12%</span>
+              </div>
+
+              <!-- Animated Conversion Particle -->
+              <div class="absolute top-2 left-[50%] ml-[-3px] w-1.5 h-4 bg-white rounded-full shadow-[0_0_8px_white] opacity-0 group-hover:animate-[drop_2.5s_ease-in-out_infinite] delay-1000"></div>
+
+            </div>
+
+            <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+              <div class="flex items-start justify-between">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M11 7l-4.5 9.2M13 7l4.5 9.2M7.2 18h9.6"/></svg>
+                </div>
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+              </div>
+              <div>
+                <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">05 — Disciplina</span>
+                <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Método Conversiones</h3>
+                <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Un sistema probado para analizar, optimizar y escalar todo tu embudo digital.</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+        <style>
+          @keyframes scan {
+            0%, 100% { transform: translateY(-5px); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(75px); }
+          }
+          @keyframes draw {
+            to { stroke-dashoffset: 0; }
+          }
+          .stroke-dasharray-150 { stroke-dasharray: 150; }
+          .stroke-dashoffset-150 { stroke-dashoffset: 150; }
+          @keyframes scan-x {
+            0% { left: 10%; }
+            50% { left: 90%; }
+            100% { left: 10%; }
+          }
+          @keyframes grow {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+          }
+          @keyframes cursor-move {
+            0% { transform: translate(0, 0); opacity: 0; }
+            15% { opacity: 1; }
+            45%, 55% { transform: translate(-108px, -48px); opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translate(0, 0); opacity: 0; }
+          }
+          @keyframes click-ripple {
+            0%, 48% { transform: scale(0); opacity: 1; }
+            52% { transform: scale(2.5); opacity: 0; }
+            100% { transform: scale(0); opacity: 0; }
+          }
+        </style>
+
       </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
       const hero = document.querySelector('section');
       const orb = document.getElementById('orb');
@@ -983,22 +1138,57 @@
         orb.style.marginTop = `${y}px`;
       });
 
-      // REVEAL AL SCROLL
+      gsap.registerPlugin(ScrollTrigger);
 
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-
-              revealObserver.unobserve(entry.target);
+      // TITLE REVEAL ANIMATIONS (Premium Blur + Slide up)
+      gsap.utils.toArray('.title-reveal').forEach((el) => {
+        gsap.fromTo(el, 
+          { y: 80, opacity: 0, filter: 'blur(12px)' }, 
+          { 
+            y: 0, 
+            opacity: 1, 
+            filter: 'blur(0px)', 
+            duration: 1.6, 
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%'
             }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
-      );
+          }
+        );
+      });
 
-      document.querySelectorAll('.reveal-up').forEach((el) => revealObserver.observe(el));
+      // STANDARD REVEAL ANIMATIONS
+      gsap.utils.toArray('.reveal-up').forEach((el) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          toggleClass: 'in-view',
+          once: true,
+        });
+      });
+
+      // PARALLAX ANIMATIONS
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion) {
+        gsap.utils.toArray('[data-speed]').forEach((el) => {
+          const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
+          el.style.willChange = 'transform';
+          gsap.fromTo(el, 
+            { y: 150 * speed }, 
+            {
+              y: -150 * speed,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            }
+          );
+        });
+      }
     </script>
   </body>
 </html>

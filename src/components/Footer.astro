@@ -17,7 +17,7 @@ const companyLinks = [
 ];
 ---
 
-<footer class="border-t border-black/10 bg-[#f8fafc]">
+<footer class="border-t border-white/10 bg-[#090909]">
   <Container class="py-16 lg:py-20">
     <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
       <div>
@@ -25,7 +25,7 @@ const companyLinks = [
           <img
             src="/croilab-logo.svg"
             alt="Croilab"
-            class="h-7 w-auto transition duration-300 group-hover:opacity-80"
+            class="h-7 w-auto transition duration-300 group-hover:opacity-80 invert"
             width="241"
             height="53"
           />
@@ -37,7 +37,7 @@ const companyLinks = [
       </div>
 
       <nav aria-label="Servicios">
-        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-black/40">Servicios</h3>
+        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Servicios</h3>
         <ul class="mt-5 space-y-3">
           {
             serviceLinks.map((link) => (
@@ -52,7 +52,7 @@ const companyLinks = [
       </nav>
 
       <nav aria-label="Compañía">
-        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-black/40">Compañía</h3>
+        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Compañía</h3>
         <ul class="mt-5 space-y-3">
           {
             companyLinks.map((link) => (
@@ -67,7 +67,7 @@ const companyLinks = [
       </nav>
 
       <div>
-        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-black/40">Contacto</h3>
+        <h3 class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Contacto</h3>
         <p class="mt-5 text-sm leading-6 text-muted">hola@croilab.com</p>
         <div class="mt-2 flex items-center gap-2 text-sm text-muted">
           <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
@@ -77,12 +77,12 @@ const companyLinks = [
     </div>
 
     <div
-      class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-6 md:flex-row"
+      class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row"
     >
-      <span class="text-[10px] uppercase tracking-[.2em] text-black/35">
+      <span class="text-[10px] uppercase tracking-[.2em] text-white/35">
         © 2026 Croilab. Todos los derechos reservados.
       </span>
-      <span class="text-[10px] uppercase tracking-[.2em] text-black/35"
+      <span class="text-[10px] uppercase tracking-[.2em] text-white/35"
         >Digital conversion laboratory</span
       >
     </div>

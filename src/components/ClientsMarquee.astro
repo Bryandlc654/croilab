@@ -3,7 +3,7 @@ import { clients } from '../data/clients';
 import Container from './ui/Container.astro';
 ---
 
-<section class="border-t border-black/10 bg-[#f8fafc] py-14" aria-label="Clientes">
+<section class="border-t border-white/10 bg-[#090909] py-14" aria-label="Clientes">
   <Container>
     <p
       class="reveal-up mb-10 text-center text-[11px] font-medium uppercase tracking-[.24em] text-muted"
@@ -15,15 +15,22 @@ import Container from './ui/Container.astro';
     <div class="marquee-track">
       {
         clients.map((client) => (
-          <span class={`mr-20 whitespace-nowrap ${client.classes}`} set:html={client.name} />
+          <img 
+            src={client.image} 
+            alt={client.alt} 
+            class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" 
+            loading="lazy" 
+          />
         ))
       }
       {
         clients.map((client) => (
-          <span
-            class={`mr-20 whitespace-nowrap ${client.classes}`}
-            aria-hidden="true"
-            set:html={client.name}
+          <img 
+            src={client.image} 
+            alt={client.alt} 
+            class="mr-24 h-10 w-auto object-contain brightness-0 invert opacity-50 transition hover:opacity-100" 
+            loading="lazy" 
+            aria-hidden="true" 
           />
         ))
       }

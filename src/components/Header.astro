@@ -7,22 +7,22 @@ const navLinks = [
 ];
 ---
 
-<header class="relative z-50">
+<header class="absolute top-0 w-full z-50 bg-transparent text-white">
   <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 lg:px-10">
     <a href="/" class="group flex items-center" aria-label="Croilab — inicio">
       <img
         src="/croilab-logo.svg"
         alt="Croilab"
-        class="h-7 w-auto transition duration-300 group-hover:opacity-80 md:h-8"
+        class="h-7 w-auto transition duration-300 group-hover:opacity-80 md:h-8 filter invert"
         width="241"
         height="53"
       />
     </a>
 
-    <nav class="hidden items-center gap-9 text-[13px] font-medium text-black/55 md:flex">
+    <nav class="hidden items-center gap-9 text-[13px] font-medium text-white/60 md:flex">
       {
         navLinks.map((link) => (
-          <a href={link.href} class="transition hover:text-ink">
+          <a href={link.href} class="transition hover:text-white">
             {link.label}
           </a>
         ))
@@ -30,10 +30,10 @@ const navLinks = [
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href="/contacto" class="group hidden items-center gap-3 text-[13px] font-semibold md:flex">
+      <a href="/contacto" class="group hidden items-center gap-3 text-[13px] font-semibold text-white md:flex">
         Contacto
         <span
-          class="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition duration-300 group-hover:bg-accent"
+          class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#090909] transition duration-300 group-hover:opacity-80"
         >
           →
         </span>
@@ -42,30 +42,30 @@ const navLinks = [
       <button
         id="menu-toggle"
         type="button"
-        class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-black/10 md:hidden"
+        class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 md:hidden"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label="Abrir menú"
       >
-        <span class="block h-[2px] w-5 bg-ink"></span>
-        <span class="block h-[2px] w-5 bg-ink"></span>
-        <span class="block h-[2px] w-5 bg-ink"></span>
+        <span class="block h-[2px] w-5 bg-[#111111]"></span>
+        <span class="block h-[2px] w-5 bg-[#111111]"></span>
+        <span class="block h-[2px] w-5 bg-[#111111]"></span>
       </button>
     </div>
   </div>
 
   <!-- OVERLAY MÓVIL (capa delante del contenido) -->
   <div id="mobile-menu" class="fixed inset-0 z-40 md:hidden" aria-hidden="true">
-    <div class="absolute inset-0 bg-black/45 backdrop-blur-md" data-close-menu></div>
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md" data-close-menu></div>
     <div
-      class="menu-panel absolute inset-x-0 bottom-0 top-[85px] overflow-y-auto bg-white px-6 pt-6 shadow-[0_-20px_60px_rgba(0,0,0,.25)]"
+      class="menu-panel absolute inset-x-0 bottom-0 top-[85px] overflow-y-auto bg-[#090909] px-6 pt-6 shadow-[0_-20px_60px_rgba(0,0,0,.5)]"
     >
       <nav class="flex flex-col" aria-label="Menú móvil">
         {
           navLinks.map((link) => (
             <a
               href={link.href}
-              class="border-b border-black/5 py-4 text-lg font-semibold tracking-tight text-black/70 transition hover:text-accent"
+              class="border-b border-white/10 py-4 text-lg font-semibold tracking-tight text-white/70 transition hover:text-white"
             >
               {link.label}
             </a>
@@ -73,7 +73,7 @@ const navLinks = [
         }
         <a
           href="/contacto"
-          class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-black px-6 py-3.5 text-[13px] font-semibold text-white transition duration-300 hover:bg-accent"
+          class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[13px] font-semibold text-[#090909] transition duration-300 hover:opacity-80"
         >
           Contacto →
         </a>

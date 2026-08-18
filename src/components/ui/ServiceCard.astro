@@ -11,7 +11,7 @@ const { service, index = 0 } = Astro.props;
 
 <a
   href={`/${service.slug}`}
-  class="service-row reveal-up group relative block overflow-hidden border-b border-black/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
+  class="service-row reveal-up group relative block overflow-hidden border-b border-white/10 py-10 transition-colors duration-300 hover:bg-black lg:py-14"
   style={`--i:${index}`}
 >
   <span
@@ -22,13 +22,13 @@ const { service, index = 0 } = Astro.props;
   </span>
   <div class="relative z-10 grid items-center gap-x-10 gap-y-5 lg:grid-cols-[90px_1fr_auto]">
     <span
-      class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-white/40"
+      class="text-xs font-medium tracking-[.2em] text-white/35 transition-colors duration-300 group-hover:text-white/40"
     >
       {service.num}
     </span>
     <div>
       <h3
-        class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-ink transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
+        class="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-none tracking-[-.04em] text-white transition-all duration-300 group-hover:translate-x-2 group-hover:text-white"
       >
         {service.name}
       </h3>
@@ -40,7 +40,7 @@ const { service, index = 0 } = Astro.props;
     </div>
     <div class="flex items-center gap-6">
       <span
-        class="hidden text-ink transition-colors duration-300 group-hover:text-white/80 md:block"
+        class="hidden text-white transition-colors duration-300 group-hover:text-white/80 md:block"
       >
         <svg
           width="34"
@@ -55,7 +55,7 @@ const { service, index = 0 } = Astro.props;
         />
       </span>
       <span
-        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-ink transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
+        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg text-white transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"
       >
         →
       </span>

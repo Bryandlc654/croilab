@@ -13,25 +13,25 @@ const { items = [] } = Astro.props;
 
 <nav
   aria-label="Migas de pan"
-  class="text-[11px] font-medium uppercase tracking-[.2em] text-black/40"
+  class="text-[11px] font-medium uppercase tracking-[.2em] text-white/40"
 >
   <ol class="flex flex-wrap items-center gap-2">
     <li>
-      <a href="/" class="transition hover:text-ink">Inicio</a>
+      <a href="/" class="transition hover:text-white">Inicio</a>
     </li>
     {
       items.map((item) => (
         <>
-          <li aria-hidden="true" class="text-black/25">
+          <li aria-hidden="true" class="text-white/25">
             /
           </li>
           <li>
             {item.href ? (
-              <a href={item.href} class="transition hover:text-ink">
+              <a href={item.href} class="transition hover:text-white">
                 {item.label}
               </a>
             ) : (
-              <span aria-current="page" class="text-ink">
+              <span aria-current="page" class="text-white">
                 {item.label}
               </span>
             )}

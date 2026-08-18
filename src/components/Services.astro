@@ -1,43 +1,434 @@
 ---
 import { services } from '../data/services';
 import Container from './ui/Container.astro';
-import ServiceCard from './ui/ServiceCard.astro';
+
+// Clases para lograr la asimetría del Bento Grid (3 columnas en Desktop)
+const bentoClasses = [
+  "md:col-span-2 md:row-span-2", // 01: Principal (Grande)
+  "md:col-span-1 md:row-span-1", // 02: Cuadrado pequeño
+  "md:col-span-1 md:row-span-1", // 03: Cuadrado pequeño
+  "md:col-span-2 md:row-span-1", // 04: Rectángulo ancho horizontal
+  "md:col-span-1 md:row-span-1"  // 05: Cuadrado pequeño
+];
 ---
 
-<section id="servicios" class="border-t border-black/10 bg-white">
-  <Container class="py-24 lg:py-32">
-    <div class="grid gap-16 lg:grid-cols-[.9fr_1.1fr]">
-      <!-- HEADER STICKY -->
-      <div class="reveal-up lg:sticky lg:top-10 lg:self-start">
-        <div class="mb-8 flex items-center gap-4">
-          <span class="h-px w-9 bg-accent"></span>
-          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-muted"
-            >Servicios</span
-          >
-        </div>
-        <h2
-          class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-ink"
-        >
-          No vendemos horas,
-          <span class="block text-black/20">buscamos</span>
-          <span class="block text-accent">crecimiento.</span>
-        </h2>
-        <p class="mt-8 max-w-md text-[15px] leading-7 text-muted">
-          Nos alejamos del modelo de agencia 360 que intenta hacerlo todo en lugar de enfocarse en
-          crecer el negocio. Cinco disciplinas, un único objetivo: convertir tráfico en ingresos.
-        </p>
-        <div class="mt-10 flex items-center gap-6">
-          <span class="text-6xl font-semibold leading-none tracking-tight text-accent">05</span>
-          <div class="text-[10px] uppercase leading-4 tracking-[.12em] text-black/35">
-            disciplinas<br />un sistema
+<section id="servicios" class="border-t border-white/10 bg-[#090909] relative overflow-hidden">
+  <!-- Textura de fondo sutil -->
+  <div class="grid-bg-invert absolute inset-0 opacity-10"></div>
+  
+  <Container class="py-24 lg:py-40 relative z-10 flex flex-col items-center">
+    
+    <!-- HEADER CENTERED -->
+    <div class="flex flex-col items-center text-center mb-20 w-full max-w-[900px]">
+      <div class="reveal-up mb-8 flex items-center gap-4">
+        <span class="h-px w-9 bg-blue-400/50"></span>
+        <span class="text-[11px] font-medium uppercase tracking-[.24em] text-blue-300/60">Servicios</span>
+        <span class="h-px w-9 bg-blue-400/50"></span>
+      </div>
+      
+      <h2 class="title-reveal text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-white">
+        No vendemos horas,
+        <span class="block text-white/40 mt-2">buscamos</span>
+        <span class="relative inline-block mt-2 font-serif italic text-white drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">
+          crecimiento.
+          <span class="absolute -right-4 top-2 h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulseSoft shadow-[0_0_10px_rgba(8,120,249,0.8)]"></span>
+        </span>
+      </h2>
+      
+      <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-white/50">
+        Nos alejamos del modelo de agencia 360 que intenta hacerlo todo en lugar de enfocarse en crecer el negocio. Cinco disciplinas, un único objetivo: convertir tráfico en ingresos.
+      </p>
+    </div>
+
+    <!-- BENTO GRID -->
+    <div class="grid w-full grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+      
+      <!-- 01: SEO (Grande) -->
+      <a href="/seo" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-2 md:row-span-2" data-speed="0.03">
+        <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">01</span>
+        
+        <!-- MOCKUP: SEARCH CONSOLE PREMIUM -->
+        <div class="absolute right-8 top-12 w-[340px] rounded-2xl border border-white/10 bg-[#0f0f0f]/80 backdrop-blur-xl p-5 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+          
+          <!-- Header / Filters -->
+          <div class="flex justify-between items-center mb-4">
+            <div class="flex gap-2 items-center">
+              <div class="h-4 w-4 bg-blue-500 rounded-sm flex items-center justify-center shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+              <div class="h-3 w-24 bg-white/20 rounded-full"></div>
+            </div>
+            <div class="h-3 w-12 bg-white/10 rounded-full"></div>
+          </div>
+
+          <!-- 4 Metric Cards -->
+          <div class="grid grid-cols-4 gap-2 mb-4">
+            <!-- Clicks (Active) -->
+            <div class="bg-blue-500/10 border border-blue-500/30 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-75">
+              <span class="text-[8px] text-blue-400/70 uppercase font-semibold leading-none">Clics</span>
+              <span class="text-sm font-bold text-blue-400 leading-none" style="text-shadow: 0 0 8px rgba(96,165,250,0.4)">124K</span>
+            </div>
+            <!-- Impressions (Active) -->
+            <div class="bg-purple-500/10 border border-purple-500/30 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-150">
+              <span class="text-[8px] text-purple-400/70 uppercase font-semibold leading-none">Impres.</span>
+              <span class="text-sm font-bold text-purple-400 leading-none">2.4M</span>
+            </div>
+            <!-- CTR (Inactive) -->
+            <div class="bg-white/5 border border-white/5 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-200">
+              <span class="text-[8px] text-white/40 uppercase font-semibold leading-none">CTR</span>
+              <span class="text-sm font-bold text-white/80 leading-none">5.2%</span>
+            </div>
+            <!-- Position (Inactive) -->
+            <div class="bg-white/5 border border-white/5 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-300">
+              <span class="text-[8px] text-white/40 uppercase font-semibold leading-none">Pos.</span>
+              <span class="text-sm font-bold text-white/80 leading-none">12.4</span>
+            </div>
+          </div>
+
+          <!-- Chart Area -->
+          <div class="relative h-28 w-full mt-2 border-t border-white/5 pt-3">
+            <!-- Grid Lines -->
+            <div class="absolute inset-0 flex flex-col justify-between pt-3 pb-1">
+              <div class="w-full h-px bg-white/5"></div>
+              <div class="w-full h-px bg-white/5"></div>
+              <div class="w-full h-px bg-white/5"></div>
+            </div>
+
+            <!-- SVG Line Chart -->
+            <svg class="absolute inset-0 h-full w-full" viewBox="0 0 100 40" preserveAspectRatio="none">
+              <defs>
+                <!-- Blue Gradient for Clicks -->
+                <linearGradient id="gscBlue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3" />
+                  <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+                </linearGradient>
+                <!-- Purple Gradient for Impressions -->
+                <linearGradient id="gscPurple" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#a855f7" stop-opacity="0.15" />
+                  <stop offset="100%" stop-color="#a855f7" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              
+              <!-- Purple Area & Line (Impressions) -->
+              <path d="M0,38 C15,35 25,25 40,28 C55,30 70,15 85,10 L100,2 L100,40 L0,40 Z" fill="url(#gscPurple)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
+              <path d="M0,38 C15,35 25,25 40,28 C55,30 70,15 85,10 L100,2" fill="none" stroke="#a855f7" stroke-width="1" stroke-dasharray="2" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
+
+              <!-- Blue Area & Line (Clicks) -->
+              <path d="M0,35 C20,35 30,15 50,25 C70,35 85,10 100,5 L100,40 L0,40 Z" fill="url(#gscBlue)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
+              <path d="M0,35 C20,35 30,15 50,25 C70,35 85,10 100,5" fill="none" stroke="#60a5fa" stroke-width="1.5" class="stroke-dasharray-150 stroke-dashoffset-150 group-hover:animate-[draw_1.5s_ease-out_forwards]" style="animation-delay: 200ms;" />
+            </svg>
+            
+            <!-- Animated Scanner / Tooltip Line -->
+            <div class="absolute top-3 bottom-0 w-[1px] bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-[scan-x_6s_ease-in-out_infinite] delay-1000">
+              <div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_12px_#60a5fa] border-2 border-[#161616]"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- LISTA DE SERVICIOS -->
-      <div class="border-t border-black/10">
-        {services.map((service, i) => <ServiceCard service={service} index={i} />)}
-      </div>
+        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+          <div class="flex items-start justify-between">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-5-5"/><path d="M8 12l2-2.5 2 1.5 2.5-3"/></svg>
+            </div>
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">01 — Disciplina</span>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">SEO</h3>
+            <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Posicionamiento técnico y de contenido para llevar tu marca al primer resultado.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- 02: Meta Ads (Pequeño) -->
+      <a href="/meta-ads" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="-0.03">
+        <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">02</span>
+        
+        <!-- MOCKUP: META ADS PREMIUM -->
+        <div class="absolute right-6 top-8 w-[200px] rounded-xl border border-white/10 bg-[#161616]/80 backdrop-blur-md p-4 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+          
+          <!-- Status Bar -->
+          <div class="flex items-center gap-2 mb-3">
+            <div class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </div>
+            <div class="h-2 w-20 bg-white/30 rounded"></div>
+          </div>
+
+          <!-- Metric: ROAS -->
+          <div class="bg-blue-500/10 border border-blue-500/20 rounded p-2 mb-2 flex justify-between items-end transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+            <div class="flex flex-col gap-1.5">
+              <div class="h-1.5 w-8 bg-blue-400/50 rounded"></div>
+              <div class="flex items-center gap-1">
+                <span class="text-[11px] font-bold text-blue-400 leading-none">4.8x ROAS</span>
+              </div>
+            </div>
+            <div class="flex gap-0.5 items-end h-4">
+              <div class="w-1 bg-blue-500/40 h-[40%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out]"></div>
+              <div class="w-1 bg-blue-500/60 h-[70%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out_0.1s]"></div>
+              <div class="w-1 bg-blue-400 h-[100%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out_0.2s]"></div>
+            </div>
+          </div>
+
+          <!-- Metric: CPA -->
+          <div class="bg-white/5 border border-white/5 rounded p-2 mb-3 flex justify-between items-center transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+            <div class="flex flex-col gap-1.5">
+              <div class="h-1.5 w-8 bg-white/20 rounded"></div>
+              <span class="text-[10px] font-semibold text-white/70 leading-none">$12.50 CPA</span>
+            </div>
+            <div class="h-4 w-4 rounded-full border-2 border-white/20 border-t-green-400 animate-spin" style="animation-duration: 2s;"></div>
+          </div>
+
+          <!-- Target Audience Dots -->
+          <div class="relative h-12 w-full border-t border-white/5 pt-2 flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300">
+            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+              <div class="w-8 h-8 rounded-full border border-blue-500/50 absolute"></div>
+              <div class="w-16 h-16 rounded-full border border-blue-500/30 absolute"></div>
+            </div>
+            <div class="h-1.5 w-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_#60a5fa] animate-pulse"></div>
+            <div class="absolute w-1 h-1 bg-white rounded-full top-3 left-4 animate-ping"></div>
+            <div class="absolute w-1 h-1 bg-white rounded-full bottom-3 right-5 animate-ping" style="animation-duration: 1.5s;"></div>
+          </div>
+          
+        </div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+          <div class="flex items-start justify-between">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">02 — Disciplina</span>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Meta Ads</h3>
+            <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Campañas que captan tráfico cualificado y lo convierten en ingresos reales.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- 03: Diseño Web (Pequeño) -->
+      <a href="/diseno-web" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03">
+        <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">03</span>
+        
+        <!-- MOCKUP: PREMIUM WEB DESIGN (UI EDITOR) -->
+        <div class="absolute right-4 top-8 w-[180px] rounded-lg border border-white/10 bg-[#0f0f0f]/80 backdrop-blur-md overflow-hidden pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+          
+          <!-- MacOS Toolbar -->
+          <div class="flex items-center gap-1.5 border-b border-white/5 px-3 py-2 bg-white/[0.02]">
+            <div class="w-1.5 h-1.5 rounded-full bg-red-400/80"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-yellow-400/80"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-green-400/80"></div>
+          </div>
+
+          <!-- Editor Canvas -->
+          <div class="p-3 flex flex-col gap-2 relative">
+            
+            <!-- Hero Block -->
+            <div class="w-full flex gap-2">
+              <div class="flex-1 flex flex-col gap-1.5">
+                <div class="h-2 w-full bg-white/20 rounded-sm"></div>
+                <div class="h-2 w-3/4 bg-white/10 rounded-sm"></div>
+                <div class="h-1.5 w-1/2 bg-white/5 rounded-sm mt-1"></div>
+                <!-- CTA -->
+                <div class="h-3 w-10 bg-blue-500 rounded-sm mt-1 relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+              </div>
+              <!-- Image Block -->
+              <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center border border-white/5 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500"></div>
+                <svg class="w-4 h-4 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              </div>
+            </div>
+
+            <!-- Features Row -->
+            <div class="flex gap-2 w-full mt-1">
+              <div class="flex-1 h-6 bg-white/5 rounded-sm border border-white/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
+              <div class="flex-1 h-6 bg-white/5 rounded-sm border border-white/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300"></div>
+              <div class="flex-1 h-6 bg-white/5 rounded-sm border border-white/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-400"></div>
+            </div>
+
+            <!-- Mouse Cursor Animation -->
+            <div class="absolute bottom-[-5px] right-[-5px] opacity-0 group-hover:animate-[cursor-move_3s_ease-in-out_infinite] z-20">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M4 2v20l5.5-5.5H18L4 2z"/></svg>
+              <!-- Click Ripple -->
+              <div class="absolute top-[-2px] left-[-2px] w-4 h-4 rounded-full border border-blue-400 scale-0 group-hover:animate-[click-ripple_3s_ease-in-out_infinite]"></div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+          <div class="flex items-start justify-between">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>
+            </div>
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">03 — Disciplina</span>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Diseño Web</h3>
+            <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Páginas rápidas, claras y diseñadas para vender desde el primer segundo.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- 04: Ecommerce (Horizontal) -->
+      <a href="/ecommerce" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-2 md:row-span-1" data-speed="-0.03">
+        <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">04</span>
+        
+        <!-- MOCKUP: ECOMMERCE PREMIUM (FAN OUT) -->
+        <div class="absolute right-8 top-1/2 -translate-y-1/2 w-[120px] h-[120px] pointer-events-none flex items-center justify-center z-10">
+          
+          <!-- Card 1 (Bottom, moves left) -->
+          <div class="absolute w-[110px] bg-[#161616]/90 border border-white/10 rounded-lg p-2 shadow-xl backdrop-blur-md transition-all duration-700 ease-out transform group-hover:-translate-x-16 group-hover:translate-y-2 group-hover:-rotate-12 opacity-0 group-hover:opacity-60 z-10 delay-100">
+            <div class="w-full h-10 bg-white/5 rounded mb-2"></div>
+            <div class="h-1.5 w-3/4 bg-white/20 rounded mb-1"></div>
+            <div class="h-2.5 w-1/3 bg-blue-500/30 rounded"></div>
+          </div>
+
+          <!-- Card 2 (Middle, moves right) -->
+          <div class="absolute w-[110px] bg-[#161616]/90 border border-white/10 rounded-lg p-2 shadow-xl backdrop-blur-md transition-all duration-700 ease-out transform group-hover:translate-x-16 group-hover:translate-y-2 group-hover:rotate-12 opacity-0 group-hover:opacity-60 z-20 delay-150">
+            <div class="w-full h-10 bg-white/5 rounded mb-2"></div>
+            <div class="h-1.5 w-3/4 bg-white/20 rounded mb-1"></div>
+            <div class="h-2.5 w-1/3 bg-purple-500/30 rounded"></div>
+          </div>
+
+          <!-- Card 3 (Top, Main) -->
+          <div class="absolute w-[130px] bg-[#0f0f0f]/95 border border-white/20 rounded-lg p-2.5 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out transform translate-y-4 group-hover:-translate-y-8 group-hover:scale-110 opacity-30 group-hover:opacity-100 z-30 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+            <div class="w-full h-14 bg-gradient-to-tr from-blue-500/20 to-transparent border border-blue-500/20 rounded mb-2.5 relative overflow-hidden flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-400 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+              <!-- Shine -->
+              <div class="absolute top-0 bottom-0 w-6 bg-white/20 skew-x-[-20deg] -left-10 group-hover:animate-[shine_2s_ease-in-out_infinite]"></div>
+            </div>
+            <div class="h-1.5 w-full bg-white/30 rounded mb-1.5"></div>
+            <div class="h-1.5 w-2/3 bg-white/10 rounded mb-2.5"></div>
+            <div class="flex justify-between items-center border-t border-white/5 pt-2">
+              <span class="text-[9px] font-bold text-white/90 leading-none">$129</span>
+              <div class="h-3 w-12 bg-blue-500 rounded shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+          <div class="flex items-start justify-between">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+            </div>
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">04 — Disciplina</span>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Ecommerce</h3>
+            <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Tiendas online optimizadas para maximizar ventas y ticket medio.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- 05: Conversiones (Pequeño) -->
+      <a href="/conversiones" class="reveal-up group relative overflow-hidden rounded-3xl border border-white/10 transition duration-500 hover:border-white/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03">
+        <div class="absolute inset-0 bg-[#111111]/80 backdrop-blur-md"></div>
+        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-white/[0.02] transition duration-700 group-hover:text-white/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">05</span>
+        
+        <!-- MOCKUP: CONVERSIONS PREMIUM -->
+        <div class="absolute right-8 top-10 w-[180px] rounded-xl border border-white/10 bg-[#161616]/80 backdrop-blur-md p-4 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:flex flex-col items-center gap-2">
+          
+          <!-- Level 1: Traffic -->
+          <div class="w-full h-8 rounded bg-blue-500/10 border border-blue-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 flex items-center justify-between px-2">
+            <span class="text-[9px] uppercase font-bold text-blue-400">Tráfico</span>
+            <span class="text-[10px] font-bold text-white/80">100%</span>
+          </div>
+          
+          <!-- Level 2: Leads -->
+          <div class="w-3/4 h-8 rounded bg-purple-500/10 border border-purple-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200 flex items-center justify-between px-2">
+            <span class="text-[9px] uppercase font-bold text-purple-400">Leads</span>
+            <span class="text-[10px] font-bold text-white/80">45%</span>
+          </div>
+
+          <!-- Level 3: Sales -->
+          <div class="w-1/2 h-8 rounded bg-green-500/10 border border-green-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300 flex items-center justify-between px-2 shadow-[0_0_15px_rgba(74,222,128,0.2)]">
+            <span class="text-[9px] uppercase font-bold text-green-400">Ventas</span>
+            <span class="text-[10px] font-bold text-white/80">12%</span>
+          </div>
+
+          <!-- Animated Conversion Particle -->
+          <div class="absolute top-2 left-[50%] ml-[-3px] w-1.5 h-4 bg-white rounded-full shadow-[0_0_8px_white] opacity-0 group-hover:animate-[drop_2.5s_ease-in-out_infinite] delay-1000"></div>
+
+        </div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+          <div class="flex items-start justify-between">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] text-white shadow-xl transition duration-500 group-hover:bg-white group-hover:text-black">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M11 7l-4.5 9.2M13 7l4.5 9.2M7.2 18h9.6"/></svg>
+            </div>
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-sm text-white opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black">→</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">05 — Disciplina</span>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-4 transition duration-500 group-hover:translate-x-2">Método Conversiones</h3>
+            <p class="text-[15px] leading-relaxed text-white/50 max-w-md">Un sistema probado para analizar, optimizar y escalar todo tu embudo digital.</p>
+          </div>
+        </div>
+      </a>
+
     </div>
+
+    <!-- CUSTOM ANIMATION STYLE FOR MOCKUPS -->
+    <style is:global>
+      @keyframes scan {
+        0%, 100% { transform: translateY(-5px); opacity: 0; }
+        10%, 90% { opacity: 1; }
+        50% { transform: translateY(75px); }
+      }
+      @keyframes draw {
+        to { stroke-dashoffset: 0; }
+      }
+      .stroke-dasharray-150 { stroke-dasharray: 150; }
+      .stroke-dashoffset-150 { stroke-dashoffset: 150; }
+      @keyframes scan-x {
+        0% { left: 10%; }
+        50% { left: 90%; }
+        100% { left: 10%; }
+      }
+      @keyframes grow {
+        from { transform: scaleY(0); }
+        to { transform: scaleY(1); }
+      }
+      @keyframes cursor-move {
+        0% { transform: translate(0, 0); opacity: 0; }
+        15% { opacity: 1; }
+        45%, 55% { transform: translate(-108px, -48px); opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(0, 0); opacity: 0; }
+      }
+      @keyframes click-ripple {
+        0%, 48% { transform: scale(0); opacity: 1; }
+        52% { transform: scale(2.5); opacity: 0; }
+        100% { transform: scale(0); opacity: 0; }
+      }
+      @keyframes shine {
+        0% { left: -20px; }
+        20%, 100% { left: 100%; }
+      }
+      @keyframes drop {
+        0% { transform: translateY(-10px) scaleY(1); opacity: 0; }
+        10% { opacity: 1; }
+        50% { transform: translateY(60px) scaleY(1.5); opacity: 1; }
+        90% { transform: translateY(115px) scaleY(1); opacity: 1; }
+        100% { transform: translateY(125px) scaleY(1); opacity: 0; }
+      }
+    </style>
+
+
   </Container>
 </section>

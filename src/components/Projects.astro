@@ -5,7 +5,7 @@ import Container from './ui/Container.astro';
 import SectionTitle from './ui/SectionTitle.astro';
 ---
 
-<section id="proyectos" class="relative overflow-hidden border-t border-black/10 bg-white">
+<section id="proyectos" class="relative overflow-hidden border-t border-white/10 bg-transparent">
   <Container class="relative z-10 py-24 lg:py-32">
     <!-- HEADER -->
     <div class="reveal-up flex flex-wrap items-end justify-between gap-8">
@@ -80,7 +80,7 @@ import SectionTitle from './ui/SectionTitle.astro';
                   <a
                     href="#"
                     aria-label={`Ver proyecto: ${project.title}`}
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 text-lg text-white transition-all duration-300 group-hover:rotate-45 group-hover:border-white group-hover:bg-white group-hover:text-ink"
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 text-lg text-white transition-all duration-300 group-hover:rotate-45 group-hover:border-white group-hover:bg-[#111111] group-hover:text-[#090909]"
                   >
                     ↗
                   </a>
@@ -89,7 +89,7 @@ import SectionTitle from './ui/SectionTitle.astro';
             </article>
           ) : (
             <article
-              class="reveal-up group relative flex flex-col overflow-hidden rounded-[2rem] border border-black/10 bg-white transition-colors duration-500 hover:border-accent"
+              class="reveal-up group relative flex flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-[#111111] transition-colors duration-500 hover:border-accent"
               style={`--i:${i}`}
             >
               <!-- IMAGEN -->
@@ -103,10 +103,10 @@ import SectionTitle from './ui/SectionTitle.astro';
               </div>
 
               <!-- CONTENIDO -->
-              <div class="relative z-10 flex flex-1 flex-col bg-white p-6 transition-colors duration-500 group-hover:bg-accent lg:p-8">
+              <div class="relative z-10 flex flex-1 flex-col bg-[#111111] p-6 transition-colors duration-500 group-hover:bg-accent lg:p-8">
                 <div class="flex items-start justify-between">
                   <div class="flex items-center gap-2.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-accent transition-colors duration-500 group-hover:bg-white" />
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent transition-colors duration-500 group-hover:bg-[#090909]" />
                     <span
                       class="text-[11px] font-medium uppercase tracking-[.22em] text-accent transition-colors duration-500 group-hover:text-white"
                     >
@@ -115,7 +115,7 @@ import SectionTitle from './ui/SectionTitle.astro';
                   </div>
                   <span
                     aria-hidden="true"
-                    class="select-none text-5xl font-semibold leading-none tracking-tighter text-black/[.05] transition-colors duration-500 group-hover:text-white/20"
+                    class="select-none text-5xl font-semibold leading-none tracking-tighter text-white/[.05] transition-colors duration-500 group-hover:text-white/20"
                   >
                     {num}
                   </span>
@@ -123,7 +123,7 @@ import SectionTitle from './ui/SectionTitle.astro';
 
                 <div class="mt-6">
                   <h3
-                    class="text-2xl font-semibold tracking-tight text-ink transition-colors duration-500 group-hover:text-white lg:text-[1.7rem]"
+                    class="text-2xl font-semibold tracking-tight text-white transition-colors duration-500 group-hover:text-white lg:text-[1.7rem]"
                   >
                     {project.title}
                   </h3>
@@ -132,12 +132,12 @@ import SectionTitle from './ui/SectionTitle.astro';
                   </p>
                 </div>
 
-                <div class="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-black/10 pt-5">
+                <div class="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
                   <div class="flex flex-wrap gap-2">
                     {
                       project.tags.map((tag) => (
                         <span
-                          class="rounded-full border border-black/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[.12em] text-black/45 transition-colors duration-500 group-hover:border-white/25 group-hover:text-white/80"
+                          class="rounded-full border border-white/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[.12em] text-white/45 transition-colors duration-500 group-hover:border-white/25 group-hover:text-white/80"
                         >
                           {tag}
                         </span>
@@ -147,7 +147,7 @@ import SectionTitle from './ui/SectionTitle.astro';
                   <a
                     href="#"
                     aria-label={`Ver proyecto: ${project.title}`}
-                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg text-ink transition-all duration-300 group-hover:rotate-45 group-hover:border-white/40 group-hover:bg-white group-hover:text-ink"
+                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg text-white transition-all duration-300 group-hover:rotate-45 group-hover:border-white/40 group-hover:bg-[#111111] group-hover:text-[#090909]"
                   >
                     ↗
                   </a>

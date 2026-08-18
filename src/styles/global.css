@@ -2,10 +2,12 @@
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
 
-  --color-accent: #0878f9;
-  --color-ink: #0a0a0a;
-  --color-muted: #667085;
+  --color-accent: #ffffff;
+  --color-ink: #ffffff;
+  --color-muted: #a3a3a3;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-floatSlow: floatSlow 9s ease-in-out infinite;
@@ -89,9 +91,24 @@
   body {
     margin: 0;
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    background: #ffffff;
-    color: #0a0a0a;
+    background: #090909;
+    color: #ffffff;
     -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 300 !important;
+  }
+
+  h1 .text-accent, h2 .text-accent, h3 .text-accent, h4 .text-accent, h5 .text-accent, h6 .text-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
   }
 }
 
@@ -116,7 +133,7 @@
     -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
   }
 
-  /* BLUE LIGHT */
+  /* NEUTRAL LIGHT */
   .blue-light {
     position: absolute;
     width: 550px;
@@ -124,9 +141,9 @@
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(8, 120, 249, 0.16) 0%,
-      rgba(8, 120, 249, 0.08) 35%,
-      rgba(8, 120, 249, 0.025) 60%,
+      rgba(0, 0, 0, 0.08) 0%,
+      rgba(0, 0, 0, 0.04) 35%,
+      rgba(0, 0, 0, 0.01) 60%,
       transparent 72%
     );
     filter: blur(10px);
@@ -140,15 +157,15 @@
     background: radial-gradient(
       circle at 32% 28%,
       #ffffff 0%,
-      #eaf4ff 18%,
-      #7ebcff 38%,
-      #0878f9 58%,
-      #0054ba 72%,
-      #dceeff 100%
+      #f3f3f1 18%,
+      #d4d4d4 38%,
+      #a3a3a3 58%,
+      #525252 72%,
+      #e5e5e5 100%
     );
     box-shadow:
-      0 35px 80px rgba(8, 120, 249, 0.22),
-      inset -30px -40px 70px rgba(0, 55, 130, 0.18),
+      0 35px 80px rgba(0, 0, 0, 0.15),
+      inset -30px -40px 70px rgba(0, 0, 0, 0.1),
       inset 25px 20px 45px rgba(255, 255, 255, 0.65);
     position: relative;
   }
@@ -186,7 +203,7 @@
 
   /* DASHED CIRCLE */
   .dashed-ring {
-    border: 1px dashed rgba(8, 120, 249, 0.3);
+    border: 1px dashed rgba(0, 0, 0, 0.15);
     border-radius: 50%;
   }
 

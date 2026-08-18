@@ -60,7 +60,7 @@ const orgSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -88,57 +88,62 @@ const orgSchema = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(orgSchema)} />
 
     <script>
-      // Reveal al hacer scroll
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-              revealObserver.unobserve(entry.target);
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // TITLE REVEAL ANIMATIONS (Premium Blur + Slide up)
+      gsap.utils.toArray('.title-reveal').forEach((el: any) => {
+        gsap.fromTo(el, 
+          { y: 80, opacity: 0, filter: 'blur(12px)' }, 
+          { 
+            y: 0, 
+            opacity: 1, 
+            filter: 'blur(0px)', 
+            duration: 1.6, 
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%'
             }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
-      );
-      document.querySelectorAll('.reveal-up').forEach((el) => revealObserver.observe(el));
-    </script>
-
-    <script>
-      // Parallax suave: elementos con [data-parallax] se desplazan a distinta velocidad
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const parallaxEls = Array.from(
-        document.querySelectorAll<HTMLElement>('[data-parallax]'),
-      );
-
-      if (!reduceMotion && parallaxEls.length > 0) {
-        parallaxEls.forEach((el) => {
-          el.style.willChange = 'transform';
-        });
-
-        let ticking = false;
-        const update = () => {
-          const vh = window.innerHeight;
-          parallaxEls.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            if (rect.bottom < -200 || rect.top > vh + 200) return;
-            const center = rect.top + rect.height / 2;
-            const speed = parseFloat(el.dataset.parallax || '0.2');
-            const y = (vh / 2 - center) * speed;
-            el.style.transform = `translate3d(0, ${y}px, 0)`;
-          });
-          ticking = false;
-        };
-
-        const onScroll = () => {
-          if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
           }
-        };
+        );
+      });
 
-        update();
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll, { passive: true });
+      // STANDARD REVEAL ANIMATIONS (using ScrollTrigger to toggle class for CSS transitions)
+      gsap.utils.toArray('.reveal-up').forEach((el: any) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          toggleClass: 'in-view',
+          once: true,
+        });
+      });
+
+      // PARALLAX ANIMATIONS
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion) {
+        gsap.utils.toArray('[data-speed]').forEach((el: any) => {
+          const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
+          
+          // Set will-change for performance
+          el.style.willChange = 'transform';
+          
+          gsap.fromTo(el, 
+            { y: 150 * speed }, 
+            {
+              y: -150 * speed,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            }
+          );
+        });
       }
     </script>
   </body>

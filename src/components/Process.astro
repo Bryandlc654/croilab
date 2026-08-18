@@ -4,7 +4,7 @@ import Container from './ui/Container.astro';
 import SectionTitle from './ui/SectionTitle.astro';
 ---
 
-<section class="border-t border-black/10 bg-white">
+<section class="border-t border-white/10 bg-transparent">
   <Container class="py-24 lg:py-32">
     <div class="flex flex-wrap items-end justify-between gap-8">
       <SectionTitle
@@ -22,7 +22,7 @@ import SectionTitle from './ui/SectionTitle.astro';
     <!-- LÍNEA DE TIEMPO -->
     <div class="relative mt-16">
       <div
-        class="absolute inset-x-0 top-5 hidden h-px bg-black/10 lg:block"
+        class="absolute inset-x-0 top-5 hidden h-px bg-white/10 lg:block"
         aria-hidden="true"
       ></div>
       <ol class="grid gap-12 lg:grid-cols-4 lg:gap-8">
@@ -30,11 +30,11 @@ import SectionTitle from './ui/SectionTitle.astro';
           processSteps.map((step, i) => (
             <li class="reveal-up relative" style={`--i:${i}`}>
               <div
-                class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xs font-semibold text-ink transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-white"
+                class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#111111] text-xs font-semibold text-white transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-[#090909]"
               >
                 {step.num}
               </div>
-              <h3 class="mt-6 text-lg font-semibold tracking-tight text-ink">{step.title}</h3>
+              <h3 class="mt-6 text-lg font-semibold tracking-tight text-white">{step.title}</h3>
               <p class="mt-2 text-sm leading-6 text-muted">{step.description}</p>
             </li>
           ))

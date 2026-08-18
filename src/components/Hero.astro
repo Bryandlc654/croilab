@@ -12,287 +12,123 @@ const icons: Record<string, string> = {
   dress:
     '<path d="M8 3l1 5-4 3 3 10h8l3-10-4-3 1-5-2 2h-4Z"/><path d="M9 12h6"/>',
 };
-
-const notifications = [
-  { icon: 'person', color: 'bg-accent', title: 'Nuevo visitante', meta: 'hace unos segundos', delay: 0 },
-  { icon: 'bag', color: 'bg-emerald-500', title: 'Venta realizada', meta: '+$140', delay: 2 },
-  { icon: 'spark', color: 'bg-violet-500', title: 'Conversión', meta: '+3.2%', delay: 4 },
-  { icon: 'trend', color: 'bg-amber-500', title: 'Tráfico orgánico', meta: '+18%', delay: 6 },
-];
 ---
 
-<section id="hero" class="relative min-h-[calc(100vh-85px)] overflow-hidden bg-white">
-  <!-- BACKGROUND -->
-  <div class="grid-bg absolute inset-0"></div>
-  <div class="blue-light right-[-100px] top-[100px]" data-parallax="0.2"></div>
+<style>
+/* From Uiverse.io by dexter-st */ 
+.loader-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background-color: transparent;
+  user-select: none;
+}
 
-  <!-- HERO -->
-  <div
-    class="relative z-20 mx-auto flex min-h-[calc(100vh-85px)] max-w-[1400px] items-center px-6 pb-16 pt-8 lg:px-10 lg:pb-20"
-  >
-    <div class="w-full lg:max-w-[46%]">
-        <h1
-          class="max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em]"
-        >
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: transparent;
+  animation: loader-rotate 8s linear infinite;
+  z-index: 0;
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(90deg);
+    box-shadow:
+      0 10px 20px 0 rgba(100, 200, 255, 0.5) inset, 
+      0 20px 50px 0 rgba(8, 120, 249, 0.7) inset,
+      0 60px 80px 0 rgba(0, 84, 186, 0.9) inset;
+  }
+  50% {
+    transform: rotate(270deg);
+    box-shadow:
+      0 10px 20px 0 rgba(8, 120, 249, 0.5) inset,
+      0 20px 50px 0 rgba(100, 200, 255, 0.7) inset,
+      0 40px 80px 0 rgba(0, 84, 186, 0.9) inset;
+  }
+  100% {
+    transform: rotate(450deg);
+    box-shadow:
+      0 10px 20px 0 rgba(100, 200, 255, 0.5) inset, 
+      0 20px 50px 0 rgba(8, 120, 249, 0.7) inset,
+      0 60px 80px 0 rgba(0, 84, 186, 0.9) inset;
+  }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+</style>
+
+<section id="hero" class="relative min-h-screen overflow-hidden bg-[#090909] text-white">
+  <!-- BACKGROUND ANIMATION (X shape with 2 circles) -->
+  <div class="absolute inset-0 z-0 flex flex-col items-center justify-center opacity-90 mix-blend-screen">
+    <div class="loader-wrapper -translate-y-[670px]">
+      <div class="loader border border-white/30"></div>
+    </div>
+    <div class="loader-wrapper">
+      <div class="loader border border-white/30"></div>
+    </div>
+  </div>
+
+  <!-- GRID & TEXTURES -->
+  <div class="grid-bg-invert absolute inset-0 opacity-15"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- HERO CONTENT -->
+  <div class="relative z-20 mx-auto flex min-h-screen max-w-[1400px] items-center px-6 pb-16 pt-56 lg:px-10 lg:pb-20">
+    <div class="w-full flex flex-col items-center text-center">
+        <h1 class="title-reveal max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em] text-white">
           No diseñamos
-          <span class="block text-black/20">páginas.</span>
+          <span class="block text-white/40 font-serif italic font-normal">páginas.</span>
           <span class="block">
             Creamos
-            <span class="relative inline-block text-accent">
+            <span class="relative inline-block text-white font-serif italic font-normal">
               conversiones
-              <span class="absolute -right-3 top-1 h-2 w-2 rounded-full bg-accent animate-pulseSoft"
-              ></span>
+              <span class="absolute -right-3 top-1 h-2 w-2 rounded-full bg-white animate-pulseSoft"></span>
             </span>
           </span>
         </h1>
 
-        <p class="mt-9 max-w-[580px] text-[15px] leading-7 text-black/50 md:text-[17px]">
+        <p class="mt-9 max-w-[580px] text-[15px] leading-7 text-white/60 md:text-[17px]">
           Diseñamos sistemas digitales donde estrategia, tecnología y adquisición trabajan juntos
           para transformar tráfico en clientes.
         </p>
 
-        <div class="mt-9 flex flex-wrap items-center gap-4">
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#proyectos"
-            class="group flex items-center gap-5 rounded-full bg-accent px-6 py-3.5 text-[13px] font-semibold text-white shadow-[0_10px_30px_rgba(8,120,249,.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(8,120,249,.25)]"
+            class="group flex items-center gap-5 rounded-full bg-white px-6 py-3.5 text-[13px] font-semibold text-[#090909] shadow-[0_10px_30px_rgba(255,255,255,.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(255,255,255,.25)]"
           >
             Ver proyectos
             <span
-              class="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition group-hover:bg-white group-hover:text-accent"
+              class="flex h-7 w-7 items-center justify-center rounded-full bg-[#090909]/15 transition group-hover:bg-[#090909] group-hover:text-white"
               >→</span
             >
           </a>
           <a
             href="#servicios"
-            class="rounded-full px-4 py-3.5 text-[13px] font-medium text-black/50 transition hover:text-black"
+            class="rounded-full px-4 py-3.5 text-[13px] font-medium text-white/60 transition hover:text-white"
           >
             Cómo trabajamos
             <span class="ml-2">↘</span>
           </a>
         </div>
       </div>
-
-  </div>
-
-  <!-- MOCKUP DE CELULAR (mitad visible, saliendo desde el borde inferior derecho) -->
-  <div
-    class="pointer-events-none relative z-10 mx-auto mt-14 w-[270px] rounded-[2.8rem] border border-black/15 bg-black p-3 shadow-[0_50px_120px_rgba(0,0,0,0.3)] sm:w-[320px] lg:absolute lg:bottom-0 lg:right-14 lg:mt-0 lg:w-[440px] lg:translate-x-[6%] lg:translate-y-1/2"
-    data-parallax="0.1"
-    aria-hidden="true"
-  >
-    <!-- botones laterales -->
-    <span class="absolute -left-[3px] top-24 h-10 w-[3px] rounded-l-md bg-black/60"></span>
-    <span class="absolute -left-[3px] top-40 h-14 w-[3px] rounded-l-md bg-black/60"></span>
-    <span class="absolute -right-[3px] top-32 h-16 w-[3px] rounded-r-md bg-black/60"></span>
-
-    <!-- pantalla -->
-    <div class="relative flex aspect-[9/19] flex-col overflow-hidden rounded-[2rem] bg-white">
-      <!-- brillo -->
-      <div
-        class="pointer-events-none absolute inset-0 z-20 bg-gradient-to-br from-white/30 via-transparent to-transparent"
-      ></div>
-
-      <!-- barra de estado -->
-      <div class="relative flex items-center justify-between px-5 pt-3">
-        <span class="text-[9px] font-semibold tracking-tight text-black">9:41</span>
-        <span
-          class="absolute left-1/2 top-2 h-4 w-16 -translate-x-1/2 rounded-full bg-black"
-        ></span>
-        <span class="flex items-center gap-[3px]">
-          <span class="h-[7px] w-[7px] rounded-full bg-black/70"></span>
-          <span class="h-[7px] w-[7px] rounded-full bg-black/70"></span>
-          <span class="h-[7px] w-[7px] rounded-full bg-black/70"></span>
-          <span class="ml-1 flex h-3 w-4 items-center rounded-[3px] border border-black/50 p-[1.5px]">
-            <span class="h-full w-2/3 rounded-[1px] bg-black"></span>
-          </span>
-        </span>
-      </div>
-
-      <!-- tienda ecommerce -->
-      <div class="flex-1 p-4">
-        <!-- navbar -->
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-1">
-            <span class="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-2 w-2 text-white"
-                set:html={icons.leaf}
-              />
-            </span>
-            <span class="text-[8px] font-bold tracking-tight text-black">atelier</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-black/5 text-black/40">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-2.5 w-2.5"
-                set:html={icons.search}
-              />
-            </span>
-            <span class="relative flex h-5 w-5 items-center justify-center rounded-full bg-black/5 text-black/40">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-2.5 w-2.5"
-                set:html={icons.bag}
-              />
-              <span
-                class="absolute -right-0.5 -top-0.5 flex h-3 w-3 items-center justify-center rounded-full bg-emerald-500 text-[5px] font-bold text-white"
-                >2</span
-              >
-            </span>
-          </div>
-        </div>
-
-        <!-- banner promo -->
-        <div class="relative mt-3.5 overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-400 p-3">
-          <span class="absolute -right-4 -top-6 h-16 w-16 rounded-full bg-white/20"></span>
-          <span class="absolute -bottom-8 right-8 h-14 w-14 rounded-full bg-white/10"></span>
-          <p class="relative text-[5px] font-semibold uppercase tracking-[.18em] text-white/70">
-            Nuevo · Otoño 2026
-          </p>
-          <h3 class="relative mt-1 text-[11px] font-bold leading-tight text-white">
-            Hasta 40% OFF<br />en tu primera compra
-          </h3>
-          <span
-            class="relative mt-2 inline-block rounded-full bg-white px-2 py-0.5 text-[5.5px] font-bold text-emerald-700"
-            >Comprar ahora →</span
-          >
-        </div>
-
-        <!-- categorías -->
-        <div class="mt-2.5 flex gap-1">
-          <span class="rounded-full bg-black px-2 py-0.5 text-[5.5px] font-semibold text-white"
-            >Nuevo</span
-          >
-          <span class="rounded-full bg-black/5 px-2 py-0.5 text-[5.5px] font-medium text-black/60"
-            >Vestidos</span
-          >
-          <span class="rounded-full bg-black/5 px-2 py-0.5 text-[5.5px] font-medium text-black/60"
-            >Zapatos</span
-          >
-          <span class="rounded-full bg-black/5 px-2 py-0.5 text-[5.5px] font-medium text-black/60"
-            >Accesorios</span
-          >
-        </div>
-
-        <!-- productos -->
-        <div class="mt-2.5 grid grid-cols-2 gap-2">
-          <div class="overflow-hidden rounded-xl border border-black/[.06] bg-white shadow-sm">
-            <div class="relative flex h-16 items-center justify-center bg-gradient-to-br from-emerald-100 to-teal-50">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-7 w-7 text-emerald-600/60"
-                set:html={icons.dress}
-              />
-              <span
-                class="absolute left-1.5 top-1.5 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[4.5px] font-bold uppercase text-white"
-                >-40%</span
-              >
-            </div>
-            <div class="p-1.5">
-              <div class="text-[6px] font-semibold text-black">Vestido Lino</div>
-              <div class="flex items-baseline justify-between">
-                <span class="text-[6.5px] font-bold text-black">$89.00</span>
-                <span class="text-[4px] text-black/30">$148.00</span>
-              </div>
-              <span
-                class="mt-1 flex h-4 items-center justify-center rounded-full bg-emerald-500 text-[5px] font-semibold text-white"
-                >Agregar +</span
-              >
-            </div>
-          </div>
-
-          <div class="overflow-hidden rounded-xl border border-black/[.06] bg-white shadow-sm">
-            <div class="relative flex h-16 items-center justify-center bg-gradient-to-br from-amber-100 to-orange-50">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-7 w-7 text-amber-600/60"
-                set:html={icons.bag}
-              />
-              <span
-                class="absolute right-1.5 top-1.5 rounded-full bg-white/80 px-1 py-0.5 text-[4.5px] font-bold text-amber-700"
-                >★ 4.9</span
-              >
-            </div>
-            <div class="p-1.5">
-              <div class="text-[6px] font-semibold text-black">Bolso Piel</div>
-              <div class="flex items-baseline justify-between">
-                <span class="text-[6.5px] font-bold text-black">$129.00</span>
-                <span class="text-[4px] text-black/30">Nuevo</span>
-              </div>
-              <span
-                class="mt-1 flex h-4 items-center justify-center rounded-full bg-black text-[5px] font-semibold text-white"
-                >Agregar +</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- notificaciones (fuera y arriba del celular, en una sola ubicación) -->
-    <div
-      class="pointer-events-none absolute bottom-full right-0 z-30 h-16 w-60 pb-10"
-      aria-hidden="true"
-    >
-      {
-        notifications.map((n) => (
-          <div
-            class="notif absolute inset-x-0 top-0 flex w-full items-center gap-3 rounded-2xl border border-black/5 bg-white/95 p-3 shadow-[0_18px_44px_rgba(0,0,0,.16)] backdrop-blur"
-            style={`animation-delay:${n.delay}s`}
-          >
-            <span
-              class={`relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white ${n.color}`}
-            >
-              <span
-                class={`absolute inset-0 rounded-full ${n.color} opacity-40 animate-ping`}
-              ></span>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="relative h-4 w-4"
-                set:html={icons[n.icon]}
-              />
-            </span>
-            <div class="min-w-0">
-              <div class="truncate text-[11px] font-semibold leading-tight text-black/85">
-                {n.title}
-              </div>
-              <div class="text-[9px] leading-tight text-black/45">{n.meta}</div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
   </div>
 </section>
