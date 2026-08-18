@@ -1,15 +1,184 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ServicePage from '../components/ServicePage.astro';
-import { getServicePage } from '../data/servicePages';
-
-const data = getServicePage('seo');
+import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
+import Cta from '../components/ui/Cta.astro';
 ---
 
-{
-  data && (
-    <BaseLayout title={data.seo.title} description={data.seo.description}>
-      <ServicePage data={data} />
-    </BaseLayout>
-  )
-}
+<BaseLayout
+  title="SEO que convierte | Croilab"
+  description="Tu competencia te está robando ventas en Google todos los días. Vamos a recuperarlas."
+>
+  <!-- 1. HERO HOOK -->
+  <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[#050505]">
+    <!-- Luces de fondo estilo Croilab moderno (Blanco/Plata) -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
+
+    <Container class="relative z-10 pt-32 pb-20 text-center">
+      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+        <div class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white] animate-pulse"></div>
+        <span class="text-[10px] font-semibold uppercase tracking-[.2em] text-white/70">Alerta de Oportunidad</span>
+      </div>
+
+      <h1 class="gsap-title mx-auto max-w-5xl text-[clamp(3.5rem,7vw,7.5rem)] font-bold leading-[0.9] tracking-tight text-white mb-8" data-custom-speed="0.8">
+        Tu competencia te está <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-white via-white/70 to-white/30">robando ventas</span> en Google.
+      </h1>
+
+      <p class="mx-auto max-w-2xl text-[17px] leading-relaxed text-white/50 mb-12">
+        Tener una web bonita es inútil si nadie la visita. Dominemos la primera página y transformemos tráfico orgánico en clientes predecibles.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="#metodologia" class="group relative inline-flex items-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-transform duration-300 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+          Descubre cómo
+          <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+        </a>
+        <Button href="/contacto" variant="outline" class="!px-8 !py-4 text-[15px]">Solicitar Auditoría</Button>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 2. LA AGITACIÓN (EL PROBLEMA) -->
+  <section class="relative bg-black py-32 lg:py-48 border-t border-white/5">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-white mb-8 leading-[1.1]" data-custom-speed="0.9">
+            El SEO tradicional está <span class="text-white/30">muerto.</span>
+          </h2>
+          <div class="space-y-6 text-[16px] leading-relaxed text-white/50">
+            <p>
+              Agencias creando artículos de blog genéricos que nadie lee. Creación de enlaces en sitios basura. Promesas de "estar el número 1" para palabras clave que no generan ingresos.
+            </p>
+            <p>
+              Nosotros no hacemos eso. Nuestro enfoque de <strong class="text-white">Ingeniería de Conversión</strong> se asegura de que cada visita que atraemos a tu sitio web tiene la tarjeta en la mano lista para comprar.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-3xl border border-white/10 transition-colors duration-500 group-hover:border-white/20"></div>
+          <div class="relative p-10 backdrop-blur-md rounded-3xl">
+            <div class="text-7xl font-bold text-white mb-4">91%</div>
+            <p class="text-lg text-white/60">de las páginas en internet no reciben tráfico orgánico de Google porque no tienen una arquitectura diseñada para responder a la intención de búsqueda real del usuario.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 3. METODOLOGÍA (STICKY SCROLL) -->
+  <section id="metodologia" class="relative bg-[#050505] py-32 border-t border-white/5">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start">
+        <!-- Izquierda: Sticky Header -->
+        <div class="lg:sticky lg:top-40">
+          <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-white/40 mb-6 block">Mecanismo Único</span>
+          <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-white mb-6" data-custom-speed="0.95">
+            Ingeniería <br/>
+            <span class="italic font-serif font-normal text-white/40">Inversa.</span>
+          </h2>
+          <p class="text-[16px] leading-relaxed text-white/50 max-w-sm">
+            En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
+          </p>
+        </div>
+
+        <!-- Derecha: Pasos -->
+        <div class="flex flex-col gap-12">
+          {
+            [
+              { title: "Arquitectura Semántica", desc: "Estructuramos tu sitio como un ecosistema. Optimizamos la jerarquía de información para que Google entienda exactamente tu autoridad sobre el tema." },
+              { title: "Intención de Compra", desc: "No apuntamos a palabras clave de alto volumen y cero ventas. Apuntamos a los términos transaccionales exactos que tus mejores clientes escriben antes de sacar su tarjeta." },
+              { title: "Autoridad Programática", desc: "Inyectamos confianza algorítmica. Construimos PR digital y enlaces desde ecosistemas relevantes que gritan a Google: 'Ellos son los líderes absolutos de la industria'." },
+              { title: "Optimización de Conversión", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese tráfico frío hacia tu formulario de contacto o carrito." }
+            ].map((step, i) => (
+              <div class="step-card group relative p-10 rounded-[2rem] border border-white/10 bg-[#0a0a0a] transition-all hover:bg-white/[0.02]">
+                <div class="text-[80px] font-bold text-white/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-white/[0.06]">
+                  0{i + 1}
+                </div>
+                <h3 class="relative z-10 text-2xl font-semibold text-white mb-4">{step.title}</h3>
+                <p class="relative z-10 text-[15px] leading-relaxed text-white/50">{step.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 4. ROI / RESULTADOS -->
+  <section class="relative bg-black py-32 lg:py-48 border-t border-white/5 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+    
+    <Container class="relative z-10 text-center">
+      <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-white mb-16" data-custom-speed="0.85">
+        No compramos clics.<br />
+        <span class="italic font-serif font-normal text-white/50">Compramos cuota de mercado.</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.04]">
+          <div class="text-5xl font-bold text-white mb-2">+340%</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/40">Tráfico Orgánico</div>
+        </div>
+        <div class="p-10 rounded-[2.5rem] bg-white/[0.04] border border-white/20 backdrop-blur-sm transform md:-translate-y-6 shadow-[0_0_50px_rgba(255,255,255,0.03)] transition-all hover:bg-white/[0.06]">
+          <div class="text-6xl font-bold text-white mb-2">+45%</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80">Tasa de Conversión</div>
+        </div>
+        <div class="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.04]">
+          <div class="text-5xl font-bold text-white mb-2">ROI +</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/40">En menos de 6 meses</div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 5. FINAL CTA (EL CIERRE) -->
+  <Cta />
+</BaseLayout>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animaciones de entrada suave para las tarjetas de pasos
+  const cards = gsap.utils.toArray('.step-card');
+  
+  cards.forEach((card) => {
+    gsap.from(card, {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+      }
+    });
+  });
+
+  // Animación Parallax GSAP para los Títulos
+  const titles = gsap.utils.toArray('.gsap-title');
+  titles.forEach((title) => {
+    const speed = parseFloat(title.getAttribute('data-custom-speed')) || 1;
+    const yOffset = (1 - speed) * 200; // Calcula el desplazamiento basado en la velocidad
+
+    gsap.fromTo(title,
+      { y: yOffset, opacity: 0.2 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: title,
+          start: "top 95%", // Comienza la animación cuando el título entra en la vista
+          end: "top 20%",   // Termina cuando el título está en la parte superior
+          scrub: 1,         // Sincroniza suavemente con el scroll (efecto Parallax real)
+        }
+      }
+    );
+  });
+</script>

@@ -1,7 +1,17 @@
 ---
 const navLinks = [
   { label: 'Proyectos', href: '/proyectos' },
-  { label: 'Servicios', href: '/servicios' },
+  { 
+    label: 'Servicios', 
+    href: '#',
+    children: [
+      { label: 'SEO (Ingeniería Inversa)', href: '/seo' },
+      { label: 'Meta Ads', href: '/meta-ads' },
+      { label: 'Diseño Web', href: '/diseno-web' },
+      { label: 'Ecommerce', href: '/ecommerce' },
+      { label: 'Conversiones', href: '/conversiones' },
+    ]
+  },
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Blog', href: '/blog' },
 ];
@@ -22,9 +32,29 @@ const navLinks = [
     <nav class="hidden items-center gap-9 text-[13px] font-medium text-white/60 md:flex">
       {
         navLinks.map((link) => (
-          <a href={link.href} class="transition hover:text-white">
-            {link.label}
-          </a>
+          link.children ? (
+            <div class="group relative py-4">
+              <button class="flex items-center gap-1.5 transition hover:text-white" aria-haspopup="true">
+                {link.label}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:rotate-180"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              
+              <!-- Menú Desplegable -->
+              <div class="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-64 opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                <div class="rounded-2xl border border-white/10 bg-[#0a0a0a]/95 backdrop-blur-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                  {link.children.map(child => (
+                    <a href={child.href} class="block rounded-xl px-4 py-3 hover:bg-white/[0.04] transition-colors text-white/70 hover:text-white">
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a href={link.href} class="py-4 transition hover:text-white">
+              {link.label}
+            </a>
+          )
         ))
       }
     </nav>
@@ -47,33 +77,48 @@ const navLinks = [
         aria-controls="mobile-menu"
         aria-label="Abrir menú"
       >
-        <span class="block h-[2px] w-5 bg-[#111111]"></span>
-        <span class="block h-[2px] w-5 bg-[#111111]"></span>
-        <span class="block h-[2px] w-5 bg-[#111111]"></span>
+        <span class="block h-[2px] w-5 bg-white"></span>
+        <span class="block h-[2px] w-5 bg-white"></span>
+        <span class="block h-[2px] w-5 bg-white"></span>
       </button>
     </div>
   </div>
 
-  <!-- OVERLAY MÓVIL (capa delante del contenido) -->
+  <!-- OVERLAY MÓVIL -->
   <div id="mobile-menu" class="fixed inset-0 z-40 md:hidden" aria-hidden="true">
-    <div class="absolute inset-0 bg-white/70 backdrop-blur-md" data-close-menu></div>
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-md" data-close-menu></div>
     <div
       class="menu-panel absolute inset-x-0 bottom-0 top-[85px] overflow-y-auto bg-[#090909] px-6 pt-6 shadow-[0_-20px_60px_rgba(0,0,0,.5)]"
     >
-      <nav class="flex flex-col" aria-label="Menú móvil">
+      <nav class="flex flex-col pb-10" aria-label="Menú móvil">
         {
           navLinks.map((link) => (
-            <a
-              href={link.href}
-              class="border-b border-white/10 py-4 text-lg font-semibold tracking-tight text-white/70 transition hover:text-white"
-            >
-              {link.label}
-            </a>
+            link.children ? (
+              <div class="flex flex-col border-b border-white/10 py-4">
+                <span class="text-lg font-semibold tracking-tight text-white mb-4">
+                  {link.label}
+                </span>
+                <div class="flex flex-col gap-3 pl-4 border-l border-white/10">
+                  {link.children.map(child => (
+                    <a href={child.href} class="text-[15px] font-medium text-white/60 hover:text-white transition">
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                href={link.href}
+                class="border-b border-white/10 py-4 text-lg font-semibold tracking-tight text-white/70 transition hover:text-white"
+              >
+                {link.label}
+              </a>
+            )
           ))
         }
         <a
           href="/contacto"
-          class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[13px] font-semibold text-[#090909] transition duration-300 hover:opacity-80"
+          class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[13px] font-semibold text-[#090909] transition duration-300 hover:opacity-80"
         >
           Contacto →
         </a>
