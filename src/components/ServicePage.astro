@@ -45,12 +45,12 @@ const faqSchema = {
           </span>
         </div>
         <h1
-          class="text-[clamp(3.2rem,6.5vw,6.8rem)] font-semibold leading-[.9] tracking-[-.065em] text-white"
+          class="text-[clamp(3.2rem,6.5vw,6.8rem)] font-semibold leading-[.9] tracking-[-.065em] text-black"
         >
           {data.hero.title}
           <span class="text-accent">{data.hero.highlight}</span>
         </h1>
-        <p class="mt-8 max-w-2xl text-[15px] leading-7 text-white/50 md:text-[17px]">
+        <p class="mt-8 max-w-2xl text-[15px] leading-7 text-black/50 md:text-[17px]">
           {data.hero.intro}
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -66,12 +66,12 @@ const faqSchema = {
           </Button>
         </div>
       </div>
-      <div class="mt-16 grid max-w-[720px] grid-cols-3 gap-4 border-t border-white/10 pt-6">
+      <div class="mt-16 grid max-w-[720px] grid-cols-3 gap-4 border-t border-black/10 pt-6">
         {
           data.hero.stats.map((stat, i) => (
-            <div class:list={[i > 0 && 'border-l border-white/10 pl-5']}>
-              <div class="text-[23px] font-semibold tracking-tight text-white">{stat.value}</div>
-              <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-white/35">
+            <div class:list={[i > 0 && 'border-l border-black/10 pl-5']}>
+              <div class="text-[23px] font-semibold tracking-tight text-black">{stat.value}</div>
+              <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">
                 {stat.label}
               </div>
             </div>
@@ -82,7 +82,7 @@ const faqSchema = {
   </section>
 
   <!-- PROBLEMA -->
-  <section class="border-t border-white/10 bg-[#090909]">
+  <section class="border-t border-black/10 bg-white">
     <Container class="py-24 lg:py-32">
       <div class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
         <SectionTitle kicker="El problema" class="lg:sticky lg:top-28 lg:self-start">
@@ -94,7 +94,7 @@ const faqSchema = {
             {
               data.problem.points.map((point, i) => (
                 <li
-                  class="reveal-up flex items-start gap-4 rounded-2xl border border-white/10 bg-[#111111] p-5"
+                  class="reveal-up flex items-start gap-4 rounded-2xl border border-black/10 bg-black/5 p-5"
                   style={`--i:${i}`}
                 >
                   <span
@@ -103,7 +103,7 @@ const faqSchema = {
                   >
                     ×
                   </span>
-                  <span class="text-[15px] leading-6 text-white/70">{point}</span>
+                  <span class="text-[15px] leading-6 text-black/70">{point}</span>
                 </li>
               ))
             }
@@ -114,7 +114,7 @@ const faqSchema = {
   </section>
 
   <!-- SOLUCIÓN -->
-  <section class="border-t border-white/10 bg-transparent">
+  <section class="border-t border-black/10 bg-transparent">
     <Container class="py-24 lg:py-32">
       <SectionTitle kicker="La solución" description={data.solution.intro}>
         {data.solution.title}
@@ -122,11 +122,11 @@ const faqSchema = {
       <div class="mt-16 grid gap-6 md:grid-cols-3">
         {
           data.solution.points.map((point, i) => (
-            <div class="reveal-up rounded-2xl border border-white/10 p-8" style={`--i:${i}`}>
-              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-white">
+            <div class="reveal-up rounded-2xl border border-black/10 p-8" style={`--i:${i}`}>
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-black">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 class="mt-6 text-lg font-semibold tracking-tight text-white">{point.title}</h3>
+              <h3 class="mt-6 text-lg font-semibold tracking-tight text-black">{point.title}</h3>
               <p class="mt-2 text-sm leading-6 text-muted">{point.description}</p>
             </div>
           ))
@@ -136,21 +136,21 @@ const faqSchema = {
   </section>
 
   <!-- BENEFICIOS -->
-  <section class="border-t border-white/10 bg-[#090909]">
+  <section class="border-t border-black/10 bg-white">
     <Container class="py-24 lg:py-32">
       <SectionTitle kicker="Beneficios" align="center">
         ¿Qué obtienes con {data.name}?
       </SectionTitle>
       <div
-        class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2"
+        class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 md:grid-cols-2"
       >
         {
           data.benefits.map((benefit, i) => (
-            <div class="reveal-up bg-[#111111] p-8" style={`--i:${i}`}>
+            <div class="reveal-up bg-black/5 p-8" style={`--i:${i}`}>
               <span class="text-xs font-medium tracking-[.2em] text-accent">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 class="mt-4 text-xl font-semibold tracking-tight text-white">{benefit.title}</h3>
+              <h3 class="mt-4 text-xl font-semibold tracking-tight text-black">{benefit.title}</h3>
               <p class="mt-2 text-sm leading-6 text-muted">{benefit.description}</p>
             </div>
           ))
@@ -160,7 +160,7 @@ const faqSchema = {
   </section>
 
   <!-- PROCESO -->
-  <section class="border-t border-white/10 bg-transparent">
+  <section class="border-t border-black/10 bg-transparent">
     <Container class="py-24 lg:py-32">
       <SectionTitle
         kicker="Proceso"
@@ -175,7 +175,7 @@ const faqSchema = {
               <div class="flex h-12 w-12 items-center justify-center rounded-full bg-black text-sm font-semibold text-white">
                 {step.num}
               </div>
-              <h3 class="mt-6 text-lg font-semibold tracking-tight text-white">{step.title}</h3>
+              <h3 class="mt-6 text-lg font-semibold tracking-tight text-black">{step.title}</h3>
               <p class="mt-2 text-sm leading-6 text-muted">{step.description}</p>
             </li>
           ))
@@ -185,21 +185,21 @@ const faqSchema = {
   </section>
 
   <!-- CARACTERÍSTICAS -->
-  <section class="border-t border-white/10 bg-[#090909]">
+  <section class="border-t border-black/10 bg-white">
     <Container class="py-24 lg:py-32">
       <SectionTitle kicker="Características" align="center">
         Todo lo que <span class="text-accent">incluye</span>
       </SectionTitle>
       <div
-        class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-3"
+        class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 md:grid-cols-2 lg:grid-cols-3"
       >
         {
           data.features.map((feature, i) => (
-            <div class="reveal-up bg-[#111111] p-7" style={`--i:${i}`}>
+            <div class="reveal-up bg-black/5 p-7" style={`--i:${i}`}>
               <span class="flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-sm text-accent">
                 ✓
               </span>
-              <h3 class="mt-5 text-base font-semibold tracking-tight text-white">{feature.title}</h3>
+              <h3 class="mt-5 text-base font-semibold tracking-tight text-black">{feature.title}</h3>
               <p class="mt-2 text-sm leading-6 text-muted">{feature.description}</p>
             </div>
           ))
@@ -209,16 +209,16 @@ const faqSchema = {
   </section>
 
   <!-- CTA -->
-  <section class="border-t border-white/10 bg-black">
+  <section class="border-t border-black/10 bg-black/5">
     <Container class="py-24 text-center lg:py-32">
       <div class="reveal-up mx-auto max-w-3xl">
         <h2
-          class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-white"
+          class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-black"
         >
           {data.cta.title}
           <span class="text-accent">{data.cta.highlight}</span>
         </h2>
-        <p class="mx-auto mt-8 max-w-md text-[15px] leading-7 text-white/50">
+        <p class="mx-auto mt-8 max-w-md text-[15px] leading-7 text-black/50">
           {data.cta.subtitle}
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -229,7 +229,7 @@ const faqSchema = {
             rel="noopener noreferrer"
             variant="ghost"
             size="lg"
-            class="!text-white/70 hover:!text-white"
+            class="!text-black/70 hover:!text-black"
           >
             WhatsApp
           </Button>
@@ -241,7 +241,7 @@ const faqSchema = {
   <!-- PROYECTOS RELACIONADOS -->
   {
     related.length > 0 && (
-      <section class="border-t border-white/10 bg-transparent">
+      <section class="border-t border-black/10 bg-transparent">
         <Container class="py-24 lg:py-32">
           <SectionTitle
             kicker="Proyectos relacionados"
@@ -260,7 +260,7 @@ const faqSchema = {
   }
 
   <!-- FAQ -->
-  <section class="border-t border-white/10 bg-[#090909]">
+  <section class="border-t border-black/10 bg-white">
     <Container class="py-24 lg:py-32">
       <SectionTitle kicker="Preguntas frecuentes" align="center">
         Resolvemos tus <span class="text-accent">dudas</span>
@@ -268,12 +268,12 @@ const faqSchema = {
       <div class="mx-auto mt-16 max-w-3xl">
         {
           data.faq.map((item, i) => (
-            <details class="reveal-up group border-b border-white/10 py-6" style={`--i:${i}`}>
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold tracking-tight text-white">
+            <details class="reveal-up group border-b border-black/10 py-6" style={`--i:${i}`}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold tracking-tight text-black">
                 {item.question}
                 <span
                   aria-hidden="true"
-                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-lg text-white/50 transition duration-300 group-open:rotate-45"
+                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/15 text-lg text-black/50 transition duration-300 group-open:rotate-45"
                 >
                   +
                 </span>

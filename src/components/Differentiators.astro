@@ -3,21 +3,21 @@ import { differentiators } from '../data/differentiators';
 import Container from './ui/Container.astro';
 ---
 
-<section class="relative overflow-hidden border-t border-white/10 bg-[#090909] text-white">
-  <div class="grid-bg-invert absolute inset-0" aria-hidden="true"></div>
+<section class="relative overflow-hidden border-t border-black/10 bg-white text-black">
+  <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
   <Container class="relative z-10 py-24 lg:py-36">
     <!-- CABECERA -->
     <div class="reveal-up flex flex-wrap items-end justify-between gap-10">
       <div class="max-w-[780px]">
         <div class="mb-8 flex items-center gap-4">
           <span class="h-px w-9 bg-accent"></span>
-          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/40"
+          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/40"
             >Diferenciales</span
           >
-          <span class="h-px w-24 bg-white/10"></span>
+          <span class="h-px w-24 bg-black/10"></span>
         </div>
         <h2 class="text-[clamp(3rem,6.8vw,6.5rem)] font-semibold leading-[.9] tracking-[-.065em]">
-          <span class="block text-white/15">Por qué Croilab</span>
+          <span class="block text-black/15">Por qué Croilab</span>
           <span class="block text-accent">marca la diferencia</span>
         </h2>
       </div>
@@ -26,47 +26,59 @@ import Container from './ui/Container.astro';
       <div class="hidden items-center gap-6 md:flex" data-parallax="0.15">
         <div class="relative flex h-28 w-28 items-center justify-center">
           <span
-            class="absolute inset-0 rounded-full border border-dashed border-white/20 animate-spinSlow"
+            class="absolute inset-0 rounded-full border border-dashed border-black/20 animate-spinSlow"
           ></span>
-          <span class="text-center text-[10px] uppercase leading-4 tracking-[.2em] text-white/40"
+          <span class="text-center text-[10px] uppercase leading-4 tracking-[.2em] text-black/40"
             >lab<br />system<br />04</span
           >
         </div>
       </div>
     </div>
 
-    <!-- LISTA EDITORIAL -->
-    <ul class="mt-20 lg:mt-28">
-      {
-        differentiators.map((d, i) => (
-          <li class="reveal-up border-t border-white/10 last:border-b" style={`--i:${i}`}>
-            <div class="group relative grid items-center gap-x-10 gap-y-5 py-10 transition-colors duration-300 lg:grid-cols-[80px_1fr_360px_64px] lg:py-14">
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -right-6 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(120px,16vw,260px)] font-semibold leading-none tracking-tighter text-white/[.045] transition-colors duration-500 lg:block"
-              >
-                {d.num}
-              </span>
+    <!-- CONTENEDOR PRINCIPAL: IMAGEN + LISTA -->
+    <div class="mt-20 lg:mt-28 grid gap-16 lg:grid-cols-2 lg:items-center">
+      
+      <!-- LADO IZQUIERDO: IMAGEN -->
+      <div class="reveal-up relative w-full aspect-[4/5] md:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden">
+        <!-- Overlay sutil para unificar colores -->
+        <div class="absolute inset-0 bg-black/20 z-10 transition-colors duration-500 hover:bg-transparent"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
+          alt="Por qué elegir Croilab" 
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        />
+      </div>
 
-              <span class="text-xs font-medium tracking-[.2em] text-white/35 transition-colors duration-300 group-hover:text-accent">
-                {d.num}
-              </span>
+      <!-- LADO DERECHO: LISTA EDITORIAL -->
+      <ul class="flex flex-col w-full">
+        {
+          differentiators.map((d, i) => (
+            <li class="reveal-up border-t border-black/10 last:border-b" style={`--i:${i}`}>
+              <div class="group relative flex flex-col sm:flex-row sm:items-start lg:items-center justify-between gap-6 py-8 transition-colors duration-300">
+                
+                <div class="flex items-start gap-4 sm:gap-6">
+                  <span class="text-xs font-medium tracking-[.2em] text-black/35 transition-colors duration-300 group-hover:text-accent mt-2 sm:mt-1">
+                    {d.num}
+                  </span>
+                  
+                  <div class="space-y-3 max-w-lg">
+                    <h3 class="text-2xl sm:text-3xl lg:text-[2rem] font-semibold leading-tight tracking-[-.04em] text-black transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent">
+                      {d.title}
+                    </h3>
+                    <p class="text-sm leading-relaxed text-black/45 transition-colors duration-300 group-hover:text-black/70">
+                      {d.description}
+                    </p>
+                  </div>
+                </div>
 
-              <h3 class="relative z-10 text-[clamp(2.2rem,4.6vw,4rem)] font-semibold leading-none tracking-[-.04em] text-white transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent">
-                {d.title}
-              </h3>
-
-              <p class="text-sm leading-6 text-white/45 transition-colors duration-300 group-hover:text-white/70 lg:text-right">
-                {d.description}
-              </p>
-
-              <span class="hidden h-12 w-12 items-center justify-center justify-self-end rounded-full border border-white/15 text-lg text-white transition-all duration-300 group-hover:rotate-45 group-hover:border-accent group-hover:bg-accent lg:flex">
-                ↗
-              </span>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+                <span class="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/15 text-lg text-black transition-all duration-300 group-hover:rotate-45 group-hover:border-accent group-hover:bg-accent group-hover:text-white sm:flex">
+                  ↗
+                </span>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </Container>
 </section>

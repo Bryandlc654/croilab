@@ -8,71 +8,129 @@ const waLink = whatsappLink();
 const words = ['Diagnóstico', 'Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crecimiento'];
 ---
 
-<section class="relative overflow-hidden border-t border-white/10 bg-[#050505] py-32 lg:py-48">
+<section class="relative overflow-hidden border-t border-black/10 bg-white py-32 lg:py-48">
   <!-- Iluminaciones de fondo atractivas (Sin azul, usando blancos puros y grises plateados) -->
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
   <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
-  <div class="grid-bg-invert absolute inset-0 opacity-10 pointer-events-none"></div>
+  <div class="grid-bg absolute inset-0 opacity-10 pointer-events-none"></div>
 
   <Container class="relative z-10">
-    <div class="reveal-up text-center mb-16">
-      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-        <div class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white] animate-pulse"></div>
-        <span class="text-[10px] font-semibold uppercase tracking-[.2em] text-white/70">Contacto</span>
-      </div>
-    </div>
-
-    <!-- Contenedor Glassmorphism Principal -->
-    <div class="reveal-up mx-auto max-w-5xl rounded-[3rem] border border-white/10 bg-white/[0.02] backdrop-blur-2xl p-10 lg:p-20 text-center shadow-[0_0_100px_rgba(255,255,255,0.02)] relative overflow-hidden">
+    <!-- Contenedor Principal Light Mode -->
+    <div class="reveal-up mx-auto max-w-7xl rounded-[2.5rem] lg:rounded-[3rem] border border-black/10 bg-[#fbfbfb] p-8 lg:p-16 shadow-2xl shadow-black/5 relative overflow-hidden">
       
-      <!-- Reflejo interior del glassmorphism -->
-      <div class="absolute -top-40 -right-40 w-[400px] h-[400px] bg-white/10 rounded-full blur-[80px]"></div>
+      <!-- Abstract Gradients -->
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
 
-      <h2 class="relative z-10 mx-auto max-w-4xl text-[clamp(2.5rem,6vw,6.5rem)] font-bold leading-[1.05] tracking-tight text-white mb-8">
-        ¿Listo para dominar <br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/70 to-white/30 italic font-serif font-normal">tu mercado?</span>
-      </h2>
-
-      <p class="relative z-10 mx-auto max-w-xl text-[16px] leading-relaxed text-white/50 mb-12">
-        Agenda un diagnóstico gratuito. Analizaremos tu ecosistema digital actual y te mostraremos exactamente dónde estás perdiendo conversiones (y cómo recuperarlas).
-      </p>
-
-      <div class="relative z-10 flex flex-col items-center gap-6">
-        <a
-          href="/contacto"
-          class="group relative inline-flex items-center gap-6 rounded-full bg-white px-8 py-5 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden"
-        >
-          <!-- Efecto hover brillo -->
-          <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]"></div>
-          
-          Solicitar diagnóstico gratuito
-          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/10 transition-transform duration-500 group-hover:rotate-45">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </a>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
         
-        <Button
-          href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="ghost"
-          class="!text-white/40 hover:!text-white/80 text-[13px] tracking-wide"
-        >
-          O hablemos directo por WhatsApp →
-        </Button>
+        <!-- Lado Izquierdo: Textos -->
+        <div class="text-left">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-black/10 bg-white shadow-sm mb-8">
+            <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+            <span class="text-[10px] font-bold uppercase tracking-[.2em] text-black/70">Disponibilidad Limitada</span>
+          </div>
+
+          <h2 class="text-[clamp(2.5rem,5vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-black mb-6">
+            ¿Listo para dominar <br />
+            <span class="font-serif italic font-light text-black/40">tu mercado?</span>
+          </h2>
+
+          <p class="text-[16px] lg:text-[18px] leading-relaxed text-black/60 mb-10 max-w-[450px]">
+            Agenda un diagnóstico gratuito. Analizaremos tu ecosistema digital actual y te mostraremos exactamente dónde estás perdiendo conversiones.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <a
+              href="/contacto"
+              class="group relative flex h-14 items-center justify-center gap-4 rounded-full bg-black px-8 text-[14px] font-bold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-black/20 overflow-hidden w-full sm:w-auto"
+            >
+              <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]"></div>
+              Solicitar diagnóstico
+              <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:rotate-45">↗</span>
+            </a>
+            <Button
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="ghost"
+              class="!text-black/50 hover:!text-black w-full sm:w-auto"
+            >
+              WhatsApp directo
+            </Button>
+          </div>
+        </div>
+
+        <!-- Lado Derecho: UI Mockup -->
+        <div class="relative hidden lg:block" style="perspective: 1000px;">
+          <div class="relative w-full max-w-[420px] ml-auto transition-transform duration-700 ease-out hover:rotate-0" style="transform: rotateY(-10deg) rotateX(5deg);">
+            
+            <!-- Calendar Card Mockup -->
+            <div class="w-full bg-white rounded-2xl border border-black/10 shadow-[0_30px_60px_rgba(0,0,0,0.08)] p-6 relative z-20">
+              <div class="flex items-center justify-between border-b border-black/5 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center border border-black/5">
+                    <svg class="w-5 h-5 text-black/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-black">Llamada de Diagnóstico</h4>
+                    <p class="text-[11px] text-black/50">Google Meet • 30 min</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Mini Calendar Grid -->
+              <div class="grid grid-cols-7 gap-1 text-center mb-4">
+                {['L','M','X','J','V','S','D'].map(day => (
+                  <span class="text-[9px] font-bold text-black/40 mb-1">{day}</span>
+                ))}
+                <!-- Empty days -->
+                <div class="p-1"></div><div class="p-1"></div><div class="p-1"></div>
+                <!-- Days -->
+                {Array.from({length: 12}).map((_, i) => (
+                  <div class={`text-[11px] font-medium p-1.5 rounded-md cursor-pointer transition-colors ${i === 8 ? 'bg-black text-white shadow-md' : 'text-black/70 hover:bg-black/5'}`}>
+                    {12 + i}
+                  </div>
+                ))}
+              </div>
+
+              <!-- Time Slots -->
+              <div class="flex gap-2">
+                <div class="flex-1 text-center py-2 rounded-md border border-black/10 text-[11px] font-bold text-black hover:border-black transition-colors cursor-pointer">10:00 AM</div>
+                <div class="flex-1 text-center py-2 rounded-md bg-black text-white text-[11px] font-bold shadow-md cursor-pointer">02:30 PM</div>
+                <div class="flex-1 text-center py-2 rounded-md border border-black/10 text-[11px] font-bold text-black hover:border-black transition-colors cursor-pointer">04:00 PM</div>
+              </div>
+            </div>
+
+            <!-- Floating Element: Profile -->
+            <div class="absolute -right-8 top-12 w-48 bg-white/90 backdrop-blur-md border border-black/10 rounded-xl p-3 shadow-xl z-30 animate-float">
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-100 to-purple-100 flex items-center justify-center text-blue-600 font-bold text-sm">C</div>
+                  <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></div>
+                </div>
+                <div>
+                  <p class="text-[11px] font-bold text-black leading-tight">Equipo Croilab</p>
+                  <p class="text-[9px] text-black/50">Estratega asignado</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </Container>
 
   <!-- Marquee inferior más elegante -->
-  <div class="marquee marquee-mask mt-32 border-y border-white/5 py-4 lg:mt-40 bg-white/[0.01]">
+  <div class="marquee marquee-mask mt-32 border-y border-black/5 py-4 lg:mt-40 bg-white/[0.01]">
     <div class="marquee-track">
       {
         words.map((word) => (
           <span
-            class="mr-16 flex items-center whitespace-nowrap text-[clamp(1.5rem,3vw,3rem)] font-light tracking-widest text-white/20 uppercase"
+            class="mr-16 flex items-center whitespace-nowrap text-[clamp(1.5rem,3vw,3rem)] font-light tracking-widest text-black/20 uppercase"
           >
-            {word}<span class="ml-16 text-white/10 text-xl">✦</span>
+            {word}<span class="ml-16 text-black/10 text-xl">✦</span>
           </span>
         ))
       }
@@ -80,12 +138,22 @@ const words = ['Diagnóstico', 'Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crec
         words.map((word) => (
           <span
             aria-hidden="true"
-            class="mr-16 flex items-center whitespace-nowrap text-[clamp(1.5rem,3vw,3rem)] font-light tracking-widest text-white/20 uppercase"
+            class="mr-16 flex items-center whitespace-nowrap text-[clamp(1.5rem,3vw,3rem)] font-light tracking-widest text-black/20 uppercase"
           >
-            {word}<span class="ml-16 text-white/10 text-xl">✦</span>
+            {word}<span class="ml-16 text-black/10 text-xl">✦</span>
           </span>
         ))
       }
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+</style>

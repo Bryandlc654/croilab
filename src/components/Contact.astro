@@ -5,8 +5,8 @@ import Container from './ui/Container.astro';
 const waLink = whatsappLink();
 ---
 
-<section id="contacto" class="relative overflow-hidden border-t border-white/10 bg-[#050505]">
-  <div class="grid-bg-invert absolute inset-0 opacity-10" aria-hidden="true"></div>
+<section id="contacto" class="relative overflow-hidden border-t border-black/10 bg-white">
+  <div class="grid-bg absolute inset-0 opacity-10" aria-hidden="true"></div>
   
   <!-- Iluminaciones modernas en el fondo (sin azules, puros blancos) -->
   <div class="absolute -bottom-48 left-[-10%] w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
@@ -17,17 +17,17 @@ const waLink = whatsappLink();
       <!-- CABECERA -->
       <div class="reveal-up">
         <div class="mb-8 flex items-center gap-4">
-          <span class="h-px w-9 bg-white/20"></span>
-          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/50">
+          <span class="h-px w-9 bg-black/20"></span>
+          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/50">
             Contacto
           </span>
         </div>
         <h2
-          class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-white"
+          class="text-[clamp(2.6rem,4.6vw,4.2rem)] font-semibold leading-[.95] tracking-[-.05em] text-black"
         >
-          Hablemos de tu <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">próximo</span> crecimiento
+          Hablemos de tu <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-black to-black/40">próximo</span> crecimiento
         </h2>
-        <p class="mt-8 max-w-md text-[15px] leading-7 text-white/50">
+        <p class="mt-8 max-w-md text-[15px] leading-7 text-black/50">
           Cuéntanos dónde está tu negocio hoy y hacia dónde quieres llevarlo. Sin compromiso.
         </p>
         <div class="mt-10 flex items-center gap-3">
@@ -35,7 +35,7 @@ const waLink = whatsappLink();
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-40"></span>
             <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
           </span>
-          <span class="text-xs font-medium uppercase tracking-[.2em] text-white/40">
+          <span class="text-xs font-medium uppercase tracking-[.2em] text-black/40">
             Disponibles · respuesta &lt; 24h
           </span>
         </div>
@@ -44,15 +44,15 @@ const waLink = whatsappLink();
       <!-- TERMINAL -->
       <div class="reveal-up relative" style="--i:1">
         <div
-          class="overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a] shadow-[0_40px_100px_rgba(255,255,255,0.02)] backdrop-blur-xl"
+          class="overflow-hidden rounded-2xl border border-black/10 bg-[#0a0a0a] shadow-[0_40px_100px_rgba(255,255,255,0.02)] backdrop-blur-xl"
         >
           <!-- Reflejo top edge glassmorphism -->
           <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-          <div class="flex items-center gap-3 border-b border-white/[.07] bg-white/[0.02] px-5 py-4">
-            <span class="h-3 w-3 rounded-full bg-white/20"></span>
-            <span class="h-3 w-3 rounded-full bg-white/20"></span>
-            <span class="h-3 w-3 rounded-full bg-white/20"></span>
+          <div class="flex items-center gap-3 border-b border-black/[.07] bg-white/[0.02] px-5 py-4">
+            <span class="h-3 w-3 rounded-full bg-black/20"></span>
+            <span class="h-3 w-3 rounded-full bg-black/20"></span>
+            <span class="h-3 w-3 rounded-full bg-black/20"></span>
             <span class="ml-3 hidden font-mono text-xs text-white/30 sm:inline"
               >croilab@lab:~/contacto</span
             >
@@ -105,7 +105,7 @@ const waLink = whatsappLink();
           class="absolute -right-7 -top-7 hidden h-28 w-28 items-center justify-center lg:flex"
           aria-hidden="true"
         >
-          <div class="absolute inset-0 rounded-full bg-[#050505] shadow-[0_0_30px_rgba(255,255,255,0.05)]"></div>
+          <div class="absolute inset-0 rounded-full bg-black shadow-xl"></div>
           <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full animate-spinSlow">
             <defs>
               <path
@@ -113,14 +113,14 @@ const waLink = whatsappLink();
                 d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
               />
             </defs>
-            <text class="fill-white/60 text-[10.5px] uppercase" style="letter-spacing: .18em">
+            <text class="fill-white/70 text-[10.5px] uppercase" style="letter-spacing: .18em">
               <textPath href="#contact-circle" textLength="228" lengthAdjust="spacingAndGlyphs">
                 hablemos · hagamos crecer · croilab ·
               </textPath>
             </text>
           </svg>
           <span
-            class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-lg text-black shadow-[0_10px_30px_rgba(255,255,255,.15)] transition-transform hover:scale-110"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-lg text-black shadow-md transition-transform hover:scale-110"
             >↗</span
           >
         </div>

@@ -25,10 +25,10 @@ import Container from './ui/Container.astro';
 }
 </style>
 
-<section class="relative overflow-hidden border-t border-white/10 bg-[#090909] py-24 lg:py-40">
+<section class="relative overflow-hidden border-t border-black/10 bg-white py-24 lg:py-40">
   
   <!-- GRID & TEXTURES -->
-  <div class="grid-bg-invert absolute inset-0 opacity-15 z-0"></div>
+  <div class="grid-bg absolute inset-0 opacity-15 z-0"></div>
   <div class="noise-overlay z-0" style="position: absolute; inset: 0; pointer-events: none; background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;); opacity: 0.04; mix-blend-mode: overlay;"></div>
   
   <!-- BLUE ILLUMINATION (AURA) -->
@@ -36,13 +36,13 @@ import Container from './ui/Container.astro';
 
   <!-- DECORATIVE FLOATING ELEMENTS -->
   <!-- Left floating elements -->
-  <div class="absolute left-[10%] top-[20%] h-[300px] w-[300px] rounded-full border border-white/5 opacity-50 animate-float" aria-hidden="true" data-speed="0.2"></div>
-  <div class="absolute left-[15%] top-[15%] h-[150px] w-[150px] rounded-full border border-dashed border-white/10 opacity-40 animate-spinSlow" aria-hidden="true" data-speed="0.5"></div>
+  <div class="absolute left-[10%] top-[20%] h-[300px] w-[300px] rounded-full border border-black/5 opacity-50 animate-float" aria-hidden="true" data-speed="0.2"></div>
+  <div class="absolute left-[15%] top-[15%] h-[150px] w-[150px] rounded-full border border-dashed border-black/10 opacity-40 animate-spinSlow" aria-hidden="true" data-speed="0.5"></div>
   <div class="absolute left-[5%] top-[50%] h-3 w-3 rounded-full bg-blue-400/40 shadow-[0_0_15px_rgba(100,200,255,0.8)] animate-pulseSoft" aria-hidden="true" data-speed="-0.3"></div>
   <div class="absolute left-[20%] bottom-[20%] h-[60px] w-[60px] rounded-full border border-blue-500/20 opacity-60 animate-floatSlow" aria-hidden="true" data-speed="0.4"></div>
 
   <!-- Right floating elements -->
-  <div class="absolute right-[5%] bottom-[10%] h-[400px] w-[400px] rounded-full border border-white/5 opacity-30 animate-floatSlow" aria-hidden="true" data-speed="-0.1"></div>
+  <div class="absolute right-[5%] bottom-[10%] h-[400px] w-[400px] rounded-full border border-black/5 opacity-30 animate-floatSlow" aria-hidden="true" data-speed="-0.1"></div>
   <div class="absolute right-[12%] bottom-[30%] h-2 w-2 rounded-full bg-white opacity-60 animate-pulseSoft" aria-hidden="true" style="animation-delay: 1s;" data-speed="-0.5"></div>
   <div class="absolute right-[25%] top-[25%] h-[120px] w-[120px] rounded-full border border-dashed border-blue-400/20 opacity-50 animate-spinSlow" aria-hidden="true" style="animation-delay: 2s; animation-direction: reverse;" data-speed="0.3"></div>
 
@@ -57,10 +57,10 @@ import Container from './ui/Container.astro';
       </div>
 
       <!-- MAIN TEXT -->
-      <h2 class="title-reveal max-w-[800px] text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-white">
+      <h2 class="title-reveal max-w-[800px] text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-black">
         Obsesionados con la 
-        <span class="text-white font-serif italic font-normal drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">data</span>.
-        <span class="block text-white/40 mt-2">
+        <span class="text-black font-serif italic font-normal drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">data</span>.
+        <span class="block text-black/40 mt-2">
           Creadores de
         </span>
         <span class="relative inline-block mt-2">
@@ -70,7 +70,7 @@ import Container from './ui/Container.astro';
       </h2>
 
       <!-- DESCRIPTION -->
-      <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-white/50">
+      <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-black/50">
         Diseñamos ecosistemas digitales donde la estética premium se encuentra con estrategias de adquisición implacables. Olvídate de proyectos interminables; construimos para escalar tu negocio hoy.
       </p>
 
@@ -78,11 +78,11 @@ import Container from './ui/Container.astro';
       <div class="reveal-up mt-12">
         <a
           href="#contacto"
-          class="group flex items-center gap-5 rounded-full bg-white px-8 py-4 text-[14px] font-semibold text-[#090909] shadow-[0_10px_30px_rgba(255,255,255,.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(255,255,255,.25)]"
+          class="group flex items-center gap-5 rounded-full bg-black px-8 py-4 text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,.25)]"
         >
           Agendar una llamada
           <span
-            class="flex h-8 w-8 items-center justify-center rounded-full bg-[#090909]/15 transition group-hover:bg-[#090909] group-hover:text-white"
+            class="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition group-hover:bg-white group-hover:text-black"
             >→</span
           >
         </a>
@@ -93,7 +93,7 @@ import Container from './ui/Container.astro';
     <div class="reveal-up relative w-full max-w-[900px] perspective-1000">
       <!-- Floating badge -->
       <div class="absolute -left-6 -top-12 z-20 hidden md:flex animate-floatSlow">
-        <div class="relative flex h-32 w-32 items-center justify-center rounded-full bg-[#111111] border border-white/10 shadow-2xl">
+        <div class="relative flex h-32 w-32 items-center justify-center rounded-full bg-[#111111] border border-black/10 shadow-2xl">
           <!-- Circular text SVG -->
           <svg class="absolute inset-0 h-full w-full animate-spinSlow" viewBox="0 0 100 100">
             <path id="textPath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
@@ -117,7 +117,7 @@ import Container from './ui/Container.astro';
         />
         
         <!-- Inner Shadow / Frame -->
-        <div class="absolute inset-0 rounded-3xl border border-white/10 ring-1 ring-inset ring-white/5 pointer-events-none"></div>
+        <div class="absolute inset-0 rounded-3xl border border-black/10 ring-1 ring-inset ring-white/5 pointer-events-none"></div>
       </div>
     </div>
   </Container>

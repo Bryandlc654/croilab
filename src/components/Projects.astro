@@ -1,5 +1,4 @@
 ---
-import Button from './ui/Button.astro';
 import Container from './ui/Container.astro';
 import SectionTitle from './ui/SectionTitle.astro';
 
@@ -14,7 +13,7 @@ try {
 }
 
 // Convertimos el JSON de WP al formato que nuestra UI necesita
-const projects = wpProjects.map(wpProj => {
+let projects = wpProjects.map(wpProj => {
   let rawText = wpProj.content?.rendered || "";
   let cleanDesc = rawText.replace(/(<([^>]+)>)/gi, "").trim();
   if (cleanDesc.length > 150) {
@@ -29,92 +28,85 @@ const projects = wpProjects.map(wpProj => {
     link: wpProj.enlace_proyecto || "#"
   };
 });
+
+// Aseguramos tener exactamente 15 proyectos para la grid de 5x3
+if (projects.length > 0) {
+  while (projects.length < 15) {
+    projects.push(...projects);
+  }
+} else {
+  // Fallback si no hay proyectos
+  projects = Array(15).fill({
+    title: "Proyecto",
+    description: "Descripción...",
+    category: "Proyecto",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+    link: "#"
+  });
+}
+projects = projects.slice(0, 15);
 ---
 
-<section id="proyectos" class="relative border-t border-white/10 bg-[#050505] py-24 lg:py-40">
-  <!-- Sutil textura de fondo -->
-  <div class="grid-bg-invert absolute inset-0 opacity-10"></div>
+<section id="proyectos" class="projects-section relative bg-white border-t border-black/10 overflow-hidden w-full min-h-[190vh] lg:min-h-[180vh] flex flex-col items-center justify-start">
+  
+  <!-- Iluminaciones de fondo (más fuertes para que resalten sobre el blanco) -->
+  <div class="absolute -top-40 -left-20 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" aria-hidden="true"></div>
+  <div class="absolute top-40 right-[-10%] w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" aria-hidden="true"></div>
+  <div class="absolute bottom-40 left-[20%] w-[400px] h-[400px] bg-blue-400/20 rounded-full blur-[90px] pointer-events-none mix-blend-multiply" aria-hidden="true"></div>
 
-  <Container class="relative z-10 mb-20">
-    <div class="reveal-up flex flex-wrap items-end justify-between gap-8">
-      <SectionTitle
-        kicker="Proyectos"
-        description="Experiencias digitales diseñadas para captar, retener y convertir."
-      >
-        Trabajos que <span class="text-white/80">convierten</span>
-      </SectionTitle>
+  <!-- Título de la sección (separador del hero) -->
+  <div class="absolute top-20 lg:top-32 w-full flex flex-col items-center z-10">
+    <div class="reveal-up mb-6 flex items-center gap-4">
+      <span class="h-px w-9 bg-blue-400/50"></span>
+      <span class="text-[11px] font-medium uppercase tracking-[.24em] text-blue-400/80">Portafolio</span>
+      <span class="h-px w-9 bg-blue-400/50"></span>
     </div>
-  </Container>
+    <h2 class="title-reveal text-center text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-black">
+      Resultados <span class="font-serif italic font-normal text-black drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">tangibles</span>.
+    </h2>
+  </div>
 
-  <div class="relative w-full max-w-[1200px] mx-auto px-6 pb-32 flex flex-col gap-12 lg:gap-24" id="cards-container">
-    {projects.map((project, i) => {
-      const num = String(i + 1).padStart(2, '0');
-      // Ajuste de 'top' para que al hacer sticky quede un pequeño margen entre cada carta
-      const topOffset = 120 + (i * 20);
-      
-      return (
-        <article 
-          class="project-card sticky overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0d0d0d] shadow-2xl flex flex-col lg:flex-row h-[80vh] lg:h-[600px] w-full"
-          style={`top: ${topOffset}px; z-index: ${i + 1};`}
+  <!-- Envoltura de la grid que animaremos con transform: scale -->
+  <!-- Reducimos el mt final para que la cuadrícula quede cerca del título -->
+  <div class="projects-grid-wrapper relative mt-48 lg:mt-64 w-[130vw] h-[150vh] lg:w-[85vw] lg:h-[145vh] flex items-center justify-center z-20">
+    
+    <div class="projects-grid grid grid-cols-5 grid-rows-3 gap-2 md:gap-4 w-full h-full p-2 md:p-4">
+      {projects.map((project, i) => (
+        <a 
+          href={project.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class={`project-grid-item relative overflow-hidden rounded-xl md:rounded-2xl group block ${i === 7 ? 'is-center z-20' : 'z-0'}`}
         >
-          <!-- Contenido (Izquierda) -->
-          <div class="relative z-10 flex flex-1 flex-col justify-between p-10 lg:p-16 lg:w-5/12">
-            
-            <div class="flex items-center justify-between w-full">
-              <span class="text-[11px] font-medium uppercase tracking-[.25em] text-white/60">
-                {project.category}
-              </span>
-              <span class="text-6xl font-bold text-white/[0.04] select-none">{num}</span>
-            </div>
-
-            <div class="mt-12 lg:mt-0">
-              <h3 class="text-[clamp(2.5rem,4vw,4rem)] font-bold leading-[1.05] tracking-tight text-white mb-6">
-                {project.title}
-              </h3>
-              <p class="text-[15px] leading-relaxed text-white/50 max-w-sm">
-                {project.description}
-              </p>
-            </div>
-
-            <div class="mt-12">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group inline-flex items-center gap-4 rounded-full bg-white/5 border border-white/10 px-6 py-4 text-[13px] font-semibold text-white transition-all duration-300 hover:bg-white hover:text-black"
-              >
-                Visitar el proyecto
-                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-all duration-300 group-hover:bg-black group-hover:text-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-              </a>
-            </div>
+          <!-- Imagen de fondo -->
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+          />
+          
+          <!-- El overlay general ha sido removido para que las imágenes estén al 100% de brillo -->
+          
+          <!-- Contenido (Visible en la grid final o al hacer hover) -->
+          <div class="project-content absolute inset-0 p-3 md:p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+            <span class="text-[9px] md:text-xs font-semibold uppercase tracking-widest text-white/70 mb-1 md:mb-2">{project.category}</span>
+            <h3 class="text-sm md:text-2xl font-bold text-white leading-tight">{project.title}</h3>
           </div>
+        </a>
+      ))}
+    </div>
 
-          <!-- Imagen (Derecha) -->
-          <div class="relative flex-1 lg:w-7/12 min-h-[300px] lg:min-h-full overflow-hidden">
-            <!-- Gradiente para suavizar la transición entre el texto y la imagen -->
-            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0d0d0d] to-transparent z-10 hidden lg:block"></div>
-            
-            <!-- Efecto de viñeta -->
-            <div class="absolute inset-0 bg-black/20 z-10 pointer-events-none"></div>
-
-            <img 
-              src={project.image} 
-              alt={project.title} 
-              class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[3s] ease-out hover:scale-105"
-            />
-          </div>
-        </article>
-      );
-    })}
   </div>
 </section>
 
 <style>
-  .project-card {
-    transform-origin: top center;
-    will-change: transform, filter;
+  /* Optimizaciones de rendimiento para la animación */
+  .projects-grid-wrapper {
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .project-grid-item {
+    will-change: opacity, transform;
   }
 </style>
 
@@ -124,25 +116,142 @@ const projects = wpProjects.map(wpProj => {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Seleccionamos todas las tarjetas para animarlas
-  const cards = gsap.utils.toArray('.project-card');
+  function initProjectsGrid() {
+    const section = document.querySelector('.projects-section');
+    const gridWrapper = document.querySelector('.projects-grid-wrapper');
+    const items = gsap.utils.toArray('.project-grid-item');
+    
+    if (!gridWrapper || !section || items.length < 15) return;
 
-  cards.forEach((card, index) => {
-    // Animamos la tarjeta actual cuando la *siguiente* empiece a sobreponerse
-    if (index < cards.length - 1) {
-      const nextCard = cards[index + 1];
+    const centerItem = items[7] as HTMLElement;
+
+    // Calculamos qué escala necesitamos aplicar al wrapper para lograr que la central cubra casi toda la pantalla
+    const calculateScale = () => {
+      gsap.set(gridWrapper, { scale: 1 });
+      const itemRect = centerItem.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
       
-      gsap.to(card, {
-        scale: 0.92,             // Se encoje un 8% hacia atrás
-        filter: 'brightness(0.3)', // Se oscurece
-        ease: 'none',
-        scrollTrigger: {
-          trigger: nextCard,
-          start: 'top bottom',    // Cuando la SIGUIENTE carta entra por debajo
-          end: 'top top+=120',    // Termina cuando la SIGUIENTE carta llega a su tope
-          scrub: true,            // Vincula la animación al scroll suavemente
-        }
-      });
+      // Separación left y right de los bordes (40px en móvil, 80px en desktop)
+      const margin = windowWidth < 768 ? 40 : 80;
+      const scaleX = (windowWidth - margin) / itemRect.width;
+      
+      return scaleX;
+    };
+
+    let initialScale = calculateScale();
+
+    // Configuramos el wrapper inicialmente desplazado hacia abajo para que la imagen al 100%
+    // no toque el hero (separación visual).
+    // GSAP aplica el translate ANTES del scale, por lo que dividimos entre initialScale para que 
+    // el offset visual real compense el menor mt- y siga separando la imagen del hero.
+    const visualYOffset = window.innerWidth < 768 ? 1200 : 2200; 
+    const initialYOffset = visualYOffset / initialScale;
+
+    // Estado inicial: escalado al máximo y desplazado hacia abajo
+    gsap.set(gridWrapper, {
+      scale: initialScale,
+      y: initialYOffset,
+      transformOrigin: "center center"
+    });
+
+    // Ocultamos todas las demás tarjetas inicialmente
+    items.forEach((item, index) => {
+      if (index !== 7) {
+        gsap.set(item, { opacity: 0 });
+      }
+    });
+
+    // Ocultamos el contenido de la tarjeta central
+    const centerContent = centerItem.querySelector('.project-content');
+    if (centerContent) {
+      gsap.set(centerContent, { opacity: 0 });
     }
-  });
+
+    // Timeline en pausa, la controlaremos manualmente con onUpdate
+    const tl = gsap.timeline({ paused: true });
+
+    // Calculamos el radio del rombo
+    // Usamos un valor fijo en espacio local (sin escalar) para que rodeen a la imagen central
+    const rhombusRadius = window.innerWidth < 768 ? 150 : 350;
+
+    // Obtenemos la posición local de la imagen 8 (centro)
+    const centerLeft = centerItem.offsetLeft;
+    const centerTop = centerItem.offsetTop;
+
+    // Configurar estado inicial: todos los 14 items en forma de rombo perfecto
+    const sideItems = [];
+    items.forEach((item, index) => {
+      if (index === 7) return; // Saltamos el centro
+
+      let rhombusIndex = index > 7 ? index - 1 : index; // 0 a 13
+      const angle = (rhombusIndex / 14) * Math.PI * 2;
+      
+      const cosA = Math.cos(angle);
+      const sinA = Math.sin(angle);
+      const denominator = Math.abs(cosA) + Math.abs(sinA);
+      
+      // Coordenadas del rombo respecto al centro
+      const rx = (rhombusRadius * cosA) / denominator;
+      const ry = (rhombusRadius * sinA) / denominator;
+
+      // Distancia necesaria para mover este item al centro exacto
+      const toCenterX = centerLeft - item.offsetLeft;
+      const toCenterY = centerTop - item.offsetTop;
+
+      // Posicionamos el item en el centro + la coordenada del rombo
+      gsap.set(item, { 
+        opacity: 0, 
+        x: toCenterX + rx, 
+        y: toCenterY + ry,
+        scale: 0.5 // Nacen pequeñitos
+      });
+
+      sideItems.push(item);
+    });
+
+    // 1. La imagen 8 (el centro) se va reduciendo progresivamente y el wrapper
+    // sube (y: 0) a su posición original
+    tl.to(gridWrapper, {
+      scale: 1,
+      y: 0,
+      duration: 1.0,
+      ease: "power2.inOut" 
+    }, 0);
+
+    // 2. Al llegar al 70% del scroll, aparece el rombo por detrás
+    tl.to(sideItems, {
+      opacity: 0.3, // Muy transparentes para que casi se fundan con el fondo negro y la imagen 8 brille sola
+      scale: 0.6, // Se quedan pequeños mientras forman el rombo
+      duration: 0.10, // Aparecen rápidamente entre el 70% y el 80%
+      ease: "power1.inOut"
+    }, 0.70);
+
+    // 3. Al llegar al 85% del scroll, las tarjetas vuelan desde el rombo hacia la cuadrícula
+    tl.to(sideItems, {
+      x: 0,
+      y: 0,
+      scale: 1, // Recuperan su tamaño normal en la cuadrícula
+      opacity: 1, // Recuperan su brillo máximo para resaltar todas por igual en la cuadrícula
+      duration: 0.15, // Terminan de acomodarse en el 100%
+      ease: "back.out(1.2)"
+    }, 0.85);
+
+    ScrollTrigger.create({
+      trigger: ".projects-section",
+      start: "top top", 
+      // Al usar pin y +=250%, forzamos al usuario a scrollear 2.5 veces la altura de la pantalla
+      // Esto hace que la animación "demore más" y sea súper fluida y controlable.
+      end: "+=250%", 
+      animation: tl,
+      scrub: 1,
+      pin: true
+    });
+
+    // Recalcular la escala si el usuario redimensiona la ventana
+    window.addEventListener('resize', () => {
+      ScrollTrigger.refresh();
+    });
+  }
+
+  initProjectsGrid();
 </script>
