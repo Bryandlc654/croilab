@@ -32,46 +32,56 @@ const faqSchema = {
 ---
 
 <article>
-  <!-- HERO -->
-  <section class="relative overflow-hidden bg-transparent">
-    <div class="grid-bg absolute inset-0"></div>
-    <div class="relative z-10 mx-auto max-w-[1400px] px-6 pb-16 pt-10 lg:px-10 lg:pb-24">
+  <!-- HERO (DARK MODE) -->
+  <section class="relative overflow-hidden bg-[#050505] border-t border-white/10">
+    <!-- Glows sutiles del Hero oscuro -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
+
+    <div class="relative z-10 mx-auto max-w-[1400px] px-6 pb-16 pt-32 lg:px-10 lg:pb-24 lg:pt-40">
       <Breadcrumb items={[{ label: 'Servicios', href: '/servicios' }, { label: data.name }]} />
+      
       <div class="mt-12 max-w-[880px] lg:mt-16">
         <div class="mb-8 flex items-center gap-4">
-          <span class="h-px w-9 bg-accent"></span>
-          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-muted">
+          <span class="h-px w-9 bg-white/30"></span>
+          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/50">
             {data.hero.kicker}
           </span>
         </div>
         <h1
-          class="text-[clamp(3.2rem,6.5vw,6.8rem)] font-semibold leading-[.9] tracking-[-.065em] text-black"
+          class="gsap-title text-[clamp(3.2rem,6.5vw,6.8rem)] font-bold leading-[0.9] tracking-[-.05em] text-white"
         >
           {data.hero.title}
-          <span class="text-accent">{data.hero.highlight}</span>
+          <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-white via-white/70 to-white/30">{data.hero.highlight}</span>
         </h1>
-        <p class="mt-8 max-w-2xl text-[15px] leading-7 text-black/50 md:text-[17px]">
+        <p class="mt-8 max-w-2xl text-[15px] leading-7 text-white/60 md:text-[17px]">
           {data.hero.intro}
         </p>
-        <div class="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="/contacto" size="lg">Diagnóstico gratuito →</Button>
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <a
+            href="/contacto"
+            class="group relative inline-flex items-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-transform duration-300 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+          >
+            Diagnóstico gratuito
+            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
           <Button
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            variant="outline"
-            size="lg"
+            variant="ghost"
+            class="!text-white/60 hover:!text-white"
           >
             Hablar por WhatsApp
           </Button>
         </div>
       </div>
-      <div class="mt-16 grid max-w-[720px] grid-cols-3 gap-4 border-t border-black/10 pt-6">
+      <div class="mt-16 grid max-w-[720px] grid-cols-3 gap-4 border-t border-white/10 pt-8">
         {
           data.hero.stats.map((stat, i) => (
-            <div class:list={[i > 0 && 'border-l border-black/10 pl-5']}>
-              <div class="text-[23px] font-semibold tracking-tight text-black">{stat.value}</div>
-              <div class="mt-1 text-[10px] uppercase tracking-[.12em] text-black/35">
+            <div class:list={[i > 0 && 'border-l border-white/10 pl-5']}>
+              <div class="text-[26px] font-bold tracking-tight text-white">{stat.value}</div>
+              <div class="mt-1 text-[10px] uppercase tracking-[.15em] text-white/40">
                 {stat.label}
               </div>
             </div>

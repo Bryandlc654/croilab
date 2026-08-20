@@ -39,47 +39,47 @@ import Cta from '../components/ui/Cta.astro';
     </Container>
   </section>
 
-  <!-- 2. LA AGITACIÓN (EL PROBLEMA) -->
-  <section class="relative bg-black py-32 lg:py-48 border-t border-white/5">
+  <!-- 2. LA AGITACIÓN (LIGHT MODE) -->
+  <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 pt-10">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-white mb-8 leading-[1.1]" data-custom-speed="0.9">
-            El SEO tradicional está <span class="text-white/30">muerto.</span>
+          <h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-black mb-8 leading-[1.1]" data-custom-speed="0.9">
+            El SEO tradicional está <span class="text-black/30 line-through">muerto.</span>
           </h2>
-          <div class="space-y-6 text-[16px] leading-relaxed text-white/50">
+          <div class="space-y-6 text-[16px] leading-relaxed text-black/60">
             <p>
               Agencias creando artículos de blog genéricos que nadie lee. Creación de enlaces en sitios basura. Promesas de "estar el número 1" para palabras clave que no generan ingresos.
             </p>
             <p>
-              Nosotros no hacemos eso. Nuestro enfoque de <strong class="text-white">Ingeniería de Conversión</strong> se asegura de que cada visita que atraemos a tu sitio web tiene la tarjeta en la mano lista para comprar.
+              Nosotros no hacemos eso. Nuestro enfoque de <strong class="text-black">Ingeniería de Conversión</strong> se asegura de que cada visita que atraemos a tu sitio web tiene la tarjeta en la mano lista para comprar.
             </p>
           </div>
         </div>
 
         <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-3xl border border-white/10 transition-colors duration-500 group-hover:border-white/20"></div>
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-3xl border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
           <div class="relative p-10 backdrop-blur-md rounded-3xl">
-            <div class="text-7xl font-bold text-white mb-4">91%</div>
-            <p class="text-lg text-white/60">de las páginas en internet no reciben tráfico orgánico de Google porque no tienen una arquitectura diseñada para responder a la intención de búsqueda real del usuario.</p>
+            <div class="text-7xl font-bold text-black mb-4">91%</div>
+            <p class="text-lg text-black/60">de las páginas en internet no reciben tráfico orgánico de Google porque no tienen una arquitectura diseñada para responder a la intención de búsqueda real del usuario.</p>
           </div>
         </div>
       </div>
     </Container>
   </section>
 
-  <!-- 3. METODOLOGÍA (STICKY SCROLL) -->
-  <section id="metodologia" class="relative bg-[#050505] py-32 border-t border-white/5">
+  <!-- 3. METODOLOGÍA (LIGHT MODE) -->
+  <section id="metodologia" class="relative bg-white py-32 border-t border-black/5">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start">
         <!-- Izquierda: Sticky Header -->
         <div class="lg:sticky lg:top-40">
-          <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-white/40 mb-6 block">Mecanismo Único</span>
-          <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-white mb-6" data-custom-speed="0.95">
+          <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Mecanismo Único</span>
+          <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">
             Ingeniería <br/>
-            <span class="italic font-serif font-normal text-white/40">Inversa.</span>
+            <span class="italic font-serif font-normal text-black/40">Inversa.</span>
           </h2>
-          <p class="text-[16px] leading-relaxed text-white/50 max-w-sm">
+          <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
             En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
           </p>
         </div>
@@ -93,12 +93,12 @@ import Cta from '../components/ui/Cta.astro';
               { title: "Autoridad Programática", desc: "Inyectamos confianza algorítmica. Construimos PR digital y enlaces desde ecosistemas relevantes que gritan a Google: 'Ellos son los líderes absolutos de la industria'." },
               { title: "Optimización de Conversión", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese tráfico frío hacia tu formulario de contacto o carrito." }
             ].map((step, i) => (
-              <div class="step-card group relative p-10 rounded-[2rem] border border-white/10 bg-[#0a0a0a] transition-all hover:bg-white/[0.02]">
-                <div class="text-[80px] font-bold text-white/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-white/[0.06]">
+              <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+                <div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic">
                   0{i + 1}
                 </div>
-                <h3 class="relative z-10 text-2xl font-semibold text-white mb-4">{step.title}</h3>
-                <p class="relative z-10 text-[15px] leading-relaxed text-white/50">{step.desc}</p>
+                <h3 class="relative z-10 text-2xl font-semibold text-black mb-4">{step.title}</h3>
+                <p class="relative z-10 text-[15px] leading-relaxed text-black/60">{step.desc}</p>
               </div>
             ))
           }
@@ -107,28 +107,30 @@ import Cta from '../components/ui/Cta.astro';
     </Container>
   </section>
 
-  <!-- 4. ROI / RESULTADOS -->
-  <section class="relative bg-black py-32 lg:py-48 border-t border-white/5 overflow-hidden">
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+  <!-- 4. ROI / RESULTADOS (LIGHT MODE) -->
+  <section class="relative bg-[#fbfbfb] py-32 lg:py-48 border-t border-black/5 overflow-hidden">
+    <!-- Glows suaves celestes/purpuras sobre fondo claro -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
     
     <Container class="relative z-10 text-center">
-      <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-white mb-16" data-custom-speed="0.85">
+      <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-black mb-16" data-custom-speed="0.85">
         No compramos clics.<br />
-        <span class="italic font-serif font-normal text-white/50">Compramos cuota de mercado.</span>
+        <span class="italic font-serif font-normal text-black/50">Compramos cuota de mercado.</span>
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.04]">
-          <div class="text-5xl font-bold text-white mb-2">+340%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/40">Tráfico Orgánico</div>
+        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
+          <div class="text-5xl font-bold text-black mb-2">+340%</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Tráfico Orgánico</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-white/[0.04] border border-white/20 backdrop-blur-sm transform md:-translate-y-6 shadow-[0_0_50px_rgba(255,255,255,0.03)] transition-all hover:bg-white/[0.06]">
+        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8">
           <div class="text-6xl font-bold text-white mb-2">+45%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80">Tasa de Conversión</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold">Tasa de Conversión</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.04]">
-          <div class="text-5xl font-bold text-white mb-2">ROI +</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/40">En menos de 6 meses</div>
+        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
+          <div class="text-5xl font-bold text-black mb-2">ROI +</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">En menos de 6 meses</div>
         </div>
       </div>
     </Container>

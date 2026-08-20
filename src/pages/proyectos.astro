@@ -60,8 +60,8 @@ const projects = wpProjects.map(wpProj => {
     </Container>
   </section>
 
-  <!-- LISTADO DE PROYECTOS -->
-  <section class="relative bg-[#050505] pb-32 lg:pb-48">
+  <!-- LISTADO DE PROYECTOS (LIGHT MODE) -->
+  <section class="relative bg-white pb-32 lg:pb-48 pt-10">
     <Container>
       <div class="flex flex-col gap-32 lg:gap-48 mt-10">
         {projects.length > 0 ? (
@@ -72,8 +72,8 @@ const projects = wpProjects.map(wpProj => {
                 
                 <!-- BLOQUE DE IMAGEN -->
                 <div class="w-full lg:w-7/12 relative z-10">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#111] border border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.02)]">
-                    <div class="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#f8f9fa] border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+                    <div class="absolute inset-0 bg-white/10 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
                     <img
                       src={project.image}
                       alt={project.title}
@@ -82,7 +82,7 @@ const projects = wpProjects.map(wpProj => {
                     />
                     <!-- Etiqueta Flotante -->
                     <div class="absolute top-6 left-6 z-20">
-                      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white">
+                      <span class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-black">
                         {project.category}
                       </span>
                     </div>
@@ -91,28 +91,28 @@ const projects = wpProjects.map(wpProj => {
 
                 <!-- BLOQUE DE TEXTO (Superpuesto) -->
                 <div class={`w-full lg:w-6/12 relative z-20 ${isEven ? 'lg:-ml-20' : 'lg:-mr-20'}`}>
-                  <div class="bg-[#0a0a0a]/95 backdrop-blur-xl rounded-[2.5rem] border border-white/10 p-8 sm:p-12 lg:p-16 shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-colors duration-500 group-hover:border-white/20">
+                  <div class="bg-white/95 backdrop-blur-xl rounded-[2.5rem] border border-black/10 p-8 sm:p-12 lg:p-16 shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-colors duration-500 group-hover:border-black/20">
                     <div class="flex items-center gap-4 mb-6">
-                      <span class="h-px w-8 bg-white/30"></span>
-                      <span class="text-[10px] font-bold uppercase tracking-[.2em] text-white/50">
+                      <span class="h-px w-8 bg-black/20"></span>
+                      <span class="text-[10px] font-bold uppercase tracking-[.2em] text-black/40">
                         Caso de Éxito 0{i + 1}
                       </span>
                     </div>
 
-                    <h3 class="text-[clamp(2rem,3vw,3.5rem)] font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                    <h3 class="text-[clamp(2rem,3vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">
                       {project.title}
                     </h3>
                     
-                    <p class="text-[16px] leading-[1.8] text-white/50 mb-10">
+                    <p class="text-[16px] leading-[1.8] text-black/60 mb-10">
                       {project.description}
                     </p>
 
-                    <div class="border-t border-white/10 pt-8">
+                    <div class="border-t border-black/10 pt-8">
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-4 rounded-full bg-white px-8 py-4 text-[13px] font-bold text-black transition-transform duration-300 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                        class="inline-flex items-center gap-4 rounded-full bg-black px-8 py-4 text-[13px] font-bold text-white transition-transform duration-300 hover:scale-105 shadow-[0_10px_20px_rgba(0,0,0,0.1)]"
                       >
                         Ver el resultado en vivo
                         <span class="transition-transform duration-300 group-hover:translate-x-1">↗</span>
@@ -125,11 +125,11 @@ const projects = wpProjects.map(wpProj => {
           })
         ) : (
           <div class="py-20 text-center">
-            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/5 mb-6">
-              <span class="text-2xl text-white/30">?</span>
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-black/5 mb-6">
+              <span class="text-2xl text-black/30">?</span>
             </div>
-            <h3 class="text-2xl font-semibold text-white mb-2">Aún no hay proyectos</h3>
-            <p class="text-white/50">Pronto subiremos nuestros casos de éxito.</p>
+            <h3 class="text-2xl font-semibold text-black mb-2">Aún no hay proyectos</h3>
+            <p class="text-black/50">Pronto subiremos nuestros casos de éxito.</p>
           </div>
         )}
       </div>
