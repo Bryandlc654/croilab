@@ -34,18 +34,20 @@ export async function getStaticPaths() {
         date: new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
         image: imageUrl,
         readingTime,
-        slug: post.slug
+        slug: post.slug,
+        rankMathSEO: post.head || post.yoast_head || post.rank_math_head || null
       },
     };
   });
 }
 
-const { title, content, date, image, readingTime, slug } = Astro.props;
+const { title, content, date, image, readingTime, slug, rankMathSEO } = Astro.props;
 ---
 
 <BaseLayout
   title={`${title} | Croilab Journal`}
   description="Lee nuestro artículo más reciente."
+  rankMathSEO={rankMathSEO}
 >
   <!-- BARRA DE PROGRESO DE LECTURA -->
   <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-white z-[60] w-0 transition-all duration-75"></div>

@@ -8,9 +8,25 @@ import Differentiators from '../components/Differentiators.astro';
 import Projects from '../components/Projects.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Cta from '../components/ui/Cta.astro';
+
+// Obtener SEO desde la página "inicio" en WordPress
+const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=inicio';
+let rankMathSEO = null;
+
+try {
+  const res = await fetch(wpEndpoint);
+  if (res.ok) {
+    const pages = await res.json();
+    if (pages && pages.length > 0) {
+      rankMathSEO = pages[0].rank_math_head || null;
+    }
+  }
+} catch (e) {
+  console.error("Error fetching home page SEO:", e);
+}
 ---
 
-<BaseLayout>
+<BaseLayout rankMathSEO={rankMathSEO}>
   <Hero />
   <Projects />
   <ClientsMarquee />

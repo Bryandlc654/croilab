@@ -3,11 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
 import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
+
+const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=seo';
+let rankMathSEO = null;
+
+try {
+  const res = await fetch(wpEndpoint);
+  if (res.ok) {
+    const pages = await res.json();
+    if (pages && pages.length > 0) {
+      rankMathSEO = pages[0].rank_math_head || null;
+    }
+  }
+} catch (e) {
+  console.error("Error fetching SEO page SEO:", e);
+}
 ---
 
 <BaseLayout
   title="SEO que convierte | Croilab"
   description="Tu competencia te está robando ventas en Google todos los días. Vamos a recuperarlas."
+  rankMathSEO={rankMathSEO}
 >
   <!-- 1. HERO HOOK -->
   <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[#050505]">

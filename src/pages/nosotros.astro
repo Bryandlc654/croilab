@@ -3,11 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import Cta from '../components/ui/Cta.astro';
+
+const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=nosotros';
+let rankMathSEO = null;
+
+try {
+  const res = await fetch(wpEndpoint);
+  if (res.ok) {
+    const pages = await res.json();
+    if (pages && pages.length > 0) {
+      rankMathSEO = pages[0].rank_math_head || null;
+    }
+  }
+} catch (e) {
+  console.error("Error fetching nosotros page SEO:", e);
+}
 ---
 
 <BaseLayout
   title="Nosotros | Croilab"
   description="Conoce al equipo detrás de la ingeniería de tráfico y conversión."
+  rankMathSEO={rankMathSEO}
 >
   <!-- 1. HERO SECTION (DARK GLASS) -->
   <section class="relative overflow-hidden bg-[#050505] pt-32 lg:pt-40 pb-20 border-t border-white/10">

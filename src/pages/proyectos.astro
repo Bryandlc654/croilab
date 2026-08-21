@@ -31,11 +31,28 @@ const projects = wpProjects.map(wpProj => {
     link: wpProj.enlace_proyecto || "#"
   };
 });
+
+// Obtener SEO desde la página "proyectos" en WordPress
+const seoEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=proyectos';
+let rankMathSEO = null;
+
+try {
+  const seoRes = await fetch(seoEndpoint);
+  if (seoRes.ok) {
+    const pages = await seoRes.json();
+    if (pages && pages.length > 0) {
+      rankMathSEO = pages[0].rank_math_head || null;
+    }
+  }
+} catch (e) {
+  console.error("Error fetching proyectos page SEO:", e);
+}
 ---
 
 <BaseLayout
   title="Proyectos | Croilab — Trabajos que convierten"
   description="Explora nuestros casos de éxito. Experiencias digitales diseñadas para captar, retener y convertir."
+  rankMathSEO={rankMathSEO}
 >
   <section class="relative overflow-hidden border-t border-white/10 bg-[#050505]">
     <div class="grid-bg absolute inset-0 opacity-20 pointer-events-none"></div>
