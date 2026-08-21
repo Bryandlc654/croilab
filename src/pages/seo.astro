@@ -55,6 +55,32 @@ try {
     </Container>
   </section>
 
+  <!-- 1.5 LOS SÍNTOMAS (PAIN POINTS) -->
+  <section class="relative bg-[#f8f9fa] py-32 border-t border-black/5">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Diagnóstico de negocio</span>
+        <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-tight">
+          ¿Te resulta dolorosamente familiar alguna de estas situaciones?
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { icon: "💸", title: "Dependencia de Ads", desc: "Cada mes el costo por clic sube. Si dejas de pagar pauta a Meta o Google, tu negocio literalmente se detiene y las ventas caen a cero." },
+          { icon: "😡", title: "Competencia Inferior", desc: "Tus competidores tienen un peor producto y peor servicio, pero se llevan a tus clientes simplemente porque aparecen primero en Google." },
+          { icon: "👻", title: "Tráfico Fantasma", desc: "Tienes cientos de visitas mensuales a tu sitio web, pero el teléfono no suena y los formularios de contacto están acumulando polvo." }
+        ].map(s => (
+          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+            <div class="text-4xl mb-6 grayscale opacity-80">{s.icon}</div>
+            <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
+            <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
   <!-- 2. LA AGITACIÓN (LIGHT MODE) -->
   <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 pt-10">
     <Container>
@@ -192,6 +218,39 @@ try {
         <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
           <div class="text-5xl font-bold text-black mb-2">ROI +</div>
           <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">En menos de 6 meses</div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 4.5 FAQ (OBJECIONES) -->
+  <section class="relative bg-white py-32 lg:py-40 border-t border-black/5">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-start relative">
+        <div class="lg:sticky lg:top-40">
+          <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Transparencia Radical</span>
+          <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">
+            Dudas frecuentes antes de empezar.
+          </h2>
+          <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
+            No ocultamos nada. Creemos en establecer expectativas reales desde el día uno para asegurar una alianza rentable a largo plazo.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          {[
+            { q: "¿Cuánto tiempo tardaré en ver resultados reales?", a: "El SEO no es magia, es ingeniería. Normalmente, nuestros clientes ven los primeros movimientos fuertes entre el mes 3 y 4. Para el mes 6, el sistema genera retornos positivos y escalables. Quien te prometa resultados milagrosos en 30 días, te está mintiendo." },
+            { q: "¿Por qué debería elegirlos sobre mi agencia actual?", a: "La mayoría de agencias miden su éxito en 'posiciones' o 'visitas'. Nosotros medimos el éxito en leads cualificados y aumento de facturación. Si tu agencia actual te entrega reportes llenos de visitas que no se traducen en dinero en el banco, es hora de cambiar el enfoque." },
+            { q: "¿Garantizan la posición #1 en Google?", a: "Nadie que trabaje de forma ética puede garantizar la posición #1 absoluta porque el algoritmo es de Google, no nuestro. Lo que sí garantizamos es la ejecución exacta del sistema de conversión que ya ha escalado a decenas de empresas a liderar sus industrias." }
+          ].map(faq => (
+            <div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+              <h3 class="text-xl font-bold text-black mb-4 flex items-start gap-4">
+                <span class="text-black/20 font-serif italic text-2xl leading-none pt-1 group-hover:text-black/40 transition-colors">Q.</span>
+                {faq.q}
+              </h3>
+              <p class="text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </div>
     </Container>
