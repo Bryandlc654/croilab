@@ -27,12 +27,14 @@ try {
 >
   <!-- 1. HERO HOOK -->
   <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[#050505]">
-    <!-- Luces de fondo estilo Croilab moderno (Blanco/Plata) -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Luces de fondo dinámicas -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.04] rounded-full blur-[100px] pointer-events-none"></div>
     <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
 
     <Container class="relative z-10 pt-32 pb-20 text-center">
-      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
         <div class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white] animate-pulse"></div>
         <span class="text-[10px] font-semibold uppercase tracking-[.2em] text-white/70">Alerta de Oportunidad</span>
       </div>
@@ -50,7 +52,9 @@ try {
           Descubre cómo
           <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
         </a>
-        <Button href="/contacto" variant="outline" class="!px-8 !py-4 text-[15px]">Solicitar Auditoría</Button>
+        <a href="/contacto" class="group inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-105">
+          Solicitar Auditoría
+        </a>
       </div>
     </Container>
   </section>
