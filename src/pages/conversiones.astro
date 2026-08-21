@@ -1,15 +1,300 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ServicePage from '../components/ServicePage.astro';
-import { getServicePage } from '../data/servicePages';
+import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
+import Cta from '../components/ui/Cta.astro';
 
-const data = getServicePage('conversiones');
+// Sincronización Headless con WordPress Rank Math
+const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=conversiones';
+let rankMathSEO = null;
+
+try {
+  const res = await fetch(wpEndpoint);
+  if (res.ok) {
+    const pages = await res.json();
+    if (pages && pages.length > 0) {
+      rankMathSEO = pages[0].rank_math_head || null;
+    }
+  }
+} catch (e) {
+  console.error("Error fetching SEO:", e);
+}
 ---
 
-{
-  data && (
-    <BaseLayout title={data.seo.title} description={data.seo.description}>
-      <ServicePage data={data} />
-    </BaseLayout>
-  )
-}
+<BaseLayout
+  title="Optimización de Conversiones (CRO) | Croilab"
+  description="Tienes tráfico, pero estás dejando dinero en la mesa. Aumentamos tu tasa de conversión basándonos en datos, no en opiniones."
+  rankMathSEO={rankMathSEO}
+>
+  <!-- 1. HERO HOOK -->
+  <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[#050505]">
+    <!-- Luces de fondo dinámicas -->
+    <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.04] rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
+
+    <Container class="relative z-10 pt-32 pb-20 text-center">
+      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+        <div class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)] animate-pulse"></div>
+        <span class="text-[10px] font-semibold uppercase tracking-[.2em] text-white/70">Optimización de Conversiones (CRO)</span>
+      </div>
+
+      <h1 class="gsap-title mx-auto max-w-5xl text-[clamp(3.5rem,7vw,7.5rem)] font-bold leading-[0.9] tracking-tight text-white mb-8" data-custom-speed="0.8">
+        Tienes tráfico, pero estás <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-white/80 to-white/30">dejando dinero</span> en la mesa.
+      </h1>
+
+      <p class="mx-auto max-w-2xl text-[17px] leading-relaxed text-white/50 mb-12">
+        Inyectar más presupuesto en anuncios sin arreglar tu embudo es quemar dinero. Auditamos, experimentamos y escalamos tu tasa de conversión con datos, no con opiniones.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="#metodologia" class="group relative inline-flex items-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-transform duration-300 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+          Descubrir método
+          <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+        </a>
+        <a href="/contacto" class="group inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-105">
+          Auditar mi embudo
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 1.5 LOS SÍNTOMAS -->
+  <section class="relative bg-[#f8f9fa] py-32 border-t border-black/5">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Diagnóstico de Fugas</span>
+        <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-tight">
+          ¿Tu embudo sufre de alguna de estas hemorragias?
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { icon: "🛒", title: "Carritos Abandonados", desc: "Tus usuarios agregan productos al carrito, pero huyen misteriosamente en la página de pago." },
+          { icon: "💸", title: "CPA Inasumible", desc: "Cada mes pagas más a Meta o Google por adquirir un cliente. El tráfico es cada vez más caro y el margen más estrecho." },
+          { icon: "📉", title: "Conversión Pobre", desc: "Tienes miles de visitas mensuales, pero tu tasa de conversión global no logra superar el deprimente 1%." }
+        ].map(s => (
+          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+            <div class="text-4xl mb-6 grayscale opacity-80">{s.icon}</div>
+            <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
+            <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- 2. LA AGITACIÓN -->
+  <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 pt-10">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-black mb-8 leading-[1.1]" data-custom-speed="0.9">
+            Cambiar el color de un botón <span class="text-black/30 line-through">no es CRO.</span>
+          </h2>
+          <div class="space-y-6 text-[16px] leading-relaxed text-black/60">
+            <p>
+              El diseño bonito no vende. La psicología sí. Si sigues rediseñando tu web basándote en lo que "se ve bien" en lugar de analizar por qué los usuarios no hacen clic, seguirás perdiendo dinero.
+            </p>
+            <p>
+              En Croilab no adivinamos. Instalamos mapas de calor, grabamos sesiones de usuarios reales y lanzamos Test A/B estadísticamente rigurosos para encontrar los cuellos de botella que están bloqueando tus ventas.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
+          
+          <div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]">
+            <div class="p-10 pb-0">
+              <div class="text-7xl font-bold text-black mb-4">70%</div>
+              <p class="text-lg text-black/60 mb-10">de los carritos de compra son abandonados debido a fricciones ocultas en el diseño y en la experiencia de usuario que tú no estás viendo.</p>
+            </div>
+            
+            <!-- MOCKUP HEATMAP -->
+            <div class="relative w-full h-[300px] mt-auto overflow-hidden bg-black">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" 
+                alt="Heatmap Mockup" 
+                class="absolute inset-0 w-full h-full object-cover object-top opacity-60 mix-blend-screen filter contrast-125 saturate-200 hue-rotate-90 transition-transform duration-700 group-hover:scale-105" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#fbfbfb] via-transparent to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 3. METODOLOGÍA -->
+  <section id="metodologia" class="relative bg-white py-32 border-t border-black/5">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start">
+        <div class="lg:sticky lg:top-40 flex flex-col gap-12">
+          <div>
+            <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Investigación + Testing</span>
+            <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">
+              Ingeniería <br/>
+              <span class="italic font-serif font-normal text-black/40">de Conversión.</span>
+            </h2>
+            <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
+              Convertimos las conjeturas en certezas matemáticas. Así es como destrabamos el potencial oculto de tu facturación actual.
+            </p>
+          </div>
+          
+          <div class="relative w-full aspect-square max-w-sm rounded-[2.5rem] overflow-hidden bg-black/5 border border-black/10 group">
+             <img 
+               src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2000&auto=format&fit=crop" 
+               alt="A/B Testing UI" 
+               class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105" 
+             />
+             <div class="absolute inset-0 border-[4px] border-white/50 rounded-[2.5rem] m-4 pointer-events-none"></div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-12">
+          {[
+            { title: "Auditoría Heurística", desc: "Nuestros expertos revisan tu web pantalla por pantalla buscando fricciones de usabilidad y errores cognitivos que asustan a los clientes." },
+            { title: "Minería de Datos (Heatmaps)", desc: "Instalamos mapas de calor y grabaciones para ver exactamente dónde hacen clic los usuarios y en qué momento exacto deciden abandonar la web." },
+            { title: "Test A/B y Experimentación", desc: "No implementamos cambios ciegamente. Lanzamos dos versiones de tu web simultáneamente para que los datos nos digan cuál genera más dinero." },
+            { title: "Implementación Definitiva", desc: "Una vez que encontramos el diseño ganador, lo codificamos directamente en tu plataforma (Shopify, WordPress, Astro) para asegurar la máxima velocidad." }
+          ].map((step, i) => (
+            <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+              <div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic">
+                0{i + 1}
+              </div>
+              <h3 class="relative z-10 text-2xl font-semibold text-black mb-4">{step.title}</h3>
+              <p class="relative z-10 text-[15px] leading-relaxed text-black/60">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 4. ROI -->
+  <section class="relative bg-[#fbfbfb] py-32 lg:py-48 border-t border-black/5 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-black/5 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+    
+    <Container class="relative z-10 text-center">
+      <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-black mb-16" data-custom-speed="0.85">
+        Pequeños cambios. <br/>
+        <span class="italic font-serif font-normal text-black/50">Retornos exponenciales.</span>
+      </h2>
+
+      <!-- MOCKUP MASIVO -->
+      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group">
+        <img 
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
+          alt="Dashboard Conversiones" 
+          class="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        
+        <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 p-4 md:p-6 rounded-3xl bg-white/90 backdrop-blur-xl shadow-2xl border border-black/5 flex items-center gap-4 md:gap-6 animate-pulse-slow transition-transform hover:scale-105">
+          <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-600 font-bold text-lg md:text-xl">🎯</div>
+          <div class="text-left">
+            <div class="text-[10px] md:text-sm font-bold text-black uppercase tracking-wider">Tasa de Conversión</div>
+            <div class="text-xl md:text-2xl font-black text-black">4.82%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
+          <div class="text-5xl font-bold text-black mb-2">+45%</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Aumento de Conversión</div>
+        </div>
+        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8">
+          <div class="text-6xl font-bold text-white mb-2">+120%</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold">Mejora de ROAS (Anuncios)</div>
+        </div>
+        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
+          <div class="text-5xl font-bold text-black mb-2">&lt; 3 M</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Retorno de Inversión (ROI)</div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 4.5 FAQ -->
+  <section class="relative bg-white py-32 lg:py-40 border-t border-black/5">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-start relative">
+        <div class="lg:sticky lg:top-40">
+          <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Transparencia Radical</span>
+          <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">
+            Dudas frecuentes antes de auditar tu web.
+          </h2>
+          <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
+            Sabemos que el CRO suena a magia negra, pero es pura estadística. Aquí resolvemos tus dudas.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          {[
+            { q: "¿Cuánto tráfico necesito para hacer Test A/B?", a: "Para que un Test A/B tenga validez estadística (y no dependa de la suerte), recomendamos tener al menos 10,000 visitas mensuales. Si tienes menos, aplicamos Optimización Heurística y mejores prácticas validadas para subir tus ventas sin testeo." },
+            { q: "¿Esto aplica para Ecommerce o para webs de Servicios (Leads)?", a: "¡Para ambos! En un Ecommerce optimizamos el porcentaje de usuarios que terminan pagando en el checkout. En empresas B2B o de servicios, optimizamos el porcentaje de visitas que llenan un formulario o agendan una llamada." },
+            { q: "¿Garantizan que voy a vender más?", a: "Garantizamos encontrar y reparar exactamente dónde estás perdiendo dinero. Si tu tráfico está cualificado, tapar las fugas del embudo matemáticamente resultará en más ventas con la misma inversión." }
+          ].map(faq => (
+            <div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+              <h3 class="text-xl font-bold text-black mb-4 flex items-start gap-4">
+                <span class="text-black/20 font-serif italic text-2xl leading-none pt-1 group-hover:text-black/40 transition-colors">Q.</span>
+                {faq.q}
+              </h3>
+              <p class="text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 5. FINAL CTA -->
+  <Cta />
+</BaseLayout>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = gsap.utils.toArray('.step-card');
+  cards.forEach((card) => {
+    gsap.from(card, {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+      }
+    });
+  });
+
+  const titles = gsap.utils.toArray('.gsap-title');
+  titles.forEach((title) => {
+    const speed = parseFloat(title.getAttribute('data-custom-speed')) || 1;
+    const yOffset = (1 - speed) * 200; 
+
+    gsap.fromTo(title,
+      { y: yOffset, opacity: 0.2 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: title,
+          start: "top 95%", 
+          end: "top 20%",   
+          scrub: 1,         
+        }
+      }
+    );
+  });
+</script>
