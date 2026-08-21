@@ -74,10 +74,24 @@ try {
         </div>
 
         <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-3xl border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
-          <div class="relative p-10 backdrop-blur-md rounded-3xl">
-            <div class="text-7xl font-bold text-black mb-4">91%</div>
-            <p class="text-lg text-black/60">de las páginas en internet no reciben tráfico orgánico de Google porque no tienen una arquitectura diseñada para responder a la intención de búsqueda real del usuario.</p>
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
+          
+          <div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]">
+            <div class="p-10 pb-0">
+              <div class="text-7xl font-bold text-black mb-4">91%</div>
+              <p class="text-lg text-black/60 mb-10">de las páginas en internet no reciben tráfico orgánico de Google porque no tienen una arquitectura diseñada para responder a la intención de búsqueda real del usuario.</p>
+            </div>
+            
+            <!-- MOCKUP (Data Visualization / Fall of traffic) -->
+            <div class="relative w-full h-[300px] mt-auto overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" 
+                alt="Gráfico de pérdida de tráfico" 
+                class="absolute inset-0 w-full h-full object-cover object-top opacity-80 mix-blend-multiply filter contrast-125 transition-transform duration-700 group-hover:scale-105" 
+              />
+              <!-- Gradiente para fundir la imagen con el fondo -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#fbfbfb] via-transparent to-transparent"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -88,16 +102,28 @@ try {
   <section id="metodologia" class="relative bg-white py-32 border-t border-black/5">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start">
-        <!-- Izquierda: Sticky Header -->
-        <div class="lg:sticky lg:top-40">
-          <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Mecanismo Único</span>
-          <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">
-            Ingeniería <br/>
-            <span class="italic font-serif font-normal text-black/40">Inversa.</span>
-          </h2>
-          <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
-            En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
-          </p>
+        <!-- Izquierda: Sticky Header con Imagen -->
+        <div class="lg:sticky lg:top-40 flex flex-col gap-12">
+          <div>
+            <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Mecanismo Único</span>
+            <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">
+              Ingeniería <br/>
+              <span class="italic font-serif font-normal text-black/40">Inversa.</span>
+            </h2>
+            <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
+              En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
+            </p>
+          </div>
+          
+          <!-- IMAGEN MOCKUP (Arquitectura/Estructura) -->
+          <div class="relative w-full aspect-square max-w-sm rounded-[2.5rem] overflow-hidden bg-black/5 border border-black/10 group">
+             <img 
+               src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2000&auto=format&fit=crop" 
+               alt="Arquitectura SEO" 
+               class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105" 
+             />
+             <div class="absolute inset-0 border-[4px] border-white/50 rounded-[2.5rem] m-4 pointer-events-none"></div>
+          </div>
         </div>
 
         <!-- Derecha: Pasos -->
@@ -134,6 +160,25 @@ try {
         No compramos clics.<br />
         <span class="italic font-serif font-normal text-black/50">Compramos cuota de mercado.</span>
       </h2>
+
+      <!-- MOCKUP MASIVO (Dashboard SEO / Analytics) -->
+      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group">
+        <img 
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
+          alt="Dashboard de crecimiento orgánico" 
+          class="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        
+        <!-- Elemento de UI flotante para dar toque premium -->
+        <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 p-4 md:p-6 rounded-3xl bg-white/90 backdrop-blur-xl shadow-2xl border border-black/5 flex items-center gap-4 md:gap-6 animate-pulse-slow transition-transform hover:scale-105">
+          <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-600 font-bold text-lg md:text-xl">↑</div>
+          <div class="text-left">
+            <div class="text-[10px] md:text-sm font-bold text-black uppercase tracking-wider">Nuevos Usuarios</div>
+            <div class="text-xl md:text-2xl font-black text-black">+24,590</div>
+          </div>
+        </div>
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
