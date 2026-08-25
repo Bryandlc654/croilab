@@ -478,13 +478,13 @@ export const servicePages: ServicePageData[] = [
     cta: {
       title: '¿Listo para dejar de ',
       highlight: 'pagar por cada clic?',
-      subtitle: 'Recibe una auditoría SEO gratuita y descubre qué oportunidades tiene tu web.',
+      subtitle: 'Descubre qué oportunidades tiene tu web.',
     },
     relatedProjects: ['Marketplace regional'],
     seo: {
-      title: 'SEO | Croilab — Posiciona y deja de depender de los anuncios',
+      title: 'Agencia SEO y Posicionamiento Web',
       description:
-        'SEO técnico y de contenido para llegar al primer resultado y construir tráfico orgánico sostenible. Auditoría gratuita.',
+        'SEO técnico y de contenido para llegar al primer resultado y construir tráfico orgánico sostenible.',
     },
   },
   {
