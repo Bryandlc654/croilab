@@ -93,7 +93,7 @@ const icons: Record<string, string> = {
   <!-- HERO CONTENT -->
   <div class="relative z-20 mx-auto flex min-h-screen max-w-[1400px] items-center px-6 pb-16 pt-56 lg:px-10 lg:pb-20">
     <div class="w-full flex flex-col items-center text-center">
-        <h1 class="title-reveal max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em] text-white">
+        <h1 class="hero-title max-w-[850px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[.86] tracking-[-.075em] text-white opacity-0 translate-y-8">
           No diseñamos
           <span class="block text-white/40 font-serif italic font-normal">páginas.</span>
           <span class="block">
@@ -105,7 +105,7 @@ const icons: Record<string, string> = {
           </span>
         </h1>
 
-        <p class="mt-9 max-w-[580px] text-[15px] leading-7 text-white/60 md:text-[17px]">
+        <p class="hero-subtitle mt-9 max-w-[580px] text-[15px] leading-7 text-white/60 md:text-[17px] opacity-0 translate-y-4">
           Diseñamos sistemas digitales donde estrategia, tecnología y adquisición trabajan juntos
           para transformar tráfico en clientes.
         </p>
@@ -113,17 +113,17 @@ const icons: Record<string, string> = {
         <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a
             href="/contacto"
-            class="group flex items-center gap-5 rounded-full bg-white px-6 py-3.5 text-[13px] font-semibold text-[#090909] shadow-[0_10px_30px_rgba(255,255,255,.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(255,255,255,.25)]"
+            class="magnetic hero-btn opacity-0 translate-y-4 group flex items-center gap-5 rounded-full bg-white px-6 py-3.5 text-[13px] font-semibold text-[#090909] shadow-[0_10px_30px_rgba(255,255,255,.18)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_40px_rgba(255,255,255,.25)]"
           >
             Iniciar proyecto
             <span
-              class="flex h-7 w-7 items-center justify-center rounded-full bg-[#090909]/15 transition group-hover:bg-[#090909] group-hover:text-white"
+              class="flex h-7 w-7 items-center justify-center rounded-full bg-[#090909]/15 transition-all duration-300 group-hover:bg-[#090909] group-hover:text-white group-hover:rotate-45"
               >→</span
             >
           </a>
           <a
             href="#proyectos"
-            class="group flex items-center gap-5 rounded-full bg-white/[0.05] border border-white/10 px-6 py-3.5 text-[13px] font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1] hover:border-white/20"
+            class="magnetic hero-btn opacity-0 translate-y-4 group flex items-center gap-5 rounded-full bg-white/[0.05] border border-white/10 px-6 py-3.5 text-[13px] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:bg-white/[0.1] hover:border-white/20"
           >
             Ver portafolio
           </a>
@@ -131,3 +131,28 @@ const icons: Record<string, string> = {
       </div>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+
+  // Hero load animations
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+  tl.to('.hero-title', {
+    y: 0,
+    opacity: 1,
+    duration: 1.2,
+    delay: 0.2
+  })
+  .to('.hero-subtitle', {
+    y: 0,
+    opacity: 1,
+    duration: 1
+  }, "-=0.9")
+  .to('.hero-btn', {
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.15
+  }, "-=0.8");
+</script>

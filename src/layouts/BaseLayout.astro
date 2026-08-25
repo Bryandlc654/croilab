@@ -199,6 +199,32 @@ const orgSchema = {
           scrollBarDesktop?.classList.add('translate-y-full');
         }
       });
+
+      // MAGNETIC MICRO-INTERACTIONS
+      const magnetics = document.querySelectorAll('.magnetic');
+      magnetics.forEach((elem: any) => {
+        elem.addEventListener('mousemove', (e: MouseEvent) => {
+          const { left, top, width, height } = elem.getBoundingClientRect();
+          const x = (e.clientX - left - width / 2) * 0.3;
+          const y = (e.clientY - top - height / 2) * 0.3;
+          
+          gsap.to(elem, {
+            x: x,
+            y: y,
+            duration: 0.5,
+            ease: 'power3.out'
+          });
+        });
+
+        elem.addEventListener('mouseleave', () => {
+          gsap.to(elem, {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: 'elastic.out(1, 0.3)'
+          });
+        });
+      });
     </script>
   </body>
 </html>
