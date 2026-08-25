@@ -91,19 +91,6 @@ import Container from './ui/Container.astro';
 
     <!-- RIGHT/BOTTOM COLUMN: IMAGE / VISUALS -->
     <div class="reveal-up relative w-full max-w-[900px] perspective-1000">
-      <!-- Floating badge -->
-      <div class="absolute -left-6 -top-12 z-20 hidden md:flex animate-floatSlow">
-        <div class="relative flex h-32 w-32 items-center justify-center rounded-full bg-[#111111] border border-black/10 shadow-2xl">
-          <!-- Circular text SVG -->
-          <svg class="absolute inset-0 h-full w-full animate-spinSlow" viewBox="0 0 100 100">
-            <path id="textPath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
-            <text class="fill-white/60 text-[10px] font-medium tracking-[0.28em] uppercase">
-              <textPath href="#textPath" startOffset="0%">Croilab • Digital Lab • Croilab •</textPath>
-            </text>
-          </svg>
-          <span class="text-blue-400 drop-shadow-[0_0_10px_rgba(100,200,255,0.8)]">✦</span>
-        </div>
-      </div>
 
       <!-- Image Container -->
       <div class="glass-panel relative aspect-video w-full overflow-hidden rounded-3xl animate-float" data-speed="-0.15">
