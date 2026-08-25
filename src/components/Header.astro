@@ -12,8 +12,19 @@ const navLinks = [
       { label: 'Conversiones', href: '/conversiones', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>' },
     ]
   },
-  { label: 'Nosotros', href: '/nosotros' },
-  { label: 'Equipo', href: '/equipo' },
+  { 
+    label: 'Nosotros', 
+    href: '#',
+    dropdownTitle: 'La Agencia',
+    dropdownPromoTitle: 'Nuestra Filosofía',
+    dropdownPromoDesc: 'No delegamos a practicantes. Hablas directo con los ingenieros.',
+    dropdownPromoLink: '/nosotros',
+    dropdownPromoCTA: 'Conoce más',
+    children: [
+      { label: 'Manifiesto', href: '/nosotros', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M2 15h10"></path><path d="M5 12l3 3-3 3"></path></svg>' },
+      { label: 'El Equipo', href: '/equipo', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>' }
+    ]
+  },
   { label: 'Blog', href: '/blog' },
 ];
 ---
@@ -45,9 +56,9 @@ const navLinks = [
                 <div class="rounded-3xl border border-black/10 bg-white/95 backdrop-blur-2xl p-6 shadow-[0_30px_60px_rgba(0,0,0,0.1)] flex gap-8 text-black before:absolute before:-top-2 before:left-1/2 before:-translate-x-1/2 before:w-4 before:h-4 before:rotate-45 before:bg-white/95 before:border-l before:border-t before:border-black/10 before:-z-10">
                   
                   <div class="flex-1">
-                    <h3 class="text-[10px] font-bold uppercase tracking-widest text-black/40 mb-4 px-3">Especialidades</h3>
+                    <h3 class="text-[10px] font-bold uppercase tracking-widest text-black/40 mb-4 px-3">{link.dropdownTitle || 'Especialidades'}</h3>
                     <div class="grid grid-cols-2 gap-1">
-                      {link.children.map(child => (
+                      {link.children.map((child: any) => (
                         <a href={child.href} class="group/item rounded-xl p-3 hover:bg-black/5 transition-colors flex items-center gap-3">
                           <div class="w-8 h-8 rounded-lg bg-black/5 group-hover/item:bg-blue-500/10 flex items-center justify-center text-black/40 group-hover/item:text-blue-600 transition-colors" set:html={child.icon}></div>
                           <span class="text-[13px] font-bold text-black group-hover/item:text-blue-600 transition-colors">{child.label}</span>
@@ -59,11 +70,11 @@ const navLinks = [
                   <div class="w-[220px] rounded-2xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 border border-black/5 p-6 flex flex-col justify-between relative overflow-hidden group/promo">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[30px] translate-x-1/2 -translate-y-1/2 transition-transform duration-500 group-hover/promo:scale-150"></div>
                     <div class="relative z-10">
-                      <h4 class="text-[13px] font-bold text-black mb-2">Sistema de Conversión</h4>
-                      <p class="text-[11px] text-black/60 leading-relaxed">Descubre los cuellos de botella en tu embudo de conversión actual.</p>
+                      <h4 class="text-[13px] font-bold text-black mb-2">{link.dropdownPromoTitle || 'Sistema de Conversión'}</h4>
+                      <p class="text-[11px] text-black/60 leading-relaxed">{link.dropdownPromoDesc || 'Descubre los cuellos de botella en tu embudo de conversión actual.'}</p>
                     </div>
-                    <a href="/contacto" class="relative z-10 text-[11px] font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-6 transition-colors">
-                      Quiero trabajar así <span class="text-[15px] leading-none transition-transform group-hover/promo:translate-x-1">→</span>
+                    <a href={link.dropdownPromoLink || '/contacto'} class="relative z-10 text-[11px] font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-6 transition-colors">
+                      {link.dropdownPromoCTA || 'Quiero trabajar así'} <span class="text-[15px] leading-none transition-transform group-hover/promo:translate-x-1">→</span>
                     </a>
                   </div>
 
