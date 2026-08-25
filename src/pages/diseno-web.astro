@@ -72,12 +72,12 @@ try {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
-          { icon: "🐢", title: "Carga Lentísima", desc: "Tarda más de 3 segundos en abrir. Para cuando carga, el usuario ya se fue a la web de tu competidor." },
-          { icon: "🤡", title: "Diseño de Plantilla", desc: "Se ve exactamente igual a cientos de otras empresas. No transmite autoridad ni justifica tus precios." },
-          { icon: "📉", title: "Rebote Masivo", desc: "Tienes visitas, pero nadie hace clic en 'Comprar' o 'Contactar'. La estructura no guía al usuario." }
+          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`, title: "Carga Lentísima", desc: "Tarda más de 3 segundos en abrir. Para cuando carga, el usuario ya se fue a la web de tu competidor." },
+          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`, title: "Diseño de Plantilla", desc: "Se ve exactamente igual a cientos de otras empresas. No transmite autoridad ni justifica tus precios." },
+          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`, title: "Rebote Masivo", desc: "Tienes visitas, pero nadie hace clic en 'Comprar' o 'Contactar'. La estructura no guía al usuario." }
         ].map(s => (
           <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-            <div class="text-4xl mb-6 grayscale opacity-80">{s.icon}</div>
+            <div class="mb-6 grayscale opacity-80" set:html={s.icon}></div>
             <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
             <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
           </div>
@@ -195,7 +195,7 @@ try {
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
         
         <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 p-4 md:p-6 rounded-3xl bg-white/90 backdrop-blur-xl shadow-2xl border border-black/5 flex items-center gap-4 md:gap-6 animate-pulse-slow transition-transform hover:scale-105">
-          <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-600 font-bold text-lg md:text-xl">⚡</div>
+          <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-600 font-bold text-lg md:text-xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div>
           <div class="text-left">
             <div class="text-[10px] md:text-sm font-bold text-black uppercase tracking-wider">PageSpeed Score</div>
             <div class="text-xl md:text-2xl font-black text-black">99/100</div>
