@@ -1,0 +1,60 @@
+---
+import Container from './ui/Container.astro';
+
+const faqs = [
+  { 
+    q: "¿Qué es exactamente lo que hacen?", 
+    a: "Somos una agencia de ingeniería de conversiones. No diseñamos webs bonitas por diseñlar. Construimos sistemas digitales completos: adquisición de tráfico (SEO, Meta Ads), diseño de landing pages de alta conversión, y optimización de embudos para que cada visita tenga la máxima probabilidad de convertirse en cliente." 
+  },
+  { 
+    q: "¿Cuánto cuesta contratarlos?", 
+    a: "Cada proyecto es único. Trabajamos con mensualidades desde $500 USD dependiendo del alcance. Lo primero es hacer una auditoría gratuita donde analizamos tu situación actual y te proponemos una estrategia con un ROI proyectado claro. Sin compromiso, sin sorpresas." 
+  },
+  { 
+    q: "¿Cuánto tiempo tarda en verse resultados?", 
+    a: "Depende del canal. Con Meta Ads puedes ver resultados desde la primera semana. El SEO toma entre 3 y 6 meses para generar tráfico orgánico consistente. El diseño web y CRO muestran mejoras en tasas de conversión en 30-60 días. Todo se mide con datos, no con suposiciones." 
+  },
+  { 
+    q: "¿Trabajan con empresas pequeñas o solo grandes?", 
+    a: "Trabajamos con negocios que tienen claridad de que quieren escalar. Desde emprendimientos facturando $10K/mes hasta empresas consolidadas. Lo importante es que tengas un producto o servicio validado y ganas de crecer con una estrategia seria." 
+  },
+  { 
+    q: "¿Por qué no contrato una agencia más barata?", 
+    a: "Puedes, y tal vez funcione a corto plazo. La diferencia es que nosotros no vendemos 'posiciones en Google' o 'likes en Instagram'. Vendemos clientes reales, facturación medible y sistemas que escalan. Una agencia barata que no genera ROI te cuesta más que una cara que sí lo hace." 
+  },
+  { 
+    q: "¿Cómo es el proceso de trabajo?", 
+    a: "1) Auditoría gratuita y diagnóstico. 2) Propuesta estratégica con KPIs claros. 3) Onboarding y configuración (5-7 días). 4) Ejecución continua con reportes semanales. 5) Optimización mensual basada en datos. Tienes acceso a tu portal del cliente para seguir todo en tiempo real." 
+  },
+];
+---
+
+<section class="relative overflow-hidden border-t border-black/10 bg-[#f8f9fa]">
+  <Container class="py-24 lg:py-36">
+    <!-- CABECERA -->
+    <div class="reveal-up max-w-[700px]">
+      <div class="mb-8 flex items-center gap-4">
+        <span class="h-px w-9 bg-black/20"></span>
+        <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/40">FAQ</span>
+        <span class="h-px w-24 bg-black/10"></span>
+      </div>
+      <h2 class="text-[clamp(2.6rem,5vw,4.5rem)] font-semibold leading-[.92] tracking-[-.055em] text-black">
+        <span class="block text-black/15">Resolvemos tus</span>
+        <span class="block">dudas antes de que las tengas.</span>
+      </h2>
+    </div>
+
+    <!-- FAQ LIST -->
+    <div class="reveal-up mt-16 lg:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-6" style="--i:1">
+      {faqs.map((faq) => (
+        <div class="group bg-white p-8 md:p-10 rounded-[2rem] border border-black/5 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:border-black/10">
+          <h3 class="text-[17px] font-bold text-black mb-4 flex items-start gap-4">
+            <span class="text-black/20 font-serif italic text-2xl leading-none pt-0.5 group-hover:text-black/40 transition-colors">Q.</span>
+            {faq.q}
+          </h3>
+          <p class="text-[14px] leading-relaxed text-black/55 pl-8 md:pl-10">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

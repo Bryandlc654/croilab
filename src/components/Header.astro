@@ -5,20 +5,15 @@ const navLinks = [
     label: 'Servicios', 
     href: '#',
     children: [
-      { label: 'SEO (Ingeniería Inversa)', href: '/seo' },
-      { label: 'Meta Ads', href: '/meta-ads' },
-      { label: 'Diseño Web', href: '/diseno-web' },
-      { label: 'Ecommerce', href: '/ecommerce' },
-      { label: 'Conversiones', href: '/conversiones' },
+      { label: 'SEO (Ingeniería Inversa)', href: '/seo', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' },
+      { label: 'Meta Ads', href: '/meta-ads', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>' },
+      { label: 'Diseño Web', href: '/diseno-web', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>' },
+      { label: 'Ecommerce', href: '/ecommerce', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' },
+      { label: 'Conversiones', href: '/conversiones', icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>' },
     ]
   },
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Blog', href: '/blog' },
-  { 
-    label: 'Contacto', 
-    href: '/contacto',
-    isContact: true,
-  },
 ];
 ---
 
@@ -52,7 +47,8 @@ const navLinks = [
                     <h3 class="text-[10px] font-bold uppercase tracking-widest text-black/40 mb-4 px-3">Especialidades</h3>
                     <div class="grid grid-cols-2 gap-1">
                       {link.children.map(child => (
-                        <a href={child.href} class="group/item rounded-xl p-3 hover:bg-black/5 transition-colors flex flex-col gap-1">
+                        <a href={child.href} class="group/item rounded-xl p-3 hover:bg-black/5 transition-colors flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-lg bg-black/5 group-hover/item:bg-blue-500/10 flex items-center justify-center text-black/40 group-hover/item:text-blue-600 transition-colors" set:html={child.icon}></div>
                           <span class="text-[13px] font-bold text-black group-hover/item:text-blue-600 transition-colors">{child.label}</span>
                         </a>
                       ))}
@@ -73,57 +69,6 @@ const navLinks = [
                 </div>
               </div>
             </div>
-          ) : link.isContact ? (
-            <div class="group relative py-4">
-              <a href={link.href} class="header-link flex items-center gap-1.5 transition text-white/70 hover:text-white">
-                {link.label}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:rotate-180"><path d="M6 9l6 6 6-6"/></svg>
-              </a>
-
-              <!-- Contacto Dropdown Card -->
-              <div class="absolute top-[80%] right-0 mt-2 w-[340px] opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                <div class="rounded-3xl border border-black/10 bg-white/95 backdrop-blur-2xl p-6 shadow-[0_30px_60px_rgba(0,0,0,0.1)] text-black before:absolute before:-top-2 before:right-8 before:w-4 before:h-4 before:rotate-45 before:bg-white/95 before:border-l before:border-t before:border-black/10 before:-z-10">
-
-                  <!-- Imagen / Cover -->
-                  <div class="relative mb-4 overflow-hidden rounded-2xl h-[100px]">
-                    <img
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
-                      alt="Equipo Croilab"
-                      class="w-full h-full object-cover"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  </div>
-
-                  <!-- Título y resumen -->
-                  <h4 class="text-[14px] font-bold text-black leading-snug">Croilab</h4>
-                  <p class="text-[11px] text-black/50 leading-relaxed mt-1.5">Ingeniería de conversiones digitales. Estrategia, tecnología y adquisición trabajando juntos.</p>
-
-                  <!-- Redes Sociales -->
-                  <div class="flex items-center gap-2 mt-4">
-                    <a href="https://www.instagram.com/croilab" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:border-black/30 transition-colors" aria-label="Instagram">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/croilab" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:border-black/30 transition-colors" aria-label="LinkedIn">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                    <a href="https://www.facebook.com/croilab" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:border-black/30 transition-colors" aria-label="Facebook">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                  </div>
-
-                  <!-- Botones -->
-                  <div class="flex items-center gap-2 mt-5">
-                    <a href="/contacto" class="flex-1 text-center rounded-xl bg-[#090909] text-white text-[12px] font-semibold py-2.5 transition hover:bg-black/80">
-                      Contactar
-                    </a>
-                    <a href="/contacto" class="flex-1 text-center rounded-xl border border-black/10 text-black text-[12px] font-semibold py-2.5 transition hover:bg-black/5">
-                      Ver más
-                    </a>
-                  </div>
-
-                </div>
-              </div>
-            </div>
           ) : (
             <a href={link.href} class="header-link py-4 transition text-white/70 hover:text-white">
               {link.label}
@@ -133,8 +78,8 @@ const navLinks = [
       }
     </nav>
 
-    <div class="flex items-center gap-3">
-      <a href="/contacto" class="contact-btn group hidden items-center gap-3 text-[13px] font-semibold text-white md:flex">
+    <div class="relative group">
+      <a href="/contacto" class="contact-btn group flex items-center gap-3 text-[13px] font-semibold text-white">
         Contacto
         <span
           class="contact-icon flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#090909] transition duration-300 group-hover:opacity-80"
@@ -142,6 +87,51 @@ const navLinks = [
           →
         </span>
       </a>
+
+      <!-- Contacto Dropdown Card -->
+      <div class="absolute top-[calc(100%+12px)] right-0 mt-2 w-[340px] opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+        <div class="rounded-3xl border border-black/10 bg-white/95 backdrop-blur-2xl p-6 shadow-[0_30px_60px_rgba(0,0,0,0.1)] text-black before:absolute before:-top-2 before:right-8 before:w-4 before:h-4 before:rotate-45 before:bg-white/95 before:border-l before:border-t before:border-black/10 before:-z-10">
+
+          <!-- Imagen / Cover -->
+          <div class="relative mb-4 overflow-hidden rounded-2xl h-[100px]">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+              alt="Equipo Croilab"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          </div>
+
+          <!-- Título y resumen -->
+          <h4 class="text-[14px] font-bold text-black leading-snug">Croilab</h4>
+          <p class="text-[11px] text-black/50 leading-relaxed mt-1.5">Ingeniería de conversiones digitales. Estrategia, tecnología y adquisición trabajando juntos.</p>
+
+          <!-- Redes Sociales -->
+          <div class="flex items-center gap-2 mt-4">
+            <a href="https://www.instagram.com/croilab" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:border-black/30 transition-colors" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/croilab" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:border-black/30 transition-colors" aria-label="LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.facebook.com/croilab" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:border-black/30 transition-colors" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+
+          <!-- Botones -->
+          <div class="flex items-center gap-2 mt-5">
+            <a href="/contacto" class="flex-1 text-center rounded-xl bg-[#090909] text-white text-[12px] font-semibold py-2.5 transition hover:bg-black/80">
+              Contactar
+            </a>
+            <a href="/contacto" class="flex-1 text-center rounded-xl border border-black/10 text-black text-[12px] font-semibold py-2.5 transition hover:bg-black/5">
+              Ver más
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
       <button
         id="menu-toggle"
@@ -201,6 +191,9 @@ const navLinks = [
   </div>
 </header>
 
+<!-- Backdrop blur cuando hay dropdown abierto -->
+<div id="dropdown-backdrop" class="fixed inset-0 top-[72px] bg-black/20 backdrop-blur-md z-40 opacity-0 invisible transition-all duration-300 pointer-events-none" aria-hidden="true"></div>
+
 <style>
   /* Sticky Header Light Theme overrides */
   #site-header.is-scrolled {
@@ -228,6 +221,13 @@ const navLinks = [
   }
   #site-header.is-scrolled #menu-toggle span {
     background-color: black;
+  }
+
+  /* Backdrop blur when any dropdown is hovered */
+  #site-header:has(.group:hover) ~ #dropdown-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   #mobile-menu {
