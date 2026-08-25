@@ -42,13 +42,22 @@ const teamMembers = [
     bio: "No escribe textos bonitos, escribe textos que venden. Especialista en respuesta directa y gatillos mentales."
   }
 ];
+
+const carouselImages = [
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+];
 ---
 
 <BaseLayout
   title="El Equipo | Croilab"
   description="Conoce al escuadrón de ingenieros, estrategas y desarrolladores detrás de tus conversiones."
 >
-  <!-- HERO SECTION -->
+  <!-- 1. HERO SECTION -->
   <section class="relative overflow-hidden bg-[#050505] pt-32 lg:pt-40 pb-20 border-t border-white/10">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" aria-hidden="true"></div>
     <div class="grid-bg absolute inset-0 opacity-10 pointer-events-none"></div>
@@ -68,14 +77,100 @@ const teamMembers = [
     </Container>
   </section>
 
-  <!-- TEAM GRID -->
-  <section class="relative bg-[#f8f9fa] py-24 lg:py-32">
+  <!-- 2. SECCIÓN DE 4 PUNTOS CLAVES -->
+  <section class="relative bg-white py-24 border-t border-black/5">
     <Container>
+      <div class="max-w-xl mx-auto text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-black tracking-tight mb-4">Nuestro ADN de trabajo</h2>
+        <p class="text-black/60 text-lg">Las 4 reglas inquebrantables que rigen nuestro equipo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div class="p-8 rounded-[2rem] bg-[#f8f9fa] border border-black/5">
+          <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-lg mb-6">1</div>
+          <h4 class="text-xl font-bold text-black mb-3">Menos manos, más mentes</h4>
+          <p class="text-[15px] text-black/60 leading-relaxed">Preferimos un equipo ultra-especializado y técnico, en lugar de ejércitos de juniors aprendiendo a usar presupuesto de los clientes.</p>
+        </div>
+        
+        <div class="p-8 rounded-[2rem] bg-[#f8f9fa] border border-black/5">
+          <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-lg mb-6">2</div>
+          <h4 class="text-xl font-bold text-black mb-3">Cero Intermediarios</h4>
+          <p class="text-[15px] text-black/60 leading-relaxed">Eliminamos a los "Account Managers". Cuando trabajas con nosotros, te sientas a planear directamente con el ingeniero o estratega responsable.</p>
+        </div>
+
+        <div class="p-8 rounded-[2rem] bg-[#f8f9fa] border border-black/5">
+          <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-lg mb-6">3</div>
+          <h4 class="text-xl font-bold text-black mb-3">Data sobre Intuición</h4>
+          <p class="text-[15px] text-black/60 leading-relaxed">Ninguna decisión se toma porque "se ve bonito". Analizamos mapas de calor, sesiones grabadas y pruebas A/B para respaldar cada cambio.</p>
+        </div>
+
+        <div class="p-8 rounded-[2rem] bg-[#f8f9fa] border border-black/5">
+          <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-lg mb-6">4</div>
+          <h4 class="text-xl font-bold text-black mb-3">Obsesión por el ROI</h4>
+          <p class="text-[15px] text-black/60 leading-relaxed">El tráfico y los likes son métricas de vanidad. Nuestro único y principal KPI es cuánto facturas a fin de mes gracias a nuestros sistemas.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 3. FOTO GRANDE (PANORÁMICA) -->
+  <section class="bg-white pb-24">
+    <Container>
+      <div class="relative w-full aspect-[21/9] min-h-[400px] rounded-[3rem] overflow-hidden border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] group">
+        <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-0"></div>
+        <!-- Usando una imagen que simula un equipo colaborando -->
+        <img 
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop" 
+          alt="Croilab Team" 
+          class="w-full h-full object-cover transition-transform duration-[7s] ease-out group-hover:scale-105" 
+        />
+        <div class="absolute inset-0 z-20 flex flex-col justify-end p-10 lg:p-16 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none">
+          <p class="text-2xl lg:text-4xl text-white max-w-3xl font-bold tracking-tight leading-tight">
+            "Las grandes empresas no se construyen con software. Se construyen con talento."
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 4. CARRUSEL DE FOTOS (MARQUEE) -->
+  <section class="bg-[#f8f9fa] py-16 overflow-hidden border-y border-black/5">
+    <div class="flex items-center gap-6 animate-marquee whitespace-nowrap">
+      {carouselImages.map((img) => (
+        <img 
+          src={img} 
+          alt="Cultura Croilab" 
+          class="h-[250px] w-auto aspect-[4/3] object-cover rounded-2xl border border-black/10 shadow-sm"
+        />
+      ))}
+      {carouselImages.map((img) => (
+        <img 
+          src={img} 
+          alt="Cultura Croilab" 
+          aria-hidden="true"
+          class="h-[250px] w-auto aspect-[4/3] object-cover rounded-2xl border border-black/10 shadow-sm"
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- 5. SECCIÓN DEL EQUIPO (GRID) -->
+  <section class="relative bg-white py-24 lg:py-32">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black leading-[1.1] mb-6">
+          Los Especialistas
+        </h2>
+        <p class="text-[17px] text-black/60">
+          El talento humano detrás de las máquinas de conversión.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
         {teamMembers.map((member) => (
-          <div class="group relative bg-white rounded-[2.5rem] p-6 lg:p-8 border border-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2">
+          <div class="group relative bg-[#f8f9fa] rounded-[2.5rem] p-6 lg:p-8 border border-black/5 shadow-sm transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 hover:bg-white">
             <!-- Image -->
-            <div class="relative w-full aspect-square mb-6 rounded-full overflow-hidden border-4 border-[#f8f9fa] mx-auto max-w-[200px]">
+            <div class="relative w-full aspect-square mb-6 rounded-full overflow-hidden border-4 border-white shadow-sm mx-auto max-w-[220px]">
               <div class="absolute inset-0 bg-blue-500/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img 
                 src={member.image} 
@@ -98,26 +193,21 @@ const teamMembers = [
     </Container>
   </section>
 
-  <!-- CULTURE / PHILOSOPHY -->
-  <section class="relative bg-white py-24 lg:py-32 border-t border-black/5">
-    <Container>
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black leading-[1.1] mb-8">
-          Nuestra filosofía de talento
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-16">
-          <div class="p-8 rounded-3xl bg-[#f8f9fa] border border-black/5">
-            <h4 class="text-xl font-bold text-black mb-3">Menos manos, más mentes.</h4>
-            <p class="text-[15px] text-black/60 leading-relaxed">Preferimos un equipo pequeño, altamente técnico y bien pagado, que ejércitos de juniors leyendo manuales con el presupuesto del cliente.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-[#f8f9fa] border border-black/5">
-            <h4 class="text-xl font-bold text-black mb-3">Cero intermediarios.</h4>
-            <p class="text-[15px] text-black/60 leading-relaxed">No tenemos "Account Managers" que solo sirven de teléfono descompuesto. Hablas directamente con el estratega o ingeniero a cargo de tu proyecto.</p>
-          </div>
-        </div>
-      </div>
-    </Container>
-  </section>
-
+  <!-- 6. CTA -->
   <Cta />
+
 </BaseLayout>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 12px)); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+    /* Pausar en hover */
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+</style>
