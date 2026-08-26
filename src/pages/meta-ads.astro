@@ -207,28 +207,92 @@ try {
   <ServiceStats />
 
   <!-- 1.5 LOS SÍNTOMAS -->
-  <section class="relative bg-[#f8f9fa] py-32 border-t border-black/5">
-    <Container>
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Diagnóstico de Campañas</span>
-        <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-tight">
+  <section class="relative bg-[#f8f9fa] py-32 overflow-hidden border-t border-black/5">
+    
+    <!-- Background Grid & Noise for Premium Feel -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+    
+    <Container class="relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">Diagnóstico Crítico</span>
+        </div>
+        <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">
           ¿Tu presupuesto se está evaporando sin retorno?
         </h2>
+        <p class="text-[17px] text-black/50 leading-relaxed max-w-2xl mx-auto">
+          La mayoría de las cuentas publicitarias están configuradas para gastar, no para retornar. Si te identificas con uno de estos escenarios, estás perdiendo dinero.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`, title: "CPA por las nubes", desc: "Zuckerberg y Google se están quedando todo tu margen. Cada mes cuesta más adquirir un cliente y la rentabilidad baja." },
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>`, title: "Leads 'Basura'", desc: "Tus anuncios generan muchos clics e interacciones, pero atraen a curiosos que no tienen el dinero o la intención real de comprar." },
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>`, title: "Estancamiento al Escalar", desc: "Tus campañas venden bien con poco presupuesto, pero en cuanto intentas meterles más dinero, todo se desploma." }
-        ].map(s => (
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-            <div class="mb-6 grayscale opacity-80" set:html={s.icon}></div>
-            <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
-            <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Tarjeta 1 -->
+        <div class="group relative bg-white p-10 rounded-[32px] border border-black/[0.04] shadow-[0_20px_40px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-500/5 to-transparent rounded-bl-[64px] pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+          
+          <div class="w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center mb-8 border border-black/10 group-hover:bg-red-500 group-hover:text-white transition-colors duration-500 text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-        ))}
+          
+          <h3 class="text-[22px] font-bold text-black mb-4 leading-tight">CPA por las nubes</h3>
+          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Zuckerberg y Google se están quedando todo tu margen. Cada mes cuesta más adquirir un cliente y la rentabilidad baja irremediablemente.</p>
+          
+          <!-- Mini UI Graphic -->
+          <div class="w-full h-16 bg-black/[0.02] border border-black/5 rounded-xl flex items-end gap-1.5 p-3">
+             <div class="w-full bg-black/10 rounded-t-sm h-[30%]"></div>
+             <div class="w-full bg-black/10 rounded-t-sm h-[50%]"></div>
+             <div class="w-full bg-red-400 rounded-t-sm h-[75%]"></div>
+             <div class="w-full bg-red-500 rounded-t-sm h-[100%] shadow-[0_0_15px_rgba(239,68,68,0.3)]"></div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="group relative bg-white p-10 rounded-[32px] border border-black/[0.04] shadow-[0_20px_40px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-500/5 to-transparent rounded-bl-[64px] pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+          
+          <div class="w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center mb-8 border border-black/10 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-500 text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>
+          </div>
+          
+          <h3 class="text-[22px] font-bold text-black mb-4 leading-tight">Leads 'Basura'</h3>
+          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Tus anuncios generan muchos clics, pero atraen a curiosos que no tienen el presupuesto o la intención real de comprar.</p>
+          
+          <!-- Mini UI Graphic -->
+          <div class="w-full h-16 bg-black/[0.02] border border-black/5 rounded-xl flex items-center justify-between p-3">
+             <div class="flex items-center gap-2">
+               <div class="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-black/30"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+               <div>
+                 <div class="w-12 h-2 bg-black/10 rounded mb-1.5"></div>
+                 <div class="w-8 h-1.5 bg-black/5 rounded"></div>
+               </div>
+             </div>
+             <div class="px-2 py-1 bg-red-500/10 text-red-600 text-[9px] font-bold rounded">Rechazado</div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="group relative bg-white p-10 rounded-[32px] border border-black/[0.04] shadow-[0_20px_40px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/5 to-transparent rounded-bl-[64px] pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+          
+          <div class="w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center mb-8 border border-black/10 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500 text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+          </div>
+          
+          <h3 class="text-[22px] font-bold text-black mb-4 leading-tight">Caída al Escalar</h3>
+          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Tus campañas venden bien con bajo presupuesto, pero en cuanto intentas meterles más dinero para crecer, el ROAS se desploma.</p>
+          
+          <!-- Mini UI Graphic -->
+          <div class="w-full h-16 bg-black/[0.02] border border-black/5 rounded-xl flex items-center justify-center p-3 relative overflow-hidden">
+             <!-- Line Chart SVG -->
+             <svg class="w-full h-full text-black/20" viewBox="0 0 100 30" preserveAspectRatio="none">
+               <path d="M0,30 L20,20 L40,15 L60,25 L80,28 L100,29" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/>
+             </svg>
+             <div class="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-[9px] font-bold rounded border border-white/10">ROAS < 1.0</div>
+          </div>
+        </div>
       </div>
+
     </Container>
   </section>
 
