@@ -122,28 +122,31 @@ const words = ['Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crecimiento', 'Conve
     </div>
   </Container>
 
-  <!-- Marquee inferior más elegante -->
-  <div class="marquee marquee-mask mt-32 border-y border-black/5 py-4 lg:mt-40 bg-white/[0.01]">
-    <div class="marquee-track">
-      {
-        words.map((word) => (
-          <span
-            class="mr-16 flex items-center whitespace-nowrap text-[clamp(1.5rem,3vw,3rem)] font-light tracking-widest text-black/20 uppercase"
-          >
-            {word}<span class="ml-16 text-black/10 text-xl">✦</span>
-          </span>
-        ))
-      }
-      {
-        words.map((word) => (
-          <span
-            aria-hidden="true"
-            class="mr-16 flex items-center whitespace-nowrap text-[clamp(1.5rem,3vw,3rem)] font-light tracking-widest text-black/20 uppercase"
-          >
-            {word}<span class="ml-16 text-black/10 text-xl">✦</span>
-          </span>
-        ))
-      }
+  <!-- Elemento Interactivo: Beam/Particles desde el Footer -->
+  <div class="relative w-full h-40 mt-20 flex justify-center items-end group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Volver arriba">
+    
+    <!-- Animated Light Beam (Crece hacia arriba) -->
+    <div class="absolute bottom-0 w-[2px] h-4 bg-gradient-to-t from-blue-500 to-transparent group-hover:h-full transition-all duration-700 ease-in-out">
+      <!-- Brillo que sube -->
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-16 bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-[shoot_1.5s_ease-out_infinite]"></div>
+    </div>
+    
+    <!-- Glow Base en el borde del footer -->
+    <div class="absolute bottom-0 w-12 h-1 bg-black/10 rounded-t-full transition-all duration-500 group-hover:w-48 group-hover:h-1.5 group-hover:bg-gradient-to-r from-blue-500 to-purple-500 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]"></div>
+
+    <!-- Partículas Flotantes (Visibles al hover) -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200px] h-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+      <div class="absolute bottom-0 left-[20%] w-1.5 h-1.5 bg-blue-500 rounded-full blur-[1px] animate-[rise_2s_ease-out_infinite]"></div>
+      <div class="absolute bottom-0 left-[80%] w-2 h-2 bg-purple-500 rounded-full blur-[1px] animate-[rise_2.5s_ease-out_infinite_0.3s]"></div>
+      <div class="absolute bottom-0 left-[40%] w-1 h-1 bg-cyan-400 rounded-full animate-[rise_1.5s_ease-out_infinite_0.6s]"></div>
+      <div class="absolute bottom-0 left-[60%] w-2 h-2 bg-blue-500 rounded-full blur-[2px] animate-[rise_3s_ease-out_infinite_0.1s]"></div>
+    </div>
+    
+    <!-- Etiqueta -->
+    <div class="absolute bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+      <span class="text-[10px] font-bold uppercase tracking-[.2em] text-white bg-black/90 backdrop-blur-md px-5 py-2.5 rounded-full shadow-2xl">
+        Subir al inicio ↑
+      </span>
     </div>
   </div>
 </section>
@@ -155,5 +158,17 @@ const words = ['Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crecimiento', 'Conve
   }
   .animate-float {
     animation: float 5s ease-in-out infinite;
+  }
+  
+  @keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-150px) scale(0); opacity: 0; }
+  }
+  
+  @keyframes shoot {
+    0% { transform: translateY(100%) translateX(-50%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-300%) translateX(-50%); opacity: 0; }
   }
 </style>
