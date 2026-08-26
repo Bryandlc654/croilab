@@ -526,48 +526,123 @@ try {
   </section>
 
   <!-- 4. ROI -->
-  <section class="relative bg-[#fbfbfb] py-32 lg:py-48 border-t border-black/5 overflow-hidden">
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
-    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+  <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 overflow-hidden">
+    
+    <!-- Background Gradient and Texture -->
+    <div class="absolute inset-0 bg-[#f8f9fa] opacity-50"></div>
+    <div class="absolute top-1/4 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+    
+    <!-- Pattern Background -->
+    <div class="absolute inset-0 opacity-[0.015] pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, black 1px, transparent 0); background-size: 32px 32px;"></div>
     
     <Container class="relative z-10 text-center">
-      <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-black mb-16" data-custom-speed="0.85">
+      
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Escalado Seguro</span>
+      </div>
+      
+      <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-black mb-16 leading-[0.95]" data-custom-speed="0.85">
         Escalabilidad <br/>
-        <span class="italic font-serif font-normal text-black/50">Predecible.</span>
+        <span class="italic font-serif font-light text-black/40">Predecible.</span>
       </h2>
 
-      <!-- MOCKUP MASIVO -->
-      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group">
+      <!-- MOCKUP MASIVO (Dashboard de Crecimiento) -->
+      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-24 rounded-[32px] overflow-hidden bg-black shadow-[0_40px_80px_rgba(0,0,0,0.15)] border border-black/10 group perspective-1000">
+        
+        <!-- Imagen Base -->
         <img 
           src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2426&auto=format&fit=crop" 
           alt="Dashboard Escalado" 
-          class="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" 
+          class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity grayscale transition-transform duration-1000 group-hover:scale-105" 
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
         
-        <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 p-4 md:p-6 rounded-3xl bg-white/90 backdrop-blur-xl shadow-2xl border border-black/5 flex items-center gap-4 md:gap-6 animate-pulse-slow transition-transform hover:scale-105">
-          <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-600 font-bold text-lg md:text-xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div>
-          <div class="text-left">
-            <div class="text-[10px] md:text-sm font-bold text-black uppercase tracking-wider">Retorno Publicitario</div>
-            <div class="text-xl md:text-2xl font-black text-black">ROAS: 6.5x</div>
+        <!-- Overlay Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#050505] via-[#050505]/80 to-transparent"></div>
+        
+        <!-- Interfaz Flotante Simulada -->
+        <div class="absolute inset-x-8 md:inset-x-12 bottom-8 md:bottom-12 flex flex-col md:flex-row gap-6 md:gap-8 items-end justify-between">
+          
+          <!-- Main Chart Card -->
+          <div class="w-full md:w-3/5 bg-white/10 backdrop-blur-2xl border border-white/20 p-6 rounded-3xl shadow-2xl transition-transform duration-700 hover:-translate-y-2 text-left">
+            <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+              <div class="text-[12px] font-bold text-white uppercase tracking-widest">Revenue (Q3)</div>
+              <div class="flex gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-white/20"></span>
+                <span class="w-2 h-2 rounded-full bg-white/20"></span>
+                <span class="w-2 h-2 rounded-full bg-white/80"></span>
+              </div>
+            </div>
+            
+            <div class="flex items-end gap-4 mb-4">
+              <div class="text-4xl md:text-5xl font-bold text-white tracking-tight">$342.8K</div>
+              <div class="text-[13px] font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded mb-1 border border-green-500/30">+145% ROAS</div>
+            </div>
+            
+            <!-- Abstract SVG Chart -->
+            <div class="w-full h-24 mt-2">
+              <svg class="w-full h-full text-blue-400 drop-shadow-[0_0_15px_rgba(96,165,250,0.5)]" viewBox="0 0 100 40" preserveAspectRatio="none">
+                <path d="M0,40 L0,35 C10,32 15,38 25,28 C35,18 40,25 50,15 C60,5 65,12 75,8 C85,4 90,0 100,2 L100,40 Z" fill="url(#gradient)" opacity="0.3" />
+                <path d="M0,35 C10,32 15,38 25,28 C35,18 40,25 50,15 C60,5 65,12 75,8 C85,4 90,0 100,2" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="currentColor"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
           </div>
+          
+          <!-- Floating ROI Card -->
+          <div class="w-full md:w-2/5 bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-3xl shadow-[0_20px_40px_rgba(37,99,235,0.4)] text-left flex flex-col justify-center transform transition-transform duration-700 hover:scale-105 border border-white/10">
+            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-6 backdrop-blur-md">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+            </div>
+            <div class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1">Retorno de Inversión</div>
+            <div class="text-4xl md:text-5xl font-black text-white">6.5x</div>
+          </div>
+          
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">+200%</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Volumen de Leads/Ventas</div>
+      <!-- Métricas / Bento Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <!-- Tarjeta 1 -->
+        <div class="group relative p-10 rounded-[32px] bg-white border border-black/5 shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 overflow-hidden text-left">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-bl-full transition-transform duration-700 group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-2xl bg-black/5 flex items-center justify-center mb-8 text-black/40 group-hover:bg-green-500 group-hover:text-white transition-colors duration-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+            <div class="text-[11px] uppercase tracking-widest text-black/40 font-bold mb-2">Volumen</div>
+            <div class="text-4xl font-bold text-black mb-2">+200%</div>
+            <div class="text-[14px] text-black/50">Crecimiento escalable de leads y ventas.</div>
+          </div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8">
-          <div class="text-6xl font-bold text-white mb-2">-40%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold">Costo de Adquisición (CPA)</div>
+        
+        <!-- Tarjeta Central (Dark Theme / Destaque) -->
+        <div class="group relative p-10 rounded-[32px] bg-[#0c0c0e] text-white border border-black/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform md:-translate-y-6 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(37,99,235,0.25)] hover:-translate-y-8 overflow-hidden text-left">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-8 text-white/70 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <div class="text-[11px] uppercase tracking-widest text-white/50 font-bold mb-2">Eficiencia</div>
+            <div class="text-5xl font-bold text-white mb-2">-40%</div>
+            <div class="text-[14px] text-white/60">Reducción drástica del Costo de Adquisición (CPA).</div>
+          </div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">Omni</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Meta + Google Ads Integrado</div>
+        
+        <!-- Tarjeta 3 -->
+        <div class="group relative p-10 rounded-[32px] bg-white border border-black/5 shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 overflow-hidden text-left">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-bl-full transition-transform duration-700 group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-2xl bg-black/5 flex items-center justify-center mb-8 text-black/40 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div class="text-[11px] uppercase tracking-widest text-black/40 font-bold mb-2">Ecosistema</div>
+            <div class="text-4xl font-bold text-black mb-2">Omni</div>
+            <div class="text-[14px] text-black/50">Estrategia integrada de Meta + Google Ads.</div>
+          </div>
         </div>
       </div>
+      
     </Container>
   </section>
 
