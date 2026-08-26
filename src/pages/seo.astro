@@ -151,44 +151,83 @@ try {
   </section>
 
   <!-- 2. LA AGITACIÓN (LIGHT MODE) -->
-  <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 pt-10">
+  <section class="relative bg-white py-32 lg:py-48 overflow-hidden">
+    <!-- Línea decorativa sutil -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
+    
     <Container>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-black mb-8 leading-[1.1]" data-custom-speed="0.9">
-            El SEO tradicional está <span class="text-black/30 line-through">muerto.</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        
+        <!-- Columna Izquierda: Copy Editorial -->
+        <div class="reveal-up relative">
+          <!-- Decoración sutil de fondo -->
+          <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-black/[0.02] rounded-full blur-[80px] pointer-events-none"></div>
+
+          <h2 class="text-[clamp(3.5rem,6vw,5.5rem)] font-bold tracking-tighter text-black mb-8 leading-[0.95]">
+            El SEO <br/>
+            tradicional <br/>
+            está <span class="italic font-serif font-light text-black/30 relative inline-block">
+              muerto.
+              <span class="absolute top-1/2 left-0 w-full h-[2px] bg-red-500/50 -rotate-3"></span>
+            </span>
           </h2>
-          <div class="space-y-6 text-[16px] leading-relaxed text-black/60">
+          
+          <div class="space-y-6 text-[16px] md:text-[18px] leading-relaxed text-black/60 max-w-lg">
             <p>
-              Agencias creando artículos de blog genéricos que nadie lee. Creación de enlaces en sitios basura. Promesas de "estar el número 1" para palabras clave que no generan ingresos.
+              Agencias creando artículos de blog genéricos que nadie lee. Creación masiva de enlaces en sitios basura. Promesas vacías de "estar el número 1" para palabras clave que no generan un solo centavo de ingresos.
             </p>
             <p>
-              Nosotros no hacemos eso. Nuestro enfoque de <strong class="text-black">Ingeniería de Conversión</strong> se asegura de que cada visita que atraemos a tu sitio web tiene la tarjeta en la mano lista para comprar.
+              Nosotros <strong class="text-black font-semibold">no hacemos eso</strong>. Nuestro enfoque de Ingeniería de Conversión se asegura de que cada visita que atraemos a tu sitio web esté a un paso de sacar la tarjeta y comprar.
             </p>
+          </div>
+
+          <div class="mt-12 flex items-center gap-4">
+             <div class="flex -space-x-4">
+                <img class="w-12 h-12 rounded-full border-2 border-white grayscale object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Cliente B2B" />
+                <img class="w-12 h-12 rounded-full border-2 border-white grayscale object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Cliente B2B" />
+                <img class="w-12 h-12 rounded-full border-2 border-white grayscale object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Cliente B2B" />
+             </div>
+             <p class="text-[13px] font-medium text-black/50 leading-tight max-w-[200px]">Empresas B2B que ya escalaron orgánicamente con nosotros.</p>
           </div>
         </div>
 
-        <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
+        <!-- Columna Derecha: Tarjeta de Dato Duro -->
+        <div class="reveal-up relative group mt-10 lg:mt-0">
+          <!-- Sombra inmersiva decorativa -->
+          <div class="absolute inset-0 bg-blue-500/5 translate-y-4 translate-x-4 rounded-[3rem] -z-10 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
           
-          <div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]">
-            <div class="p-10 pb-0">
-              <div class="text-7xl font-bold text-black mb-4">91%</div>
-              <p class="text-lg text-black/60 mb-10">de las páginas en internet no reciben tráfico orgánico de Google porque no tienen una arquitectura diseñada para responder a la intención de búsqueda real del usuario.</p>
+          <div class="relative flex flex-col h-full overflow-hidden rounded-[3rem] bg-[#050505] text-white shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 border border-white/10">
+            
+            <div class="p-10 lg:p-14 z-10 pb-0">
+              <div class="text-[clamp(5rem,8vw,8rem)] font-bold tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">91%</div>
+              <p class="text-[17px] leading-relaxed text-white/60">
+                de las páginas en internet <strong class="text-white">no reciben NADA de tráfico orgánico</strong> de Google porque no tienen una arquitectura de negocio diseñada para responder a la intención de búsqueda real de los compradores.
+              </p>
             </div>
             
-            <!-- MOCKUP (Data Visualization / Fall of traffic) -->
-            <div class="relative w-full h-[300px] mt-auto overflow-hidden">
+            <!-- Visualización de datos inmersiva -->
+            <div class="relative w-full h-[350px] mt-10 lg:mt-16">
+              <!-- Glow interior -->
+              <div class="absolute top-0 right-10 w-[200px] h-[200px] bg-red-500/20 blur-[80px] rounded-full pointer-events-none z-10"></div>
+              
               <img 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" 
-                alt="Gráfico de pérdida de tráfico" 
-                class="absolute inset-0 w-full h-full object-cover object-top opacity-80 mix-blend-multiply filter contrast-125 transition-transform duration-700 group-hover:scale-105" 
+                src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2070&auto=format&fit=crop" 
+                alt="Gráficos de tráfico y finanzas" 
+                class="absolute inset-0 w-full h-full object-cover object-center opacity-30 grayscale mix-blend-screen transition-transform duration-1000 group-hover:scale-105" 
               />
-              <!-- Gradiente para fundir la imagen con el fondo -->
-              <div class="absolute inset-0 bg-gradient-to-t from-[#fbfbfb] via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10"></div>
+              
+              <div class="absolute bottom-10 left-10 z-20">
+                 <div class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-[13px] font-bold backdrop-blur-md">
+                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 17-5 5-5-5"/></svg>
+                   Tráfico Estancado
+                 </div>
+              </div>
             </div>
           </div>
+
         </div>
+
       </div>
     </Container>
   </section>
