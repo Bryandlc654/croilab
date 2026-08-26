@@ -92,20 +92,46 @@ import Container from './ui/Container.astro';
     <!-- RIGHT/BOTTOM COLUMN: IMAGE / VISUALS -->
     <div class="reveal-up relative w-full max-w-[900px] perspective-1000">
 
-      <!-- Image Container -->
-      <div class="glass-panel relative aspect-video w-full overflow-hidden rounded-3xl animate-float" data-speed="-0.15">
+      <!-- Video Container -->
+      <div class="glass-panel relative aspect-video w-full overflow-hidden rounded-3xl animate-float" id="video-container" data-speed="-0.15">
         <!-- Glow behind image -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-transparent mix-blend-screen opacity-50"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-transparent mix-blend-screen opacity-50 z-0 pointer-events-none"></div>
         
-        <img 
-          src="/images/video-cover.jpg" 
-          alt="Croilab Cover" 
-          class="h-full w-full object-cover object-center opacity-80 mix-blend-luminosity hover:mix-blend-normal transition duration-700" 
-        />
+        <!-- The Cover -->
+        <div id="video-cover" class="absolute inset-0 z-10 cursor-pointer flex items-center justify-center group">
+          <img 
+            src="/images/video-cover.jpg" 
+            alt="Croilab Cover" 
+            class="absolute inset-0 h-full w-full object-cover object-center opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition duration-700" 
+          />
+          <!-- Play Button -->
+          <div class="relative z-20 flex h-24 w-24 items-center justify-center rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30">
+            <svg class="h-10 w-10 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+
+        <!-- The iframe (hidden by default) -->
+        <div id="video-player" class="absolute inset-0 z-20 hidden bg-black">
+          <iframe id="youtube-iframe" class="w-full h-full" width="1093" height="615" src="" title="Croilab Agencia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         
         <!-- Inner Shadow / Frame -->
-        <div class="absolute inset-0 rounded-3xl border border-black/10 ring-1 ring-inset ring-white/5 pointer-events-none"></div>
+        <div class="absolute inset-0 rounded-3xl border border-black/10 ring-1 ring-inset ring-white/5 pointer-events-none z-30"></div>
       </div>
     </div>
   </Container>
 </section>
+
+<script>
+  const cover = document.getElementById('video-cover');
+  const player = document.getElementById('video-player');
+  const iframe = document.getElementById('youtube-iframe');
+
+  if (cover && player && iframe) {
+    cover.addEventListener('click', () => {
+      cover.style.display = 'none';
+      player.classList.remove('hidden');
+      iframe.src = "https://www.youtube.com/embed/J9-aEZ523bA?autoplay=1";
+    });
+  }
+</script>
