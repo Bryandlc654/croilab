@@ -77,27 +77,66 @@ try {
   <ServiceStats />
 
   <!-- 1.5 LOS SÍNTOMAS (PAIN POINTS) -->
-  <section class="relative bg-[#f8f9fa] py-32 border-t border-black/5">
-    <Container>
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Diagnóstico de negocio</span>
-        <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-tight">
-          ¿Te resulta dolorosamente familiar alguna de estas situaciones?
-        </h2>
-      </div>
+  <section class="relative bg-[#050505] py-32 border-t border-white/5 overflow-hidden">
+    <!-- Fondos y destellos sutiles de alerta -->
+    <div class="grid-bg absolute inset-0 opacity-[0.03] pointer-events-none invert"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`, title: "Dependencia de Ads", desc: "Cada mes el costo por clic sube. Si dejas de pagar pauta a Meta o Google, tu negocio literalmente se detiene y las ventas caen a cero." },
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>`, title: "Competencia Inferior", desc: "Tus competidores tienen un peor producto y peor servicio, pero se llevan a tus clientes simplemente porque aparecen primero en Google." },
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`, title: "Tráfico Fantasma", desc: "Tienes cientos de visitas mensuales a tu sitio web, pero el teléfono no suena y los formularios de contacto están acumulando polvo." }
-        ].map(s => (
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-            <div class="mb-6 grayscale opacity-80" set:html={s.icon}></div>
-            <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
-            <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
+    <Container class="relative z-10">
+      <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+        
+        <!-- Lado izquierdo: Título (Sticky) -->
+        <div class="lg:w-1/3 lg:sticky lg:top-32 reveal-up">
+          <div class="mb-6 flex items-center gap-4">
+            <span class="h-px w-8 bg-gradient-to-r from-transparent to-red-500/50"></span>
+            <span class="text-[11px] font-bold uppercase tracking-[.25em] text-red-400">Diagnóstico Crítico</span>
           </div>
-        ))}
+          <h2 class="text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-white mb-6 leading-[1.05]">
+            ¿Te resulta dolorosamente <br/>
+            <span class="italic font-serif font-light text-white/40">familiar?</span>
+          </h2>
+          <p class="text-[16px] text-white/50 leading-relaxed max-w-sm">
+            Estos son los síntomas de un ecosistema digital que está perdiendo dinero (y clientes) todos los días frente a competidores más rápidos.
+          </p>
+        </div>
+
+        <!-- Lado derecho: Tarjetas tipo Bento -->
+        <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 reveal-up">
+          
+          <!-- Tarjeta 1 (Ancha) -->
+          <div class="bg-white/[0.02] p-10 rounded-[2rem] border border-white/5 transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10 hover:-translate-y-1 md:col-span-2 group">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-400 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Dependencia absoluta de Ads</h3>
+            <p class="text-[16px] leading-relaxed text-white/50 max-w-2xl">
+              Cada mes el costo por clic sube. Si dejas de pagar pauta a Meta o Google, tu negocio literalmente se detiene y las ventas caen a cero. Eres rehén de sus algoritmos y precios.
+            </p>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div class="bg-white/[0.02] p-10 rounded-[2rem] border border-white/5 transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10 hover:-translate-y-1 group">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-400 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Competencia Inferior</h3>
+            <p class="text-[15px] leading-relaxed text-white/50">
+              Tus competidores tienen un peor producto y servicio, pero se llevan a tus clientes simplemente porque aparecen primero en Google.
+            </p>
+          </div>
+
+          <!-- Tarjeta 3 -->
+          <div class="bg-white/[0.02] p-10 rounded-[2rem] border border-white/5 transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10 hover:-translate-y-1 group">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-400 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Tráfico Fantasma</h3>
+            <p class="text-[15px] leading-relaxed text-white/50">
+              Tienes cientos de visitas mensuales a tu web, pero el teléfono no suena y los formularios de contacto están acumulando polvo.
+            </p>
+          </div>
+
+        </div>
       </div>
     </Container>
   </section>
