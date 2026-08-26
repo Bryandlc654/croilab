@@ -4,6 +4,7 @@ import Container from '../components/ui/Container.astro';
 import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import ServiceStats from '../components/ServiceStats.astro';
+import ServiceCases from '../components/ServiceCases.astro';
 
 // Sincronización Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=ecommerce';
@@ -218,6 +219,8 @@ try {
       </div>
     </Container>
   </section>
+
+  <ServiceCases />
 
   <!-- 4.5 FAQ -->
   <section class="relative bg-white py-32 lg:py-40 border-t border-black/5">
