@@ -96,10 +96,10 @@ try {
           projects.map((project, i) => {
             const isEven = i % 2 === 0;
             return (
-              <article class={`group relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-10 lg:gap-0`}>
+              <article class={`project-card group relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-10 lg:gap-0`}>
                 
                 <!-- BLOQUE DE IMAGEN -->
-                <div class="w-full lg:w-7/12 relative z-10">
+                <div class="project-img-block w-full lg:w-7/12 relative z-10">
                   <a href={project.link} target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#f8f9fa] border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
                     <div class="absolute inset-0 bg-white/10 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
                     <img
@@ -110,7 +110,7 @@ try {
                     />
                     <!-- Etiqueta Flotante -->
                     <div class="absolute top-6 left-6 z-20">
-                      <span class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-black">
+                      <span class="inline-flex items-center rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-black shadow-lg">
                         {project.category}
                       </span>
                     </div>
@@ -118,7 +118,7 @@ try {
                 </div>
 
                 <!-- BLOQUE DE TEXTO (Superpuesto) -->
-                <div class={`w-full lg:w-6/12 relative z-20 ${isEven ? 'lg:-ml-20' : 'lg:-mr-20'}`}>
+                <div class={`project-text-block w-full lg:w-6/12 relative z-20 ${isEven ? 'lg:-ml-20' : 'lg:-mr-20'}`}>
                   <div class="bg-white/95 backdrop-blur-xl rounded-[2.5rem] border border-black/10 p-8 sm:p-12 lg:p-16 shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-colors duration-500 group-hover:border-black/20">
                     <div class="flex items-center gap-4 mb-6">
                       <span class="h-px w-8 bg-black/20"></span>
@@ -173,3 +173,82 @@ try {
     50% { transform: translateY(-20px) rotate(5deg); }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero Title Parallax
+  const titles = gsap.utils.toArray('.gsap-title');
+  titles.forEach((title) => {
+    const speed = parseFloat(title.getAttribute('data-custom-speed')) || 1;
+    const yOffset = (1 - speed) * 200;
+
+    gsap.fromTo(title,
+      { y: yOffset, opacity: 0.2 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: title,
+          start: "top 95%",
+          end: "top 20%",
+          scrub: 1,
+        }
+      }
+    );
+  });
+
+  // Elementos Reveal Up
+  const reveals = gsap.utils.toArray('.reveal-up');
+  reveals.forEach((el) => {
+    gsap.from(el, {
+      y: 40,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+      }
+    });
+  });
+
+  // Project Cards asimétricos
+  const projectCards = gsap.utils.toArray('.project-card');
+  projectCards.forEach((card, i) => {
+    const isEven = i % 2 === 0;
+    const imageBlock = card.querySelector('.project-img-block');
+    const textBlock = card.querySelector('.project-text-block');
+
+    if (imageBlock) {
+      gsap.from(imageBlock, {
+        x: isEven ? -60 : 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+        }
+      });
+    }
+
+    if (textBlock) {
+      gsap.from(textBlock, {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        delay: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+        }
+      });
+    }
+  });
+</script>
