@@ -233,52 +233,71 @@ try {
   </section>
 
   <!-- 3. METODOLOGÍA (LIGHT MODE) -->
-  <section id="metodologia" class="relative bg-white py-32 border-t border-black/5">
-    <Container>
+  <section id="metodologia" class="relative bg-[#f8f9fa] py-32 lg:py-48 border-t border-black/5 overflow-hidden">
+    <!-- Grid sutil de fondo -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+    <Container class="relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start">
+        
         <!-- Izquierda: Sticky Header con Imagen -->
-        <div class="lg:sticky lg:top-40 flex flex-col gap-12">
+        <div class="lg:sticky lg:top-40 flex flex-col gap-12 reveal-up">
           <div>
-            <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Mecanismo Único</span>
-            <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">
+            <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-500 mb-6 block">Mecanismo Único</span>
+            <h2 class="text-[clamp(3.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tighter text-black mb-6">
               Ingeniería <br/>
-              <span class="italic font-serif font-normal text-black/40">Inversa.</span>
+              <span class="italic font-serif font-light text-black/40">Inversa.</span>
             </h2>
-            <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
-              En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
+            <p class="text-[17px] leading-relaxed text-black/60 max-w-sm">
+              En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales hiper-optimizados para dominarlas.
             </p>
           </div>
           
           <!-- IMAGEN MOCKUP (Arquitectura/Estructura) -->
-          <div class="relative w-full aspect-square max-w-sm rounded-[2.5rem] overflow-hidden bg-black/5 border border-black/10 group">
+          <div class="relative w-full aspect-[4/5] max-w-sm rounded-[2.5rem] overflow-hidden bg-white border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] group">
              <img 
                src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2000&auto=format&fit=crop" 
                alt="Arquitectura SEO" 
-               class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105" 
+               class="w-full h-full object-cover grayscale opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" 
              />
-             <div class="absolute inset-0 border-[4px] border-white/50 rounded-[2.5rem] m-4 pointer-events-none"></div>
+             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+             <!-- Pequeño badge flotante -->
+             <div class="absolute bottom-6 left-6 inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg">
+                <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
+                <span class="text-[10px] font-bold text-black uppercase tracking-[.15em]">Estructura de Datos</span>
+             </div>
           </div>
         </div>
 
         <!-- Derecha: Pasos -->
-        <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-8 mt-10 lg:mt-0">
           {
             [
-              { title: "Arquitectura Semántica", desc: "Estructuramos tu sitio como un ecosistema. Optimizamos la jerarquía de información para que Google entienda exactamente tu autoridad sobre el tema." },
+              { title: "Arquitectura Semántica", desc: "Estructuramos tu sitio como un ecosistema. Optimizamos la jerarquía de información para que Google entienda tu autoridad absoluta sobre el tema." },
               { title: "Intención de Compra", desc: "No apuntamos a palabras clave de alto volumen y cero ventas. Apuntamos a los términos transaccionales exactos que tus mejores clientes escriben antes de sacar su tarjeta." },
-              { title: "Autoridad Programática", desc: "Inyectamos confianza algorítmica. Construimos PR digital y enlaces desde ecosistemas relevantes que gritan a Google: 'Ellos son los líderes absolutos de la industria'." },
-              { title: "Optimización de Conversión", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese tráfico frío hacia tu formulario de contacto o carrito." }
+              { title: "Autoridad Programática", desc: "Inyectamos confianza algorítmica. Construimos PR digital y enlaces desde ecosistemas relevantes que le gritan a Google: 'Ellos son los líderes de la industria'." },
+              { title: "Optimización CRO", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese tráfico frío hacia tu formulario de contacto de manera inevitable." }
             ].map((step, i) => (
-              <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-                <div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic">
-                  0{i + 1}
+              <div class="step-card reveal-up group relative p-10 lg:p-12 rounded-[2.5rem] border border-black/5 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:border-black/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:-translate-y-1 overflow-hidden">
+                
+                <!-- Efecto de iluminación sutil al hover -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
+                <div class="flex flex-col sm:flex-row items-start gap-6 lg:gap-8">
+                  <div class="text-[60px] lg:text-[80px] leading-[0.8] font-bold text-black/[0.03] transition-all duration-500 group-hover:text-blue-500/10 font-serif italic select-none">
+                    0{i + 1}
+                  </div>
+                  <div class="relative z-10 pt-2">
+                    <h3 class="text-2xl lg:text-3xl font-bold text-black mb-4 tracking-tight">{step.title}</h3>
+                    <p class="text-[16px] leading-relaxed text-black/60">{step.desc}</p>
+                  </div>
                 </div>
-                <h3 class="relative z-10 text-2xl font-semibold text-black mb-4">{step.title}</h3>
-                <p class="relative z-10 text-[15px] leading-relaxed text-black/60">{step.desc}</p>
+
               </div>
             ))
           }
         </div>
+
       </div>
     </Container>
   </section>
