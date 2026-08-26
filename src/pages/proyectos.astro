@@ -54,27 +54,38 @@ try {
   description="Explora nuestros casos de éxito. Experiencias digitales diseñadas para captar, retener y convertir."
   rankMathSEO={rankMathSEO}
 >
-  <section class="relative overflow-hidden border-t border-white/10 bg-[#050505]">
-    <div class="grid-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+  <section class="relative min-h-[75vh] flex flex-col justify-center overflow-hidden border-t border-white/5 bg-[#050505]">
+    <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
+    
+    <!-- Efectos de iluminación vibrantes -->
+    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[130px] pointer-events-none"></div>
 
-    <Container class="relative z-10 pt-32 lg:pt-40">
-      <Breadcrumb items={[{ label: 'Proyectos' }]} />
-      
-      <div class="mt-12 max-w-[880px] pb-16 lg:pb-24">
-        <div class="mb-8 flex items-center gap-4">
-          <span class="h-px w-9 bg-white/20"></span>
-          <span class="text-[11px] font-medium uppercase tracking-[.24em] text-white/50">Portafolio</span>
-        </div>
-        <h1 class="text-[clamp(3.2rem,6.5vw,6.8rem)] font-bold leading-[.9] tracking-tight text-white">
-          Trabajos que <br />
-          <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">convierten</span>
-        </h1>
-        <p class="mt-8 max-w-2xl text-[15px] leading-relaxed text-white/50 md:text-[17px]">
-          No diseñamos por estética, diseñamos por resultados. Explora los sistemas digitales que hemos construido para escalar negocios a su máximo potencial.
-        </p>
+    <Container class="relative z-10 pt-40 pb-32 flex flex-col items-center text-center">
+      <div class="mb-12">
+        <Breadcrumb items={[{ label: 'Proyectos' }]} />
       </div>
+      
+      <div class="mb-8 flex items-center justify-center gap-4 reveal-up">
+        <span class="h-px w-12 bg-gradient-to-r from-transparent to-blue-500/50"></span>
+        <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-400">Nuestro Portafolio</span>
+        <span class="h-px w-12 bg-gradient-to-l from-transparent to-blue-500/50"></span>
+      </div>
+      
+      <h1 class="gsap-title max-w-5xl text-[clamp(3.5rem,8vw,8rem)] font-bold leading-[0.9] tracking-tight text-white mb-10" data-custom-speed="0.8">
+        Trabajos que <br />
+        <span class="italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-300 to-white">convierten.</span>
+      </h1>
+      
+      <p class="reveal-up mx-auto max-w-2xl text-[16px] leading-relaxed text-white/50 md:text-[18px]">
+        No diseñamos por simple estética, construimos sistemas por resultados. Explora los ecosistemas digitales que hemos diseñado para escalar negocios a su máximo potencial.
+      </p>
+
     </Container>
+
+    <!-- Elementos visuales flotantes (Abstracción de pantallas/UI) -->
+    <div class="absolute top-[20%] left-[5%] w-40 h-40 md:w-80 md:h-80 rounded-[3rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] pointer-events-none animate-[float_8s_ease-in-out_infinite] rotate-12"></div>
+    <div class="absolute bottom-[10%] right-[5%] w-32 h-32 md:w-64 md:h-64 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] pointer-events-none animate-[float_6s_ease-in-out_infinite_reverse]"></div>
   </section>
 
   <!-- LISTADO DE PROYECTOS (LIGHT MODE) -->
@@ -155,3 +166,10 @@ try {
 
   <Cta />
 </BaseLayout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+</style>
