@@ -54,11 +54,23 @@ try {
   rankMathSEO={rankMathSEO}
 >
   <section class="relative min-h-[75vh] flex flex-col justify-center overflow-hidden border-t border-white/5 bg-[#050505]">
-    <div class="grid-bg absolute inset-0 opacity-15 pointer-events-none"></div>
     
+    <!-- Imagen de fondo con degradado (0 a 100%) -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img 
+        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" 
+        alt="Agencia de Desarrollo y Diseño" 
+        class="w-full h-full object-cover object-top opacity-50"
+      />
+      <!-- El degradado va de 0% opacidad arriba a 100% oscuro abajo, asegurando legibilidad -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050505]/0 via-[#050505]/60 to-[#050505]"></div>
+      <!-- Un toque de oscuridad general para asegurar contraste con el texto blanco -->
+      <div class="absolute inset-0 bg-[#050505]/40"></div>
+    </div>
+
     <!-- Efectos de iluminación vibrantes -->
-    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[130px] pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[130px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[130px] pointer-events-none z-0"></div>
 
     <Container class="relative z-10 pt-40 pb-32 flex flex-col items-center text-center">
       <div class="mb-12">
