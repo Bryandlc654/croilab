@@ -122,30 +122,25 @@ const words = ['Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crecimiento', 'Conve
     </div>
   </Container>
 
-  <!-- Elemento Fijo Animado: Portal Pulsante desde el Footer -->
-  <div class="relative w-full h-40 lg:h-56 mt-20 flex justify-center items-end overflow-hidden">
+  <!-- Elemento Fijo Animado: Data Equalizer / Soundwave -->
+  <div class="relative w-full h-32 lg:h-48 mt-20 flex items-end justify-center gap-1 sm:gap-2 lg:gap-3 px-4 lg:px-10 overflow-hidden">
+    <!-- Glow de fondo -->
+    <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-blue-500/10 to-transparent blur-2xl pointer-events-none"></div>
     
-    <!-- Contenedor del Portal (mitad superior visible) -->
-    <div class="relative w-[600px] h-[300px] flex justify-center items-end">
-      
-      <!-- Anillos concéntricos animados (siempre en movimiento) -->
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full border border-blue-500/10 animate-[ping_4s_ease-out_infinite]"></div>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[450px] h-[450px] rounded-full border border-purple-500/20 animate-[ping_4s_ease-out_infinite_1s]"></div>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full border border-cyan-500/30 animate-[ping_4s_ease-out_infinite_2s]"></div>
-      
-      <!-- Núcleo Central (Fijo, visible) -->
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180px] h-[180px] bg-gradient-to-t from-[#090909] to-[#1a1a1a] rounded-full shadow-[0_0_50px_rgba(0,0,0,0.2)] border-t border-white/10 z-10 flex flex-col items-center justify-start pt-8 cursor-pointer transition-transform duration-500 hover:scale-105 hover:-translate-y-2" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Volver al inicio">
+    {
+      Array.from({length: 30}).map((_, i) => {
+        // Generar un delay y altura de manera procedural y fija (sin Math.random para evitar desajustes)
+        const delay = (Math.sin(i * 0.5) * 0.8 + 0.8).toFixed(2);
+        const height = (Math.cos(i * 0.8) * 40 + 60).toFixed(0);
         
-        <svg class="w-6 h-6 text-white/80 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-        
-        <span class="text-[9px] uppercase tracking-[.3em] font-bold text-white/50 mt-4">
-          Top
-        </span>
-      </div>
-
-    </div>
+        return (
+          <div 
+            class="w-3 sm:w-4 lg:w-6 bg-gradient-to-t from-blue-600 to-purple-400 rounded-t-full origin-bottom opacity-80 hover:opacity-100 hover:scale-y-125 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]" 
+            style={`height: ${height}%; animation: equalizer 1.2s ease-in-out infinite alternate; animation-delay: -${delay}s;`}
+          ></div>
+        )
+      })
+    }
   </div>
 </section>
 
@@ -156,5 +151,9 @@ const words = ['Estrategia', 'Diseño', 'Meta Ads', 'SEO', 'Crecimiento', 'Conve
   }
   .animate-float {
     animation: float 5s ease-in-out infinite;
+  }
+  @keyframes equalizer {
+    0% { transform: scaleY(0.3); }
+    100% { transform: scaleY(1.0); }
   }
 </style>
