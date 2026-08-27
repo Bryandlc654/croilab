@@ -53,14 +53,14 @@ const navLinks = [
               </button>
               
               <!-- Mega Menú Desplegable -->
-              <div class="absolute top-[80%] left-1/2 -translate-x-1/2 mt-2 w-[600px] opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+              <div class="absolute top-[80%] left-1/2 -translate-x-1/2 mt-2 w-[720px] opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                 <div class="rounded-3xl border border-black/10 bg-white/95 backdrop-blur-2xl p-6 shadow-[0_30px_60px_rgba(0,0,0,0.1)] flex gap-8 text-black before:absolute before:-top-2 before:left-1/2 before:-translate-x-1/2 before:w-4 before:h-4 before:rotate-45 before:bg-white/95 before:border-l before:border-t before:border-black/10 before:-z-10">
                   
                   <div class="flex-1">
                     <h3 class="text-[10px] font-bold uppercase tracking-widest text-black/40 mb-4 px-3">{link.dropdownTitle || 'Especialidades'}</h3>
                     <div class={`grid ${link.children.some(c => c.image) ? 'grid-cols-2 gap-4' : 'grid-cols-2 gap-1'}`}>
                       {link.children.map((child: any) => (
-                        <a href={child.href} class={`group/item rounded-xl p-3 hover:bg-black/5 transition-colors flex ${child.image ? 'flex-col gap-3' : 'items-center gap-3'}`}>
+                        <a href={child.href} class={`group/item rounded-xl p-2 hover:bg-black/5 transition-colors flex ${child.image ? 'flex-col gap-2' : 'items-center gap-3'}`}>
                           {child.image ? (
                             <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-black/5 border border-black/5">
                               <img src={child.image} alt={child.label} class="w-full h-full object-cover grayscale opacity-80 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-500 group-hover/item:scale-105" />
@@ -68,7 +68,7 @@ const navLinks = [
                           ) : (
                             <div class="w-8 h-8 rounded-lg bg-black/5 group-hover/item:bg-blue-500/10 flex items-center justify-center text-black/40 group-hover/item:text-blue-600 transition-colors" set:html={child.icon}></div>
                           )}
-                          <span class="text-[13px] font-bold text-black group-hover/item:text-blue-600 transition-colors">{child.label}</span>
+                          <span class={`text-[13px] font-bold text-black group-hover/item:text-blue-600 transition-colors ${child.image ? 'px-1' : ''}`}>{child.label}</span>
                         </a>
                       ))}
                     </div>
