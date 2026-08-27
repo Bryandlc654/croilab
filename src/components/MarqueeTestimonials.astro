@@ -1,14 +1,26 @@
 ---
 import Container from './ui/Container.astro';
 
-const testimonials = [
-  { quote: "Pasamos de 0 leads orgánicos a 45 calificados por mes. Literalmente salvaron nuestro Q3.", name: "Roberto V.", role: "CEO, SaaS B2B", rating: 5 },
-  { quote: "Habíamos invertido miles en agencias SEO que solo nos mandaban reportes de 'visitas'. Ellos se enfocaron en ventas.", name: "Camila T.", role: "CMO, Retail", rating: 5 },
-  { quote: "No entiendo la mitad de la magia técnica que hacen, pero mi CRM está lleno de prospectos buscando comprar.", name: "Miguel A.", role: "Founder, B2B Services", rating: 5 },
-  { quote: "Redujimos nuestro CPA un 60% al dejar de depender exclusivamente de Ads. El mejor ROI del año.", name: "Elena S.", role: "VP Marketing, Tech", rating: 5 },
-  { quote: "El tráfico creció un 300%, pero lo más importante: la tasa de conversión se multiplicó por dos.", name: "David R.", role: "Director, Real Estate", rating: 5 },
-  { quote: "Finalmente encontramos un partner que entiende que el SEO debe generar dinero, no solo posiciones vanidosas.", name: "Laura M.", role: "Head of Growth", rating: 5 },
-];
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  rating: number;
+}
+
+export interface Props {
+  testimonials: Testimonial[];
+  kicker?: string;
+  titleTop?: string;
+  titleBottom?: string;
+}
+
+const { 
+  testimonials, 
+  kicker = "Testimonios de Clientes", 
+  titleTop = "Resultados que", 
+  titleBottom = "hablan por sí solos." 
+} = Astro.props;
 
 // Duplicate for marquee loop effect
 const track1 = [...testimonials, ...testimonials];
@@ -25,11 +37,11 @@ const track2Looped = [...track2, ...track2];
 
   <Container class="relative z-10 text-center mb-20">
     <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6">
-      <span class="text-[11px] font-bold uppercase tracking-widest text-blue-600">Testimonios de Clientes</span>
+      <span class="text-[11px] font-bold uppercase tracking-widest text-blue-600">{kicker}</span>
     </div>
     <h2 class="gsap-title text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-black leading-tight">
-      Resultados que <br/>
-      <span class="italic font-serif font-light text-blue-600">hablan por sí solos.</span>
+      {titleTop} <br/>
+      <span class="italic font-serif font-light text-blue-600">{titleBottom}</span>
     </h2>
   </Container>
 

@@ -5,7 +5,16 @@ import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
-import SeoTestimonials from '../components/SeoTestimonials.astro';
+import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+
+const seoTestimonials = [
+  { quote: "Pasamos de 0 leads orgánicos a 45 calificados por mes. Literalmente salvaron nuestro Q3.", name: "Roberto V.", role: "CEO, SaaS B2B", rating: 5 },
+  { quote: "Habíamos invertido miles en agencias SEO que solo nos mandaban reportes de 'visitas'. Ellos se enfocaron en ventas.", name: "Camila T.", role: "CMO, Retail", rating: 5 },
+  { quote: "No entiendo la mitad de la magia técnica que hacen, pero mi CRM está lleno de prospectos buscando comprar.", name: "Miguel A.", role: "Founder, B2B Services", rating: 5 },
+  { quote: "Redujimos nuestro CPA un 60% al dejar de depender exclusivamente de Ads. El mejor ROI del año.", name: "Elena S.", role: "VP Marketing, Tech", rating: 5 },
+  { quote: "El tráfico creció un 300%, pero lo más importante: la tasa de conversión se multiplicó por dos.", name: "David R.", role: "Director, Real Estate", rating: 5 },
+  { quote: "Finalmente encontramos un partner que entiende que el SEO debe generar dinero, no solo posiciones vanidosas.", name: "Laura M.", role: "Head of Growth", rating: 5 },
+];
 
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=seo';
 let rankMathSEO = null;
@@ -488,7 +497,7 @@ try {
     </Container>
   </section>
 
-  <SeoTestimonials />
+  <MarqueeTestimonials testimonials={seoTestimonials} />
   <ServiceCases />
 
   <!-- 4.5 FAQ (OBJECIONES) -->

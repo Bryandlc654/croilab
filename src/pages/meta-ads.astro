@@ -1,10 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MethodologyLine from '../components/MethodologyLine.astro';
 import Container from '../components/ui/Container.astro';
-import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
+import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+import Button from '../components/ui/Button.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
+
+const metaAdsTestimonials = [
+  { quote: "Por fin una agencia que habla de ROAS y no de 'Likes'. Multiplicaron nuestras ventas x4 en 3 meses.", name: "Carlos R.", role: "CEO, Ecommerce", rating: 5 },
+  { quote: "Estábamos perdiendo dinero cada mes con Meta Ads hasta que ellos implementaron su sistema de adquisición.", name: "Andrea G.", role: "Directora, Clínica Estética", rating: 5 },
+  { quote: "El dashboard que nos montaron nos permite ver exactamente cuánto ganamos por cada peso invertido en tiempo real.", name: "Jorge M.", role: "CEO, SaaS B2B", rating: 5 },
+  { quote: "Dejamos de depender de los caprichos del algoritmo. Ahora tenemos un flujo predecible de clientes cada semana.", name: "Valeria S.", role: "Founder, B2B Services", rating: 5 },
+  { quote: "Pasamos de un CPA de $45 a $12. Escalabilidad pura y dura sin quemar el presupuesto.", name: "Fernando L.", role: "Startup Founder", rating: 5 },
+  { quote: "La mejor decisión del año. Su enfoque científico para hacer creativos y medir datos no tiene comparación.", name: "Mariana T.", role: "CMO, Retail", rating: 5 },
+];
 
 // Sincronización Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=meta-ads';
@@ -646,6 +657,9 @@ try {
     </Container>
   </section>
 
+  <!-- Testimonios / Reseñas -->
+  <MarqueeTestimonials testimonials={metaAdsTestimonials} />
+  
   <ServiceCases />
 
   <!-- 4.5 FAQ -->
