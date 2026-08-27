@@ -5,6 +5,16 @@ import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
+import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+
+const ecommerceTestimonials = [
+  { quote: "Teníamos visitas, pero un abandono de carrito del 80%. Ellos arreglaron el flujo de checkout y las ventas se duplicaron.", name: "Valeria M.", role: "Founder, Fashion Retail", rating: 5 },
+  { quote: "Migramos a Shopify con su rediseño UX y fue un éxito. La tasa de conversión pasó del 1.2% al 3.5% en semanas.", name: "Roberto T.", role: "CEO, Tech Store", rating: 5 },
+  { quote: "No solo hacen tiendas hermosas, entienden perfectamente la psicología detrás de por qué la gente compra.", name: "Elena C.", role: "CMO, Beauty Brand", rating: 5 },
+  { quote: "La optimización técnica que implementaron nos salvó en Black Friday. Vendimos un 200% más sin caídas.", name: "Martín S.", role: "Director de Operaciones", rating: 5 },
+  { quote: "El ROI se pagó solo en el primer mes gracias a la estrategia de upselling nativa que nos integraron en el carrito.", name: "Jorge F.", role: "Ecommerce Manager", rating: 5 },
+  { quote: "Nuestra tienda por fin proyecta la calidad real de nuestros productos. Literalmente elevó el valor percibido de la marca.", name: "Andrea L.", role: "Founder, Joyería", rating: 5 },
+];
 
 // Sincronización Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=ecommerce';
@@ -354,6 +364,8 @@ try {
     </Container>
   </section>
 
+  <MarqueeTestimonials testimonials={ecommerceTestimonials} />
+  
   <ServiceCases />
 
   <!-- 4.5 FAQ -->
