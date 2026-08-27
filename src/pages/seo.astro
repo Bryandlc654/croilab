@@ -5,6 +5,7 @@ import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
+import SeoTestimonials from '../components/SeoTestimonials.astro';
 
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=seo';
 let rankMathSEO = null;
@@ -487,6 +488,7 @@ try {
     </Container>
   </section>
 
+  <SeoTestimonials />
   <ServiceCases />
 
   <!-- 4.5 FAQ (OBJECIONES) -->
