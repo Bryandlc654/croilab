@@ -5,6 +5,16 @@ import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
+import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+
+const conversionesTestimonials = [
+  { quote: "Teníamos miles de visitas pero la conversión era del 0.8%. Después del rediseño subimos al 3.2%. Matemática pura y más ventas.", name: "Javier T.", role: "CEO, SaaS", rating: 5 },
+  { quote: "Pensábamos que el problema era el tráfico. Ellos nos demostraron con tests A/B que el problema era la fricción de nuestro funnel.", name: "Marta S.", role: "CMO, FinTech", rating: 5 },
+  { quote: "No adivinan, miden. Cada cambio en la página estuvo respaldado por datos de mapas de calor y grabaciones de usuarios.", name: "Diego R.", role: "Founder, B2B Services", rating: 5 },
+  { quote: "Redujeron nuestro costo de adquisición a la mitad simplemente logrando que la landing page dejara de perder prospectos.", name: "Camila F.", role: "Growth Lead", rating: 5 },
+  { quote: "Lograron una estructura donde el cliente siente que es absurdo no comprar. El enfoque persuasivo es magistral.", name: "Andrés L.", role: "VP Marketing", rating: 5 },
+  { quote: "Dejamos de quemar dinero en pauta. Ahora cada dólar que invertimos rinde tres veces más gracias a su ingeniería CRO.", name: "Sofia M.", role: "Ecommerce Director", rating: 5 },
+];
 
 // Sincronización Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=conversiones';
@@ -344,6 +354,8 @@ try {
     </Container>
   </section>
 
+  <MarqueeTestimonials testimonials={conversionesTestimonials} />
+  
   <ServiceCases />
 
   <!-- 4.5 FAQ -->
