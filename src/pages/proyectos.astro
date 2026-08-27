@@ -31,7 +31,7 @@ const projects = wpProjects.map(wpProj => {
     description: cleanDesc,
     category: "Proyecto",
     image: wpProj.imagen_url || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
-    link: wpProj.enlace_proyecto || "#"
+    link: `/proyectos/${wpProj.slug}`
   };
 });
 
@@ -122,7 +122,7 @@ try {
                 
                 <!-- BLOQUE DE IMAGEN -->
                 <div class="project-img-block w-full lg:w-7/12 relative z-10">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#f8f9fa] border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+                  <a href={project.link} class="block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#f8f9fa] border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
                     <div class="absolute inset-0 bg-white/10 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
                     <img
                       src={project.image}
@@ -160,8 +160,6 @@ try {
                     <div class="border-t border-black/10 pt-8">
                       <a
                         href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         class="inline-flex items-center gap-4 rounded-full bg-black px-8 py-4 text-[13px] font-bold text-white transition-transform duration-300 hover:scale-105 shadow-[0_10px_20px_rgba(0,0,0,0.1)]"
                       >
                         Ver el resultado en vivo
