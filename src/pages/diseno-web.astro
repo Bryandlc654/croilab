@@ -5,6 +5,16 @@ import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
+import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+
+const webDesignTestimonials = [
+  { quote: "Nuestra web anterior parecía de los 90s. La nueva no solo es hermosa, sino que aumentó los leads un 150% en un mes.", name: "Laura C.", role: "Directora Comercial", rating: 5 },
+  { quote: "Entendieron perfectamente nuestra marca y la tradujeron en una experiencia de usuario increíble. De primer nivel.", name: "Andrés M.", role: "Founder, SaaS", rating: 5 },
+  { quote: "La velocidad de carga es brutal. Pasamos la auditoría técnica de Google con puntaje perfecto.", name: "Sofia T.", role: "CMO, Retail", rating: 5 },
+  { quote: "Teníamos muchas visitas pero nadie compraba. El rediseño de UX/UI resolvió exactamente nuestro problema de conversión.", name: "Diego L.", role: "CEO, Ecommerce", rating: 5 },
+  { quote: "El proceso fue muy organizado. Desde los wireframes hasta el desarrollo final, todo fue impecable.", name: "Valeria P.", role: "Directora, Agencia", rating: 5 },
+  { quote: "Nuestros clientes creen que somos una empresa gigante gracias a la nueva web. Literalmente elevó nuestro estatus.", name: "Ricardo S.", role: "Consultor", rating: 5 },
+];
 
 // Sincronización Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=diseno-web';
@@ -362,6 +372,8 @@ try {
     </Container>
   </section>
 
+  <MarqueeTestimonials testimonials={webDesignTestimonials} />
+  
   <ServiceCases />
 
   <!-- 4.5 FAQ -->
