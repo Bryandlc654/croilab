@@ -1,0 +1,147 @@
+---
+import Container from './ui/Container.astro';
+
+const steps = [
+  {
+    num: "01",
+    title: "Auditoría & Estrategia",
+    desc: "Analizamos tu negocio, competencia y métricas actuales. Definimos una hoja de ruta enfocada 100% en aumentar tu rentabilidad, sin suposiciones.",
+    mockup: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+    imageAlt: "Mockup de dashboard de métricas y análisis",
+    color: "from-blue-500 to-cyan-400"
+  },
+  {
+    num: "02",
+    title: "Arquitectura UX & Copywriting",
+    desc: "Estructuramos la información para guiar al usuario hacia la conversión. Escribimos textos persuasivos (copy) que tocan los puntos de dolor de tus clientes.",
+    mockup: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2000&auto=format&fit=crop",
+    imageAlt: "Mockup de wireframes de arquitectura de información",
+    color: "from-emerald-400 to-teal-400"
+  },
+  {
+    num: "03",
+    title: "Diseño UI Premium",
+    desc: "Aplicamos una capa visual de alta gama que posiciona tu marca como líder del sector. Diseñamos componentes interactivos que captan y retienen la atención.",
+    mockup: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop",
+    imageAlt: "Diseño UI visual atractivo",
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    num: "04",
+    title: "Desarrollo Headless",
+    desc: "Programamos tu web con tecnologías modernas (Astro.js, React) conectadas a WordPress. El resultado: tiempos de carga de menos de 1 segundo.",
+    mockup: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000&auto=format&fit=crop",
+    imageAlt: "Mockup de código de programación limpio",
+    color: "from-orange-500 to-yellow-400"
+  }
+];
+---
+
+<section class="relative bg-white py-32 overflow-hidden border-t border-black/5">
+  
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none"></div>
+
+  <Container class="relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-24 reveal-up">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6">
+        <span class="text-[11px] font-bold uppercase tracking-widest text-blue-600">Nuestro Sistema</span>
+      </div>
+      <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-black leading-tight mb-6">
+        Un proceso diseñado <br/>
+        <span class="italic font-serif font-light text-blue-600">para no fallar.</span>
+      </h2>
+      <p class="text-lg text-black/60">
+        Dejamos la improvisación para los amateurs. Cada fase de nuestro desarrollo está calculada milimétricamente para convertir clics en clientes reales.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-24 lg:gap-32 pb-20">
+      {steps.map((step, index) => (
+        <div class="process-step group flex flex-col lg:flex-row items-center gap-12 lg:gap-20 odd:lg:flex-row-reverse">
+          <!-- Text Box -->
+          <div class="flex-1 text-center lg:text-left">
+            <div class={`inline-block text-[clamp(4rem,8vw,7rem)] font-black text-transparent bg-clip-text bg-gradient-to-br ${step.color} opacity-20 leading-none mb-4 tracking-tighter`}>
+              {step.num}
+            </div>
+            <h3 class="text-3xl lg:text-4xl font-bold text-black mb-6">{step.title}</h3>
+            <p class="text-lg text-black/60 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              {step.desc}
+            </p>
+          </div>
+          
+          <!-- Animated Mockup -->
+          <div class="flex-1 w-full relative perspective-1000">
+            <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] transform rotate-3 scale-105 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none"></div>
+            
+            <!-- Contenedor del mockup -->
+            <div class="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-black/10 shadow-[0_30px_60px_rgba(0,0,0,0.08)] transform group-odd:-rotate-y-[10deg] group-even:rotate-y-[10deg] group-hover:rotate-y-0 group-hover:-translate-y-4 transition-transform duration-700 bg-white p-2">
+              <div class="w-full h-full rounded-[1.5rem] overflow-hidden relative">
+                <!-- Efecto de brillo barriendo la imagen -->
+                <div class="shimmer-effect absolute inset-0 z-10 pointer-events-none"></div>
+                <img src={step.mockup} alt={step.imageAlt} class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-1000" />
+              </div>
+            </div>
+            
+            <!-- Decoraciones flotantes -->
+            <div class="absolute -top-6 -right-6 w-20 h-20 bg-white rounded-2xl shadow-xl border border-black/5 flex items-center justify-center animate-float" style="animation-delay: 0s;">
+              <div class={`w-10 h-10 rounded-full bg-gradient-to-br ${step.color} opacity-20 absolute`}></div>
+              <svg class="w-8 h-8 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            </div>
+            
+            <div class="absolute -bottom-6 -left-6 w-24 h-12 bg-white rounded-full shadow-xl border border-black/5 flex items-center justify-center gap-2 animate-float" style="animation-delay: 1.5s;">
+              <span class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
+              <span class="text-xs font-bold text-black">Aprobado</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mini CTA dentro de la sección de Proceso -->
+    <div class="mt-10 mb-10 mx-auto max-w-4xl bg-black rounded-[2.5rem] p-12 text-center relative overflow-hidden reveal-up">
+      <!-- Glows -->
+      <div class="absolute top-1/2 left-0 w-64 h-64 bg-blue-500/30 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none"></div>
+      <div class="absolute top-1/2 right-0 w-64 h-64 bg-cyan-400/30 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none"></div>
+      
+      <div class="relative z-10">
+        <h3 class="text-3xl font-bold text-white mb-4">¿Listo para iniciar este proceso?</h3>
+        <p class="text-white/70 mb-8 max-w-xl mx-auto">No pierdas más tiempo ni dinero en estrategias que no te traen clientes reales. Agenda tu sesión de diagnóstico hoy.</p>
+        <a href="/contacto" class="inline-flex items-center justify-center bg-white text-black font-bold px-8 py-4 rounded-full transition-transform hover:scale-105 shadow-[0_10px_30px_rgba(255,255,255,0.2)]">
+          Quiero trabajar con ustedes
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .shimmer-effect {
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 80%
+    );
+    background-size: 200% auto;
+    animation: shimmer 3s infinite linear;
+    mix-blend-mode: overlay;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+</style>
