@@ -86,38 +86,44 @@ const steps = [
                   <div class={`w-2 h-2 rounded-full ${step.id === 'auditoria' ? 'bg-gray-200' : 'bg-green-400/80'}`}></div>
                 </div>
 
-                <!-- 1. Auditoría (Light & Minimalist) -->
+                <!-- 1. Auditoría (High-End SaaS Widget) -->
                 {step.id === 'auditoria' && (
-                  <div class="flex-1 flex flex-col justify-end relative">
-                    <!-- Minimal metrics boxes -->
-                    <div class="absolute top-0 left-0 w-full flex gap-2">
-                      <div class="flex-1 bg-gray-50 border border-gray-100 rounded p-1.5">
-                        <div class="w-4 h-1 bg-gray-200 rounded-full mb-1"></div>
-                        <div class="w-8 h-2 bg-blue-500 rounded-full"></div>
+                  <div class="flex-1 flex flex-col justify-between relative bg-white rounded-lg shadow-sm border border-gray-100 p-3 overflow-hidden">
+                    <!-- Top Stats -->
+                    <div class="flex justify-between items-start z-10 relative">
+                      <div>
+                        <div class="text-[8px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Conversión</div>
+                        <div class="text-2xl font-black text-gray-900 leading-none">4.2%</div>
                       </div>
-                      <div class="flex-1 bg-gray-50 border border-gray-100 rounded p-1.5">
-                        <div class="w-4 h-1 bg-gray-200 rounded-full mb-1"></div>
-                        <div class="w-6 h-2 bg-black rounded-full"></div>
+                      <div class="bg-emerald-50 text-emerald-600 font-bold text-[8px] px-1.5 py-0.5 rounded flex items-center gap-0.5 shadow-sm border border-emerald-100">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                        +124%
                       </div>
+                    </div>
+                    
+                    <!-- Decorative Circle in background -->
+                    <div class="absolute -right-4 top-2 w-16 h-16 rounded-full border-[4px] border-gray-50 flex items-center justify-center z-0">
+                      <div class="w-10 h-10 rounded-full border-[3px] border-blue-50 border-t-blue-500 transform -rotate-45 group-hover:rotate-[315deg] transition-transform duration-1000 ease-out"></div>
                     </div>
 
-                    <div class="flex justify-between items-end h-[60%] gap-2 px-2 relative z-10">
-                      {[30, 45, 35, 60, 50, 85].map((h, i) => (
-                        <div class="w-full bg-gray-100 rounded-t-sm relative transition-all duration-500 group-hover:bg-blue-100" style={`height: ${h}%; transition-delay: ${i * 0.05}s`}></div>
-                      ))}
+                    <!-- Smooth Line Chart -->
+                    <div class="absolute bottom-0 left-0 w-full h-[55%] z-10">
+                      <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                        <!-- Gradient Fill -->
+                        <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25" />
+                          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+                        </linearGradient>
+                        <path d="M0,100 C20,80 30,90 50,60 C70,30 80,40 100,15 L100,100 Z" fill="url(#chartGrad)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-700"/>
+                        <!-- Curved Line -->
+                        <path d="M0,100 C20,80 30,90 50,60 C70,30 80,40 100,15" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" class="dash-anim drop-shadow-[0_4px_4px_rgba(37,99,235,0.4)]"/>
+                        <!-- Target Dot -->
+                        <circle cx="100" cy="15" r="4" fill="white" stroke="#2563eb" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-500"/>
+                        <circle cx="100" cy="15" r="8" fill="#3b82f6" class="opacity-0 group-hover:opacity-30 transition-opacity duration-500 delay-500 animate-ping"/>
+                        <!-- Dotted Guide Line -->
+                        <line x1="100" y1="15" x2="100" y2="100" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2" class="opacity-0 group-hover:opacity-60 transition-opacity duration-500 delay-500"/>
+                      </svg>
                     </div>
-                    <svg class="absolute bottom-0 left-0 w-full h-[70%] z-20" preserveAspectRatio="none" viewBox="0 0 100 100">
-                      <!-- Fill gradient under line -->
-                      <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2" />
-                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
-                      </linearGradient>
-                      <path d="M0 80 Q 20 70, 40 50 T 80 20 L 100 5 L 100 100 L 0 100 Z" fill="url(#blueGrad)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000"/>
-                      <!-- Line -->
-                      <path d="M0 80 Q 20 70, 40 50 T 80 20 L 100 5" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="dash-anim drop-shadow-[0_4px_6px_rgba(37,99,235,0.3)]"/>
-                      <!-- Data point dot -->
-                      <circle cx="100" cy="5" r="3" fill="#2563eb" stroke="white" stroke-width="1.5" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500"/>
-                    </svg>
                   </div>
                 )}
 
