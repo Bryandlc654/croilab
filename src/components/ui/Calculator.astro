@@ -203,8 +203,9 @@ const restResults = config.results.slice(1);
 </section>
 
 <script>
-  const calc = document.querySelector('.croi-calculator');
-  if (!calc) return;
+  (() => {
+    const calc = document.querySelector('.croi-calculator');
+    if (!calc) return;
 
   const config = JSON.parse(calc.getAttribute('data-croi-config') ?? '{}');
   const nf = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 });
@@ -311,6 +312,7 @@ const restResults = config.results.slice(1);
   });
 
   render();
+  })();
 </script>
 
 <style>

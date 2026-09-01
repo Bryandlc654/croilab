@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MethodologyLine from '../components/MethodologyLine.astro';
 import Container from '../components/ui/Container.astro';
 import Cta from '../components/ui/Cta.astro';
+import Calculator from '../components/ui/Calculator.astro';
 import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
 import Button from '../components/ui/Button.astro';
 import ServiceStats from '../components/ServiceStats.astro';
@@ -661,6 +662,9 @@ try {
   <MarqueeTestimonials testimonials={metaAdsTestimonials} />
   
   <ServiceCases />
+
+  <!-- CALCULADORA -->
+  <Calculator mode="meta-ads" />
 
   <!-- 4.5 FAQ -->
   <section class="relative bg-white py-32 lg:py-40 border-t border-black/5">
