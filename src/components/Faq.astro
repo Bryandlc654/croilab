@@ -54,22 +54,88 @@ const faqs = [
       </div>
     </div>
 
-    <!-- FAQ LIST -->
-    <div class="mx-auto mt-16 lg:mt-24 max-w-4xl">
+    <!-- FAQ LIST (Acordeón animado) -->
+    <div class="mx-auto mt-16 lg:mt-20 max-w-4xl">
       {faqs.map((faq, i) => (
-        <details class="reveal-up group border-b border-black/10" style={`--i:${i}`}>
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-7 text-[17px] font-semibold tracking-tight text-black transition-colors duration-300 hover:text-accent">
+        <div
+          class="faq-item reveal-up group mb-4 overflow-hidden rounded-2xl border border-black/10 bg-white transition-colors duration-500 hover:border-black/20 last:mb-0"
+          style={`--i:${i}`}
+          data-faq-item
+        >
+          <button type="button" class="faq-head flex w-full cursor-pointer items-center justify-between gap-6 px-7 py-6 text-left lg:px-9" aria-expanded={i === 0 ? "true" : "false"}>
             <span class="flex items-center gap-5">
-              <span class="text-xs font-medium tracking-[.2em] text-black/30 transition-colors duration-300 group-hover:text-accent">{String(i + 1).padStart(2, '0')}</span>
-              {faq.q}
+              <span class="faq-num text-xs font-medium tracking-[.2em] text-black/30 transition-colors duration-300 group-hover:text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <span class="text-[16px] font-semibold tracking-tight text-black lg:text-[17px]">{faq.q}</span>
             </span>
-            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/15 text-lg text-black/50 transition duration-300 group-open:rotate-45 group-open:border-accent group-open:text-accent">
+            <span class="faq-icon flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/15 text-lg font-light text-black/50">
               +
             </span>
-          </summary>
-          <p class="pb-7 pl-[52px] text-[15px] leading-relaxed text-black/55">{faq.a}</p>
-        </details>
+          </button>
+          <div class="faq-body" style="height: 0; opacity: 0;">
+            <div class="faq-inner px-7 pb-7 lg:px-9 lg:pb-8">
+              <p class="border-l-2 border-accent/20 pl-6 text-[15px] leading-relaxed text-black/55">{faq.a}</p>
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   </Container>
 </section>
+
+<script>
+  import gsap from 'gsap';
+  (() => {
+    const items = document.querySelectorAll<HTMLElement>('[data-faq-item]');
+    if (!items.length) return;
+
+    const closeItem = (item: HTMLElement) => {
+      const body = item.querySelector<HTMLElement>('.faq-body');
+      const icon = item.querySelector<HTMLElement>('.faq-icon');
+      const head = item.querySelector<HTMLButtonElement>('.faq-head');
+      if (!body || !icon || !head) return;
+      if (!item.classList.contains('is-open')) return;
+      item.classList.remove('is-open');
+      head.setAttribute('aria-expanded', 'false');
+      gsap.to(body, { height: 0, opacity: 0, duration: 0.45, ease: 'power3.inOut' });
+      gsap.to(icon, { rotation: 0, backgroundColor: 'rgba(255,255,255,0)', color: 'rgba(0,0,0,0.5)', borderColor: 'rgba(0,0,0,0.15)', duration: 0.45, ease: 'power3.out' });
+    };
+
+    const openItem = (item: HTMLElement) => {
+      items.forEach((other) => { if (other !== item) closeItem(other); });
+      const body = item.querySelector<HTMLElement>('.faq-body');
+      const inner = item.querySelector<HTMLElement>('.faq-inner');
+      const icon = item.querySelector<HTMLElement>('.faq-icon');
+      const head = item.querySelector<HTMLButtonElement>('.faq-head');
+      if (!body || !inner || !icon || !head) return;
+      item.classList.add('is-open');
+      head.setAttribute('aria-expanded', 'true');
+      gsap.to(body, { height: inner.offsetHeight, opacity: 1, duration: 0.55, ease: 'power3.out' });
+      gsap.to(icon, { rotation: 45, backgroundColor: '#000000', color: '#ffffff', borderColor: '#000000', duration: 0.55, ease: 'power3.out' });
+    };
+
+    // Ajusta altura si cambia la ventana (responsive)
+    const resizeFix = () => {
+      items.forEach((item) => {
+        if (!item.classList.contains('is-open')) return;
+        const body = item.querySelector<HTMLElement>('.faq-body');
+        const inner = item.querySelector<HTMLElement>('.faq-inner');
+        if (body && inner) gsap.set(body, { height: inner.offsetHeight });
+      });
+    };
+    window.addEventListener('resize', resizeFix);
+
+    items.forEach((item, i) => {
+      const head = item.querySelector<HTMLButtonElement>('.faq-head');
+      if (!head) return;
+      head.addEventListener('click', () => {
+        if (item.classList.contains('is-open')) {
+          closeItem(item);
+        } else {
+          openItem(item);
+        }
+      });
+      // Primera pregunta abierta por defecto
+      if (i === 0) openItem(item);
+    });
+  })();
+</script>
