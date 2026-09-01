@@ -4,6 +4,7 @@ import { whatsappLink } from '../data/site';
 import type { ServicePageData } from '../data/servicePages';
 import Breadcrumb from './ui/Breadcrumb.astro';
 import Button from './ui/Button.astro';
+import Calculator from './ui/Calculator.astro';
 import Container from './ui/Container.astro';
 import ProjectCard from './ui/ProjectCard.astro';
 import SectionTitle from './ui/SectionTitle.astro';
@@ -16,6 +17,16 @@ const { data } = Astro.props;
 
 const related = projects.filter((project) => data.relatedProjects.includes(project.title));
 const waLink = whatsappLink();
+
+const calculatorModes: Record<string, 'ecommerce' | 'meta-ads' | 'web' | 'seo' | 'conversiones'> = {
+  ecommerce: 'ecommerce',
+  'meta-ads': 'meta-ads',
+  'diseno-web': 'web',
+  seo: 'seo',
+  conversiones: 'conversiones',
+};
+
+const calculatorMode = calculatorModes[data.slug];
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -168,6 +179,9 @@ const faqSchema = {
       </div>
     </Container>
   </section>
+
+  <!-- CALCULADORA -->
+  {calculatorMode && <Calculator mode={calculatorMode} />}
 
   <!-- PROCESO -->
   <section class="border-t border-black/10 bg-transparent">

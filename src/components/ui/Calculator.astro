@@ -1,0 +1,359 @@
+---
+import Container from './Container.astro';
+
+type Mode = 'ecommerce' | 'meta-ads' | 'web' | 'seo' | 'conversiones';
+interface Props {
+  mode: Mode;
+}
+
+const { mode } = Astro.props;
+
+interface CalcConfig {
+  mode: Mode;
+  title: string;
+  subtitle: string;
+  inputs: {
+    key: string;
+    label: string;
+    min: number;
+    max: number;
+    step: number;
+    value: number;
+    prefix?: string;
+    suffix?: string;
+  }[];
+  results: {
+    key: string;
+    label: string;
+    format: 'currency' | 'number' | 'multi';
+  }[];
+}
+
+const configs: Record<Mode, CalcConfig> = {
+  ecommerce: {
+    mode: 'ecommerce',
+    title: '¿Cuánto más podrías vender?',
+    subtitle:
+      'Mueve los controles con tus datos reales y mira en vivo lo que una mejor conversión le haría a tu ingreso.',
+    inputs: [
+      { key: 'visitas', label: 'Visitas mensuales', min: 500, max: 150000, step: 500, value: 10000 },
+      { key: 'ticket', label: 'Ticket promedio', min: 10, max: 300, step: 5, value: 60, prefix: '$' },
+      { key: 'convActual', label: 'Conversión actual', min: 0.5, max: 5, step: 0.1, value: 1, suffix: '%' },
+      { key: 'convNueva', label: 'Conversión optimizada', min: 1, max: 10, step: 0.1, value: 3, suffix: '%' },
+    ],
+    results: [
+      { key: 'nuevoIngreso', label: 'Ingreso proyectado / mes', format: 'currency' },
+      { key: 'ingresoActual', label: 'Ingreso actual / mes', format: 'currency' },
+      { key: 'ventasNuevas', label: 'Ventas proyectadas / mes', format: 'number' },
+      { key: 'extraAnual', label: 'Extra estimado al año', format: 'currency' },
+    ],
+  },
+  'meta-ads': {
+    mode: 'meta-ads',
+    title: '¿Cuánto devuelve tu pauta?',
+    subtitle:
+      'Simula tu presupuesto, tu ticket y tu costo por cliente para ver el retorno real de tu inversión publicitaria.',
+    inputs: [
+      { key: 'presupuesto', label: 'Presupuesto mensual', min: 300, max: 50000, step: 100, value: 2000, prefix: '$' },
+      { key: 'ticket', label: 'Ticket promedio', min: 10, max: 300, step: 5, value: 80, prefix: '$' },
+      { key: 'cpa', label: 'Costo por adquisición', min: 5, max: 100, step: 1, value: 30, prefix: '$' },
+      { key: 'margen', label: 'Margen operativo', min: 10, max: 80, step: 5, value: 40, suffix: '%' },
+    ],
+    results: [
+      { key: 'ingresos', label: 'Ingresos proyectados / mes', format: 'currency' },
+      { key: 'roas', label: 'ROAS estimado', format: 'multi' },
+      { key: 'clientes', label: 'Clientes nuevos / mes', format: 'number' },
+      { key: 'ganancia', label: 'Ganancia neta / mes', format: 'currency' },
+    ],
+  },
+  web: {
+    mode: 'web',
+    title: '¿Cuántos leads pierdes hoy?',
+    subtitle:
+      'Compara lo que capturas con tu web actual contra lo que podrías capturar con un diseño pensado para convertir.',
+    inputs: [
+      { key: 'visitas', label: 'Visitas mensuales', min: 500, max: 150000, step: 500, value: 10000 },
+      { key: 'convActual', label: 'Conversión actual', min: 0.5, max: 5, step: 0.1, value: 1, suffix: '%' },
+      { key: 'convNueva', label: 'Conversión con diseño CRO', min: 1, max: 10, step: 0.1, value: 4, suffix: '%' },
+    ],
+    results: [
+      { key: 'leadsNuevos', label: 'Leads proyectados / mes', format: 'number' },
+      { key: 'leadsActuales', label: 'Leads actuales / mes', format: 'number' },
+      { key: 'extraMes', label: 'Leads extra / mes', format: 'number' },
+      { key: 'extraAnual', label: 'Leads extra al año', format: 'number' },
+    ],
+  },
+  seo: {
+    mode: 'seo',
+    title: '¿Cuánto tráfico estás cediendo?',
+    subtitle:
+      'Compara las visitas que recibes según tu posición actual contra las que podrías tener en la primera página.',
+    inputs: [
+      { key: 'busquedas', label: 'Búsquedas mensuales del keyword', min: 500, max: 200000, step: 500, value: 15000 },
+      { key: 'posicionActual', label: 'Tu posición actual', min: 1, max: 20, step: 1, value: 8 },
+      { key: 'posicionNueva', label: 'Posición objetivo', min: 1, max: 10, step: 1, value: 3 },
+    ],
+    results: [
+      { key: 'visProyectadas', label: 'Visitas proyectadas / mes', format: 'number' },
+      { key: 'visActuales', label: 'Visitas actuales / mes', format: 'number' },
+      { key: 'extraMes', label: 'Visitas extra / mes', format: 'number' },
+      { key: 'extraAnual', label: 'Visitas extra al año', format: 'number' },
+    ],
+  },
+  conversiones: {
+    mode: 'conversiones',
+    title: '¿Cuánto vale optimizar tu embudo?',
+    subtitle:
+      'Pon tus números reales y descubre el ingreso que se te escapa hoy entre lo que entra y lo que convierte.',
+    inputs: [
+      { key: 'trafico', label: 'Tráfico mensual', min: 500, max: 200000, step: 500, value: 20000 },
+      { key: 'convActual', label: 'Conversión actual', min: 0.5, max: 5, step: 0.1, value: 1, suffix: '%' },
+      { key: 'convNueva', label: 'Conversión proyectada', min: 1, max: 10, step: 0.1, value: 3.5, suffix: '%' },
+      { key: 'valorCliente', label: 'Valor por conversión', min: 10, max: 1000, step: 10, value: 120, prefix: '$' },
+    ],
+    results: [
+      { key: 'extraMes', label: 'Ingreso extra / mes', format: 'currency' },
+      { key: 'convProyectadas', label: 'Conversiones proyectadas / mes', format: 'number' },
+      { key: 'convActuales', label: 'Conversiones actuales / mes', format: 'number' },
+      { key: 'extraAnual', label: 'Ingreso extra al año', format: 'currency' },
+    ],
+  },
+};
+
+const config = configs[mode];
+const configJson = JSON.stringify(config);
+const mainResult = config.results[0];
+const restResults = config.results.slice(1);
+---
+
+<section class="croi-calculator relative overflow-hidden border-t border-black/10 bg-white" data-croi-config={configJson}>
+  <Container class="py-24 lg:py-32">
+    <div class="reveal-up mx-auto max-w-2xl text-center">
+      <div class="mb-8 flex items-center justify-center gap-4">
+        <span class="h-px w-9 bg-accent"></span>
+        <span class="text-[11px] font-medium uppercase tracking-[.24em] text-black/40">Calculadora</span>
+        <span class="h-px w-24 bg-black/10"></span>
+      </div>
+      <h2 class="text-[clamp(2.4rem,4.5vw,3.8rem)] font-semibold leading-[.95] tracking-[-.05em] text-black">
+        {config.title}
+      </h2>
+      <p class="mx-auto mt-6 max-w-xl text-[15px] leading-7 text-black/50">{config.subtitle}</p>
+    </div>
+
+    <div class="reveal-up mt-14 grid items-stretch gap-6 lg:grid-cols-[1.1fr_0.9fr]" style="--i:1">
+      <!-- CONTROLADORES -->
+      <div class="rounded-[2rem] border border-black/10 bg-[#f8f9fa] p-8 lg:p-10">
+        {
+          config.inputs.map((input) => (
+            <div class="mb-9 last:mb-0">
+              <div class="mb-3 flex items-center justify-between gap-4">
+                <label class="text-[13px] font-semibold text-black">{input.label}</label>
+                <span class="croi-value rounded-full bg-white border border-black/10 px-3 py-1 text-[12px] font-bold text-black" data-value-key={input.key}></span>
+              </div>
+              <input
+                type="range"
+                class="croi-range"
+                min={input.min}
+                max={input.max}
+                step={input.step}
+                value={input.value}
+                data-range-key={input.key}
+                aria-label={input.label}
+              />
+            </div>
+          ))
+        }
+        <p class="mt-8 text-[11px] leading-relaxed text-black/40 border-t border-black/10 pt-6">
+          Valores estimados según métricas promedio del mercado. Tus números reales los definimos juntos en una llamada.
+        </p>
+      </div>
+
+      <!-- RESULTADOS -->
+      <div class="relative overflow-hidden rounded-[2rem] bg-[#050505] p-8 lg:p-10 border border-white/5">
+        <div class="absolute -top-20 right-[-10%] h-[300px] w-[300px] rounded-full bg-blue-500/20 blur-[90px] pointer-events-none"></div>
+        <div class="absolute -bottom-24 left-[-10%] h-[300px] w-[300px] rounded-full bg-cyan-500/10 blur-[90px] pointer-events-none"></div>
+
+        <div class="relative z-10">
+          <div class="mb-8">
+            <div class="mb-1 text-[11px] font-semibold uppercase tracking-[.2em] text-white/40">{mainResult.label}</div>
+            <div class="croi-result text-[clamp(2.4rem,3.5vw,3.4rem)] font-bold leading-none tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-white/60" data-result-key={mainResult.key}></div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 border-t border-white/10 pt-8">
+            {
+              restResults.map((result) => (
+                <div>
+                  <div class="mb-1 text-[11px] font-medium uppercase tracking-[.14em] text-white/35">{result.label}</div>
+                  <div class="croi-result text-xl font-bold text-white" data-result-key={result.key}></div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <a
+          href="/contacto"
+          class="relative z-10 mt-8 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[13px] font-bold text-black transition-colors hover:bg-blue-400"
+        >
+          Quiero estos resultados →
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  const calc = document.querySelector('.croi-calculator');
+  if (!calc) return;
+
+  const config = JSON.parse(calc.getAttribute('data-croi-config') ?? '{}');
+  const nf = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 });
+  const frag = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 1 });
+
+  const formatResult = (value: number, format: string): string => {
+    if (format === 'currency') return `$${nf.format(Math.round(value))}`;
+    if (format === 'multi') return `${value.toFixed(1).replace('.', ',')}x`;
+    return nf.format(Math.round(value));
+  };
+
+  const formatValue = (input: any): string => {
+    const raw = Number(input.value);
+    const value = input.step < 1 ? frag.format(raw) : nf.format(raw);
+    if (input.prefix) return `${input.prefix}${value}`;
+    if (input.suffix) return `${value}${input.suffix}`;
+    return value;
+  };
+
+  const ctrByPosition = (pos: number): number => {
+    if (pos <= 10) return [0, 28, 15.8, 11, 8.4, 6.3, 5, 4.4, 3.6, 3, 2.5][pos];
+    return 1.2;
+  };
+
+  const compute = (mode: string, v: any): Record<string, number> => {
+    switch (mode) {
+      case 'ecommerce': {
+        const ventasActuales = (v.visitas * v.convActual) / 100;
+        const ventasNuevas = (v.visitas * v.convNueva) / 100;
+        return {
+          nuevoIngreso: ventasNuevas * v.ticket,
+          ingresoActual: ventasActuales * v.ticket,
+          ventasNuevas,
+          extraAnual: (ventasNuevas - ventasActuales) * v.ticket * 12,
+        };
+      }
+      case 'meta-ads': {
+        const clientes = v.presupuesto / v.cpa;
+        const ingresos = clientes * v.ticket;
+        return {
+          ingresos,
+          roas: ingresos / v.presupuesto,
+          clientes,
+          ganancia: ingresos * (v.margen / 100) - v.presupuesto,
+        };
+      }
+      case 'web': {
+        const leadsActuales = (v.visitas * v.convActual) / 100;
+        const leadsNuevos = (v.visitas * v.convNueva) / 100;
+        return {
+          leadsNuevos,
+          leadsActuales,
+          extraMes: leadsNuevos - leadsActuales,
+          extraAnual: (leadsNuevos - leadsActuales) * 12,
+        };
+      }
+      case 'seo': {
+        const visActuales = (v.busquedas * ctrByPosition(Math.round(v.posicionActual))) / 100;
+        const visProyectadas = (v.busquedas * ctrByPosition(Math.round(v.posicionNueva))) / 100;
+        return {
+          visProyectadas,
+          visActuales,
+          extraMes: visProyectadas - visActuales,
+          extraAnual: (visProyectadas - visActuales) * 12,
+        };
+      }
+      case 'conversiones': {
+        const convActuales = (v.trafico * v.convActual) / 100;
+        const convProyectadas = (v.trafico * v.convNueva) / 100;
+        return {
+          extraMes: (convProyectadas - convActuales) * v.valorCliente,
+          convProyectadas,
+          convActuales,
+          extraAnual: (convProyectadas - convActuales) * v.valorCliente * 12,
+        };
+      }
+      default:
+        return {};
+    }
+  };
+
+  const render = (): void => {
+    const values: Record<string, number> = {};
+    calc.querySelectorAll<HTMLInputElement>('[data-range-key]').forEach((el) => {
+      values[el.dataset.rangeKey ?? ''] = Number(el.value);
+    });
+
+    config.inputs.forEach((input: any) => {
+      const label = calc.querySelector<HTMLElement>(`[data-value-key="${input.key}"]`);
+      const range = calc.querySelector<HTMLInputElement>(`[data-range-key="${input.key}"]`);
+      if (label) label.textContent = formatValue({ ...input, value: values[input.key] });
+      if (range) range.style.setProperty('--fill', `${((values[input.key] - input.min) / (input.max - input.min)) * 100}%`);
+    });
+
+    const results = compute(config.mode, values);
+    config.results.forEach((result: any) => {
+      const el = calc.querySelector<HTMLElement>(`[data-result-key="${result.key}"]`);
+      if (el) el.textContent = formatResult(results[result.key] ?? 0, result.format);
+    });
+  };
+
+  calc.querySelectorAll<HTMLInputElement>('[data-range-key]').forEach((el) => {
+    el.addEventListener('input', render);
+  });
+
+  render();
+</script>
+
+<style>
+  .croi-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      #2563eb var(--fill, 0%),
+      rgba(0, 0, 0, 0.12) var(--fill, 0%)
+    );
+    outline: none;
+    cursor: pointer;
+  }
+  .croi-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 2px solid #2563eb;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease;
+  }
+  .croi-range::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  .croi-range::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 2px solid #2563eb;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+  }
+  .croi-range::-moz-range-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.12);
+  }
+</style>
