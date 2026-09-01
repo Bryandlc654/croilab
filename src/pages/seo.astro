@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import Calculator from '../components/ui/Calculator.astro';
@@ -63,6 +64,9 @@ try {
     <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
     <Container class="relative z-10 pt-40 pb-20 lg:pt-48 lg:pb-32">
+      <div class="mb-14">
+        <Breadcrumb items={[{ label: 'Servicios', href: '/#servicios' }, { label: 'SEO' }]} />
+      </div>
       <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-20 items-center">
         
         <!-- Izquierda: Textos -->
