@@ -1,0 +1,261 @@
+---
+import Container from './ui/Container.astro';
+
+const projects = [
+  {
+    name: 'Nova Studio',
+    tags: ['UI/UX', 'Desarrollo', 'Branding'],
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+180%', label: 'Leads calificados al mes' },
+      { value: '1.2s', label: 'Tiempo de carga' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Vortex Media',
+    tags: ['Estrategia', 'Web App', 'Automatización'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+240%', label: 'Conversión de registros' },
+      { value: '99', label: 'PageSpeed Score' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Lumen Fintech',
+    tags: ['Dashboard', 'Data Viz', 'UX Research'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '3.2x', label: 'Retención de usuarios' },
+      { value: '+65%', label: 'Tiempo en plataforma' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Aura Wellness',
+    tags: ['E-commerce', 'Diseño', 'SEO'],
+    image: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+320%', label: 'Ventas online' },
+      { value: '+89%', label: 'Tráfico orgánico' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Kinetix SaaS',
+    tags: ['Landing', 'CRO', 'Motion'],
+    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '72%', label: 'Reducción bounce rate' },
+      { value: '+145%', label: 'Demo requests' },
+    ],
+    slug: '/proyectos',
+  },
+];
+const projectsJson = JSON.stringify(projects.map(p => ({ name: p.name, metrics: p.metrics, slug: p.slug })));
+---
+
+<section class="relative bg-[#030303] py-32 lg:py-40 border-t border-white/5 overflow-hidden" id="case-studies-carousel" data-projects={projectsJson}>
+
+  <Container class="relative z-10">
+    <!-- Header -->
+    <div class="mb-16 lg:mb-20 reveal-up">
+      <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-white/30 mb-6 block">Proyectos</span>
+      <h2 class="text-[clamp(2.5rem,4vw,4rem)] font-bold tracking-tight text-white leading-[1.05]">
+        Casos de estudio.<br/>
+        <span class="italic font-serif font-light text-white/40">Resultados reales.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start min-h-[480px]">
+
+      <!-- LEFT: Vertical project list -->
+      <section aria-label="Selected Projects" class="lg:col-span-5 flex flex-col z-10">
+        <div class="relative h-[320px] lg:h-[380px] overflow-hidden" data-carousel-list>
+          <!-- Fade edges -->
+          <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#030303] to-transparent z-10 pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#030303] to-transparent z-10 pointer-events-none"></div>
+          
+          <div class="carousel-track flex flex-col gap-8 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
+            {projects.map((project, i) => (
+              <article
+                class:list={[
+                  'carousel-item cursor-pointer transition-all duration-500',
+                  i === 0 ? 'active' : 'inactive opacity-40',
+                ]}
+                data-index={i}
+              >
+                <h3 class:list={[
+                  'font-serif italic text-4xl sm:text-5xl lg:text-[3.2rem] tracking-tight leading-none font-medium mb-3 transition-colors duration-500',
+                  i === 0 ? 'text-[#3b82f6]' : 'text-[#2a2a2a] hover:text-[#3a3a3a]',
+                ]}>
+                  {project.name}
+                </h3>
+                <div class="flex flex-wrap gap-2 pt-1">
+                  {project.tags.map(tag => (
+                    <span class:list={[
+                      'inline-flex items-center px-3.5 py-1 rounded-full text-[11px] font-normal tracking-wide transition-all duration-300 border',
+                      i === 0
+                        ? 'text-white/50 border-white/10 bg-white/[0.04]'
+                        : 'text-white/20 border-white/[0.04] bg-transparent',
+                    ]}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Image + Metrics -->
+      <section aria-label="Project Results" class="lg:col-span-7 relative flex flex-col justify-between h-full min-h-[380px]">
+        
+        <!-- Image container -->
+        <div class="relative w-full aspect-[4/3] lg:aspect-[16/11] rounded-[2rem] overflow-hidden bg-white/[0.03] border border-white/[0.06]">
+          {projects.map((project, i) => (
+            <img
+              src={project.image}
+              alt={project.name}
+              class:list={[
+                'absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                i === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105',
+              ]}
+              data-carousel-image={i}
+            />
+          ))}
+          <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- Metrics + CTA -->
+        <div class="pt-8 flex flex-wrap items-end justify-between gap-6 z-20 border-t border-white/5 mt-8">
+          <div class="flex items-start space-x-12">
+            {projects[0].metrics.map((metric, i) => (
+              <div class="flex flex-col" data-metric-index={i}>
+                <span class="text-3xl sm:text-4xl font-extrabold text-[#3b82f6] tracking-tight leading-none transition-all duration-500" data-metric-value>
+                  {metric.value}
+                </span>
+                <span class="text-xs text-white/40 font-normal mt-2.5 tracking-wide max-w-[130px] leading-snug transition-all duration-500" data-metric-label>
+                  {metric.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <a href={projects[0].slug} data-cta-link class="group inline-flex items-center text-sm font-normal text-white/60 hover:text-white transition-colors duration-200 space-x-1.5 pb-1">
+            <span>Ver caso</span>
+            <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </Container>
+</section>
+
+<script>
+(() => {
+  const section = document.getElementById('case-studies-carousel');
+  if (!section) return;
+
+  const projectsData = JSON.parse(section.getAttribute('data-projects') || '[]');
+  if (!projectsData.length) return;
+
+  const track = section.querySelector('.carousel-track') as HTMLElement;
+  const items = section.querySelectorAll('.carousel-item');
+  const images = section.querySelectorAll('[data-carousel-image]');
+  const metricEls = section.querySelectorAll('[data-metric-index]');
+  const ctaLink = section.querySelector('[data-cta-link]') as HTMLAnchorElement;
+  const listContainer = section.querySelector('[data-carousel-list]') as HTMLElement;
+  if (!track || !items.length || !images.length || !metricEls.length || !ctaLink || !listContainer) return;
+
+  let current = 0;
+  let autoTimer: ReturnType<typeof setInterval>;
+  const total = projectsData.length;
+
+  function activate(index: number) {
+    if (index === current) return;
+
+    // Update list items
+    items.forEach((item, i) => {
+      const isActive = i === index;
+      item.classList.toggle('active', isActive);
+      item.classList.toggle('inactive', !isActive);
+      item.classList.toggle('opacity-40', !isActive);
+      
+      const h3 = item.querySelector('h3');
+      if (h3) {
+        h3.className = `font-serif italic text-4xl sm:text-5xl lg:text-[3.2rem] tracking-tight leading-none font-medium mb-3 transition-colors duration-500 ${
+          isActive ? 'text-[#3b82f6]' : 'text-[#2a2a2a] hover:text-[#3a3a3a]'
+        }`;
+      }
+      
+      const tags = item.querySelectorAll('span');
+      tags.forEach(tag => {
+        tag.className = `inline-flex items-center px-3.5 py-1 rounded-full text-[11px] font-normal tracking-wide transition-all duration-300 border ${
+          isActive ? 'text-white/50 border-white/10 bg-white/[0.04]' : 'text-white/20 border-white/[0.04] bg-transparent'
+        }`;
+      });
+    });
+
+    // Scroll the track so active item is centered
+    const itemEl = items[index] as HTMLElement;
+    const itemHeight = itemEl.offsetHeight + 32;
+    const containerHeight = listContainer.offsetHeight;
+    const scrollOffset = -(index * itemHeight) + (containerHeight / 2) - (itemEl.offsetHeight / 2);
+    track.style.transform = `translateY(${scrollOffset}px)`;
+
+    // Update images
+    images.forEach((img, i) => {
+      const el = img as HTMLElement;
+      if (i === index) {
+        el.className = 'absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-100 scale-100';
+      } else {
+        el.className = 'absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-0 scale-105';
+      }
+    });
+
+    // Update metrics
+    metricEls.forEach((el) => {
+      const idx = parseInt(el.getAttribute('data-metric-index') || '0');
+      const metric = projectsData[index].metrics[idx];
+      if (!metric) return;
+      const valueEl = el.querySelector('[data-metric-value]');
+      const labelEl = el.querySelector('[data-metric-label]');
+      if (valueEl) valueEl.textContent = metric.value;
+      if (labelEl) labelEl.textContent = metric.label;
+    });
+
+    // Update CTA
+    ctaLink.href = projectsData[index].slug;
+
+    current = index;
+  }
+
+  function next() {
+    activate((current + 1) % total);
+  }
+
+  autoTimer = setInterval(next, 4000);
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      clearInterval(autoTimer);
+      activate(i);
+      autoTimer = setInterval(next, 4000);
+    });
+  });
+
+  section.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  section.addEventListener('mouseleave', () => {
+    autoTimer = setInterval(next, 4000);
+  });
+
+  // Initialize first item position
+  const firstItem = items[0] as HTMLElement;
+  const containerHeight = listContainer.offsetHeight;
+  const initialOffset = (containerHeight / 2) - (firstItem.offsetHeight / 2);
+  track.style.transform = `translateY(${initialOffset}px)`;
+})();
+</script>
