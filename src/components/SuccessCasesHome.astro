@@ -1,0 +1,232 @@
+---
+import Container from './ui/Container.astro';
+import { serviceCases } from '../data/serviceCases';
+
+interface Parsed {
+  prefix: string;
+  num: string;
+  suffix: string;
+  target: number | null;
+  label: string;
+}
+
+// Extrae el número y su envoltura para el contador. Si no es numérico, se muestra estático.
+function parseResult(raw: string, label: string): Parsed {
+  const m = raw.match(/^([+\-]?)([\d.,]+)(.*)$/);
+  if (m) {
+    const num = m[2].replace(/,/g, '.');
+    const target = parseFloat(num);
+    return { prefix: m[1] || '', num: m[2], suffix: m[3] || '', target: isNaN(target) ? null : target, label };
+  }
+  return { prefix: '', num: raw, suffix: '', target: null, label };
+}
+
+function barHeight(value: string): number {
+  const m = value.match(/(\d+(?:[.,]\d+)?)/);
+  let n = m ? parseFloat(m[1].replace(/,/g, '.')) : 0;
+  n = Math.min(n, 100);
+  return Math.max(n, 12);
+}
+
+const panels = serviceCases.map((c) => ({
+  client: c.client,
+  industry: c.industry,
+  image: c.image,
+  summary: c.description,
+  result: parseResult(c.result, c.metric),
+  achieved: c.solution,
+  actions: c.actions.slice(0, 3),
+  bars: c.metrics.map((m) => ({ value: m.value, label: m.label, barHeight: barHeight(m.value) })),
+}));
+---
+
+<section class="relative bg-[#f8f9fa] py-32 lg:py-40 border-t border-black/5 overflow-hidden" id="success-cases">
+  <div class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
+  <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
+  <div class="grid-bg absolute inset-0 opacity-[0.03] pointer-events-none"></div>
+
+  <Container class="relative z-10">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 reveal-up">
+      <div class="max-w-2xl">
+        <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-600 mb-5 block">Casos de éxito</span>
+        <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tighter text-black leading-[1.03]">
+          Resultados que<br/>
+          <span class="italic font-serif font-light text-black/40">se tocan.</span>
+        </h2>
+      </div>
+      <a href="/proyectos" class="reveal-up group flex items-center gap-3 text-[14px] font-bold text-black transition-all hover:text-blue-600 pb-2">
+        Ver todos los casos
+        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-black/5 transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap gap-2.5 mb-12 reveal-up" role="tablist" aria-label="Casos de éxito">
+      {panels.map((p, i) => (
+        <button
+          type="button"
+          role="tab"
+          aria-selected={i === 0}
+          data-tab
+          data-idx={i}
+          class:list={[
+            'relative px-6 py-3 rounded-full text-sm font-bold border transition-all duration-300',
+            i === 0
+              ? 'bg-black text-white border-black shadow-lg'
+              : 'bg-white text-black/60 border-black/10 hover:border-black/20 hover:text-black',
+          ]}
+        >
+          {p.client}
+        </button>
+      ))}
+    </div>
+
+    <!-- Panels -->
+    {panels.map((p, i) => (
+      <div class={i === 0 ? 'sc-panel' : 'sc-panel hidden'} data-panel={i} role="tabpanel">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:auto-rows-[minmax(200px,auto)]">
+
+          <!-- CARD A: Imagen + resumen corto -->
+          <article class="relative group overflow-hidden rounded-[2rem] lg:row-span-2 border border-black/5 bg-white flex flex-col">
+            <div class="relative w-full h-56 lg:h-[46%] overflow-hidden">
+              <img src={p.image} alt={p.client} class="w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+              <div class="absolute top-5 left-5 bg-white/80 backdrop-blur-md border border-black/5 rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[.15em] text-black shadow-sm">
+                {p.industry}
+              </div>
+            </div>
+            <div class="flex-1 p-8 flex flex-col justify-between">
+              <div>
+                <div class="text-[11px] font-bold tracking-[.2em] text-black/30 uppercase mb-2">Cliente</div>
+                <h3 class="text-2xl font-bold text-black tracking-tight mb-4">{p.client}</h3>
+                <p class="text-[15px] leading-relaxed text-black/60">{p.summary}</p>
+              </div>
+              <a href={`/casos/${serviceCases[i].slug}`} class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-black group-hover:text-blue-600 transition-colors">
+                Ver caso completo
+                <span class="transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- CARD B: Qué se ha conseguido -->
+          <article class="relative overflow-hidden rounded-[2rem] lg:row-span-2 border border-black/10 bg-white p-8 flex flex-col">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-6">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h4 class="text-lg font-bold text-black mb-3 flex items-center gap-2">Qué se ha conseguido</h4>
+            <p class="text-[15px] leading-relaxed text-black/50 mb-6">{p.achieved}</p>
+            <ul class="mt-auto space-y-3.5">
+              {p.actions.map((a) => (
+                <li class="flex items-start gap-3 text-[14px] text-black/70">
+                  <span class="text-blue-600 font-bold mt-0.5">✓</span>{a}
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <!-- CARD C: % (resultado) -->
+          <article class="relative overflow-hidden rounded-[2rem] border border-black/10 bg-[#0a0a0a] text-white p-8 flex flex-col justify-center shadow-2xl shadow-black/20">
+            <div class="absolute -top-8 -right-8 w-32 h-32 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
+            <span class="text-[10px] font-bold uppercase tracking-[.2em] text-white/40 mb-4 relative z-10">Resultado clave</span>
+            <div class="text-[clamp(3rem,5vw,4.5rem)] font-extrabold leading-none relative z-10">
+              {p.result.prefix}<span class="sc-pct-num" data-target={p.result.target}>{p.result.num}</span>{p.result.suffix}
+            </div>
+            <div class="text-[11px] font-bold uppercase tracking-widest text-cyan-300 mt-3 relative z-10">{p.result.label}</div>
+          </article>
+
+          <!-- CARD D: Gráficos -->
+          <article class="relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-8 flex flex-col justify-center">
+            <span class="text-[10px] font-bold uppercase tracking-[.2em] text-black/30 mb-5">Crecimiento</span>
+            <div class="flex items-end justify-between gap-2 h-28">
+              {p.bars.map((b) => (
+                <div class="flex flex-col items-center gap-2 flex-1 min-w-0">
+                  <span class="text-[10px] font-bold text-black/60 leading-none truncate max-w-full">{b.value}</span>
+                  <div class="w-full bg-blue-50 rounded-t-lg relative overflow-hidden" style="height: 100%;">
+                    <div class="sc-bar absolute bottom-0 inset-x-0 rounded-t-lg bg-gradient-to-t from-blue-600 to-cyan-400" style={`--h: ${b.barHeight}%`}></div>
+                  </div>
+                  <span class="text-[9px] text-black/40 uppercase tracking-wide leading-tight text-center">{b.label}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+
+        </div>
+      </div>
+    ))}
+  </Container>
+</section>
+
+<script>
+  (() => {
+    const root = document.getElementById('success-cases');
+    if (!root) return;
+
+    const tabs = Array.from(root.querySelectorAll('[data-tab]')) as HTMLButtonElement[];
+    const panels = Array.from(root.querySelectorAll('[data-panel]')) as HTMLElement[];
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function countUp(el: HTMLElement) {
+      const target = parseFloat(el.getAttribute('data-target') || '0');
+      if (isNaN(target) || reduceMotion) {
+        el.textContent = el.getAttribute('data-target') || '0';
+        return;
+      }
+      const raw = el.getAttribute('data-target') || '0';
+      const decimals = raw.includes('.') ? raw.split('.')[1].length : 0;
+      const duration = 1200;
+      const start = performance.now();
+      const step = (now: number) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    function animatePanel(panel: HTMLElement) {
+      const nums = panel.querySelectorAll<HTMLElement>('.sc-pct-num');
+      nums.forEach(countUp);
+      panel.querySelectorAll<HTMLElement>('.sc-bar').forEach((bar, i) => {
+        if (reduceMotion) {
+          bar.style.height = bar.style.getPropertyValue('--h');
+          return;
+        }
+        const h = bar.style.getPropertyValue('--h');
+        bar.style.height = '0%';
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            bar.style.transition = `height 900ms cubic-bezier(0.22,1,0.36,1) ${i * 100}ms`;
+            bar.style.height = h;
+          }, 50);
+        });
+      });
+    }
+
+    function activate(index: number) {
+      tabs.forEach((tab, i) => {
+        const active = i === index;
+        tab.classList.toggle('bg-black', active);
+        tab.classList.toggle('text-white', active);
+        tab.classList.toggle('border-black', active);
+        tab.classList.toggle('shadow-lg', active);
+        tab.classList.toggle('bg-white', !active);
+        tab.classList.toggle('text-black/60', !active);
+        tab.classList.toggle('border-black/10', !active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('hidden', i !== index);
+      });
+      animatePanel(panels[index]);
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activate(i));
+    });
+
+    animatePanel(panels[0]);
+  })();
+</script>
