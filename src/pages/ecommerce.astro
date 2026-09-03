@@ -6,8 +6,62 @@ import Button from '../components/ui/Button.astro';
 import Cta from '../components/ui/Cta.astro';
 import Calculator from '../components/ui/Calculator.astro';
 import ServiceStats from '../components/ServiceStats.astro';
-import ServiceCases from '../components/ServiceCases.astro';
+import CaseStudiesCarousel from '../components/CaseStudiesCarousel.astro';
 import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+
+const ecommerceCases = [
+  {
+    name: 'Aurora Fashion',
+    tags: ['Shopify', 'CRO', 'Funnel'],
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '5.8x', label: 'ROAS sostenido' },
+      { value: '+150%', label: 'Ventas online' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Nova Market',
+    tags: ['Checkout', 'Abandono', 'Automatización'],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '-71%', label: 'Abandono de carrito' },
+      { value: '+92%', label: 'Ticket promedio' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Bloom Store',
+    tags: ['Shopify Plus', 'SEO', 'Rendimiento'],
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '3.5%', label: 'Tasa de conversión' },
+      { value: '<1s', label: 'Tiempo de carga' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Peak Sports',
+    tags: ['E-commerce', 'Pagos', 'Regional'],
+    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+210%', label: 'Pedidos al mes' },
+      { value: '+38%', label: 'Clientes recurrentes' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Vela Home',
+    tags: ['D2C', 'Email', 'Retención'],
+    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+125%', label: 'LTV promedio' },
+      { value: '+64%', label: 'Recompra' },
+    ],
+    slug: '/proyectos',
+  },
+];
+
 
 const ecommerceTestimonials = [
   { quote: "Teníamos visitas, pero un abandono de carrito del 80%. Ellos arreglaron el flujo de checkout y las ventas se duplicaron.", name: "Valeria M.", role: "Founder, Fashion Retail", rating: 5 },
@@ -371,7 +425,7 @@ try {
 
   <MarqueeTestimonials testimonials={ecommerceTestimonials} />
   
-  <ServiceCases />
+  <CaseStudiesCarousel projects={ecommerceCases} />
 
   <!-- CALCULADORA -->
   <Calculator mode="ecommerce" />

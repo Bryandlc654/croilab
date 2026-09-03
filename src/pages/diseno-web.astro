@@ -18,6 +18,59 @@ const webDesignTestimonials = [
   { quote: "Nuestros clientes creen que somos una empresa gigante gracias a la nueva web. Literalmente elevó nuestro estatus.", name: "Ricardo S.", role: "Consultor", rating: 5 },
 ];
 
+const webDesignCases = [
+  {
+    name: 'Nova Studio',
+    tags: ['UI/UX', 'Desarrollo', 'Branding'],
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+180%', label: 'Leads calificados al mes' },
+      { value: '1.2s', label: 'Tiempo de carga' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Vortex Media',
+    tags: ['Estrategia', 'Web App', 'Automatización'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+240%', label: 'Conversión de registros' },
+      { value: '99', label: 'PageSpeed Score' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Lumen Fintech',
+    tags: ['Dashboard', 'Data Viz', 'UX Research'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '3.2x', label: 'Retención de usuarios' },
+      { value: '+65%', label: 'Tiempo en plataforma' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Aura Wellness',
+    tags: ['E-commerce', 'Diseño', 'SEO'],
+    image: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '+320%', label: 'Ventas online' },
+      { value: '+89%', label: 'Tráfico orgánico' },
+    ],
+    slug: '/proyectos',
+  },
+  {
+    name: 'Kinetix SaaS',
+    tags: ['Landing', 'CRO', 'Motion'],
+    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2000&auto=format&fit=crop',
+    metrics: [
+      { value: '72%', label: 'Reducción bounce rate' },
+      { value: '+145%', label: 'Demo requests' },
+    ],
+    slug: '/proyectos',
+  },
+];
+
 // Sincronización Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=diseno-web';
 let rankMathSEO = null;
@@ -379,7 +432,7 @@ try {
 
   <MarqueeTestimonials testimonials={webDesignTestimonials} />
   
-  <CaseStudiesCarousel />
+  <CaseStudiesCarousel projects={webDesignCases} />
 
   <!-- CALCULADORA -->
   <Calculator mode="web" />
