@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+import Cta from '../../components/ui/Cta.astro';
+import { serviceCases } from '../../data/serviceCases';
+
+export function getStaticPaths() {
+  return serviceCases.map((c) => ({
+    params: { slug: c.slug },
+    props: { caseData: c },
+  }));
+}
+
+const { caseData } = Astro.props;
+const serviceLabels: Record<string, string> = {
+  seo: 'SEO',
+  ads: 'Meta Ads',
+  conversion: 'Conversión',
+};
+
+const related = serviceCases.filter((c) => c.slug !== caseData.slug && c.service === caseData.service).slice(0, 2);
+---
+
+<BaseLayout
+  title={`${caseData.client} — Caso de Éxito | Croilab`}
+  description={caseData.description}
+>
+  <!-- 1. HERO DEL CASO -->
+  <section class="relative bg-[#050505] min-h-[88vh] flex items-end pt-32 pb-16 overflow-hidden">
+    <!-- Glows -->
+    <div class="absolute -top-20 right-0 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none mix-blend-screen"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
+    <div class="grid-bg absolute inset-0 opacity-[0.05] pointer-events-none"></div>
+
+    <Container class="relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-end">
+        <!-- Text -->
+        <div class="reveal-up">
+          <nav class="flex items-center gap-2 text-xs text-white/40 mb-6" aria-label="breadcrumb">
+            <a href="/proyectos" class="hover:text-white transition-colors">Casos de éxito</a>
+            <span>/</span>
+            <span class="text-white/60">{caseData.industry}</span>
+          </nav>
+
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white mb-5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[10px] font-bold uppercase tracking-widest">{serviceLabels[caseData.service]}</span>
+          </div>
+
+          <h1 class="text-[clamp(3rem,6vw,5.5rem)] font-bold text-white leading-[1.02] tracking-tight mb-3">
+            {caseData.client}
+          </h1>
+          <p class="text-white/30 text-sm font-semibold uppercase tracking-[.2em] mb-8">{caseData.industry}</p>
+
+          <p class="text-lg text-white/60 max-w-xl leading-relaxed mb-10">{caseData.description}</p>
+
+          <a
+            href="/contacto"
+            class="magnetic group relative flex h-14 max-w-xs items-center justify-center gap-4 rounded-full bg-white px-8 text-[14px] font-bold text-black transition-all hover:scale-105 hover:shadow-xl overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]"></div>
+            Quiero resultados así
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+        <!-- Resultado destacado -->
+        <div class="reveal-up lg:justify-self-end" style="--delay: 0.15s;">
+          <div class="lg:text-right">
+            <div class="text-[clamp(4rem,9vw,8rem)] font-extrabold leading-none text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
+              {caseData.result}
+            </div>
+            <div class="text-sm font-bold uppercase tracking-[.25em] text-white/50 mt-2">{caseData.metric}</div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 2. MÉTRICAS DE IMPACTO -->
+  <section class="bg-white py-20 border-b border-black/5">
+    <Container>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {caseData.metrics.map((m, i) => (
+          <div class="reveal-up flex flex-col items-center justify-center p-8 rounded-3xl bg-[#f8f9fa] border border-black/5 text-center" style={`--delay: ${i * 0.1}s;`}>
+            <div class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 mb-2">{m.value}</div>
+            <div class="text-xs font-bold uppercase tracking-widest text-black/40">{m.label}</div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- 3. EL RETO VS LA SOLUCIÓN -->
+  <section class="bg-white py-32 overflow-hidden">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal-up">
+        <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-600 mb-6 block">Del problema al resultado</span>
+        <h2 class="text-4xl font-bold tracking-tight text-black mb-6">De una web que no vendía a una <span class="text-blue-600 italic font-serif">máquina de resultados</span>.</h2>
+        <p class="text-lg text-black/60">{caseData.challenge}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- El Problema -->
+        <div class="reveal-up bg-[#fff5f5] rounded-[2.5rem] p-12 border border-red-100">
+          <div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold text-black mb-6">Los problemas</h3>
+          <ul class="space-y-4">
+            {caseData.problems.map((p) => (
+              <li class="flex items-start gap-3 text-black/70"><span class="text-red-500 font-bold mt-0.5">✕</span>{p}</li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- La Solución Croilab -->
+        <div class="reveal-up bg-[#f0f9ff] rounded-[2.5rem] p-12 border border-blue-100" style="--delay: 0.2s;">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold text-black mb-4">La ingeniería Croilab</h3>
+          <p class="text-black/60 mb-6">{caseData.solution}</p>
+          <ul class="space-y-4">
+            {caseData.actions.map((a) => (
+              <li class="flex items-start gap-3 text-black/70"><span class="text-blue-500 font-bold mt-0.5">✓</span>{a}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 4. EL PROCESO -->
+  <section class="bg-[#f8f9fa] py-24 border-b border-black/5">
+    <Container>
+      <div class="text-center mb-16 reveal-up">
+        <h2 class="text-3xl font-bold text-black mb-4">¿Cómo logramos estos resultados?</h2>
+        <p class="text-black/60 max-w-2xl mx-auto">Una metodología sistemática para reducir el riesgo y maximizar el impacto.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+        <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-black/10 -translate-y-1/2 z-0"></div>
+        {caseData.process.map((step, i) => (
+          <div class="relative z-10 bg-white p-8 rounded-3xl border border-black/5 shadow-sm text-center reveal-up hover:-translate-y-2 transition-transform duration-300" style={`--delay: ${i * 0.1}s;`}>
+            <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-6 shadow-lg">{step.title.charAt(0)}</div>
+            <h4 class="font-bold text-black mb-2">{step.title}</h4>
+            <p class="text-sm text-black/60">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- 5. TESTIMONIO DEL CLIENTE -->
+  <section class="bg-white py-24 overflow-hidden relative">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <Container class="relative z-10">
+      <div class="max-w-4xl mx-auto text-center reveal-up">
+        <span class="text-7xl font-serif text-blue-500 leading-none block mb-4">"</span>
+        <h3 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-black leading-snug mb-10 tracking-tight">
+          {caseData.testimonial.quote}
+        </h3>
+        <div class="inline-flex items-center gap-4 text-left">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-bold shadow-lg">
+            {caseData.client.charAt(0)}
+          </div>
+          <div>
+            <div class="font-bold text-black text-lg">{caseData.testimonial.author}</div>
+            <div class="text-sm text-black/50">{caseData.testimonial.role}</div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 6. MÁS CASOS DEL SERVICIO -->
+  {related.length > 0 && (
+    <section class="bg-white py-24 border-t border-black/5">
+      <Container>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-up">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-600 mb-4 block">Más casos de {serviceLabels[caseData.service]}</span>
+            <h2 class="text-3xl font-bold tracking-tight text-black">Sigue explorando.</h2>
+          </div>
+          <a href="/proyectos" class="group inline-flex items-center gap-2 text-sm font-bold text-black hover:text-blue-600 transition-colors">
+            Ver todos los casos
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {related.map((c) => (
+            <a href={`/casos/${c.slug}`} class="reveal-up group relative rounded-[2rem] bg-white border border-black/10 overflow-hidden flex flex-col hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500">
+              <div class="relative h-56 overflow-hidden">
+                <img src={c.image} alt={c.client} class="w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-105 transition-transform duration-700" />
+                <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+                <div class="absolute top-5 left-5 bg-white/80 backdrop-blur-md border border-black/5 rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[.15em] text-black shadow-sm">{c.industry}</div>
+              </div>
+              <div class="p-8 flex items-end justify-between gap-4">
+                <div>
+                  <div class="text-[11px] font-bold tracking-[.2em] text-black/30 uppercase mb-1">Cliente</div>
+                  <h3 class="text-xl font-bold text-black tracking-tight">{c.client}</h3>
+                </div>
+                <div class="text-right">
+                  <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-400 leading-none">{c.result}</div>
+                  <div class="text-[10px] font-bold uppercase tracking-widest text-black/40 mt-1">{c.metric}</div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )}
+
+  <!-- 7. GALERÍA -->
+  <section class="bg-[#f8f9fa] py-28 border-t border-black/5">
+    <Container>
+      <div class="text-center mb-14 reveal-up">
+        <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-600 mb-4 block">El resultado</span>
+        <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight text-black">Así se ve el éxito.</h2>
+      </div>
+      <div class="rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.1)] border border-black/5 reveal-up">
+        <img src={caseData.image} alt={`Resultado de ${caseData.client}`} class="w-full h-[60vh] lg:h-[75vh] object-cover" />
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA FINAL -->
+  <Cta />
+
+</BaseLayout>

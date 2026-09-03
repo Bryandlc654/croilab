@@ -1,24 +1,13 @@
 ---
 import Container from './ui/Container.astro';
+import { getCasesByService } from '../data/serviceCases';
 
-const cases = [
-  {
-    client: "TechFlow Inc.",
-    industry: "SaaS B2B",
-    result: "+312%",
-    metric: "En leads calificados (MQLs)",
-    description: "Reestructuramos todo el ecosistema de conversión, desde los anuncios hasta la arquitectura web, logrando triplicar el pipeline de ventas en 4 meses.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop"
-  },
-  {
-    client: "Aurora Fashion",
-    industry: "Ecommerce",
-    result: "5.8x",
-    metric: "ROAS sostenido",
-    description: "Implementamos ingeniería de conversión en su tienda Shopify. Redujimos el costo de adquisición a la mitad mientras escalábamos la inversión de manera rentable.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"
-  }
-];
+interface Props {
+  service: 'seo' | 'ads' | 'conversion';
+}
+
+const { service } = Astro.props;
+const cases = getCasesByService(service);
 ---
 
 <section class="relative bg-[#f8f9fa] py-32 border-t border-black/5 overflow-hidden">
@@ -45,8 +34,8 @@ const cases = [
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {cases.map((c) => (
-        <div class="reveal-up group relative rounded-[2.5rem] bg-white border border-black/5 overflow-hidden flex flex-col hover:border-black/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500">
-          
+        <a href={`/casos/${c.slug}`} class="reveal-up group relative rounded-[2.5rem] bg-white border border-black/5 overflow-hidden flex flex-col hover:border-black/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.07)] transition-all duration-500">
+
           <!-- Image Top Half -->
           <div class="relative w-full h-[250px] overflow-hidden">
             <img 
@@ -61,6 +50,10 @@ const cases = [
                 {c.industry}
               </div>
             </div>
+
+            <span class="absolute top-6 right-6 flex h-11 w-11 items-center justify-center rounded-full bg-black text-white transition-transform duration-300 group-hover:rotate-45 shadow-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </span>
           </div>
 
           <!-- Content Bottom Half -->
@@ -78,9 +71,13 @@ const cases = [
             <p class="text-[15px] leading-relaxed text-black/60">
               {c.description}
             </p>
+            <span class="mt-auto pt-8 inline-flex items-center gap-2 text-sm font-bold text-black group-hover:text-blue-600 transition-colors">
+              Ver caso completo
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </span>
           </div>
 
-        </div>
+        </a>
       ))}
     </div>
   </Container>
