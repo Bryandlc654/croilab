@@ -11,6 +11,7 @@
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-floatSlow: floatSlow 9s ease-in-out infinite;
+  --animate-glowDrift: glowDrift 18s ease-in-out infinite;
   --animate-pulseSoft: pulseSoft 3s ease-in-out infinite;
   --animate-spinSlow: spinSlow 25s linear infinite;
   --animate-appear: appear 0.8s ease forwards;
@@ -34,6 +35,21 @@
     }
     50% {
       transform: translate(12px, -18px);
+    }
+  }
+  @keyframes glowDrift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(30px, -20px) scale(1.08);
+    }
+    50% {
+      transform: translate(-10px, 25px) scale(0.96);
+    }
+    75% {
+      transform: translate(-25px, -15px) scale(1.04);
     }
   }
   @keyframes pulseSoft {
