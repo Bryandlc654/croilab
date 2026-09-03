@@ -105,6 +105,15 @@ try {
   <!-- BARRA DE PROGRESO DE LECTURA -->
   <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-black z-[60] w-0 transition-all duration-75"></div>
 
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button
+    id="back-to-top"
+    aria-label="Volver arriba"
+    class="fixed bottom-8 right-8 z-[70] w-12 h-12 rounded-full bg-black text-white flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.3)] opacity-0 translate-y-4 pointer-events-none transition-all duration-500 hover:bg-black/85 hover:-translate-y-1"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
   <article class="relative bg-white pb-32">
     <!-- HERO CINEMÁTICO DARK -->
     <header class="relative w-full h-[85vh] min-h-[600px] flex items-end justify-center overflow-hidden bg-[#0a0a0a]">
@@ -148,6 +157,23 @@ try {
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-16 xl:gap-24 items-start relative -mt-24">
           <!-- Columna principal (El texto) -->
           <div class="bg-white rounded-[2.5rem] border border-black/10 p-6 sm:p-12 lg:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+            
+            <!-- RESUMEN RÁPIDO / KEY TAKEAWAYS -->
+            <div class="mb-12 rounded-2xl bg-[#f8f9fa] border border-black/5 p-8">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-8 h-8 rounded-full bg-black flex items-center justify-center">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+                </div>
+                <span class="text-[11px] font-bold uppercase tracking-[.2em] text-black/50">Resumen rápido</span>
+              </div>
+              <p class="text-[16px] leading-relaxed text-black/70 mb-0">
+                Este artículo cubre las estrategias y metodologías más efectivas para optimizar tu presencia digital. 
+                En menos de {readingTime} minutos aprenderás los conceptos clave que nuestros clientes aplican para 
+                escalar sus métricas de negocio.
+              </p>
+            </div>
+
+            <!-- CONTENIDO DEL ARTÍCULO -->
             <div class="prose prose-lg max-w-none
               prose-headings:text-black prose-headings:font-bold prose-headings:tracking-tight 
               prose-h2:text-[36px] prose-h2:leading-[1.2] prose-h2:mt-24 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-black/10
@@ -160,27 +186,85 @@ try {
               prose-img:rounded-3xl prose-img:border prose-img:border-black/10 prose-img:my-16 prose-img:w-full prose-img:shadow-2xl"
               set:html={articleContent}>
             </div>
+
+            <!-- CTA MID-ARTICLE: Newsletter -->
+            <div class="my-16 rounded-[2rem] bg-[#0a0a0a] p-10 lg:p-12 relative overflow-hidden">
+              <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/5 blur-3xl rounded-full"></div>
+              <div class="absolute -bottom-20 -left-20 w-48 h-48 bg-white/5 blur-3xl rounded-full"></div>
+              <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-4">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <span class="text-[11px] font-bold uppercase tracking-[.2em] text-white/40">Newsletter</span>
+                </div>
+                <h3 class="text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight">Recibe estrategias de conversiones cada semana</h3>
+                <p class="text-[15px] text-white/50 mb-8 max-w-lg leading-relaxed">Cases de estudio, tácticas de CRO y frameworks probados que usamos con nuestros clientes para escalar resultados.</p>
+                <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+                  <input type="email" placeholder="tu@email.com" required class="flex-1 rounded-full bg-white/10 border border-white/10 px-6 py-3.5 text-[14px] text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:bg-white/15 transition-all" />
+                  <button type="submit" class="rounded-full bg-white px-8 py-3.5 text-[13px] font-bold text-black transition-all hover:bg-white/90 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] whitespace-nowrap">
+                    Suscribirme
+                  </button>
+                </form>
+                <p class="text-[11px] text-white/30 mt-4">Sin spam. Cancela cuando quieras.</p>
+              </div>
+            </div>
             
-            <!-- Ficha de autor completa -->
+            <!-- FICHA DE AUTOR COMPLETA -->
             <div class="mt-16">
               <div class="mb-6 flex items-center gap-4">
                 <span class="h-px w-8 bg-black/20"></span>
                 <span class="text-[11px] font-semibold uppercase tracking-[.24em] text-black/50">Sobre el autor</span>
               </div>
-              <AuthorCard
-                name="Croilab"
-                role="Estrategia de Crecimiento"
-                bio="Equipo de ingenieros y estrategas de Croilab especializado en ecosistemas digitales a medida basados en CRO, SEO y adquisición de clientes. Nos enfocamos en métricas que importan: conversiones y ventas."
-                avatar="/croilab-logo.svg"
-              />
+              <div class="rounded-[2rem] border border-black/5 bg-[#f8f9fa] p-8 lg:p-10">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                  <div class="w-16 h-16 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-xl font-bold">C</span>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold text-black mb-1">Croilab</h4>
+                    <p class="text-[13px] text-black/40 font-medium mb-4">Estrategia de Crecimiento Digital</p>
+                    <p class="text-[15px] leading-relaxed text-black/60 mb-6">Equipo de ingenieros y estrategas especializado en ecosistemas digitales a medida basados en CRO, SEO y adquisición de clientes. Nos enfocamos en métricas que importan: conversiones y ventas.</p>
+                    <div class="flex items-center gap-3">
+                      <a href="https://twitter.com/croilab" target="_blank" class="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:bg-black/5 transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                      </a>
+                      <a href="https://linkedin.com/company/croilab" target="_blank" class="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:bg-black/5 transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                      </a>
+                      <a href="https://instagram.com/croilab" target="_blank" class="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/40 hover:text-black hover:bg-black/5 transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ¿TE FUE ÚTIL? -->
+            <div class="mt-12 text-center">
+              <p class="text-[15px] text-black/50 mb-4">¿Te fue útil este artículo?</p>
+              <div class="flex items-center justify-center gap-3">
+                <button onclick="this.innerHTML='¡Gracias! 👍'; this.disabled=true; this.classList.add('bg-green-50','text-green-700','border-green-200');" class="flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-[13px] font-semibold text-black/60 transition-all hover:bg-green-50 hover:text-green-700 hover:border-green-200">
+                  <span>Sí</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                </button>
+                <button onclick="this.innerHTML='Gracias por el feedback 👎'; this.disabled=true; this.classList.add('bg-orange-50','text-orange-700','border-orange-200');" class="flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-[13px] font-semibold text-black/60 transition-all hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200">
+                  <span>No</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+                </button>
+              </div>
             </div>
 
             <!-- Fin del artículo -->
-            <div class="mt-20 pt-10 border-t border-black/10 flex items-center justify-between">
+            <div class="mt-16 pt-10 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
               <span class="text-black/40 text-sm font-semibold tracking-widest uppercase">Fin de lectura</span>
-              <a href="/blog" class="inline-flex items-center gap-2 rounded-full border border-black/20 bg-transparent px-6 py-3 text-[13px] font-bold text-black transition hover:bg-black hover:text-white">
-                ← Volver al Journal
-              </a>
+              <div class="flex items-center gap-3">
+                <a href="/blog" class="inline-flex items-center gap-2 rounded-full border border-black/20 bg-transparent px-6 py-3 text-[13px] font-bold text-black transition hover:bg-black hover:text-white">
+                  ← Volver al Journal
+                </a>
+                <button onclick="navigator.clipboard.writeText(window.location.href); this.textContent='¡Copiado!'; setTimeout(() => this.textContent='Compartir', 2000);" class="inline-flex items-center gap-2 rounded-full border border-black/20 bg-black px-6 py-3 text-[13px] font-bold text-white transition hover:bg-black/80">
+                  Compartir
+                </button>
+              </div>
             </div>
           </div>
 
@@ -300,6 +384,39 @@ try {
         </Container>
       </section>
     )}
+
+    <!-- CTA FINAL MÁS AMPLIO -->
+    <section class="relative mt-28">
+      <Container>
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-[#0a0a0a] px-8 py-16 lg:p-24 text-center">
+          <!-- Efectos de fondo -->
+          <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gradient-to-b from-white/10 to-transparent blur-3xl rounded-full pointer-events-none"></div>
+          <div class="absolute bottom-0 right-0 w-64 h-64 bg-white/5 blur-3xl rounded-full pointer-events-none"></div>
+
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mx-auto mb-8">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight tracking-tight text-white mb-6">
+              Pon estas estrategias <br/>
+              <span class="italic font-serif font-normal text-white/50">a trabajar en tu negocio.</span>
+            </h2>
+            <p class="text-[16px] leading-relaxed text-white/50 max-w-xl mx-auto mb-10">
+              Nuestro equipo transforma estas metodologías en resultados reales. Agenda una llamada de diagnóstico y descubre qué oportunidades de crecimiento estás dejando pasar.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="/contacto" class="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-black transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-0.5">
+                Agenda una llamada gratis
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-[14px] font-bold text-white transition-all hover:bg-white/10 hover:border-white/40">
+                Explorar servicios
+              </a>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
   </article>
 </BaseLayout>
 
@@ -334,6 +451,21 @@ try {
       progressBar.style.width = scrolled + '%';
     }
   });
+
+  // Botón volver arriba
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        backToTop.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      } else {
+        backToTop.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // Scroll-spy del índice de contenidos
   const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
