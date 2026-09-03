@@ -105,34 +105,38 @@ try {
   <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-black z-[60] w-0 transition-all duration-75"></div>
 
   <article class="relative bg-white pb-32">
-    <!-- ENCABEZADO EDITORIAL LIGHT -->
-    <header class="relative pt-32 lg:pt-40 overflow-hidden bg-gradient-to-b from-black/[0.03] to-transparent">
-      <div class="grid-bg absolute inset-0 opacity-[0.04] pointer-events-none"></div>
+    <!-- HERO CINEMÁTICO DARK -->
+    <header class="relative w-full h-[85vh] min-h-[600px] flex items-end justify-center overflow-hidden bg-[#0a0a0a]">
+      <!-- Imagen de fondo con Parallax -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src={image}
+          alt={title}
+          id="parallax-hero"
+          class="w-full h-full object-cover opacity-60 scale-110"
+        />
+        <!-- Gradientes para asegurar legibilidad -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-[#0a0a0a]/10"></div>
+      </div>
 
-      <Container class="relative z-10">
+      <Container class="relative z-10 w-full pb-20">
         <div class="max-w-4xl">
           <!-- Metadatos (Breadcrumb y Fecha) -->
           <div class="flex flex-wrap items-center gap-4 lg:gap-6 mb-8">
             <Breadcrumb items={[{ label: 'Blog', href: '/blog' }, { label: 'Lectura' }]} />
-            <span class="w-1.5 h-1.5 rounded-full bg-black/30 hidden sm:block"></span>
-            <span class="text-[11px] font-semibold uppercase tracking-[.2em] text-black/50">{date}</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-black/30 hidden sm:block"></span>
-            <span class="text-[11px] font-semibold uppercase tracking-[.2em] text-black/50">{readingTime} min de lectura</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-white/30 hidden sm:block"></span>
+            <span class="text-[11px] font-semibold uppercase tracking-[.2em] text-white/60">{date}</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-white/30 hidden sm:block"></span>
+            <span class="text-[11px] font-semibold uppercase tracking-[.2em] text-white/60">{readingTime} min de lectura</span>
           </div>
-          
-          <!-- Título -->
-          <h1 class="text-[clamp(2.8rem,5.5vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-black mb-10" set:html={title}></h1>
-        </div>
 
-        <!-- Imagen destacada enmarcada -->
-        <div class="relative rounded-[2.5rem] overflow-hidden bg-[#e8e8e8] border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.12)] max-w-5xl mx-auto">
-          <div class="absolute inset-0 bg-black/10"></div>
-          <img
-            src={image}
-            alt={title}
-            id="parallax-hero"
-            class="w-full h-full object-cover aspect-[16/8]"
-          />
+          <!-- Título -->
+          <h1 class="text-[clamp(2.8rem,5.5vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-white mb-8" set:html={title}></h1>
+
+          <!-- Línea separadora elegante -->
+          <div class="h-px w-full max-w-sm bg-gradient-to-r from-white/30 to-transparent"></div>
         </div>
       </Container>
     </header>
@@ -140,10 +144,9 @@ try {
     <!-- CONTENIDO CENTRALIZADO ESTILO EDITORIAL -->
     <div class="relative z-20 bg-white">
       <Container>
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-16 xl:gap-24 items-start relative mt-20">
-          
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-16 xl:gap-24 items-start relative -mt-24">
           <!-- Columna principal (El texto) -->
-          <div class="bg-white rounded-[2.5rem] border border-black/10 p-6 sm:p-12 lg:p-16 shadow-[0_0_80px_rgba(0,0,0,0.06)]">
+          <div class="bg-white rounded-[2.5rem] border border-black/10 p-6 sm:p-12 lg:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
             <div class="prose prose-lg max-w-none
               prose-headings:text-black prose-headings:font-bold prose-headings:tracking-tight 
               prose-h2:text-[36px] prose-h2:leading-[1.2] prose-h2:mt-24 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-black/10
@@ -292,6 +295,26 @@ try {
 </BaseLayout>
 
 <script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Parallax sutil en la imagen principal
+  const heroImg = document.getElementById('parallax-hero');
+  if (heroImg) {
+    gsap.to(heroImg, {
+      y: 120,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "header",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  }
+
   // Barra de progreso de lectura
   window.addEventListener('scroll', () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
