@@ -225,6 +225,54 @@ const orgSchema = {
           });
         });
       });
+
+      // SPOTLIGHT MICRO-INTERACTION (cursor-tracking glow on cards)
+      if (!reduceMotion) {
+        const spotlightCards = document.querySelectorAll<HTMLElement>('[data-spotlight]');
+        spotlightCards.forEach((card) => {
+          const glow = card.querySelector<HTMLElement>('.spotlight-glow');
+          if (!glow) return;
+          const { left, top, width, height } = card.getBoundingClientRect();
+          const cx = left + width / 2;
+          const cy = top + height / 2;
+          card.addEventListener('mousemove', (e: MouseEvent) => {
+            const rx = e.clientX - left;
+            const ry = e.clientY - top;
+            glow.style.background = `radial-gradient(420px circle at ${rx}px ${ry}px, rgba(59,130,246,0.16), transparent 70%)`;
+            gsap.to(glow, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+            gsap.to(glow, { x: e.clientX - cx, y: e.clientY - cy, duration: 0.6, ease: 'power3.out' });
+          });
+          card.addEventListener('mouseleave', () => {
+            gsap.to(glow, { opacity: 0, duration: 0.4, ease: 'power2.out' });
+            gsap.to(glow, { x: 0, y: 0, duration: 0.4, ease: 'power2.out' });
+          });
+        });
+      }
+
+      // 3D TILT MICRO-INTERACTION
+      if (!reduceMotion) {
+        const tiltCards = document.querySelectorAll<HTMLElement>('[data-tilt]');
+        tiltCards.forEach((card) => {
+          const strength = parseFloat(card.getAttribute('data-tilt') || '8');
+          card.addEventListener('mousemove', (e: MouseEvent) => {
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width;
+            const py = (e.clientY - rect.top) / rect.height;
+            const rx = (0.5 - py) * strength;
+            const ry = (px - 0.5) * strength;
+            gsap.to(card, {
+              rotateX: rx,
+              rotateY: ry,
+              transformPerspective: 800,
+              duration: 0.4,
+              ease: 'power2.out'
+            });
+          });
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.6, ease: 'elastic.out(1,0.4)' });
+          });
+        });
+      }
     </script>
   </body>
 </html>

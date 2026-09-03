@@ -300,6 +300,23 @@
     transform: none;
   }
 
+  /* SPOTLIGHT MICRO-INTERACTION (cursor-tracking glow) */
+  .spotlight-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 30;
+    mix-blend-mode: normal;
+  }
+
+  /* 3D TILT */
+  [data-tilt] {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
   /* QUOTE ROTATIVO (testimonios) */
   .quote-block {
     opacity: 0;

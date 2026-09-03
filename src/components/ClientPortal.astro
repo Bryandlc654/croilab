@@ -137,7 +137,7 @@ import Container from './ui/Container.astro';
                 <div class="p-4 rounded-xl bg-[#f8f9fa] border border-black/5 hover:border-black/10 transition-colors cursor-pointer group">
                   <div class="text-[11px] font-bold text-black/40 mb-2">ROAS Semanal</div>
                   <div class="flex items-end justify-between">
-                    <div class="text-2xl font-bold text-black">4.2x</div>
+                    <div class="text-2xl font-bold text-black"><span data-counter="4.2" data-decimals="1" data-suffix="x">0.0x</span></div>
                     <div class="text-[10px] font-bold text-green-500 flex items-center group-hover:-translate-y-1 transition-transform">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                       12%
@@ -147,7 +147,7 @@ import Container from './ui/Container.astro';
                 <div class="p-4 rounded-xl bg-[#f8f9fa] border border-black/5 hover:border-black/10 transition-colors cursor-pointer group">
                   <div class="text-[11px] font-bold text-black/40 mb-2">Conversión Base</div>
                   <div class="flex items-end justify-between">
-                    <div class="text-2xl font-bold text-black">3.8%</div>
+                    <div class="text-2xl font-bold text-black"><span data-counter="3.8" data-decimals="1" data-suffix="%">0.0%</span></div>
                     <div class="text-[10px] font-bold text-green-500 flex items-center group-hover:-translate-y-1 transition-transform">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                       0.5%
@@ -157,7 +157,7 @@ import Container from './ui/Container.astro';
                 <div class="p-4 rounded-xl bg-[#f8f9fa] border border-black/5 hover:border-black/10 transition-colors cursor-pointer group col-span-2">
                   <div class="text-[11px] font-bold text-black/40 mb-2">Velocidad (Web Vitals)</div>
                   <div class="flex items-center gap-4">
-                    <div class="text-2xl font-bold text-black">99<span class="text-[12px] text-black/30 ml-1">/100</span></div>
+                    <div class="text-2xl font-bold text-black"><span data-counter="99" data-decimals="0">0</span><span class="text-[12px] text-black/30 ml-1">/100</span></div>
                     <div class="flex-1 h-2 bg-black/5 rounded-full overflow-hidden border border-black/5">
                       <div class="h-full w-[99%] bg-gradient-to-r from-blue-400 to-green-400 rounded-full"></div>
                     </div>
@@ -223,3 +223,29 @@ import Container from './ui/Container.astro';
     </div>
   </Container>
 </section>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Contadores animados al entrar en el portal (micro-interacción)
+  const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+  counters.forEach((el) => {
+    const target = parseFloat(el.getAttribute('data-counter') || '0');
+    const decimals = parseInt(el.getAttribute('data-decimals') || '1', 10);
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onUpdate: () => {
+        el.textContent = prefix + obj.val.toFixed(decimals) + suffix;
+      },
+    });
+  });
+</script>
