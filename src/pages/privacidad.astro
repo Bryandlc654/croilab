@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title={`Política de Privacidad y Cookies | ${site.name}`}
+  description="Política de privacidad y uso de cookies de Croilab: qué datos recogemos, para qué los usamos y cómo gestionar tu consentimiento."
+>
+  <section class="relative bg-white border-t border-black/5 pt-20 lg:pt-28">
+    <div class="mx-auto w-full max-w-4xl px-6 lg:px-0">
+      <div class="reveal-up">
+        <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-600 mb-6 block">Legal</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tighter text-black leading-[1.05] mb-6">
+          Política de Privacidad<br/>y Cookies
+        </h1>
+        <p class="text-black/50 mb-16">Última actualización: septiembre de 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white pb-28">
+    <div class="mx-auto w-full max-w-4xl px-6 lg:px-0">
+      <div class="flex flex-col gap-14">
+        <div class="reveal-up">
+          <h2 class="text-2xl font-bold tracking-tight text-black mb-4">1. Responsable del tratamiento</h2>
+          <p class="text-black/60 leading-relaxed">
+            {site.name} ({site.url}) — {site.email} — es el responsable del tratamiento de los datos
+            personales recogidos a través de este sitio web.
+          </p>
+        </div>
+
+        <div class="reveal-up">
+          <h2 class="text-2xl font-bold tracking-tight text-black mb-4">2. Datos que recogemos</h2>
+          <p class="text-black/60 leading-relaxed mb-4">
+            Cuando te pones en contacto con nosotros o usas nuestro formulario, recogemos los datos
+            que nos facilitas voluntariamente:
+          </p>
+          <ul class="space-y-3 text-black/60">
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> Nombre y apellidos.</li>
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> Correo electrónico.</li>
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> Teléfono (opcional).</li>
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> Información que nos proporcionas en el mensaje.</li>
+          </ul>
+        </div>
+
+        <div class="reveal-up">
+          <h2 class="text-2xl font-bold tracking-tight text-black mb-4">3. Finalidad y base legal</h2>
+          <p class="text-black/60 leading-relaxed">
+            Utilizamos los datos para responder a tus consultas, preparar propuestas y prestarte
+            nuestros servicios. La base legal es tu consentimiento (art. 6.1.a RGPD) y la relación
+            contractual cuando corresponda. No cedemos tus datos a terceros salvo obligación legal.
+          </p>
+        </div>
+
+        <div class="reveal-up">
+          <h2 class="text-2xl font-bold tracking-tight text-black mb-4">4. Uso de cookies</h2>
+          <p class="text-black/60 leading-relaxed mb-4">
+            Este sitio utiliza cookies propias y de terceros para garantizar su funcionamiento,
+            analizar el tráfico y mejorar la experiencia. Puedes gestionar tu consentimiento en el
+            banner de cookies o a través de las opciones de tu navegador.
+          </p>
+          <ul class="space-y-3 text-black/60">
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> <strong class="text-black">Necesarias:</strong> imprescindibles para el funcionamiento del sitio (p. ej. guardar tu preferencia de cookies).</li>
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> <strong class="text-black">Analíticas:</strong> nos ayudan a entender cómo se usa el sitio para mejorarlo.</li>
+            <li class="flex items-start gap-3"><span class="text-blue-600 font-bold">•</span> <strong class="text-black">Marketing:</strong> permiten mostrar contenido y publicidad más relevante.</li>
+          </ul>
+          <p class="text-black/60 leading-relaxed mt-4">
+            Puedes retirar tu consentimiento en cualquier momento borrando las cookies de tu
+            navegador o usando las herramientas que te ofrecemos.
+          </p>
+        </div>
+
+        <div class="reveal-up">
+          <h2 class="text-2xl font-bold tracking-tight text-black mb-4">5. Conservación y derechos</h2>
+          <p class="text-black/60 leading-relaxed mb-4">
+            Conservamos tus datos solo durante el tiempo necesario para la finalidad recogida. Tienes
+            derecho a acceder, rectificar, suprimir, oponerte, limitar o portar tus datos.
+          </p>
+          <p class="text-black/60 leading-relaxed mb-4">
+            Para ejercer tus derechos, escríbenos a {site.email}.
+          </p>
+          <div class="rounded-2xl border border-blue-100 bg-[#f0f9ff] p-6">
+            <p class="text-sm leading-relaxed text-black/60">
+              Si consideras que no hemos tratado tus datos correctamente, puedes presentar una
+              reclamación ante la autoridad de control de protección de datos de tu país.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

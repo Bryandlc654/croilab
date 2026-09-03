@@ -12,11 +12,11 @@ import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
 import ServiceHub from '../components/ServiceHub.astro';
 
 const seoTestimonials = [
-  { quote: "Pasamos de 0 leads orgÃ¡nicos a 45 calificados por mes. Literalmente salvaron nuestro Q3.", name: "Roberto V.", role: "CEO, SaaS B2B", rating: 5 },
-  { quote: "HabÃ­amos invertido miles en agencias SEO que solo nos mandaban reportes de 'visitas'. Ellos se enfocaron en ventas.", name: "Camila T.", role: "CMO, Retail", rating: 5 },
-  { quote: "No entiendo la mitad de la magia tÃ©cnica que hacen, pero mi CRM estÃ¡ lleno de prospectos buscando comprar.", name: "Miguel A.", role: "Founder, B2B Services", rating: 5 },
-  { quote: "Redujimos nuestro CPA un 60% al dejar de depender exclusivamente de Ads. El mejor ROI del aÃ±o.", name: "Elena S.", role: "VP Marketing, Tech", rating: 5 },
-  { quote: "El trÃ¡fico creciÃ³ un 300%, pero lo mÃ¡s importante: la tasa de conversiÃ³n se multiplicÃ³ por dos.", name: "David R.", role: "Director, Real Estate", rating: 5 },
+  { quote: "Pasamos de 0 leads orgánicos a 45 calificados por mes. Literalmente salvaron nuestro Q3.", name: "Roberto V.", role: "CEO, SaaS B2B", rating: 5 },
+  { quote: "Habíamos invertido miles en agencias SEO que solo nos mandaban reportes de 'visitas'. Ellos se enfocaron en ventas.", name: "Camila T.", role: "CMO, Retail", rating: 5 },
+  { quote: "No entiendo la mitad de la magia técnica que hacen, pero mi CRM está lleno de prospectos buscando comprar.", name: "Miguel A.", role: "Founder, B2B Services", rating: 5 },
+  { quote: "Redujimos nuestro CPA un 60% al dejar de depender exclusivamente de Ads. El mejor ROI del año.", name: "Elena S.", role: "VP Marketing, Tech", rating: 5 },
+  { quote: "El tráfico creció un 300%, pero lo más importante: la tasa de conversión se multiplicó por dos.", name: "David R.", role: "Director, Real Estate", rating: 5 },
   { quote: "Finalmente encontramos un partner que entiende que el SEO debe generar dinero, no solo posiciones vanidosas.", name: "Laura M.", role: "Head of Growth", rating: 5 },
 ];
 
@@ -38,7 +38,7 @@ try {
 
 <BaseLayout
   title="SEO que convierte | Croilab"
-  description="Tu competencia te estÃ¡ robando ventas en Google todos los dÃ­as. Vamos a recuperarlas."
+  description="Tu competencia te está robando ventas en Google todos los días. Vamos a recuperarlas."
   rankMathSEO={rankMathSEO}
 >
   <!-- 1. HERO HOOK -->
@@ -48,10 +48,10 @@ try {
     <div class="absolute inset-0 z-0 pointer-events-none">
       <img 
         src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" 
-        alt="SEO y AnalÃ­tica" 
+        alt="SEO y Analítica" 
         class="w-full h-full object-cover object-top opacity-30 grayscale mix-blend-luminosity"
       />
-      <!-- Grid ArquitectÃ³nico -->
+      <!-- Grid Arquitectónico -->
       <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div>
       
       <!-- Degradado envolvente hacia el negro puro -->
@@ -61,7 +61,7 @@ try {
       <div class="absolute inset-0 opacity-[0.25] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
 
-    <!-- Efectos de iluminaciÃ³n vibrantes -->
+    <!-- Efectos de iluminación vibrantes -->
     <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[150px] pointer-events-none z-0"></div>
     <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
@@ -74,28 +74,28 @@ try {
         <!-- Izquierda: Textos -->
         <div class="flex flex-col text-left">
           <h1 class="gsap-title text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[0.85] tracking-tight text-white mb-8" data-custom-speed="0.8">
-            Tu competencia te estÃ¡ <br/>
+            Tu competencia te está <br/>
             <span class="italic font-serif font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">robando ventas.</span>
           </h1>
 
           <p class="max-w-xl text-[17px] md:text-[19px] leading-relaxed text-white/50 mb-12">
-            Tener una web bonita es inÃºtil si nadie la visita. Dominemos la primera pÃ¡gina de Google y transformemos trÃ¡fico orgÃ¡nico en clientes predecibles de alto valor.
+            Tener una web bonita es inútil si nadie la visita. Dominemos la primera página de Google y transformemos tráfico orgánico en clientes predecibles de alto valor.
           </p>
 
           <div class="flex flex-col sm:flex-row items-start gap-5">
             <a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
-              Descubre cÃ³mo
+              Descubre cómo
               <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">â†“</span>
             </a>
             <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
-              Quiero trabajar asÃ­
+              Quiero trabajar así
             </a>
           </div>
         </div>
           <!-- Derecha: Mockup Animado Mejorado -->
         <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[4/4.5] flex items-center justify-center perspective-1000 mt-10 lg:mt-0">
            
-           <!-- Glow de fondo cinemÃ¡tico -->
+           <!-- Glow de fondo cinemático -->
            <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/30 via-blue-600/20 to-purple-500/20 rounded-[100px] blur-[120px] animate-glowDrift mix-blend-screen pointer-events-none"></div>
            
            <!-- Interfaz Principal (Navegador) -->
@@ -134,12 +134,12 @@ try {
                    <div class="text-[11px] text-white/60 font-mono">https://tuempresa.com</div>
                  </div>
                  
-                 <h3 class="text-[17px] font-bold text-blue-400 mb-1 leading-snug">Tu Empresa | LÃ­der en Soluciones B2B</h3>
-                 <p class="text-[12px] text-white/50 leading-relaxed mb-4">La plataforma lÃ­der para escalar tus operaciones. Descubre cÃ³mo ayudamos a empresas a crecer un 300% su facturaciÃ³n anual.</p>
+                 <h3 class="text-[17px] font-bold text-blue-400 mb-1 leading-snug">Tu Empresa | Líder en Soluciones B2B</h3>
+                 <p class="text-[12px] text-white/50 leading-relaxed mb-4">La plataforma líder para escalar tus operaciones. Descubre cómo ayudamos a empresas a crecer un 300% su facturación anual.</p>
                  
                  <!-- Sitelinks -->
                  <div class="grid grid-cols-2 gap-2 mt-3">
-                   <div class="text-[11px] text-blue-300/80 hover:underline cursor-pointer">â†³ Casos de Ã‰xito</div>
+                   <div class="text-[11px] text-blue-300/80 hover:underline cursor-pointer">â†³ Casos de Éxito</div>
                    <div class="text-[11px] text-blue-300/80 hover:underline cursor-pointer">â†³ Agendar Demo</div>
                  </div>
 
@@ -180,7 +180,7 @@ try {
            <!-- Card Flotante 1: Analytics Graph -->
            <div class="absolute -right-6 lg:-right-12 top-1/3 bg-[#111115]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float-delayed z-20 w-48 hidden sm:block">
              <div class="flex items-center justify-between mb-3">
-               <div class="text-[10px] font-bold uppercase tracking-wider text-white/50">TrÃ¡fico Mensual</div>
+               <div class="text-[10px] font-bold uppercase tracking-wider text-white/50">Tráfico Mensual</div>
                <div class="text-[10px] text-green-400 font-bold bg-green-500/10 px-1.5 py-0.5 rounded">+84%</div>
              </div>
              <div class="text-2xl font-bold text-white mb-2">45.2K</div>
@@ -238,25 +238,25 @@ try {
     <Container class="relative z-10">
       <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
         
-        <!-- Lado izquierdo: TÃ­tulo (Sticky) -->
+        <!-- Lado izquierdo: Título (Sticky) -->
         <div class="lg:w-1/3 lg:sticky lg:top-32 reveal-up">
           <div class="mb-6 flex items-center gap-4">
             <span class="h-px w-8 bg-gradient-to-r from-transparent to-red-500/50"></span>
-            <span class="text-[11px] font-bold uppercase tracking-[.25em] text-red-500">DiagnÃ³stico CrÃ­tico</span>
+            <span class="text-[11px] font-bold uppercase tracking-[.25em] text-red-500">Diagnóstico Crítico</span>
           </div>
           <h2 class="text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.05]">
-            Â¿Te resulta dolorosamente <br/>
+            ¿Te resulta dolorosamente <br/>
             <span class="italic font-serif font-light text-black/40">familiar?</span>
           </h2>
           <p class="text-[16px] text-black/50 leading-relaxed max-w-sm mb-12">
-            Estos son los sÃ­ntomas de un ecosistema digital que estÃ¡ perdiendo dinero (y clientes) todos los dÃ­as frente a competidores mÃ¡s rÃ¡pidos.
+            Estos son los síntomas de un ecosistema digital que está perdiendo dinero (y clientes) todos los días frente a competidores más rápidos.
           </p>
 
-          <!-- Imagen Editorial de FrustraciÃ³n / AnÃ¡lisis -->
+          <!-- Imagen Editorial de Frustración / Análisis -->
           <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-black/5 group">
             <img 
               src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=2070&auto=format&fit=crop" 
-              alt="AnÃ¡lisis de negocio" 
+              alt="Análisis de negocio" 
               class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80"></div>
@@ -274,7 +274,7 @@ try {
             </div>
             <h3 class="text-2xl font-bold text-black mb-4 relative z-10">Dependencia absoluta de Ads</h3>
             <p class="text-[16px] leading-relaxed text-black/60 max-w-2xl relative z-10">
-              Cada mes el costo por clic sube. Si dejas de pagar pauta a Meta o Google, tu negocio literalmente se detiene y las ventas caen a cero. Eres rehÃ©n de sus algoritmos y precios.
+              Cada mes el costo por clic sube. Si dejas de pagar pauta a Meta o Google, tu negocio literalmente se detiene y las ventas caen a cero. Eres rehén de sus algoritmos y precios.
             </p>
           </div>
 
@@ -296,9 +296,9 @@ try {
             <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110 relative z-10">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
-            <h3 class="text-xl font-bold text-black mb-4 relative z-10">TrÃ¡fico Fantasma</h3>
+            <h3 class="text-xl font-bold text-black mb-4 relative z-10">Tráfico Fantasma</h3>
             <p class="text-[15px] leading-relaxed text-black/60 relative z-10">
-              Tienes cientos de visitas mensuales a tu web, pero el telÃ©fono no suena y los formularios de contacto estÃ¡n acumulando polvo.
+              Tienes cientos de visitas mensuales a tu web, pero el teléfono no suena y los formularios de contacto están acumulando polvo.
             </p>
           </div>
 
@@ -309,7 +309,7 @@ try {
 
   <!-- 2. LA AGITACIÃ“N (LIGHT MODE) -->
   <section class="relative bg-white py-32 lg:py-48 overflow-hidden">
-    <!-- LÃ­nea decorativa sutil -->
+    <!-- Línea decorativa sutil -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
     
     <Container>
@@ -317,13 +317,13 @@ try {
         
         <!-- Columna Izquierda: Copy Editorial -->
         <div class="reveal-up relative">
-          <!-- DecoraciÃ³n sutil de fondo -->
+          <!-- Decoración sutil de fondo -->
           <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-black/[0.02] rounded-full blur-[80px] pointer-events-none"></div>
 
           <h2 class="text-[clamp(3.5rem,6vw,5.5rem)] font-bold tracking-tighter text-black mb-8 leading-[0.95]">
             El SEO <br/>
             tradicional <br/>
-            estÃ¡ <span class="italic font-serif font-light text-black/30 relative inline-block">
+            está <span class="italic font-serif font-light text-black/30 relative inline-block">
               muerto.
               <span class="absolute top-1/2 left-0 w-full h-[2px] bg-red-500/50 -rotate-3"></span>
             </span>
@@ -331,10 +331,10 @@ try {
           
           <div class="space-y-6 text-[16px] md:text-[18px] leading-relaxed text-black/60 max-w-lg">
             <p>
-              Agencias creando artÃ­culos de blog genÃ©ricos que nadie lee. CreaciÃ³n masiva de enlaces en sitios basura. Promesas vacÃ­as de "estar el nÃºmero 1" para palabras clave que no generan un solo centavo de ingresos.
+              Agencias creando artículos de blog genéricos que nadie lee. Creación masiva de enlaces en sitios basura. Promesas vacías de "estar el número 1" para palabras clave que no generan un solo centavo de ingresos.
             </p>
             <p>
-              Nosotros <strong class="text-black font-semibold">no hacemos eso</strong>. Nuestro enfoque de IngenierÃ­a de ConversiÃ³n se asegura de que cada visita que atraemos a tu sitio web estÃ© a un paso de sacar la tarjeta y comprar.
+              Nosotros <strong class="text-black font-semibold">no hacemos eso</strong>. Nuestro enfoque de Ingeniería de Conversión se asegura de que cada visita que atraemos a tu sitio web esté a un paso de sacar la tarjeta y comprar.
             </p>
           </div>
 
@@ -344,7 +344,7 @@ try {
                 <img class="w-12 h-12 rounded-full border-2 border-white grayscale object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Cliente B2B" />
                 <img class="w-12 h-12 rounded-full border-2 border-white grayscale object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Cliente B2B" />
              </div>
-             <p class="text-[13px] font-medium text-black/50 leading-tight max-w-[200px]">Empresas B2B que ya escalaron orgÃ¡nicamente con nosotros.</p>
+             <p class="text-[13px] font-medium text-black/50 leading-tight max-w-[200px]">Empresas B2B que ya escalaron orgánicamente con nosotros.</p>
           </div>
         </div>
 
@@ -358,18 +358,18 @@ try {
             <div class="p-10 lg:p-14 z-10 pb-0">
               <div class="text-[clamp(5rem,8vw,8rem)] font-bold tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-black to-black/60">91%</div>
               <p class="text-[17px] leading-relaxed text-black/60">
-                de las pÃ¡ginas en internet <strong class="text-black">no reciben NADA de trÃ¡fico orgÃ¡nico</strong> de Google porque no tienen una arquitectura de negocio diseÃ±ada para responder a la intenciÃ³n de bÃºsqueda real de los compradores.
+                de las páginas en internet <strong class="text-black">no reciben NADA de tráfico orgánico</strong> de Google porque no tienen una arquitectura de negocio diseñada para responder a la intención de búsqueda real de los compradores.
               </p>
             </div>
             
-            <!-- VisualizaciÃ³n de datos inmersiva -->
+            <!-- Visualización de datos inmersiva -->
             <div class="relative w-full h-[350px] mt-10 lg:mt-16">
               <!-- Glow interior sutil -->
               <div class="absolute top-0 right-10 w-[200px] h-[200px] bg-red-500/10 blur-[80px] rounded-full pointer-events-none z-10"></div>
               
               <img 
                 src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2070&auto=format&fit=crop" 
-                alt="GrÃ¡ficos de trÃ¡fico y finanzas" 
+                alt="Gráficos de tráfico y finanzas" 
                 class="absolute inset-0 w-full h-full object-cover object-center opacity-60 grayscale mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" 
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#fbfbfb] via-[#fbfbfb]/80 to-transparent z-10"></div>
@@ -377,7 +377,7 @@ try {
               <div class="absolute bottom-10 left-10 z-20">
                  <div class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white border border-black/10 text-red-500 text-[13px] font-bold shadow-lg backdrop-blur-md">
                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 17-5 5-5-5"/></svg>
-                   TrÃ¡fico Estancado
+                   Tráfico Estancado
                  </div>
               </div>
             </div>
@@ -402,11 +402,11 @@ try {
           <div>
             <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-500 mb-6 block">Mecanismo Ãšnico</span>
             <h2 class="gsap-title text-[clamp(3.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tighter text-black mb-6" data-custom-speed="0.95">
-              IngenierÃ­a <br/>
+              Ingeniería <br/>
               <span class="italic font-serif font-light text-black/40">Inversa.</span>
             </h2>
             <p class="text-[17px] leading-relaxed text-black/60 max-w-sm">
-              En lugar de adivinar quÃ© busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
+              En lugar de adivinar qué busca tu cliente ideal, mapeamos cada una de sus dudas, miedos y objeciones de compra, y construimos activos digitales para dominarlas.
             </p>
           </div>
           
@@ -418,7 +418,7 @@ try {
                class="w-full h-full object-cover grayscale opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" 
              />
              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-             <!-- PequeÃ±o badge flotante -->
+             <!-- Pequeño badge flotante -->
              <div class="absolute bottom-6 left-6 inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg">
                 <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
                 <span class="text-[10px] font-bold text-black uppercase tracking-[.15em]">Estructura de Datos</span>
@@ -430,15 +430,15 @@ try {
         <div class="flex flex-col gap-8 mt-10 lg:mt-0">
           {
             [
-              { title: "Arquitectura SemÃ¡ntica", desc: "Estructuramos tu sitio como un ecosistema. Optimizamos la jerarquÃ­a de informaciÃ³n para que Google entienda exactamente tu autoridad sobre el tema." },
-              { title: "IntenciÃ³n de Compra", desc: "No apuntamos a palabras clave de alto volumen y cero ventas. Apuntamos a los tÃ©rminos transaccionales exactos que tus mejores clientes escriben antes de sacar su tarjeta." },
-              { title: "Autoridad ProgramÃ¡tica", desc: "Inyectamos confianza algorÃ­tmica. Construimos PR digital y enlaces desde ecosistemas relevantes que gritan a Google: 'Ellos son los lÃ­deres absolutos de la industria'." },
-              { title: "OptimizaciÃ³n de ConversiÃ³n", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese trÃ¡fico frÃ­o hacia tu formulario de contacto o carrito." }
+              { title: "Arquitectura Semántica", desc: "Estructuramos tu sitio como un ecosistema. Optimizamos la jerarquía de información para que Google entienda exactamente tu autoridad sobre el tema." },
+              { title: "Intención de Compra", desc: "No apuntamos a palabras clave de alto volumen y cero ventas. Apuntamos a los términos transaccionales exactos que tus mejores clientes escriben antes de sacar su tarjeta." },
+              { title: "Autoridad Programática", desc: "Inyectamos confianza algorítmica. Construimos PR digital y enlaces desde ecosistemas relevantes que gritan a Google: 'Ellos son los líderes absolutos de la industria'." },
+              { title: "Optimización de Conversión", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese tráfico frío hacia tu formulario de contacto o carrito." }
             ].map((step, i) => (
               <div class="step-card group relative p-10 lg:p-12 rounded-[2.5rem] border border-black/5 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:border-black/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:-translate-y-1 overflow-hidden" data-spotlight>
                 <div class="spotlight-glow"></div>
                 
-                <!-- Efecto de iluminaciÃ³n sutil al hover -->
+                <!-- Efecto de iluminación sutil al hover -->
                 <div class="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
 
                 <div class="flex flex-col sm:flex-row items-start gap-6 lg:gap-8">
@@ -476,7 +476,7 @@ try {
       <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group" data-tilt="5">
         <img 
           src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
-          alt="Dashboard de crecimiento orgÃ¡nico" 
+          alt="Dashboard de crecimiento orgánico" 
           class="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" 
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -495,12 +495,12 @@ try {
         <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
           <div class="spotlight-glow"></div>
           <div class="text-5xl font-bold text-black mb-2 relative z-10">+<span class="roi-count" data-target="340">0</span>%</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold relative z-10">TrÃ¡fico OrgÃ¡nico</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold relative z-10">Tráfico Orgánico</div>
         </div>
         <div class="relative p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8" data-spotlight>
           <div class="spotlight-glow"></div>
           <div class="text-6xl font-bold text-white mb-2 relative z-10">+<span class="roi-count" data-target="45">0</span>%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold relative z-10">Tasa de ConversiÃ³n</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold relative z-10">Tasa de Conversión</div>
         </div>
         <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
           <div class="spotlight-glow"></div>
@@ -535,7 +535,7 @@ try {
             <span class="italic font-serif font-light text-black/40">frecuentes.</span>
           </h2>
           <p class="text-[17px] leading-relaxed text-black/60 max-w-sm mb-12">
-            No ocultamos nada. Creemos en establecer expectativas reales desde el dÃ­a uno para asegurar una alianza rentable a largo plazo.
+            No ocultamos nada. Creemos en establecer expectativas reales desde el día uno para asegurar una alianza rentable a largo plazo.
           </p>
 
           <!-- Tarjeta decorativa de "Transparencia" -->
@@ -555,9 +555,9 @@ try {
 
         <div class="flex flex-col gap-6 mt-10 lg:mt-0 reveal-up">
           {[
-            { q: "Â¿CuÃ¡nto tiempo tardarÃ© en ver resultados reales?", a: "El SEO no es magia, es ingenierÃ­a. Normalmente, nuestros clientes ven los primeros movimientos fuertes entre el mes 3 y 4. Para el mes 6, el sistema genera retornos positivos y escalables. Quien te prometa resultados milagrosos en 30 dÃ­as, te estÃ¡ mintiendo." },
-            { q: "Â¿Por quÃ© deberÃ­a elegirlos sobre mi agencia actual?", a: "La mayorÃ­a de agencias miden su Ã©xito en 'posiciones' o 'visitas'. Nosotros medimos el Ã©xito en leads cualificados y aumento de facturaciÃ³n. Si tu agencia actual te entrega reportes llenos de visitas que no se traducen en dinero en el banco, es hora de cambiar el enfoque." },
-            { q: "Â¿Garantizan la posiciÃ³n #1 en Google?", a: "Nadie que trabaje de forma Ã©tica puede garantizar la posiciÃ³n #1 absoluta porque el algoritmo es de Google, no nuestro. Lo que sÃ­ garantizamos es la ejecuciÃ³n exacta del sistema de conversiÃ³n que ya ha escalado a decenas de empresas a liderar sus industrias." }
+            { q: "¿Cuánto tiempo tardaré en ver resultados reales?", a: "El SEO no es magia, es ingeniería. Normalmente, nuestros clientes ven los primeros movimientos fuertes entre el mes 3 y 4. Para el mes 6, el sistema genera retornos positivos y escalables. Quien te prometa resultados milagrosos en 30 días, te está mintiendo." },
+            { q: "¿Por qué debería elegirlos sobre mi agencia actual?", a: "La mayoría de agencias miden su éxito en 'posiciones' o 'visitas'. Nosotros medimos el éxito en leads cualificados y aumento de facturación. Si tu agencia actual te entrega reportes llenos de visitas que no se traducen en dinero en el banco, es hora de cambiar el enfoque." },
+            { q: "¿Garantizan la posición #1 en Google?", a: "Nadie que trabaje de forma ética puede garantizar la posición #1 absoluta porque el algoritmo es de Google, no nuestro. Lo que sí garantizamos es la ejecución exacta del sistema de conversión que ya ha escalado a decenas de empresas a liderar sus industrias." }
           ].map((faq, i) => (
             <div class="group relative bg-[#f8f9fa] p-8 lg:p-12 rounded-[2.5rem] border border-black/5 transition-all duration-500 hover:bg-white hover:border-black/10 hover:-translate-y-1 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]" data-spotlight>
               <div class="spotlight-glow"></div>
@@ -609,7 +609,7 @@ try {
     });
   });
 
-  // AnimaciÃ³n Parallax GSAP para los TÃ­tulos
+  // Animación Parallax GSAP para los Títulos
   const titles = gsap.utils.toArray<HTMLElement>('.gsap-title');
   titles.forEach((title) => {
     const speed = parseFloat(title.getAttribute('data-custom-speed') ?? '') || 1;

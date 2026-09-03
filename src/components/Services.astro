@@ -2,13 +2,13 @@
 import { services } from '../data/services';
 import Container from './ui/Container.astro';
 
-// Clases para lograr la asimetrÃ­a del Bento Grid (3 columnas en Desktop)
+// Clases para lograr la asimetría del Bento Grid (3 columnas en Desktop)
 const bentoClasses = [
   "md:col-span-2 md:row-span-2", // 01: Principal (Grande)
-  "md:col-span-1 md:row-span-1", // 02: Cuadrado pequeÃ±o
-  "md:col-span-1 md:row-span-1", // 03: Cuadrado pequeÃ±o
-  "md:col-span-2 md:row-span-1", // 04: RectÃ¡ngulo ancho horizontal
-  "md:col-span-1 md:row-span-1"  // 05: Cuadrado pequeÃ±o
+  "md:col-span-1 md:row-span-1", // 02: Cuadrado pequeño
+  "md:col-span-1 md:row-span-1", // 03: Cuadrado pequeño
+  "md:col-span-2 md:row-span-1", // 04: Rectángulo ancho horizontal
+  "md:col-span-1 md:row-span-1"  // 05: Cuadrado pequeño
 ];
 ---
 
@@ -36,7 +36,7 @@ const bentoClasses = [
       </h2>
       
       <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-black/50">
-        Nos alejamos del modelo de agencia 360 que intenta hacerlo todo en lugar de enfocarse en crecer el negocio. Cinco disciplinas, un Ãºnico objetivo: convertir trÃ¡fico en ingresos.
+        Nos alejamos del modelo de agencia 360 que intenta hacerlo todo en lugar de enfocarse en crecer el negocio. Cinco disciplinas, un único objetivo: convertir tráfico en ingresos.
       </p>
     </div>
 
@@ -138,7 +138,7 @@ const bentoClasses = [
           <div>
             <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">01 â€” Disciplina</span>
             <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">SEO</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Posicionamiento tÃ©cnico y de contenido para llevar tu marca al primer resultado.</p>
+            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Posicionamiento técnico y de contenido para llevar tu marca al primer resultado.</p>
             <div class="flex flex-wrap gap-2 mt-5">
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Google Search Console</span>
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Ahrefs</span>
@@ -149,7 +149,7 @@ const bentoClasses = [
         </div>
       </a>
 
-      <!-- 02: Meta Ads (PequeÃ±o) -->
+      <!-- 02: Meta Ads (Pequeño) -->
       <a href="/meta-ads" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="-0.03" data-spotlight>
         <div class="spotlight-glow"></div>
         <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
@@ -215,7 +215,7 @@ const bentoClasses = [
           <div>
             <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">02 â€” Disciplina</span>
             <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Meta Ads</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">CampaÃ±as que captan trÃ¡fico cualificado y lo convierten en ingresos reales.</p>
+            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Campañas que captan tráfico cualificado y lo convierten en ingresos reales.</p>
             <div class="flex flex-wrap gap-2 mt-5">
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Meta Ads Manager</span>
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Looker Studio</span>
@@ -226,7 +226,7 @@ const bentoClasses = [
         </div>
       </a>
 
-      <!-- 03: DiseÃ±o Web (PequeÃ±o) -->
+      <!-- 03: Diseño Web (Pequeño) -->
       <a href="/diseno-web" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03" data-spotlight>
         <div class="spotlight-glow"></div>
         <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
@@ -288,8 +288,8 @@ const bentoClasses = [
           </div>
           <div>
             <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">03 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">DiseÃ±o Web</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">PÃ¡ginas rÃ¡pidas, claras y diseÃ±adas para vender desde el primer segundo.</p>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Diseño Web</h3>
+            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Páginas rápidas, claras y diseñadas para vender desde el primer segundo.</p>
             <div class="flex flex-wrap gap-2 mt-5">
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">UI/UX</span>
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Figma</span>
@@ -362,7 +362,7 @@ const bentoClasses = [
         </div>
       </a>
 
-      <!-- 05: Conversiones (PequeÃ±o) -->
+      <!-- 05: Conversiones (Pequeño) -->
       <a href="/conversiones" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03" data-spotlight>
         <div class="spotlight-glow"></div>
         <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
@@ -374,7 +374,7 @@ const bentoClasses = [
           
           <!-- Level 1: Traffic -->
           <div class="w-full h-8 rounded bg-blue-500/10 border border-blue-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 flex items-center justify-between px-2">
-            <span class="text-[9px] uppercase font-bold text-blue-400">TrÃ¡fico</span>
+            <span class="text-[9px] uppercase font-bold text-blue-400">Tráfico</span>
             <span class="text-[10px] font-bold text-black/80">100%</span>
           </div>
           
@@ -404,7 +404,7 @@ const bentoClasses = [
           </div>
           <div>
             <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">05 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">MÃ©todo Conversiones</h3>
+            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Método Conversiones</h3>
             <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Un sistema probado para analizar, optimizar y escalar todo tu embudo digital.</p>
             <div class="flex flex-wrap gap-2 mt-5">
               <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">CRO</span>
