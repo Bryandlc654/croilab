@@ -210,8 +210,9 @@ const metrics = [
   <!-- 4. GALERÍA / DETALLE VISUAL -->
   <section class="bg-[#f8f9fa] py-32 border-t border-black/5">
     <Container class="text-center">
-      <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight text-black mb-16 reveal-up">Diseñado para convertir.</h2>
-      
+      <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight text-black mb-4 reveal-up">Diseñado para convertir.</h2>
+      <p class="text-black/60 max-w-xl mx-auto mb-16 reveal-up">Así se ve la web del proyecto en vivo. Navegable de arriba a abajo, tal y como la lanzamos.</p>
+
       <div class="w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.1)] border border-black/5 reveal-up">
         <!-- Header de navegador Mac -->
         <div class="bg-white px-4 py-3 border-b border-black/5 flex items-center gap-2">
@@ -220,12 +221,34 @@ const metrics = [
             <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div class="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
-          <div class="mx-auto bg-[#f1f3f5] rounded-md px-32 py-1 text-[10px] text-black/40 font-mono flex items-center gap-2">
+          <div class="mx-auto bg-[#f1f3f5] rounded-md px-6 sm:px-32 py-1 text-[10px] text-black/40 font-mono flex items-center gap-2 truncate max-w-[70%]">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-            {title.toLowerCase().replace(/\s+/g, '')}.com
+            {link !== '#' ? link : (title.toLowerCase().replace(/\s+/g, '') + '.com')}
           </div>
+          {
+            link !== '#' && (
+              <a href={link} target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-1.5 text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                Abrir
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            )
+          }
         </div>
-        <img src={image} alt={title} class="w-full h-auto object-cover" />
+
+        {
+          link !== '#' ? (
+            <iframe
+              src={link}
+              title={title}
+              class="w-full h-[70vh] lg:h-[80vh] bg-white"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          ) : (
+            <img src={image} alt={title} class="w-full h-auto object-cover" />
+          )
+        }
       </div>
     </Container>
   </section>
