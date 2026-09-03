@@ -94,17 +94,25 @@ try {
           </p>
           
           <div class="flex flex-col sm:flex-row items-center justify-start lg:justify-end gap-5 w-full">
-            <a href="#proyectos-list" class="group relative flex items-center justify-center gap-4 rounded-full bg-white px-10 py-5 text-[14px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
+            <a href="#proyectos-list" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-10 py-5 text-[14px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
               Ver proyectos
               <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
             </a>
-            <a href="/contacto" class="group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-10 py-5 text-[14px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
+            <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-10 py-5 text-[14px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
               Cotizar proyecto
             </a>
           </div>
         </div>
       </div>
     </Container>
+
+    <!-- Indicador de scroll -->
+    <a href="#proyectos-list" class="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 flex-col items-center gap-2 group hidden sm:flex">
+      <span class="text-[10px] font-medium uppercase tracking-[.3em] text-white/40 transition group-hover:text-white/80">Scroll</span>
+      <span class="relative flex h-9 w-5 items-start justify-center rounded-full border border-white/20 p-1.5">
+        <span class="proj-scroll-dot h-2 w-1 rounded-full bg-white"></span>
+      </span>
+    </a>
   </section>
 
   <!-- ESTADÍSTICAS GLOBALES -->
@@ -121,19 +129,26 @@ try {
               <article class={`project-card group relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-10 lg:gap-0`}>
                 
                 <!-- BLOQUE DE IMAGEN -->
-                <div class="project-img-block w-full lg:w-7/12 relative z-10">
-                  <a href={project.link} class="block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#f8f9fa] border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+                <div class="project-img-block w-full lg:w-7/12 relative z-10" data-spotlight>
+                  <div class="spotlight-glow"></div>
+                  <a href={project.link} class="project-img-link block relative w-full aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[#f8f9fa] border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
                     <div class="absolute inset-0 bg-white/10 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
                     <img
                       src={project.image}
                       alt={project.title}
                       loading="lazy"
-                      class="h-full w-full object-cover transition-transform duration-[3s] ease-out group-hover:scale-105"
+                      class="project-img h-full w-full object-cover transition-transform duration-[3s] ease-out group-hover:scale-110"
                     />
                     <!-- Etiqueta Flotante -->
                     <div class="absolute top-6 left-6 z-20">
                       <span class="inline-flex items-center rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-black shadow-lg">
                         {project.category}
+                      </span>
+                    </div>
+                    <!-- Overlay de hover con flecha -->
+                    <div class="absolute inset-0 z-20 flex items-center justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/30 opacity-0 group-hover:opacity-100">
+                      <span class="flex h-16 w-16 items-center justify-center rounded-full bg-white text-black shadow-2xl transition-transform duration-500 scale-75 group-hover:scale-100">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                       </span>
                     </div>
                   </a>
@@ -145,7 +160,7 @@ try {
                     <div class="flex items-center gap-4 mb-6">
                       <span class="h-px w-8 bg-black/20"></span>
                       <span class="text-[10px] font-bold uppercase tracking-[.2em] text-black/40">
-                        Caso de Éxito 0{i + 1}
+                        Caso de Éxito <span class="case-counter inline-block tabular-nums">0{i + 1}</span>
                       </span>
                     </div>
 
@@ -160,10 +175,12 @@ try {
                     <div class="border-t border-black/10 pt-8">
                       <a
                         href={project.link}
-                        class="inline-flex items-center gap-4 rounded-full bg-black px-8 py-4 text-[13px] font-bold text-white transition-transform duration-300 hover:scale-105 shadow-[0_10px_20px_rgba(0,0,0,0.1)]"
+                        class="magnetic inline-flex items-center gap-4 rounded-full bg-black px-8 py-4 text-[13px] font-bold text-white transition-transform duration-300 hover:scale-105 shadow-[0_10px_20px_rgba(0,0,0,0.1)]"
                       >
                         Ver el resultado en vivo
-                        <span class="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                        <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rotate-45">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                        </span>
                       </a>
                     </div>
                   </div>
@@ -204,12 +221,12 @@ try {
         </p>
         
         <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <a href="/contacto" class="group relative flex items-center justify-center gap-4 rounded-full bg-black px-10 py-5 text-[14px] font-bold text-white transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] w-full sm:w-auto overflow-hidden">
+          <a href="/contacto" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-black px-10 py-5 text-[14px] font-bold text-white transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] w-full sm:w-auto overflow-hidden">
             <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]"></div>
             Cotizar mi proyecto
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover:rotate-45">↗</span>
           </a>
-          <a href={waLink} target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center gap-4 rounded-full border border-black/10 bg-white px-10 py-5 text-[14px] font-bold text-black transition-all duration-300 hover:bg-black/5 hover:border-black/20 w-full sm:w-auto">
+          <a href={waLink} target="_blank" rel="noopener noreferrer" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-black/10 bg-white px-10 py-5 text-[14px] font-bold text-black transition-all duration-300 hover:bg-black/5 hover:border-black/20 w-full sm:w-auto">
             WhatsApp directo
           </a>
         </div>
@@ -238,9 +255,9 @@ try {
   gsap.registerPlugin(ScrollTrigger);
 
   // Hero Title Parallax
-  const titles = gsap.utils.toArray('.gsap-title');
+  const titles = gsap.utils.toArray<HTMLElement>('.gsap-title');
   titles.forEach((title) => {
-    const speed = parseFloat(title.getAttribute('data-custom-speed')) || 1;
+    const speed = parseFloat(title.getAttribute('data-custom-speed') || '1');
     const yOffset = (1 - speed) * 200;
 
     gsap.fromTo(title,
@@ -260,7 +277,7 @@ try {
   });
 
   // Elementos Reveal Up
-  const reveals = gsap.utils.toArray('.reveal-up');
+  const reveals = gsap.utils.toArray<HTMLElement>('.reveal-up');
   reveals.forEach((el) => {
     gsap.from(el, {
       y: 40,
@@ -275,7 +292,7 @@ try {
   });
 
   // Project Cards asimétricos
-  const projectCards = gsap.utils.toArray('.project-card');
+  const projectCards = gsap.utils.toArray<HTMLElement>('.project-card');
   projectCards.forEach((card, i) => {
     const isEven = i % 2 === 0;
     const imageBlock = card.querySelector('.project-img-block');
@@ -307,5 +324,49 @@ try {
         }
       });
     }
+
+    // Parallax sutil de la imagen dentro del card (scrub) sobre el wrapper
+    const imgWrap = card.querySelector('.project-img-link');
+    if (imgWrap) {
+      gsap.fromTo(imgWrap,
+        { y: -24 },
+        {
+          y: 24,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          }
+        }
+      );
+    }
+  });
+
+  // Contador animado "Caso de Éxito 0X"
+  const caseLabels = gsap.utils.toArray<HTMLElement>('.case-counter');
+  caseLabels.forEach((el) => {
+    const target = parseInt(el.textContent?.replace(/\D/g, '') || '0', 10);
+    const obj = { val: 0 };
+    el.textContent = '00';
+    gsap.to(obj, {
+      val: target,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onUpdate: () => {
+        el.textContent = String(obj.val).padStart(2, '0');
+      },
+    });
+  });
+
+  // Animación continua del indicador de scroll
+  gsap.to('.proj-scroll-dot', {
+    y: 10,
+    opacity: 0,
+    duration: 1.3,
+    repeat: -1,
+    ease: 'power2.inOut',
   });
 </script>
