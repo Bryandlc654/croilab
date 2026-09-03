@@ -25,23 +25,75 @@ export async function getStaticPaths() {
     // Calcular tiempo de lectura estimado (200 palabras por minuto)
     const wordCount = (post.content?.rendered || "").replace(/<[^>]*>?/gm, '').split(/\s+/).length;
     const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+    // Extraer encabezados H2 para el índice de contenidos
+    const rawContent = post.content?.rendered || "";
+    const headings = [...rawContent.matchAll(/<h2[^>]*>(.*?)<\/h2>/gi)].map((m) =>
+      m[1].replace(/<[^>]*>/g, "").trim()
+    );
     
     return {
       params: { slug: post.slug },
       props: {
         title: post.title?.rendered || "Artículo",
-        content: post.content?.rendered || "",
+        content: rawContent,
         date: new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
         image: imageUrl,
         readingTime,
         slug: post.slug,
+        headings,
         rankMathSEO: post.head || post.yoast_head || post.rank_math_head || null
       },
     };
   });
 }
 
-const { title, content, date, image, readingTime, slug, rankMathSEO } = Astro.props;
+const { title, content, date, image, readingTime, slug, headings = [], rankMathSEO } = Astro.props;
+
+// Construir slugs de anclaje por heading (id único)
+const toc = headings.map((h, i) => ({
+  text: h,
+  id: `section-${i + 1}`,
+}));
+
+// Inyectar id en los H2 del contenido para habilitar anclas del índice
+let contentHtml = content;
+if (toc.length > 0) {
+  let idx = 0;
+  contentHtml = contentHtml.replace(/<h2([^>]*)>/gi, (full, attrs) => {
+    const id = `section-${idx + 1}`;
+    idx += 1;
+    if (/\bid=/i.test(attrs)) return full;
+    return `<h2 id="${id}"${attrs}>`;
+  });
+}
+const articleContent = contentHtml;
+
+// Artículos relacionados (los 3 primeros distintos al actual)
+let relatedPosts = [];
+try {
+  const relRes = await fetch('https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/posts?_embed&per_page=4');
+  if (relRes.ok) {
+    const relPosts = await relRes.json();
+    relatedPosts = relPosts
+      .filter((p: any) => p.slug !== slug)
+      .slice(0, 3)
+      .map((p: any) => {
+        let img = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop";
+        if (p._embedded && p._embedded['wp:featuredmedia'] && p._embedded['wp:featuredmedia'][0]?.source_url) {
+          img = p._embedded['wp:featuredmedia'][0].source_url;
+        }
+        return {
+          title: p.title?.rendered || "Artículo",
+          slug: p.slug,
+          image: img,
+          date: new Date(p.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+        };
+      });
+  }
+} catch (e) {
+  console.error("Error fetching related posts:", e);
+}
 ---
 
 <BaseLayout
@@ -105,7 +157,7 @@ const { title, content, date, image, readingTime, slug, rankMathSEO } = Astro.pr
               prose-li:text-white/60 prose-li:text-[18px] prose-li:mb-2
               prose-blockquote:border-l-4 prose-blockquote:border-white/30 prose-blockquote:bg-white/[0.02] prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:text-white/90 prose-blockquote:italic prose-blockquote:text-xl
               prose-img:rounded-3xl prose-img:border prose-img:border-white/10 prose-img:my-16 prose-img:w-full prose-img:shadow-2xl"
-              set:html={content}>
+              set:html={articleContent}>
             </div>
             
             <!-- Fin del artículo -->
@@ -133,6 +185,26 @@ const { title, content, date, image, readingTime, slug, rankMathSEO } = Astro.pr
                   </div>
                 </div>
               </div>
+
+              <div class="h-px w-full bg-white/10"></div>
+
+              <!-- Índice de contenidos -->
+              {toc.length > 0 && (
+                <div>
+                  <h4 class="text-[10px] uppercase tracking-widest text-white/40 mb-4 font-bold">En este artículo</h4>
+                  <nav id="toc" class="flex flex-col gap-1 text-[13px]">
+                    {toc.map((item, i) => (
+                      <a
+                        href={`#${item.id}`}
+                        data-toc-link={i}
+                        class="toc-link rounded-lg pl-3 py-1.5 leading-snug block"
+                      >
+                        {item.text}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+              )}
 
               <div class="h-px w-full bg-white/10"></div>
 
@@ -186,6 +258,42 @@ const { title, content, date, image, readingTime, slug, rankMathSEO } = Astro.pr
         </div>
       </Container>
     </div>
+
+    <!-- ARTÍCULOS RELACIONADOS -->
+    {relatedPosts.length > 0 && (
+      <section class="relative mt-28 lg:mt-40">
+        <Container>
+          <div class="flex items-center gap-4 mb-12 reveal-up">
+            <span class="h-px w-9 bg-white/20"></span>
+            <h3 class="text-[11px] font-semibold uppercase tracking-[.24em] text-white/50">Sigue leyendo</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {relatedPosts.map((rp) => (
+              <a href={`/blog/${rp.slug}`} class="group relative block overflow-hidden rounded-[2rem] bg-[#0a0a0a] border border-white/10">
+                <div class="relative aspect-[16/10] overflow-hidden bg-[#111]">
+                  <img
+                    src={rp.image}
+                    alt={rp.title}
+                    loading="lazy"
+                    class="h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6 lg:p-8">
+                  <span class="text-[10px] font-semibold uppercase tracking-widest text-white/40">{rp.date}</span>
+                  <h4 class="mt-3 text-lg font-bold leading-snug tracking-tight text-white transition-colors group-hover:text-white/80 line-clamp-3" set:html={rp.title}>
+                  </h4>
+                  <span class="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-white/50 transition-colors group-hover:text-white">
+                    Leer artículo
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Container>
+      </section>
+    )}
   </article>
 </BaseLayout>
 
@@ -220,4 +328,41 @@ const { title, content, date, image, readingTime, slug, rankMathSEO } = Astro.pr
       progressBar.style.width = scrolled + '%';
     }
   });
+
+  // Scroll-spy del índice de contenidos
+  const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+  if (tocLinks.length > 0) {
+    const sections = tocLinks
+      .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
+      .filter(Boolean);
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocLinks.forEach((link) => {
+            link.classList.toggle('toc-active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach((s) => spy.observe(s));
+  }
 </script>
+
+<style>
+  .toc-link {
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .toc-link:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  .toc-link.toc-active {
+    color: #fff;
+    border-color: #fff;
+  }
+</style>
