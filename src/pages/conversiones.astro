@@ -81,11 +81,11 @@ try {
           </p>
 
           <div class="flex flex-col sm:flex-row items-start gap-5">
-            <a href="#metodologia" class="group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
+            <a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
               Descubrir método
               <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
             </a>
-            <a href="/contacto" class="group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
+            <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
               Quiero trabajar así
             </a>
           </div>
@@ -215,10 +215,11 @@ try {
           { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`, title: "CPA Inasumible", desc: "Cada mes pagas más a Meta o Google por adquirir un cliente. El tráfico es cada vez más caro y el margen más estrecho." },
           { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>`, title: "Conversión Pobre", desc: "Tienes miles de visitas mensuales, pero tu tasa de conversión global no logra superar el deprimente 1%." }
         ].map(s => (
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-            <div class="mb-6 grayscale opacity-80" set:html={s.icon}></div>
-            <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
-            <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
+          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] relative overflow-hidden" data-spotlight>
+            <div class="spotlight-glow"></div>
+            <div class="relative z-10 mb-6 grayscale opacity-80" set:html={s.icon}></div>
+            <h3 class="relative z-10 text-xl font-bold text-black mb-4">{s.title}</h3>
+            <p class="relative z-10 text-[15px] leading-relaxed text-black/60">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -243,7 +244,7 @@ try {
           </div>
         </div>
 
-        <div class="relative group">
+        <div class="relative group" data-tilt="6">
           <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
           
           <div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]">
@@ -300,7 +301,8 @@ try {
             { title: "Test A/B y Experimentación", desc: "No implementamos cambios ciegamente. Lanzamos dos versiones de tu web simultáneamente para que los datos nos digan cuál genera más dinero." },
             { title: "Implementación Definitiva", desc: "Una vez que encontramos el diseño ganador, lo codificamos directamente en tu plataforma (Shopify, WordPress, Astro) para asegurar la máxima velocidad." }
           ].map((step, i) => (
-            <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+            <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] overflow-hidden" data-spotlight>
+              <div class="spotlight-glow"></div>
               <div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic">
                 0{i + 1}
               </div>
@@ -325,7 +327,7 @@ try {
       </h2>
 
       <!-- MOCKUP MASIVO -->
-      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group">
+      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group" data-tilt="4">
         <img 
           src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
           alt="Dashboard Conversiones" 
@@ -343,17 +345,20 @@ try {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">+45%</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Aumento de Conversión</div>
+        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2 relative overflow-hidden" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="relative z-10 text-5xl font-bold text-black mb-2">+<span class="roi-count" data-target="45">0</span>%</div>
+          <div class="relative z-10 text-[13px] uppercase tracking-widest text-black/40 font-bold">Aumento de Conversión</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8">
-          <div class="text-6xl font-bold text-white mb-2">+120%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold">Mejora de ROAS (Anuncios)</div>
+        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8 relative overflow-hidden" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="relative z-10 text-6xl font-bold text-white mb-2">+<span class="roi-count" data-target="120">0</span>%</div>
+          <div class="relative z-10 text-[13px] uppercase tracking-widest text-white/80 font-bold">Mejora de ROAS (Anuncios)</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">&lt; 3 M</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Retorno de Inversión (ROI)</div>
+        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2 relative overflow-hidden" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="relative z-10 text-5xl font-bold text-black mb-2">&lt; <span class="roi-count" data-target="3">0</span> M</div>
+          <div class="relative z-10 text-[13px] uppercase tracking-widest text-black/40 font-bold">Retorno de Inversión (ROI)</div>
         </div>
       </div>
     </Container>
@@ -386,12 +391,13 @@ try {
             { q: "¿Esto aplica para Ecommerce o para webs de Servicios (Leads)?", a: "¡Para ambos! En un Ecommerce optimizamos el porcentaje de usuarios que terminan pagando en el checkout. En empresas B2B o de servicios, optimizamos el porcentaje de visitas que llenan un formulario o agendan una llamada." },
             { q: "¿Garantizan que voy a vender más?", a: "Garantizamos encontrar y reparar exactamente dónde estás perdiendo dinero. Si tu tráfico está cualificado, tapar las fugas del embudo matemáticamente resultará en más ventas con la misma inversión." }
           ].map(faq => (
-            <div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
-              <h3 class="text-xl font-bold text-black mb-4 flex items-start gap-4">
+            <div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)] relative overflow-hidden" data-spotlight>
+              <div class="spotlight-glow"></div>
+              <h3 class="relative z-10 text-xl font-bold text-black mb-4 flex items-start gap-4">
                 <span class="text-black/20 font-serif italic text-2xl leading-none pt-1 group-hover:text-black/40 transition-colors">Q.</span>
                 {faq.q}
               </h3>
-              <p class="text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">{faq.a}</p>
+              <p class="relative z-10 text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">{faq.a}</p>
             </div>
           ))}
         </div>
@@ -442,6 +448,21 @@ try {
         }
       }
     );
+  });
+
+  const roiCounts = gsap.utils.toArray<HTMLElement>('.roi-count');
+  roiCounts.forEach((el) => {
+    const target = parseInt(el.getAttribute('data-target') || '0', 10);
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 1.8,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onUpdate: () => {
+        el.textContent = String(Math.round(obj.val));
+      },
+    });
   });
 </script>
 

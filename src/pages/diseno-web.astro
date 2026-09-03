@@ -135,11 +135,11 @@ try {
           </p>
 
           <div class="flex flex-col sm:flex-row items-start gap-5">
-            <a href="#metodologia" class="group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
+            <a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
               Ver metodología
               <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
             </a>
-            <a href="/contacto" class="group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
+            <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
               Quiero trabajar así
             </a>
           </div>
@@ -287,10 +287,11 @@ try {
           { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`, title: "Diseño de Plantilla", desc: "Se ve exactamente igual a cientos de otras empresas. No transmite autoridad ni justifica tus precios." },
           { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`, title: "Rebote Masivo", desc: "Tienes visitas, pero nadie hace clic en 'Comprar' o 'Contactar'. La estructura no guía al usuario." }
         ].map(s => (
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-            <div class="mb-6 grayscale opacity-80" set:html={s.icon}></div>
-            <h3 class="text-xl font-bold text-black mb-4">{s.title}</h3>
-            <p class="text-[15px] leading-relaxed text-black/60">{s.desc}</p>
+          <div class="relative bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]" data-spotlight>
+            <div class="spotlight-glow"></div>
+            <div class="mb-6 grayscale opacity-80 relative z-10" set:html={s.icon}></div>
+            <h3 class="text-xl font-bold text-black mb-4 relative z-10">{s.title}</h3>
+            <p class="text-[15px] leading-relaxed text-black/60 relative z-10">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -315,7 +316,7 @@ try {
           </div>
         </div>
 
-        <div class="relative group">
+        <div class="relative group" data-tilt="5">
           <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div>
           
           <div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]">
@@ -372,8 +373,9 @@ try {
             { title: "Desarrollo Nativo (Headless)", desc: "Adiós a los plugins lentos de WordPress. Usamos arquitecturas modernas (Astro) para tiempos de carga menores a 1 segundo." },
             { title: "Animaciones Inmersivas", desc: "Micro-interacciones y animaciones GSAP que elevan la percepción de valor de tu marca sin sacrificar el rendimiento." }
           ].map((step, i) => (
-            <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
-              <div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic">
+            <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]" data-spotlight>
+              <div class="spotlight-glow"></div>
+              <div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic relative z-10">
                 0{i + 1}
               </div>
               <h3 class="relative z-10 text-2xl font-semibold text-black mb-4">{step.title}</h3>
@@ -415,17 +417,20 @@ try {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">&lt; 1s</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Tiempo de Carga</div>
+        <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="text-5xl font-bold text-black mb-2 relative z-10">&lt; <span class="roi-count" data-target="1">0</span>s</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold relative z-10">Tiempo de Carga</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8">
-          <div class="text-6xl font-bold text-white mb-2">+60%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold">Tasa de Conversión</div>
+        <div class="relative p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="text-6xl font-bold text-white mb-2 relative z-10">+<span class="roi-count" data-target="60">0</span>%</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold relative z-10">Tasa de Conversión</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">99%</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Core Web Vitals</div>
+        <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="text-5xl font-bold text-black mb-2 relative z-10"><span class="roi-count" data-target="99">0</span>%</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold relative z-10">Core Web Vitals</div>
         </div>
       </div>
     </Container>
@@ -460,12 +465,13 @@ try {
             { q: "¿Cuánto tiempo toma desarrollar una web a medida?", a: "Un sitio web corporativo de alta conversión toma entre 4 a 6 semanas desde la estrategia inicial hasta el lanzamiento. No usamos plantillas, por lo que cada píxel y animación se codifica para tu negocio." },
             { q: "¿El rediseño afectará mi posicionamiento actual (SEO)?", a: "No. Al contrario. Realizamos migraciones SEO impecables (redirecciones 301, mapeo de URLS) y la nueva arquitectura más rápida le dará un impulso masivo a tu posicionamiento en Google a los pocos días de lanzarse." }
           ].map(faq => (
-            <div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
-              <h3 class="text-xl font-bold text-black mb-4 flex items-start gap-4">
+            <div class="group relative bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]" data-spotlight>
+              <div class="spotlight-glow"></div>
+              <h3 class="relative z-10 text-xl font-bold text-black mb-4 flex items-start gap-4">
                 <span class="text-black/20 font-serif italic text-2xl leading-none pt-1 group-hover:text-black/40 transition-colors">Q.</span>
                 {faq.q}
               </h3>
-              <p class="text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">{faq.a}</p>
+              <p class="relative z-10 text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">{faq.a}</p>
             </div>
           ))}
         </div>
@@ -516,6 +522,20 @@ try {
         }
       }
     );
+  });
+
+  gsap.utils.toArray<HTMLElement>('.roi-count').forEach((el) => {
+    const target = parseFloat(el.getAttribute('data-target') || '0');
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onUpdate: () => {
+        el.textContent = Math.round(obj.val).toString();
+      },
+    });
   });
 </script>
 

@@ -82,11 +82,11 @@ try {
           </p>
 
           <div class="flex flex-col sm:flex-row items-start gap-5">
-            <a href="#metodologia" class="group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
+            <a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
               Descubre cómo
               <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
             </a>
-            <a href="/contacto" class="group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
+            <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
               Quiero trabajar así
             </a>
           </div>
@@ -266,34 +266,37 @@ try {
         <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 reveal-up">
           
           <!-- Tarjeta 1 (Ancha) -->
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 md:col-span-2 group">
-            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+          <div class="relative bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 md:col-span-2 group" data-spotlight>
+            <div class="spotlight-glow"></div>
+            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110 relative z-10">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
-            <h3 class="text-2xl font-bold text-black mb-4">Dependencia absoluta de Ads</h3>
-            <p class="text-[16px] leading-relaxed text-black/60 max-w-2xl">
+            <h3 class="text-2xl font-bold text-black mb-4 relative z-10">Dependencia absoluta de Ads</h3>
+            <p class="text-[16px] leading-relaxed text-black/60 max-w-2xl relative z-10">
               Cada mes el costo por clic sube. Si dejas de pagar pauta a Meta o Google, tu negocio literalmente se detiene y las ventas caen a cero. Eres rehén de sus algoritmos y precios.
             </p>
           </div>
 
           <!-- Tarjeta 2 -->
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 group">
-            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+          <div class="relative bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 group" data-spotlight>
+            <div class="spotlight-glow"></div>
+            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110 relative z-10">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
             </div>
-            <h3 class="text-xl font-bold text-black mb-4">Competencia Inferior</h3>
-            <p class="text-[15px] leading-relaxed text-black/60">
+            <h3 class="text-xl font-bold text-black mb-4 relative z-10">Competencia Inferior</h3>
+            <p class="text-[15px] leading-relaxed text-black/60 relative z-10">
               Tus competidores tienen un peor producto y servicio, pero se llevan a tus clientes simplemente porque aparecen primero en Google.
             </p>
           </div>
 
           <!-- Tarjeta 3 -->
-          <div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 group">
-            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+          <div class="relative bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 group" data-spotlight>
+            <div class="spotlight-glow"></div>
+            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110 relative z-10">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
-            <h3 class="text-xl font-bold text-black mb-4">Tráfico Fantasma</h3>
-            <p class="text-[15px] leading-relaxed text-black/60">
+            <h3 class="text-xl font-bold text-black mb-4 relative z-10">Tráfico Fantasma</h3>
+            <p class="text-[15px] leading-relaxed text-black/60 relative z-10">
               Tienes cientos de visitas mensuales a tu web, pero el teléfono no suena y los formularios de contacto están acumulando polvo.
             </p>
           </div>
@@ -431,13 +434,14 @@ try {
               { title: "Autoridad Programática", desc: "Inyectamos confianza algorítmica. Construimos PR digital y enlaces desde ecosistemas relevantes que gritan a Google: 'Ellos son los líderes absolutos de la industria'." },
               { title: "Optimización de Conversión", desc: "Atraerlos es solo el primer paso. Aplicamos principios de UX y Neuromarketing para guiar ese tráfico frío hacia tu formulario de contacto o carrito." }
             ].map((step, i) => (
-              <div class="step-card group relative p-10 lg:p-12 rounded-[2.5rem] border border-black/5 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:border-black/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:-translate-y-1 overflow-hidden">
+              <div class="step-card group relative p-10 lg:p-12 rounded-[2.5rem] border border-black/5 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:border-black/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] hover:-translate-y-1 overflow-hidden" data-spotlight>
+                <div class="spotlight-glow"></div>
                 
                 <!-- Efecto de iluminación sutil al hover -->
                 <div class="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
 
                 <div class="flex flex-col sm:flex-row items-start gap-6 lg:gap-8">
-                  <div class="text-[60px] lg:text-[80px] leading-[0.8] font-bold text-black/[0.03] transition-all duration-500 group-hover:text-blue-500/10 font-serif italic select-none">
+                  <div class="text-[60px] lg:text-[80px] leading-[0.8] font-bold text-black/[0.03] transition-all duration-500 group-hover:text-blue-500/10 font-serif italic select-none relative z-10">
                     0{i + 1}
                   </div>
                   <div class="relative z-10 pt-2">
@@ -468,7 +472,7 @@ try {
       </h2>
 
       <!-- MOCKUP MASIVO (Dashboard SEO / Analytics) -->
-      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group">
+      <div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group" data-tilt="5">
         <img 
           src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
           alt="Dashboard de crecimiento orgánico" 
@@ -487,17 +491,20 @@ try {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">+340%</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">Tráfico Orgánico</div>
+        <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="text-5xl font-bold text-black mb-2 relative z-10">+<span class="roi-count" data-target="340">0</span>%</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold relative z-10">Tráfico Orgánico</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8">
-          <div class="text-6xl font-bold text-white mb-2">+45%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold">Tasa de Conversión</div>
+        <div class="relative p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="text-6xl font-bold text-white mb-2 relative z-10">+<span class="roi-count" data-target="45">0</span>%</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold relative z-10">Tasa de Conversión</div>
         </div>
-        <div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-          <div class="text-5xl font-bold text-black mb-2">ROI +</div>
-          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold">En menos de 6 meses</div>
+        <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="text-5xl font-bold text-black mb-2 relative z-10">ROI +</div>
+          <div class="text-[13px] uppercase tracking-widest text-black/40 font-bold relative z-10">En menos de 6 meses</div>
         </div>
       </div>
     </Container>
@@ -551,7 +558,8 @@ try {
             { q: "¿Por qué debería elegirlos sobre mi agencia actual?", a: "La mayoría de agencias miden su éxito en 'posiciones' o 'visitas'. Nosotros medimos el éxito en leads cualificados y aumento de facturación. Si tu agencia actual te entrega reportes llenos de visitas que no se traducen en dinero en el banco, es hora de cambiar el enfoque." },
             { q: "¿Garantizan la posición #1 en Google?", a: "Nadie que trabaje de forma ética puede garantizar la posición #1 absoluta porque el algoritmo es de Google, no nuestro. Lo que sí garantizamos es la ejecución exacta del sistema de conversión que ya ha escalado a decenas de empresas a liderar sus industrias." }
           ].map((faq, i) => (
-            <div class="group relative bg-[#f8f9fa] p-8 lg:p-12 rounded-[2.5rem] border border-black/5 transition-all duration-500 hover:bg-white hover:border-black/10 hover:-translate-y-1 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+            <div class="group relative bg-[#f8f9fa] p-8 lg:p-12 rounded-[2.5rem] border border-black/5 transition-all duration-500 hover:bg-white hover:border-black/10 hover:-translate-y-1 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]" data-spotlight>
+              <div class="spotlight-glow"></div>
               <!-- Brillo sutil interior -->
               <div class="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
 
@@ -584,7 +592,7 @@ try {
   gsap.registerPlugin(ScrollTrigger);
 
   // Animaciones de entrada suave para las tarjetas de pasos
-  const cards = gsap.utils.toArray('.step-card');
+  const cards = gsap.utils.toArray<HTMLElement>('.step-card');
   
   cards.forEach((card) => {
     gsap.from(card, {
@@ -600,10 +608,10 @@ try {
   });
 
   // Animación Parallax GSAP para los Títulos
-  const titles = gsap.utils.toArray('.gsap-title');
+  const titles = gsap.utils.toArray<HTMLElement>('.gsap-title');
   titles.forEach((title) => {
-    const speed = parseFloat(title.getAttribute('data-custom-speed')) || 1;
-    const yOffset = (1 - speed) * 200; // Calcula el desplazamiento basado en la velocidad
+    const speed = parseFloat(title.getAttribute('data-custom-speed') ?? '') || 1;
+    const yOffset = (1 - speed) * 200;
 
     gsap.fromTo(title,
       { y: yOffset, opacity: 0.2 },
@@ -613,12 +621,26 @@ try {
         ease: "none",
         scrollTrigger: {
           trigger: title,
-          start: "top 95%", // Comienza la animación cuando el título entra en la vista
-          end: "top 20%",   // Termina cuando el título está en la parte superior
-          scrub: 1,         // Sincroniza suavemente con el scroll (efecto Parallax real)
+          start: "top 95%",
+          end: "top 20%",
+          scrub: 1,
         }
       }
     );
+  });
+
+  gsap.utils.toArray<HTMLElement>('.roi-count').forEach((el) => {
+    const target = parseFloat(el.getAttribute('data-target') || '0');
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onUpdate: () => {
+        el.textContent = Math.round(obj.val).toString();
+      },
+    });
   });
 </script>
 
