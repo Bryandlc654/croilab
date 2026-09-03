@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
@@ -9,14 +9,15 @@ import ServiceStats from '../components/ServiceStats.astro';
 import CaseStudiesCarousel from '../components/CaseStudiesCarousel.astro';
 import WebDesignMockup from '../components/WebDesignMockup.astro';
 import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+import ServiceHub from '../components/ServiceHub.astro';
 
 const webDesignTestimonials = [
-  { quote: "Nuestra web anterior parecía de los 90s. La nueva no solo es hermosa, sino que aumentó los leads un 150% en un mes.", name: "Laura C.", role: "Directora Comercial", rating: 5 },
-  { quote: "Entendieron perfectamente nuestra marca y la tradujeron en una experiencia de usuario increíble. De primer nivel.", name: "Andrés M.", role: "Founder, SaaS", rating: 5 },
-  { quote: "La velocidad de carga es brutal. Pasamos la auditoría técnica de Google con puntaje perfecto.", name: "Sofia T.", role: "CMO, Retail", rating: 5 },
-  { quote: "Teníamos muchas visitas pero nadie compraba. El rediseño de UX/UI resolvió exactamente nuestro problema de conversión.", name: "Diego L.", role: "CEO, Ecommerce", rating: 5 },
+  { quote: "Nuestra web anterior parecÃ­a de los 90s. La nueva no solo es hermosa, sino que aumentÃ³ los leads un 150% en un mes.", name: "Laura C.", role: "Directora Comercial", rating: 5 },
+  { quote: "Entendieron perfectamente nuestra marca y la tradujeron en una experiencia de usuario increÃ­ble. De primer nivel.", name: "AndrÃ©s M.", role: "Founder, SaaS", rating: 5 },
+  { quote: "La velocidad de carga es brutal. Pasamos la auditorÃ­a tÃ©cnica de Google con puntaje perfecto.", name: "Sofia T.", role: "CMO, Retail", rating: 5 },
+  { quote: "TenÃ­amos muchas visitas pero nadie compraba. El rediseÃ±o de UX/UI resolviÃ³ exactamente nuestro problema de conversiÃ³n.", name: "Diego L.", role: "CEO, Ecommerce", rating: 5 },
   { quote: "El proceso fue muy organizado. Desde los wireframes hasta el desarrollo final, todo fue impecable.", name: "Valeria P.", role: "Directora, Agencia", rating: 5 },
-  { quote: "Nuestros clientes creen que somos una empresa gigante gracias a la nueva web. Literalmente elevó nuestro estatus.", name: "Ricardo S.", role: "Consultor", rating: 5 },
+  { quote: "Nuestros clientes creen que somos una empresa gigante gracias a la nueva web. Literalmente elevÃ³ nuestro estatus.", name: "Ricardo S.", role: "Consultor", rating: 5 },
 ];
 
 const webDesignCases = [
@@ -32,10 +33,10 @@ const webDesignCases = [
   },
   {
     name: 'Vortex Media',
-    tags: ['Estrategia', 'Web App', 'Automatización'],
+    tags: ['Estrategia', 'Web App', 'AutomatizaciÃ³n'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop',
     metrics: [
-      { value: '+240%', label: 'Conversión de registros' },
+      { value: '+240%', label: 'ConversiÃ³n de registros' },
       { value: '99', label: 'PageSpeed Score' },
     ],
     slug: '/proyectos',
@@ -45,18 +46,18 @@ const webDesignCases = [
     tags: ['Dashboard', 'Data Viz', 'UX Research'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
     metrics: [
-      { value: '3.2x', label: 'Retención de usuarios' },
+      { value: '3.2x', label: 'RetenciÃ³n de usuarios' },
       { value: '+65%', label: 'Tiempo en plataforma' },
     ],
     slug: '/proyectos',
   },
   {
     name: 'Aura Wellness',
-    tags: ['E-commerce', 'Diseño', 'SEO'],
+    tags: ['E-commerce', 'DiseÃ±o', 'SEO'],
     image: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2000&auto=format&fit=crop',
     metrics: [
       { value: '+320%', label: 'Ventas online' },
-      { value: '+89%', label: 'Tráfico orgánico' },
+      { value: '+89%', label: 'TrÃ¡fico orgÃ¡nico' },
     ],
     slug: '/proyectos',
   },
@@ -65,14 +66,14 @@ const webDesignCases = [
     tags: ['Landing', 'CRO', 'Motion'],
     image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2000&auto=format&fit=crop',
     metrics: [
-      { value: '72%', label: 'Reducción bounce rate' },
+      { value: '72%', label: 'ReducciÃ³n bounce rate' },
       { value: '+145%', label: 'Demo requests' },
     ],
     slug: '/proyectos',
   },
 ];
 
-// Sincronización Headless con WordPress Rank Math
+// SincronizaciÃ³n Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=diseno-web';
 let rankMathSEO = null;
 
@@ -90,7 +91,7 @@ try {
 ---
 
 <BaseLayout
-  title="Diseño Web que Convierte | Croilab"
+  title="DiseÃ±o Web que Convierte | Croilab"
   description="Tu sitio web no debe ser un folleto digital, debe ser tu mejor vendedor."
   rankMathSEO={rankMathSEO}
 >
@@ -107,20 +108,20 @@ try {
       <!-- Degradado vertical: Oscuro abajo (100%), Transparente arriba (0%) -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
       
-      <!-- Grid Arquitectónico superpuesto -->
+      <!-- Grid ArquitectÃ³nico superpuesto -->
       <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div>
       
       <!-- Ruido (Grain) para textura premium -->
       <div class="absolute inset-0 opacity-[0.25] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
 
-    <!-- Luces de fondo dinámicas -->
+    <!-- Luces de fondo dinÃ¡micas -->
     <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
     <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
     <Container class="relative z-10 pt-40 pb-20 lg:pt-48 lg:pb-32">
       <div class="mb-14">
-        <Breadcrumb items={[{ label: 'Servicios', href: '/#servicios' }, { label: 'Diseño Web' }]} />
+        <Breadcrumb items={[{ label: 'Servicios', href: '/#servicios' }, { label: 'DiseÃ±o Web' }]} />
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-20 items-center">
         
@@ -131,24 +132,24 @@ try {
           </h1>
 
           <p class="max-w-xl text-[17px] md:text-[19px] leading-relaxed text-white/50 mb-12">
-            Las plantillas genéricas no venden. Diseñamos y desarrollamos sitios web a medida, ultra-rápidos y estructurados psicológicamente para convertir curiosos en clientes.
+            Las plantillas genÃ©ricas no venden. DiseÃ±amos y desarrollamos sitios web a medida, ultra-rÃ¡pidos y estructurados psicolÃ³gicamente para convertir curiosos en clientes.
           </p>
 
           <div class="flex flex-col sm:flex-row items-start gap-5">
             <a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
-              Ver metodología
-              <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+              Ver metodologÃ­a
+              <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">â†“</span>
             </a>
             <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
-              Quiero trabajar así
+              Quiero trabajar asÃ­
             </a>
           </div>
         </div>
 
-        <!-- Derecha: Mockup Animado Diseño Web -->
+        <!-- Derecha: Mockup Animado DiseÃ±o Web -->
         <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[4/4.5] flex items-center justify-center perspective-1000 mt-10 lg:mt-0">
            
-           <!-- Glow de fondo cinemático -->
+           <!-- Glow de fondo cinemÃ¡tico -->
            <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/30 via-blue-600/20 to-transparent rounded-[100px] blur-[120px] animate-glowDrift mix-blend-screen pointer-events-none"></div>
            
            <!-- Interfaz Principal (Navegador Safari) -->
@@ -190,11 +191,11 @@ try {
                </div>
                
                <h2 class="text-[22px] font-bold text-white leading-tight mb-3 max-w-[280px]">
-                 Automatiza tu trabajo con <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">precisión.</span>
+                 Automatiza tu trabajo con <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">precisiÃ³n.</span>
                </h2>
                
                <p class="text-[11px] text-white/50 leading-relaxed max-w-[260px] mb-8">
-                 La plataforma todo-en-uno que los equipos modernos usan para escalar sus operaciones sin estrés.
+                 La plataforma todo-en-uno que los equipos modernos usan para escalar sus operaciones sin estrÃ©s.
                </p>
                
                <!-- Botones -->
@@ -210,10 +211,10 @@ try {
                
                <!-- Decorative Abstract UI Elements (Glassmorphism Cards) -->
                
-               <!-- Card Izquierda: Gráfica -->
+               <!-- Card Izquierda: GrÃ¡fica -->
                <div class="absolute -bottom-6 -left-8 w-48 bg-white/[0.03] border border-white/10 rounded-2xl backdrop-blur-xl rotate-[6deg] shadow-2xl p-4 transition-transform hover:-translate-y-2">
                  <div class="flex items-center justify-between mb-3">
-                   <div class="text-[9px] text-white/50 font-bold uppercase">Conversión</div>
+                   <div class="text-[9px] text-white/50 font-bold uppercase">ConversiÃ³n</div>
                    <div class="text-[9px] text-green-400 bg-green-500/10 px-1.5 py-0.5 rounded">+12%</div>
                  </div>
                  <!-- Mini Bar Chart -->
@@ -226,7 +227,7 @@ try {
                  </div>
                </div>
                
-               <!-- Card Derecha: Notificación -->
+               <!-- Card Derecha: NotificaciÃ³n -->
                <div class="absolute bottom-16 -right-6 w-44 bg-white/[0.05] border border-white/10 rounded-2xl backdrop-blur-xl rotate-[-4deg] shadow-2xl p-3 flex items-center gap-3 transition-transform hover:-translate-y-2">
                  <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-green-400 to-cyan-500 flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.3)]">
                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -258,7 +259,7 @@ try {
            <div class="absolute -left-4 lg:-left-10 bottom-1/4 bg-[#111115]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float z-20" style="animation-delay: 1.5s;">
              <div class="flex items-center gap-3 mb-1">
                <div class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.8)] animate-pulse"></div>
-               <div class="text-[11px] font-bold uppercase tracking-wider text-white/80">Conversión</div>
+               <div class="text-[11px] font-bold uppercase tracking-wider text-white/80">ConversiÃ³n</div>
              </div>
              <div class="text-2xl font-bold text-green-400">+340%</div>
            </div>
@@ -271,21 +272,21 @@ try {
 
   <ServiceStats />
 
-  <!-- 1.5 LOS SÍNTOMAS -->
+  <!-- 1.5 LOS SÃNTOMAS -->
   <section class="relative bg-[#f8f9fa] py-32 border-t border-black/5">
     <Container>
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">El Problema</span>
         <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-tight">
-          ¿Tu web sufre de alguna de estas enfermedades?
+          Â¿Tu web sufre de alguna de estas enfermedades?
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, title: "Carga Lentísima", desc: "Tarda más de 3 segundos en abrir. Para cuando carga, el usuario ya se fue a la web de tu competidor." },
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`, title: "Diseño de Plantilla", desc: "Se ve exactamente igual a cientos de otras empresas. No transmite autoridad ni justifica tus precios." },
-          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`, title: "Rebote Masivo", desc: "Tienes visitas, pero nadie hace clic en 'Comprar' o 'Contactar'. La estructura no guía al usuario." }
+          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, title: "Carga LentÃ­sima", desc: "Tarda mÃ¡s de 3 segundos en abrir. Para cuando carga, el usuario ya se fue a la web de tu competidor." },
+          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`, title: "DiseÃ±o de Plantilla", desc: "Se ve exactamente igual a cientos de otras empresas. No transmite autoridad ni justifica tus precios." },
+          { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`, title: "Rebote Masivo", desc: "Tienes visitas, pero nadie hace clic en 'Comprar' o 'Contactar'. La estructura no guÃ­a al usuario." }
         ].map(s => (
           <div class="relative bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]" data-spotlight>
             <div class="spotlight-glow"></div>
@@ -298,20 +299,20 @@ try {
     </Container>
   </section>
 
-  <!-- 2. LA AGITACIÓN -->
+  <!-- 2. LA AGITACIÃ“N -->
   <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 pt-10">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
           <h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-black mb-8 leading-[1.1]" data-custom-speed="0.9">
-            El buen diseño es <span class="text-black/30 line-through">arte.</span><br/> El diseño web es <strong class="text-black">ventas.</strong>
+            El buen diseÃ±o es <span class="text-black/30 line-through">arte.</span><br/> El diseÃ±o web es <strong class="text-black">ventas.</strong>
           </h2>
           <div class="space-y-6 text-[16px] leading-relaxed text-black/60">
             <p>
-              Tener una web "bonita" ya no es suficiente. Si usas Elementor, Wix o plantillas pesadas, estás matando tu tasa de conversión antes de que el usuario termine de hacer scroll.
+              Tener una web "bonita" ya no es suficiente. Si usas Elementor, Wix o plantillas pesadas, estÃ¡s matando tu tasa de conversiÃ³n antes de que el usuario termine de hacer scroll.
             </p>
             <p>
-              En Croilab programamos a medida usando tecnologías modernas (Astro, React, GSAP). El resultado es una experiencia inmersiva, 10x más rápida y estructurada para generar fricción cero al momento de comprar.
+              En Croilab programamos a medida usando tecnologÃ­as modernas (Astro, React, GSAP). El resultado es una experiencia inmersiva, 10x mÃ¡s rÃ¡pida y estructurada para generar fricciÃ³n cero al momento de comprar.
             </p>
           </div>
         </div>
@@ -322,14 +323,14 @@ try {
           <div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]">
             <div class="p-10 pb-0">
               <div class="text-7xl font-bold text-black mb-4">88%</div>
-              <p class="text-lg text-black/60 mb-10">de los usuarios no vuelven a una página web tras una mala experiencia de usuario (UX) o tiempos de carga lentos.</p>
+              <p class="text-lg text-black/60 mb-10">de los usuarios no vuelven a una pÃ¡gina web tras una mala experiencia de usuario (UX) o tiempos de carga lentos.</p>
             </div>
             
             <!-- MOCKUP -->
             <div class="relative w-full h-[300px] mt-auto overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2000&auto=format&fit=crop" 
-                alt="Mockup Diseño UI" 
+                alt="Mockup DiseÃ±o UI" 
                 class="absolute inset-0 w-full h-full object-cover object-top opacity-80 mix-blend-multiply filter contrast-125 transition-transform duration-700 group-hover:scale-105" 
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#fbfbfb] via-transparent to-transparent"></div>
@@ -340,7 +341,7 @@ try {
     </Container>
   </section>
 
-  <!-- 3. METODOLOGÍA -->
+  <!-- 3. METODOLOGÃA -->
   <section id="metodologia" class="relative bg-white py-32 border-t border-black/5">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start">
@@ -348,18 +349,18 @@ try {
           <div>
             <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Arquitectura Moderna</span>
             <h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">
-              Ingeniería <br/>
+              IngenierÃ­a <br/>
               <span class="italic font-serif font-normal text-black/40">Frontend.</span>
             </h2>
             <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
-              Combinamos psicología de ventas, diseño UI premium y código de altísimo rendimiento para crear activos digitales que dominan tu sector.
+              Combinamos psicologÃ­a de ventas, diseÃ±o UI premium y cÃ³digo de altÃ­simo rendimiento para crear activos digitales que dominan tu sector.
             </p>
           </div>
           
           <div class="relative w-full aspect-square max-w-sm rounded-[2.5rem] overflow-hidden bg-black/5 border border-black/10 group">
              <img 
                src="https://images.unsplash.com/photo-1507238692062-71c1bb846f49?q=80&w=2000&auto=format&fit=crop" 
-               alt="Código moderno" 
+               alt="CÃ³digo moderno" 
                class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105" 
              />
              <div class="absolute inset-0 border-[4px] border-white/50 rounded-[2.5rem] m-4 pointer-events-none"></div>
@@ -368,10 +369,10 @@ try {
 
         <div class="flex flex-col gap-12">
           {[
-            { title: "UI/UX Estratégico", desc: "Wireframes y flujos de usuario diseñados específicamente para reducir la fricción. Donde el usuario mira, ahí ponemos la acción." },
-            { title: "Copywriting Integrado", desc: "El diseño sin un buen mensaje es inútil. Escribimos textos persuasivos que encajan perfectamente con la jerarquía visual de la web." },
-            { title: "Desarrollo Nativo (Headless)", desc: "Adiós a los plugins lentos de WordPress. Usamos arquitecturas modernas (Astro) para tiempos de carga menores a 1 segundo." },
-            { title: "Animaciones Inmersivas", desc: "Micro-interacciones y animaciones GSAP que elevan la percepción de valor de tu marca sin sacrificar el rendimiento." }
+            { title: "UI/UX EstratÃ©gico", desc: "Wireframes y flujos de usuario diseÃ±ados especÃ­ficamente para reducir la fricciÃ³n. Donde el usuario mira, ahÃ­ ponemos la acciÃ³n." },
+            { title: "Copywriting Integrado", desc: "El diseÃ±o sin un buen mensaje es inÃºtil. Escribimos textos persuasivos que encajan perfectamente con la jerarquÃ­a visual de la web." },
+            { title: "Desarrollo Nativo (Headless)", desc: "AdiÃ³s a los plugins lentos de WordPress. Usamos arquitecturas modernas (Astro) para tiempos de carga menores a 1 segundo." },
+            { title: "Animaciones Inmersivas", desc: "Micro-interacciones y animaciones GSAP que elevan la percepciÃ³n de valor de tu marca sin sacrificar el rendimiento." }
           ].map((step, i) => (
             <div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]" data-spotlight>
               <div class="spotlight-glow"></div>
@@ -425,7 +426,7 @@ try {
         <div class="relative p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8" data-spotlight>
           <div class="spotlight-glow"></div>
           <div class="text-6xl font-bold text-white mb-2 relative z-10">+<span class="roi-count" data-target="60">0</span>%</div>
-          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold relative z-10">Tasa de Conversión</div>
+          <div class="text-[13px] uppercase tracking-widest text-white/80 font-bold relative z-10">Tasa de ConversiÃ³n</div>
         </div>
         <div class="relative p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2" data-spotlight>
           <div class="spotlight-glow"></div>
@@ -452,18 +453,18 @@ try {
         <div class="lg:sticky lg:top-40">
           <span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Transparencia Radical</span>
           <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">
-            Dudas frecuentes antes de rediseñar tu web.
+            Dudas frecuentes antes de rediseÃ±ar tu web.
           </h2>
           <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
-            Sabemos que una web a medida es una inversión importante. Respondemos tus preguntas con total honestidad.
+            Sabemos que una web a medida es una inversiÃ³n importante. Respondemos tus preguntas con total honestidad.
           </p>
         </div>
 
         <div class="flex flex-col gap-6">
           {[
-            { q: "¿En qué plataforma construyen la web?", a: "Usamos arquitecturas Headless (Astro, React, Tailwind). Si necesitas un panel de control para editar blogs o servicios, conectamos WordPress o un CMS moderno por detrás. Obtienes la facilidad de uso de WordPress pero la velocidad de una aplicación moderna." },
-            { q: "¿Cuánto tiempo toma desarrollar una web a medida?", a: "Un sitio web corporativo de alta conversión toma entre 4 a 6 semanas desde la estrategia inicial hasta el lanzamiento. No usamos plantillas, por lo que cada píxel y animación se codifica para tu negocio." },
-            { q: "¿El rediseño afectará mi posicionamiento actual (SEO)?", a: "No. Al contrario. Realizamos migraciones SEO impecables (redirecciones 301, mapeo de URLS) y la nueva arquitectura más rápida le dará un impulso masivo a tu posicionamiento en Google a los pocos días de lanzarse." }
+            { q: "Â¿En quÃ© plataforma construyen la web?", a: "Usamos arquitecturas Headless (Astro, React, Tailwind). Si necesitas un panel de control para editar blogs o servicios, conectamos WordPress o un CMS moderno por detrÃ¡s. Obtienes la facilidad de uso de WordPress pero la velocidad de una aplicaciÃ³n moderna." },
+            { q: "Â¿CuÃ¡nto tiempo toma desarrollar una web a medida?", a: "Un sitio web corporativo de alta conversiÃ³n toma entre 4 a 6 semanas desde la estrategia inicial hasta el lanzamiento. No usamos plantillas, por lo que cada pÃ­xel y animaciÃ³n se codifica para tu negocio." },
+            { q: "Â¿El rediseÃ±o afectarÃ¡ mi posicionamiento actual (SEO)?", a: "No. Al contrario. Realizamos migraciones SEO impecables (redirecciones 301, mapeo de URLS) y la nueva arquitectura mÃ¡s rÃ¡pida le darÃ¡ un impulso masivo a tu posicionamiento en Google a los pocos dÃ­as de lanzarse." }
           ].map(faq => (
             <div class="group relative bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]" data-spotlight>
               <div class="spotlight-glow"></div>
@@ -480,6 +481,7 @@ try {
   </section>
 
   <!-- 5. FINAL CTA -->
+<ServiceHub current="diseno-web" />
   <Cta />
 </BaseLayout>
 
@@ -558,3 +560,4 @@ try {
     animation: shimmer 2s infinite linear;
   }
 </style>
+

@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MethodologyLine from '../components/MethodologyLine.astro';
 import Container from '../components/ui/Container.astro';
@@ -6,20 +6,21 @@ import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import Cta from '../components/ui/Cta.astro';
 import Calculator from '../components/ui/Calculator.astro';
 import MarqueeTestimonials from '../components/MarqueeTestimonials.astro';
+import ServiceHub from '../components/ServiceHub.astro';
 import Button from '../components/ui/Button.astro';
 import ServiceStats from '../components/ServiceStats.astro';
 import ServiceCases from '../components/ServiceCases.astro';
 
 const metaAdsTestimonials = [
   { quote: "Por fin una agencia que habla de ROAS y no de 'Likes'. Multiplicaron nuestras ventas x4 en 3 meses.", name: "Carlos R.", role: "CEO, Ecommerce", rating: 5 },
-  { quote: "Estábamos perdiendo dinero cada mes con Meta Ads hasta que ellos implementaron su sistema de adquisición.", name: "Andrea G.", role: "Directora, Clínica Estética", rating: 5 },
-  { quote: "El dashboard que nos montaron nos permite ver exactamente cuánto ganamos por cada peso invertido en tiempo real.", name: "Jorge M.", role: "CEO, SaaS B2B", rating: 5 },
+  { quote: "EstÃ¡bamos perdiendo dinero cada mes con Meta Ads hasta que ellos implementaron su sistema de adquisiciÃ³n.", name: "Andrea G.", role: "Directora, ClÃ­nica EstÃ©tica", rating: 5 },
+  { quote: "El dashboard que nos montaron nos permite ver exactamente cuÃ¡nto ganamos por cada peso invertido en tiempo real.", name: "Jorge M.", role: "CEO, SaaS B2B", rating: 5 },
   { quote: "Dejamos de depender de los caprichos del algoritmo. Ahora tenemos un flujo predecible de clientes cada semana.", name: "Valeria S.", role: "Founder, B2B Services", rating: 5 },
   { quote: "Pasamos de un CPA de $45 a $12. Escalabilidad pura y dura sin quemar el presupuesto.", name: "Fernando L.", role: "Startup Founder", rating: 5 },
-  { quote: "La mejor decisión del año. Su enfoque científico para hacer creativos y medir datos no tiene comparación.", name: "Mariana T.", role: "CMO, Retail", rating: 5 },
+  { quote: "La mejor decisiÃ³n del aÃ±o. Su enfoque cientÃ­fico para hacer creativos y medir datos no tiene comparaciÃ³n.", name: "Mariana T.", role: "CMO, Retail", rating: 5 },
 ];
 
-// Sincronización Headless con WordPress Rank Math
+// SincronizaciÃ³n Headless con WordPress Rank Math
 const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=meta-ads';
 let rankMathSEO = null;
 
@@ -38,7 +39,7 @@ try {
 
 <BaseLayout
   title="Publicidad Rentable (Meta & Google Ads) | Croilab"
-  description="Tus campañas no necesitan más presupuesto, necesitan estrategia. Sistemas de adquisición para escalar tu ROAS y bajar tu CPA."
+  description="Tus campaÃ±as no necesitan mÃ¡s presupuesto, necesitan estrategia. Sistemas de adquisiciÃ³n para escalar tu ROAS y bajar tu CPA."
   rankMathSEO={rankMathSEO}
 >
   <!-- 1. HERO HOOK -->
@@ -53,14 +54,14 @@ try {
       <!-- Degradado vertical: Oscuro abajo (100%), Transparente arriba (0%) -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
       
-      <!-- Grid Arquitectónico superpuesto -->
+      <!-- Grid ArquitectÃ³nico superpuesto -->
       <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div>
       
       <!-- Ruido (Grain) para textura premium -->
       <div class="absolute inset-0 opacity-[0.25] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
 
-    <!-- Luces de fondo dinámicas (Azul Meta) -->
+    <!-- Luces de fondo dinÃ¡micas (Azul Meta) -->
     <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
     <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
@@ -73,20 +74,20 @@ try {
         <!-- Izquierda: Textos -->
         <div class="flex flex-col text-left">
           <h1 class="gsap-title max-w-5xl text-[clamp(3.5rem,7vw,7.5rem)] font-bold leading-[0.9] tracking-tight text-white mb-8" data-custom-speed="0.8">
-            Tus campañas no necesitan más presupuesto. Necesitan <br/><span class="italic font-serif font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white/80 to-white/30">estrategia.</span>
+            Tus campaÃ±as no necesitan mÃ¡s presupuesto. Necesitan <br/><span class="italic font-serif font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white/80 to-white/30">estrategia.</span>
           </h1>
 
           <p class="max-w-xl text-[17px] md:text-[19px] leading-relaxed text-white/50 mb-12">
-            Dejemos de comprar clics vacíos. Construimos sistemas de adquisición rentables que convierten tráfico frío en facturación predecible. Menos excusas, más ROAS.
+            Dejemos de comprar clics vacÃ­os. Construimos sistemas de adquisiciÃ³n rentables que convierten trÃ¡fico frÃ­o en facturaciÃ³n predecible. Menos excusas, mÃ¡s ROAS.
           </p>
 
           <div class="flex flex-col sm:flex-row items-start gap-5">
             <a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">
               Descubrir sistema
-              <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+              <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">â†“</span>
             </a>
             <a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">
-              Quiero trabajar así
+              Quiero trabajar asÃ­
             </a>
           </div>
         </div>
@@ -94,7 +95,7 @@ try {
         <!-- Derecha: Mockup Animado Meta Ads -->
         <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[4/4.5] flex items-center justify-center perspective-1000 mt-10 lg:mt-0">
            
-           <!-- Glow de fondo cinemático -->
+           <!-- Glow de fondo cinemÃ¡tico -->
            <div class="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-indigo-600/20 to-cyan-500/10 rounded-[100px] blur-[100px] animate-glowDrift mix-blend-screen pointer-events-none"></div>
            
            <!-- Interfaz Ads Manager -->
@@ -137,11 +138,11 @@ try {
                  </div>
                </div>
                
-               <!-- Gráfica Principal -->
+               <!-- GrÃ¡fica Principal -->
                <div class="mb-6 p-5 rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-transparent relative shadow-[0_0_30px_rgba(59,130,246,0.1)]">
                  <div class="flex items-center justify-between mb-6">
-                   <h3 class="text-[12px] font-bold text-white/80">Tendencia de Adquisición</h3>
-                   <span class="px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-[9px] font-bold uppercase border border-blue-500/20">30 Días</span>
+                   <h3 class="text-[12px] font-bold text-white/80">Tendencia de AdquisiciÃ³n</h3>
+                   <span class="px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-[9px] font-bold uppercase border border-blue-500/20">30 DÃ­as</span>
                  </div>
                  
                  <!-- SVG Graph -->
@@ -163,7 +164,7 @@ try {
                  </div>
                </div>
 
-               <!-- Lista de Campañas (Skeleton) -->
+               <!-- Lista de CampaÃ±as (Skeleton) -->
                <div class="space-y-3">
                  <div class="flex items-center justify-between p-3 rounded-lg bg-white/[0.03] border border-white/5">
                    <div class="flex items-center gap-3">
@@ -222,7 +223,7 @@ try {
 
   <ServiceStats />
 
-  <!-- 1.5 LOS SÍNTOMAS -->
+  <!-- 1.5 LOS SÃNTOMAS -->
   <section class="relative bg-[#f8f9fa] py-32 overflow-hidden border-t border-black/5">
     
     <!-- Background Grid & Noise for Premium Feel -->
@@ -232,13 +233,13 @@ try {
       <div class="text-center max-w-3xl mx-auto mb-20">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 mb-8">
           <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Diagnóstico Crítico</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">DiagnÃ³stico CrÃ­tico</span>
         </div>
         <h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">
-          ¿Tu presupuesto se está evaporando sin retorno?
+          Â¿Tu presupuesto se estÃ¡ evaporando sin retorno?
         </h2>
         <p class="text-[17px] text-black/50 leading-relaxed max-w-2xl mx-auto">
-          La mayoría de las cuentas publicitarias están configuradas para gastar, no para retornar. Si te identificas con uno de estos escenarios, estás perdiendo dinero.
+          La mayorÃ­a de las cuentas publicitarias estÃ¡n configuradas para gastar, no para retornar. Si te identificas con uno de estos escenarios, estÃ¡s perdiendo dinero.
         </p>
       </div>
 
@@ -253,7 +254,7 @@ try {
           </div>
           
           <h3 class="relative z-10 text-[22px] font-bold text-black mb-4 leading-tight">CPA por las nubes</h3>
-          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Zuckerberg y Google se están quedando todo tu margen. Cada mes cuesta más adquirir un cliente y la rentabilidad baja irremediablemente.</p>
+          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Zuckerberg y Google se estÃ¡n quedando todo tu margen. Cada mes cuesta mÃ¡s adquirir un cliente y la rentabilidad baja irremediablemente.</p>
           
           <!-- Mini UI Graphic -->
           <div class="w-full h-16 bg-black/[0.02] border border-black/5 rounded-xl flex items-end gap-1.5 p-3">
@@ -274,7 +275,7 @@ try {
           </div>
           
           <h3 class="relative z-10 text-[22px] font-bold text-black mb-4 leading-tight">Leads 'Basura'</h3>
-          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Tus anuncios generan muchos clics, pero atraen a curiosos que no tienen el presupuesto o la intención real de comprar.</p>
+          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Tus anuncios generan muchos clics, pero atraen a curiosos que no tienen el presupuesto o la intenciÃ³n real de comprar.</p>
           
           <!-- Mini UI Graphic -->
           <div class="w-full h-16 bg-black/[0.02] border border-black/5 rounded-xl flex items-center justify-between p-3">
@@ -298,8 +299,8 @@ try {
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
           </div>
           
-          <h3 class="relative z-10 text-[22px] font-bold text-black mb-4 leading-tight">Caída al Escalar</h3>
-          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Tus campañas venden bien con bajo presupuesto, pero en cuanto intentas meterles más dinero para crecer, el ROAS se desploma.</p>
+          <h3 class="relative z-10 text-[22px] font-bold text-black mb-4 leading-tight">CaÃ­da al Escalar</h3>
+          <p class="text-[15px] leading-relaxed text-black/60 mb-8">Tus campaÃ±as venden bien con bajo presupuesto, pero en cuanto intentas meterles mÃ¡s dinero para crecer, el ROAS se desploma.</p>
           
           <!-- Mini UI Graphic -->
           <div class="w-full h-16 bg-black/[0.02] border border-black/5 rounded-xl flex items-center justify-center p-3 relative overflow-hidden">
@@ -313,10 +314,10 @@ try {
     </Container>
   </section>
 
-  <!-- 2. LA AGITACIÓN -->
+  <!-- 2. LA AGITACIÃ“N -->
   <section class="relative bg-white py-32 lg:py-48 border-t border-black/5 overflow-hidden">
     
-    <!-- Decoración de fondo suave -->
+    <!-- DecoraciÃ³n de fondo suave -->
     <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-b from-blue-50/50 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
     <Container class="relative z-10">
@@ -330,35 +331,35 @@ try {
           </div>
           
           <h2 class="gsap-title text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-black mb-8 leading-[1.05]" data-custom-speed="0.9">
-            Los 'likes' no pagan <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">nóminas.</span>
+            Los 'likes' no pagan <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">nÃ³minas.</span>
           </h2>
           
           <div class="space-y-6 text-[17px] leading-relaxed text-black/60">
             <p>
-              Las agencias tradicionales te venden reportes hermosos llenos de "impresiones", "alcance" y <strong class="text-black font-semibold">métricas de vanidad</strong> para justificar su iguala mensual mientras tu margen desaparece.
+              Las agencias tradicionales te venden reportes hermosos llenos de "impresiones", "alcance" y <strong class="text-black font-semibold">mÃ©tricas de vanidad</strong> para justificar su iguala mensual mientras tu margen desaparece.
             </p>
             <p>
-              Nosotros somos Media Buyers de respuesta directa. Nuestro único KPI es cuánto dinero entra en tu caja al final del mes. Combinamos compra de medios inteligente con optimización de landing pages para asegurar que <strong class="text-black font-semibold">cada clic sea rentable</strong>.
+              Nosotros somos Media Buyers de respuesta directa. Nuestro Ãºnico KPI es cuÃ¡nto dinero entra en tu caja al final del mes. Combinamos compra de medios inteligente con optimizaciÃ³n de landing pages para asegurar que <strong class="text-black font-semibold">cada clic sea rentable</strong>.
             </p>
           </div>
           
           <div class="mt-10 flex items-center gap-6">
             <div class="flex flex-col">
               <span class="text-3xl font-bold text-black tracking-tight">92%</span>
-              <span class="text-[11px] text-black/50 font-bold uppercase tracking-wider mt-1">De campañas fracasan por<br/>creatividades débiles</span>
+              <span class="text-[11px] text-black/50 font-bold uppercase tracking-wider mt-1">De campaÃ±as fracasan por<br/>creatividades dÃ©biles</span>
             </div>
             <div class="w-px h-12 bg-black/10"></div>
             <div class="flex flex-col">
               <span class="text-3xl font-bold text-black tracking-tight">ROAS</span>
-              <span class="text-[11px] text-black/50 font-bold uppercase tracking-wider mt-1">Nuestra única métrica<br/>de éxito a medir</span>
+              <span class="text-[11px] text-black/50 font-bold uppercase tracking-wider mt-1">Nuestra Ãºnica mÃ©trica<br/>de Ã©xito a medir</span>
             </div>
           </div>
         </div>
 
-        <!-- Derecha: Comparación Visual (Vanity vs Real) -->
+        <!-- Derecha: ComparaciÃ³n Visual (Vanity vs Real) -->
         <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square flex items-center justify-center perspective-1000" data-tilt="5">
            
-           <!-- Tarjeta de Agencia Tradicional (Métricas de Vanidad) - Fondo/Borroso -->
+           <!-- Tarjeta de Agencia Tradicional (MÃ©tricas de Vanidad) - Fondo/Borroso -->
            <div class="absolute right-4 top-4 w-4/5 bg-[#f8f9fa] rounded-[32px] border border-black/5 p-8 shadow-[0_20px_40px_rgba(0,0,0,0.03)] opacity-60 grayscale scale-95 origin-top-right rotate-[4deg] transition-all duration-500 hover:rotate-0 hover:scale-100 hover:grayscale-0 hover:opacity-100 hover:z-30 group cursor-default">
              <div class="flex items-center justify-between mb-6">
                <div class="text-[10px] font-bold text-black/40 uppercase tracking-widest">Agencia Tradicional</div>
@@ -442,29 +443,29 @@ try {
     </Container>
   </section>
 
-  <!-- 3. METODOLOGÍA -->
+  <!-- 3. METODOLOGÃA -->
   <section id="metodologia" class="relative bg-white py-32 lg:py-48 border-t border-black/5 overflow-hidden">
     
-    <!-- Decoración de fondo -->
+    <!-- DecoraciÃ³n de fondo -->
     <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-16 lg:gap-24 relative items-start">
         
-        <!-- Izquierda: Título Fijo & Elemento Visual -->
+        <!-- Izquierda: TÃ­tulo Fijo & Elemento Visual -->
         <div class="lg:sticky lg:top-40 flex flex-col gap-10 z-10">
           <div>
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 mb-6">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-              <span class="text-[10px] font-bold uppercase tracking-widest">Media Buying Científico</span>
+              <span class="text-[10px] font-bold uppercase tracking-widest">Media Buying CientÃ­fico</span>
             </div>
             
             <h2 class="gsap-title text-[clamp(3.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-black mb-6" data-custom-speed="0.95">
               Sistemas <br/>
-              <span class="italic font-serif font-light text-black/30">de Adquisición.</span>
+              <span class="italic font-serif font-light text-black/30">de AdquisiciÃ³n.</span>
             </h2>
             <p class="text-[17px] leading-relaxed text-black/50 max-w-sm">
-              Olvídate de apretar el "Botón Promocionar". Construimos embudos publicitarios robustos diseñados para captar atención, derribar objeciones y cerrar la venta.
+              OlvÃ­date de apretar el "BotÃ³n Promocionar". Construimos embudos publicitarios robustos diseÃ±ados para captar atenciÃ³n, derribar objeciones y cerrar la venta.
             </p>
           </div>
           
@@ -489,39 +490,39 @@ try {
           </div>
         </div>
 
-        <!-- Derecha: Pasos de la Metodología (Línea de Tiempo Conectada) -->
+        <!-- Derecha: Pasos de la MetodologÃ­a (LÃ­nea de Tiempo Conectada) -->
         <div class="relative flex flex-col gap-8 lg:gap-12 pl-4 lg:pl-10">
           
-          <!-- Línea Conectora Vertical -->
+          <!-- LÃ­nea Conectora Vertical -->
           <div class="absolute left-8 lg:left-14 top-10 bottom-10 w-px bg-gradient-to-b from-blue-500/40 via-black/10 to-transparent hidden sm:block"></div>
 
           {[
             { 
               icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>`, 
               title: "Estructura Full Funnel", 
-              desc: "Arquitectura de campañas dividida milimétricamente en captación fría (TOFU), retargeting educativo (MOFU) y ofertas irresistibles de cierre (BOFU)." 
+              desc: "Arquitectura de campaÃ±as dividida milimÃ©tricamente en captaciÃ³n frÃ­a (TOFU), retargeting educativo (MOFU) y ofertas irresistibles de cierre (BOFU)." 
             },
             { 
               icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`, 
-              title: "Ingeniería de Creatividades", 
-              desc: "El algoritmo hoy es inteligente; la clave es el mensaje. Diseñamos guiones de video Direct Response y estáticos UGC que detienen el scroll y venden el clic." 
+              title: "IngenierÃ­a de Creatividades", 
+              desc: "El algoritmo hoy es inteligente; la clave es el mensaje. DiseÃ±amos guiones de video Direct Response y estÃ¡ticos UGC que detienen el scroll y venden el clic." 
             },
             { 
               icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>`, 
-              title: "Alineación con CRO", 
-              desc: "Tráfico sin conversión es basura. No solo corremos los anuncios; analizamos y optimizamos la Landing Page de destino para garantizar máxima rentabilidad." 
+              title: "AlineaciÃ³n con CRO", 
+              desc: "TrÃ¡fico sin conversiÃ³n es basura. No solo corremos los anuncios; analizamos y optimizamos la Landing Page de destino para garantizar mÃ¡xima rentabilidad." 
             },
             { 
               icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`, 
               title: "Escalado Agresivo", 
-              desc: "Identificamos los anuncios ganadores (Winners) e inyectamos presupuesto horizontal y verticalmente sin que el Costo de Adquisición se rompa." 
+              desc: "Identificamos los anuncios ganadores (Winners) e inyectamos presupuesto horizontal y verticalmente sin que el Costo de AdquisiciÃ³n se rompa." 
             }
           ].map((step, i) => (
             <div class="step-card group relative bg-white p-8 lg:p-10 rounded-[2rem] border border-black/5 shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:border-black/10 ml-10 sm:ml-12 overflow-hidden" data-spotlight>
               
               <div class="spotlight-glow"></div>
               
-              <!-- Punto Conector en la línea de tiempo -->
+              <!-- Punto Conector en la lÃ­nea de tiempo -->
               <div class="absolute -left-[58px] lg:-left-[64px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-black/10 shadow-md flex items-center justify-center z-10 transition-colors duration-500 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white hidden sm:flex">
                 <span class="text-[12px] font-bold">{i + 1}</span>
               </div>
@@ -621,14 +622,14 @@ try {
             <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-6 backdrop-blur-md">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
             </div>
-            <div class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1">Retorno de Inversión</div>
+            <div class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1">Retorno de InversiÃ³n</div>
             <div class="text-4xl md:text-5xl font-black text-white">6.5x</div>
           </div>
           
         </div>
       </div>
 
-      <!-- Métricas / Bento Cards -->
+      <!-- MÃ©tricas / Bento Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
         <!-- Tarjeta 1 -->
         <div class="group relative p-10 rounded-[32px] bg-white border border-black/5 shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 overflow-hidden text-left" data-spotlight>
@@ -650,7 +651,7 @@ try {
             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-8 text-white/70 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
             <div class="text-[11px] uppercase tracking-widest text-white/50 font-bold mb-2">Eficiencia</div>
             <div class="text-5xl font-bold text-white mb-2">-<span class="roi-count" data-target="40">0</span>%</div>
-            <div class="text-[14px] text-white/60">Reducción drástica del Costo de Adquisición (CPA).</div>
+            <div class="text-[14px] text-white/60">ReducciÃ³n drÃ¡stica del Costo de AdquisiciÃ³n (CPA).</div>
           </div>
         </div>
         
@@ -670,7 +671,7 @@ try {
     </Container>
   </section>
 
-  <!-- Testimonios / Reseñas -->
+  <!-- Testimonios / ReseÃ±as -->
   <MarqueeTestimonials testimonials={metaAdsTestimonials} />
   
   <ServiceCases service="ads" />
@@ -688,15 +689,15 @@ try {
             Dudas frecuentes antes de invertir.
           </h2>
           <p class="text-[16px] leading-relaxed text-black/60 max-w-sm">
-            La pauta digital quema el presupuesto rápido si no sabes lo que haces. Estas son las preguntas que debes hacerte.
+            La pauta digital quema el presupuesto rÃ¡pido si no sabes lo que haces. Estas son las preguntas que debes hacerte.
           </p>
         </div>
 
         <div class="flex flex-col gap-6">
           {[
-            { q: "¿Cuál es el presupuesto mínimo de inversión que recomiendan?", a: "Recomendamos un presupuesto publicitario mensual de al menos $1,000 USD destinado a Meta o Google (independiente de nuestros honorarios) para tener volumen suficiente de datos, iterar rápido y salir de la fase de aprendizaje del algoritmo." },
-            { q: "¿Ustedes graban o diseñan los anuncios y videos?", a: "Diseñamos las imágenes (estáticos/carruseles) y creamos los guiones directos a conversión (UGC / Direct Response) para los videos. Tú o tu equipo graban el video con el celular basándose en nuestro guion exacto, y nosotros nos encargamos del resto de la magia." },
-            { q: "Mis campañas ya venden, pero cuando subo el presupuesto el CPA se dispara. ¿Pueden ayudarme?", a: "Ese es el problema clásico del 'escalado vertical agresivo'. Reestructuramos la cuenta para aplicar 'escalado horizontal' (nuevos ángulos, públicos amplios) y reglas automatizadas, permitiéndote subir presupuesto manteniendo o incluso bajando tu costo de adquisición." }
+            { q: "Â¿CuÃ¡l es el presupuesto mÃ­nimo de inversiÃ³n que recomiendan?", a: "Recomendamos un presupuesto publicitario mensual de al menos $1,000 USD destinado a Meta o Google (independiente de nuestros honorarios) para tener volumen suficiente de datos, iterar rÃ¡pido y salir de la fase de aprendizaje del algoritmo." },
+            { q: "Â¿Ustedes graban o diseÃ±an los anuncios y videos?", a: "DiseÃ±amos las imÃ¡genes (estÃ¡ticos/carruseles) y creamos los guiones directos a conversiÃ³n (UGC / Direct Response) para los videos. TÃº o tu equipo graban el video con el celular basÃ¡ndose en nuestro guion exacto, y nosotros nos encargamos del resto de la magia." },
+            { q: "Mis campaÃ±as ya venden, pero cuando subo el presupuesto el CPA se dispara. Â¿Pueden ayudarme?", a: "Ese es el problema clÃ¡sico del 'escalado vertical agresivo'. Reestructuramos la cuenta para aplicar 'escalado horizontal' (nuevos Ã¡ngulos, pÃºblicos amplios) y reglas automatizadas, permitiÃ©ndote subir presupuesto manteniendo o incluso bajando tu costo de adquisiciÃ³n." }
           ].map(faq => (
             <div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)] relative overflow-hidden" data-spotlight>
               <div class="spotlight-glow"></div>
@@ -713,6 +714,7 @@ try {
   </section>
 
   <!-- 5. FINAL CTA -->
+<ServiceHub current="meta-ads" />
   <Cta />
 </BaseLayout>
 
@@ -795,3 +797,5 @@ try {
     animation: shimmer 2s infinite linear;
   }
 </style>
+
+

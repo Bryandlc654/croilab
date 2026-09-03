@@ -1,0 +1,93 @@
+---
+import { services } from '../data/services';
+import Container from './ui/Container.astro';
+
+interface Props {
+  current?: string;
+}
+
+const { current } = Astro.props;
+---
+
+<section class="relative bg-[#f8f9fa] py-28 border-t border-black/5 overflow-hidden" id="servicios-hub">
+  <div class="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
+  <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
+
+  <Container class="relative z-10">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 reveal-up">
+      <div class="max-w-2xl">
+        <span class="text-[11px] font-bold uppercase tracking-[.25em] text-blue-600 mb-5 block">Hub de servicios</span>
+        <h2 class="text-[clamp(2.5rem,4vw,3.75rem)] font-bold tracking-tighter text-black leading-[1.05]">
+          Explora el resto de<br/>
+          <span class="italic font-serif font-light text-black/40">nuestras disciplinas.</span>
+        </h2>
+      </div>
+      <p class="text-black/60 max-w-sm md:pb-2">
+        Cada servicio funciona por separado, pero combinados forman un sistema completo que convierte tráfico en ingresos.
+      </p>
+    </div>
+
+    <!-- Services grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      {services.map((s, i) => {
+        const active = s.slug === current;
+        return (
+          <a
+            href={`/${s.slug}`}
+            aria-current={active ? 'page' : undefined}
+            class:list={[
+              'reveal-up group relative overflow-hidden rounded-3xl border p-6 lg:p-7 flex flex-col justify-between min-h-[240px] transition-all duration-500',
+              active
+                ? 'bg-[#0a0a0a] border-black text-white shadow-2xl shadow-black/20'
+                : 'bg-white border-black/10 hover:border-black/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]',
+            ]}
+            style={`--delay: ${i * 0.07}s;`}
+          >
+            <div class="relative z-10 flex items-start justify-between">
+              <div class:list={[
+                'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-500',
+                active ? 'bg-white text-black border-white' : 'bg-white text-black border-black/10 shadow-sm group-hover:bg-black/5',
+              ]}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon} />
+              </div>
+              <span class:list={[
+                'text-[10px] font-bold tracking-[.2em] uppercase',
+                active ? 'text-white/40' : 'text-black/30',
+              ]}>
+                {s.num}
+              </span>
+            </div>
+
+            <div class="relative z-10">
+              <h3 class:list={[
+                'text-2xl font-bold tracking-tight mb-3 transition-colors duration-300',
+                active ? 'text-white' : 'text-black group-hover:text-blue-600',
+              ]}>
+                {s.name}
+              </h3>
+              <p class:list={[
+                'text-sm leading-relaxed mb-5',
+                active ? 'text-white/60' : 'text-black/50',
+              ]}>
+                {s.desc}
+              </p>
+
+              {active ? (
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-cyan-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                  Estás aquí
+                </span>
+              ) : (
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-black/40 group-hover:text-blue-600 transition-colors">
+                  Ver servicio
+                  <span class="transition-transform group-hover:translate-x-1">→</span>
+                </span>
+              )}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </Container>
+</section>
