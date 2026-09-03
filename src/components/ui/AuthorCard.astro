@@ -1,0 +1,94 @@
+---
+interface Props {
+  name: string;
+  role?: string;
+  bio?: string;
+  avatar?: string;
+  linkedin?: string;
+  twitter?: string;
+  email?: string;
+  compact?: boolean;
+}
+
+const {
+  name,
+  role = 'Ingeniería Digital · Croilab',
+  bio = 'Estratega de crecimiento digital enfocado en conversiones, SEO y adquisición de clientes para negocios que buscan resultados medibles.',
+  avatar = '/croilab-logo.svg',
+  linkedin = 'https://www.linkedin.com/company/croilab',
+  twitter = 'https://twitter.com/croilab',
+  email = '',
+  compact = false,
+} = Astro.props;
+---
+
+<div class="group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-6 lg:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
+  <div class="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-accent/10 blur-3xl pointer-events-none"></div>
+
+  <div class="relative flex gap-5 {compact ? 'items-center' : 'items-start'}">
+    <!-- Avatar -->
+    <div class="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-gradient-to-br from-black/[.04] to-accent/10">
+      {
+        avatar === '/croilab-logo.svg' ? (
+          <img src={avatar} alt={name} class="h-full w-full object-contain p-3" />
+        ) : (
+          <img src={avatar} alt={name} class="h-full w-full object-cover" />
+        )
+      }
+    </div>
+
+    <div class="min-w-0">
+      <h3 class="text-xl font-bold tracking-tight text-black">{name}</h3>
+      <p class="mt-1 text-[12px] font-semibold uppercase tracking-[.14em] text-accent">{role}</p>
+    </div>
+  </div>
+
+  {
+    !compact && (
+      <p class="relative mt-5 text-[15px] leading-[1.8] text-black/60">
+        {bio}
+      </p>
+    )
+  }
+
+  <!-- Redes / contacto -->
+  <div class="relative mt-5 flex items-center gap-2">
+    {
+      linkedin && (
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener"
+          aria-label={`LinkedIn de ${name}`}
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-black/50 transition hover:border-accent hover:bg-accent hover:text-black"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      )
+    }
+    {
+      twitter && (
+        <a
+          href={twitter}
+          target="_blank"
+          rel="noopener"
+          aria-label={`X de ${name}`}
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-black/50 transition hover:border-accent hover:bg-accent hover:text-black"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.5 22H3.4l7.3-8.3L1.6 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L6.8 3.9H5L17.8 20z"/></svg>
+        </a>
+      )
+    }
+    {
+      email && (
+        <a
+          href={`mailto:${email}`}
+          aria-label={`Email de ${name}`}
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-black/50 transition hover:border-accent hover:bg-accent hover:text-black"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </a>
+      )
+    }
+  </div>
+</div>

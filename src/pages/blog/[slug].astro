@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/ui/Container.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import AuthorCard from '../../components/ui/AuthorCard.astro';
 
 export async function getStaticPaths() {
   const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/posts?_embed';
@@ -160,6 +161,20 @@ try {
               set:html={articleContent}>
             </div>
             
+            <!-- Ficha de autor completa -->
+            <div class="mt-16">
+              <div class="mb-6 flex items-center gap-4">
+                <span class="h-px w-8 bg-black/20"></span>
+                <span class="text-[11px] font-semibold uppercase tracking-[.24em] text-black/50">Sobre el autor</span>
+              </div>
+              <AuthorCard
+                name="Croilab"
+                role="Estrategia de Crecimiento"
+                bio="Equipo de ingenieros y estrategas de Croilab especializado en ecosistemas digitales a medida basados en CRO, SEO y adquisición de clientes. Nos enfocamos en métricas que importan: conversiones y ventas."
+                avatar="/croilab-logo.svg"
+              />
+            </div>
+
             <!-- Fin del artículo -->
             <div class="mt-20 pt-10 border-t border-black/10 flex items-center justify-between">
               <span class="text-black/40 text-sm font-semibold tracking-widest uppercase">Fin de lectura</span>
@@ -172,19 +187,13 @@ try {
           <!-- Barra lateral flotante (Sticky Share / CTA) -->
           <div class="hidden lg:block sticky top-32">
             <div class="flex flex-col gap-10">
-              <!-- Autor / Agencia -->
-              <div>
-                <h4 class="text-[10px] uppercase tracking-widest text-black/40 mb-4 font-bold">Autoría</h4>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full border border-black/20 overflow-hidden bg-black/5 p-2">
-                    <img src="/croilab-logo.svg" alt="Croilab" class="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <div class="text-sm font-bold text-black">Croilab</div>
-                    <div class="text-xs text-black/40">Ingeniería Digital</div>
-                  </div>
-                </div>
-              </div>
+              <!-- Ficha de autor (compacta) -->
+              <AuthorCard
+                name="Croilab"
+                role="Ingeniería Digital"
+                compact={true}
+                avatar="/croilab-logo.svg"
+              />
 
               <div class="h-px w-full bg-black/10"></div>
 
