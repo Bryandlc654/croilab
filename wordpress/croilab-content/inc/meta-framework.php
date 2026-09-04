@@ -138,9 +138,10 @@ class Croilab_Meta {
 	 * @param string $prefix
 	 */
 	private static function register_rest_fields( string $post_type, string $key, string $prefix ): void {
+		// El key ya empieza con "croilab_", no duplicamos el prefijo.
 		register_rest_field(
 			$post_type,
-			'croilab_' . $key,
+			$key,
 			array(
 				'get_callback' => function ( array $object ) use ( $prefix ) {
 					return self::read( (int) $object['id'], $prefix );
