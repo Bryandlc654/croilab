@@ -172,8 +172,9 @@ Croilab_Meta::add(
 		'post_types' => array( 'proyecto' ),
 		'prefix'     => 'croilab_proyecto_',
 		'fields'     => array(
-			array( 'name' => 'enlace_proyecto', 'label' => 'Enlace del proyecto', 'type' => 'url', 'instructions' => 'Campo legacy ya usado por el frontend.' ),
-			array( 'name' => 'imagen_url',      'label' => 'Imagen URL', 'type' => 'image', 'instructions' => 'Campo legacy ya usado por el frontend.' ),
+			// — Información general —
+			array( 'name' => 'enlace_proyecto', 'label' => 'Enlace del proyecto', 'type' => 'url', 'instructions' => 'URL del sitio en vivo.' ),
+			array( 'name' => 'imagen_url',      'label' => 'Imagen URL', 'type' => 'image', 'instructions' => 'Imagen principal del proyecto.' ),
 			array( 'name' => 'category', 'label' => 'Categoría', 'type' => 'select', 'choices' => array(
 				'ecommerce'   => 'Ecommerce',
 				'landing-ads' => 'Landing + Ads',
@@ -181,10 +182,15 @@ Croilab_Meta::add(
 				'saas'        => 'SaaS',
 				'otro'        => 'Otro',
 			) ),
+			array( 'name' => 'client',    'label' => 'Cliente',    'type' => 'text',     'instructions' => 'Nombre del cliente o empresa.' ),
+			array( 'name' => 'industry',  'label' => 'Industria',  'type' => 'text',     'instructions' => 'Sector del cliente (ej: Climatización, Retail, SaaS).' ),
+			array( 'name' => 'duration',  'label' => 'Duración',   'type' => 'text',     'instructions' => 'Tiempo del proyecto (ej: 3 semanas, 2 meses).' ),
+			// — Métricas —
 			array( 'name' => 'metrics', 'label' => 'Métricas', 'type' => 'repeater', 'button_label' => 'Añadir métrica', 'sub_fields' => array(
 				array( 'name' => 'value', 'label' => 'Valor',   'type' => 'text' ),
 				array( 'name' => 'label', 'label' => 'Etiqueta', 'type' => 'text' ),
 			) ),
+			// — Problema / Solución —
 			array( 'name' => 'problem', 'label' => 'Problema', 'type' => 'group', 'sub_fields' => array(
 				array( 'name' => 'title',  'label' => 'Título',    'type' => 'text' ),
 				array( 'name' => 'points', 'label' => 'Puntos',    'type' => 'repeater', 'button_label' => 'Añadir punto', 'sub_fields' => array( array( 'name' => 'point', 'label' => 'Punto', 'type' => 'textarea' ) ) ),
@@ -193,19 +199,30 @@ Croilab_Meta::add(
 				array( 'name' => 'title',  'label' => 'Título',    'type' => 'text' ),
 				array( 'name' => 'points', 'label' => 'Puntos',    'type' => 'repeater', 'button_label' => 'Añadir punto', 'sub_fields' => array( array( 'name' => 'point', 'label' => 'Punto', 'type' => 'textarea' ) ) ),
 			) ),
+			// — Proceso (¿Cómo logramos estos resultados?) —
 			array( 'name' => 'process', 'label' => 'Proceso', 'type' => 'repeater', 'button_label' => 'Añadir paso', 'sub_fields' => array(
 				array( 'name' => 'title', 'label' => 'Título',       'type' => 'text' ),
 				array( 'name' => 'desc',  'label' => 'Descripción', 'type' => 'textarea' ),
 			) ),
+			// — Stack tecnológico —
 			array( 'name' => 'stack', 'label' => 'Stack de tecnologías', 'type' => 'repeater', 'button_label' => 'Añadir tecnología', 'sub_fields' => array(
 				array( 'name' => 'name', 'label' => 'Nombre', 'type' => 'text' ),
 				array( 'name' => 'logo', 'label' => 'Logo',    'type' => 'image' ),
 			) ),
+			// — Resultados (listado destacado) —
+			array( 'name' => 'results_title', 'label' => 'Título de resultados', 'type' => 'text', 'instructions' => 'Título de la sección de resultados (ej: Resultados del proyecto).' ),
+			array( 'name' => 'results', 'label' => 'Resultados', 'type' => 'repeater', 'button_label' => 'Añadir resultado', 'sub_fields' => array(
+				array( 'name' => 'title', 'label' => 'Título',       'type' => 'text' ),
+				array( 'name' => 'desc',  'label' => 'Descripción', 'type' => 'textarea' ),
+				array( 'name' => 'icon',  'label' => 'Icono (emoji o texto)', 'type' => 'text', 'instructions' => 'Un emoji corto o palabra clave (ej: 🚀, 📈).' ),
+			) ),
+			// — Testimonio —
 			array( 'name' => 'testimonial', 'label' => 'Testimonio', 'type' => 'group', 'sub_fields' => array(
 				array( 'name' => 'quote',  'label' => 'Cita',  'type' => 'textarea' ),
 				array( 'name' => 'author', 'label' => 'Autor', 'type' => 'text' ),
 				array( 'name' => 'role',   'label' => 'Cargo', 'type' => 'text' ),
 			) ),
+			// — Galería —
 			array( 'name' => 'gallery', 'label' => 'Galería', 'type' => 'textarea', 'rows' => 4, 'instructions' => 'Una URL de imagen por línea.' ),
 		),
 	)

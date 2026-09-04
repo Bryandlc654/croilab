@@ -50,6 +50,12 @@ export interface WpProcessStep {
   desc?: string;
 }
 
+export interface WpResult {
+  title?: string;
+  desc?: string;
+  icon?: string;
+}
+
 export interface WpTestimonialData {
   quote: string;
   author: string;
@@ -146,11 +152,16 @@ export interface WpProject extends WpPage {
   imagen_url?: string;
   croilab_proyecto?: {
     category?: string;
+    client?: string;
+    industry?: string;
+    duration?: string;
     metrics?: WpMetric[];
     problem?: WpGroupPoints;
     solution?: WpGroupPoints;
     process?: WpProcessStep[];
     stack?: { name?: string; logo?: string }[];
+    results_title?: string;
+    results?: WpResult[];
     testimonial?: WpTestimonialData;
     gallery?: string[];
   };

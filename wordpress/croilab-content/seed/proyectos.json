@@ -7,6 +7,9 @@
     "enlace_proyecto": "https://www.servitecclima.com/",
     "imagen_url": "",
     "category": "otro",
+    "client": "Servitec",
+    "industry": "Climatización / Servicio técnico",
+    "duration": "1 mes (23 días)",
     "metrics": [
       {
         "value": "1 mes",
@@ -56,11 +59,29 @@
     "stack": [
       {
         "name": "Elementor",
-        "logo": ""
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Elementor_Logo_%282019%29.svg/1200px-Elementor_Logo_%282019%29.svg.png"
       },
       {
         "name": "WordPress",
-        "logo": ""
+        "logo": "https://s.w.org/style/images/about/WordPress-logotype-standard.png"
+      }
+    ],
+    "results_title": "Resultados del proyecto",
+    "results": [
+      {
+        "title": "Avisos reales",
+        "desc": "La web se convirtió en el canal principal para que los clientes pidan un aviso de servicio.",
+        "icon": "📞"
+      },
+      {
+        "title": "Confianza de marca",
+        "desc": "Una presencia sólida y profesional que transmite credibilidad frente a los clientes.",
+        "icon": "🛡️"
+      },
+      {
+        "title": "Entrega en 23 días",
+        "desc": "De briefing a lanzamiento en menos de un mes para no perder oportunidades.",
+        "icon": "⚡"
       }
     ],
     "testimonial": {
