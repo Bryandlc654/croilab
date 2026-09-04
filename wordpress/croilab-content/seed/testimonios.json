@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "testimonio-1",
+    "title": "Laura Gómez",
+    "quote": "En tres meses nuestra tasa de conversión creció un 47%. Croilab entiende de negocio, no solo de páginas.",
+    "author": "Laura Gómez",
+    "role": "Directora de Marketing · Altawind"
+  },
+  {
+    "slug": "testimonio-2",
+    "title": "Martín Ríos",
+    "quote": "Pasamos de depender de la publicidad a tener un sistema de adquisición predecible y medible.",
+    "author": "Martín Ríos",
+    "role": "Fundador · Voltex"
+  },
+  {
+    "slug": "testimonio-3",
+    "title": "Camila Torres",
+    "quote": "El diagnóstico cambió la forma en que entendemos nuestra tienda. Los resultados se notaron desde el primer mes.",
+    "author": "Camila Torres",
+    "role": "CEO · Meridian"
+  }
+]

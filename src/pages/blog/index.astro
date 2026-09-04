@@ -2,18 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/ui/Container.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import { getWpPosts } from '../../lib/wp';
 
-const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/posts?_embed';
-let posts = [];
-
-try {
-  const res = await fetch(wpEndpoint);
-  if (res.ok) {
-    posts = await res.json();
-  }
-} catch (e) {
-  console.error("Error fetching posts:", e);
-}
+const { items: posts } = await getWpPosts();
 
 // Format posts
 const formattedPosts = posts.map(post => {

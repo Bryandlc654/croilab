@@ -1,13 +1,14 @@
 ---
 import Container from './ui/Container.astro';
 import SectionTitle from './ui/SectionTitle.astro';
+import { getWpProjects } from '../lib/wp';
+import type { WpProject } from '../lib/types';
 
-const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/proyecto';
-let wpProjects = [];
+let wpProjects: WpProject[] = [];
 
 try {
-  const res = await fetch(wpEndpoint);
-  wpProjects = await res.json();
+  const { items } = await getWpProjects();
+  wpProjects = items;
 } catch (e) {
   console.error("Error fetching projects from WP:", e);
 }
@@ -23,8 +24,8 @@ let projects = wpProjects.map(wpProj => {
   return {
     title: wpProj.title?.rendered || "Proyecto",
     description: cleanDesc,
-    category: "Proyecto",
-    image: wpProj.imagen_url || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+    category: wpProj?.croilab_proyecto?.category || "Proyecto",
+    image: wpProj.imagen_url || wpProj?.croilab_proyecto?.imagen_url || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
     link: `/proyectos/${wpProj.slug}`
   };
 });

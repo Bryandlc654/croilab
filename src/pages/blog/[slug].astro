@@ -3,19 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/ui/Container.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import AuthorCard from '../../components/ui/AuthorCard.astro';
+import { getWpPosts } from '../../lib/wp';
 
 export async function getStaticPaths() {
-  const wpEndpoint = 'https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/posts?_embed';
-  let posts = [];
-  
-  try {
-    const res = await fetch(wpEndpoint);
-    if (res.ok) {
-      posts = await res.json();
-    }
-  } catch (e) {
-    console.error("Error fetching posts:", e);
-  }
+  const { items: posts } = await getWpPosts();
 
   return posts.map((post) => {
     let imageUrl = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop";
@@ -73,25 +64,22 @@ const articleContent = contentHtml;
 // Artículos relacionados (los 3 primeros distintos al actual)
 let relatedPosts = [];
 try {
-  const relRes = await fetch('https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/posts?_embed&per_page=4');
-  if (relRes.ok) {
-    const relPosts = await relRes.json();
-    relatedPosts = relPosts
-      .filter((p: any) => p.slug !== slug)
-      .slice(0, 3)
-      .map((p: any) => {
-        let img = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop";
-        if (p._embedded && p._embedded['wp:featuredmedia'] && p._embedded['wp:featuredmedia'][0]?.source_url) {
-          img = p._embedded['wp:featuredmedia'][0].source_url;
-        }
-        return {
-          title: p.title?.rendered || "Artículo",
-          slug: p.slug,
-          image: img,
-          date: new Date(p.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
-        };
-      });
-  }
+  const { items: relPosts } = await getWpPosts({ per_page: '4' });
+  relatedPosts = relPosts
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3)
+    .map((p) => {
+      let img = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop";
+      if (p._embedded && p._embedded['wp:featuredmedia'] && p._embedded['wp:featuredmedia'][0]?.source_url) {
+        img = p._embedded['wp:featuredmedia'][0].source_url;
+      }
+      return {
+        title: p.title?.rendered || "Artículo",
+        slug: p.slug,
+        image: img,
+        date: new Date(p.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+      };
+    });
 } catch (e) {
   console.error("Error fetching related posts:", e);
 }

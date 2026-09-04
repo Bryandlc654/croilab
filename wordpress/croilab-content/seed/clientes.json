@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "cliente-1",
+    "title": "Cliente 1",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170543.336.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-2",
+    "title": "Cliente 2",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171106.320.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-3",
+    "title": "Cliente 3",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171121.941.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-4",
+    "title": "Cliente 4",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171147.100.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-5",
+    "title": "Cliente 5",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T184616.193.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-6",
+    "title": "Cliente 6",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170517.880.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-7",
+    "title": "Cliente 7",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T170600.928.png",
+    "url": ""
+  },
+  {
+    "slug": "cliente-8",
+    "title": "Cliente 8",
+    "logo": "https://croilab.com/wp-content/uploads/2026/03/Diseno-sin-titulo-2026-03-12T171121.941.png",
+    "url": ""
+  }
+]

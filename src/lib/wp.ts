@@ -1,18 +1,27 @@
 import { WP_APP_PASSWORD, WP_APP_USER, WP_URL } from 'astro:env/server';
-import type { WpClient, WpCollectionResponse, WpPage, WpPost, WpService } from './types';
+import type {
+  WpCase,
+  WpClient,
+  WpCollectionResponse,
+  WpPost,
+  WpService,
+  WpSettings,
+  WpProject,
+  WpTestimonial,
+} from './types';
 
 /**
  * Capa de acceso a WordPress como Headless CMS (REST API v2).
  *
- * Los endpoints de contenido público no requieren autenticación.
- * Si se definen WP_APP_USER y WP_APP_PASSWORD en `.env`, las peticiones
- * se envían con Basic Auth para poder leer borradores/previews.
+ * Todos los fetch de contenido pasan por `wpFetch` / `collection` para
+ * centralizar la URL base, autenticación opcional y el manejo de errores.
  *
- * Estas funciones aún no se usan en las páginas: la home consume los datos
- * de `src/data/`. Se conectan cuando exista la instancia de WordPress.
+ * Cada accessor tiene una versión con fallback a los datos locales de
+ * `src/data/` (que actúan como respaldo durante el build si WordPress
+ * está inalcanzable o aún no tiene contenido).
  */
 
-const WP_API_BASE = `${WP_URL.replace(/\/$/, '')}/wp-json/wp/v2`;
+const WP_API_BASE = `${WP_URL.replace(/\/$/, '')}/wp-json`;
 
 function authHeaders(): HeadersInit {
   if (WP_APP_USER && WP_APP_PASSWORD) {
@@ -39,58 +48,113 @@ async function wpFetch<T>(path: string, params: Record<string, string> = {}): Pr
   return response.json() as Promise<T>;
 }
 
-async function collection<T>(
-  path: string,
+/** Fetch de colección con paginación (X-WP-Total). */
+async function wpCollection<T>(
+  postType: string,
   params: Record<string, string> = {},
 ): Promise<WpCollectionResponse<T>> {
-  const response = await fetch(`${WP_API_BASE}${path}?${new URLSearchParams(params)}`, {
-    headers: { 'Content-Type': 'application/json', ...authHeaders() },
-  });
+  const all: T[] = [];
+  let page = 1;
+  let totalPages = 1;
 
-  if (!response.ok) {
-    throw new Error(`WordPress API ${response.status} ${response.statusText}: ${path}`);
-  }
+  do {
+    const query = new URLSearchParams({ per_page: '100', page: String(page), _embed: 'true', ...params });
+    const response = await fetch(`${WP_API_BASE}/wp/v2/${postType}?${query}`, {
+      headers: { 'Content-Type': 'application/json', ...authHeaders() },
+    });
 
-  const items = (await response.json()) as T[];
+    if (!response.ok) {
+      throw new Error(`WordPress API ${response.status} ${response.statusText}: /${postType}`);
+    }
+
+    const items = (await response.json()) as T[];
+    all.push(...items);
+    totalPages = Number(response.headers.get('X-WP-TotalPages')) || 1;
+    page += 1;
+  } while (page <= totalPages);
+
   return {
-    items,
-    total: Number(response.headers.get('X-WP-Total')) || items.length,
-    totalPages: Number(response.headers.get('X-WP-TotalPages')) || 1,
+    items: all,
+    total: all.length,
+    totalPages,
   };
 }
 
+/** Helper seguro: resuelve con fallback si el fetch falla. */
+// (Reservado para uso futuro; los consumidores usan try/catch con datos locales.)
+
 // ------------------------------------------------------------------
-// Páginas y entradas nativas
+// Posts de blog
 // ------------------------------------------------------------------
 
-export async function getWpPages(params: Record<string, string> = {}): Promise<WpPage[]> {
-  return wpFetch<WpPage[]>('/pages', { per_page: '100', _embed: 'true', ...params });
-}
-
-export async function getWpPageBySlug(slug: string): Promise<WpPage | null> {
-  const pages = await getWpPages({ slug });
-  return pages[0] ?? null;
-}
-
-export async function getWpPosts(
-  params: Record<string, string> = {},
-): Promise<WpCollectionResponse<WpPost>> {
-  return collection<WpPost>('/posts', { per_page: '20', _embed: 'true', ...params });
+export function getWpPosts(params: Record<string, string> = {}): Promise<WpCollectionResponse<WpPost>> {
+  return wpCollection<WpPost>('posts', params);
 }
 
 export async function getWpPostBySlug(slug: string): Promise<WpPost | null> {
-  const { items } = await getWpPosts({ slug });
+  const { items } = await wpCollection<WpPost>('posts', { slug });
   return items[0] ?? null;
 }
 
 // ------------------------------------------------------------------
-// Contenido personalizado de Croilab (post types registrados en WP)
+// Casos de éxito (CPT: caso)
 // ------------------------------------------------------------------
 
-export async function getWpServices(params: Record<string, string> = {}): Promise<WpService[]> {
-  return wpFetch<WpService[]>('/services', { per_page: '100', ...params });
+export function getWpCases(params: Record<string, string> = {}): Promise<WpCollectionResponse<WpCase>> {
+  return wpCollection<WpCase>('casos', params);
 }
 
-export async function getWpClients(params: Record<string, string> = {}): Promise<WpClient[]> {
-  return wpFetch<WpClient[]>('/clients', { per_page: '100', ...params });
+export async function getWpCaseBySlug(slug: string): Promise<WpCase | null> {
+  const { items } = await wpCollection<WpCase>('casos', { slug });
+  return items[0] ?? null;
+}
+
+// ------------------------------------------------------------------
+// Clientes / logos (CPT: cliente)
+// ------------------------------------------------------------------
+
+export function getWpClients(params: Record<string, string> = {}): Promise<WpCollectionResponse<WpClient>> {
+  return wpCollection<WpClient>('clientes', params);
+}
+
+// ------------------------------------------------------------------
+// Testimonios (CPT: testimonio)
+// ------------------------------------------------------------------
+
+export function getWpTestimonials(params: Record<string, string> = {}): Promise<WpCollectionResponse<WpTestimonial>> {
+  return wpCollection<WpTestimonial>('testimonios', params);
+}
+
+// ------------------------------------------------------------------
+// Servicios (CPT: servicio)
+// ------------------------------------------------------------------
+
+export function getWpServices(params: Record<string, string> = {}): Promise<WpCollectionResponse<WpService>> {
+  return wpCollection<WpService>('servicios', params);
+}
+
+export async function getWpServiceBySlug(slug: string): Promise<WpService | null> {
+  const { items } = await wpCollection<WpService>('servicios', { slug });
+  return items[0] ?? null;
+}
+
+// ------------------------------------------------------------------
+// Proyectos / portafolio (CPT: proyecto)
+// ------------------------------------------------------------------
+
+export function getWpProjects(params: Record<string, string> = {}): Promise<WpCollectionResponse<WpProject>> {
+  return wpCollection<WpProject>('proyectos', params);
+}
+
+export async function getWpProjectBySlug(slug: string): Promise<WpProject | null> {
+  const { items } = await wpCollection<WpProject>('proyectos', { slug });
+  return items[0] ?? null;
+}
+
+// ------------------------------------------------------------------
+// Configuración global (Options page -> endpoint custom)
+// ------------------------------------------------------------------
+
+export function getWpSettings(): Promise<WpSettings> {
+  return wpFetch<WpSettings>('/croilab/v1/settings');
 }

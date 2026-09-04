@@ -1,0 +1,73 @@
+{
+  "slug": "servitec-climatizacion",
+  "title": "Servitec Climatización",
+  "excerpt": "Una web pensada para generar avisos de servicio, no para decorar. Estructura clara, rápida y orientada a acción para un negocio de servicios técnicos.",
+  "content": "<p>Servitec Climatización necesitaba una web que hiciera una cosa muy concreta: convertir visitas en avisos reales. No hablamos de branding bonito ni de postureo digital, sino de una estructura clara, rápida y orientada a acción para un negocio de servicios técnicos.</p>",
+  "enlace_proyecto": "https://www.servitecclima.com/",
+  "imagen_url": "",
+  "category": "otro",
+  "metrics": [
+    {
+      "value": "1 mes",
+      "label": "Duración"
+    },
+    {
+      "value": "23 días",
+      "label": "Tiempo de entrega"
+    }
+  ],
+  "problem": {
+    "title": "El problema",
+    "points": [
+      "Los avisos de servicio llegaban por teléfono sin una web que los captara o los orientara.",
+      "El sitio antiguo era decorativo: lento, sin llamadas a la acción claras y sin fricción enfocada a pedir un aviso.",
+      "El usuario técnico no encontraba el servicio, la zona de cobertura ni cómo pedir ayuda de forma inmediata.",
+      "Sin Elementor bien estructurado, la propia marca perdía credibilidad frente a los clientes."
+    ]
+  },
+  "solution": {
+    "title": "La solución",
+    "points": [
+      "Rediseño integral en Elementor pensado 100% para generar avisos de servicio, no para decorar.",
+      "Botón de aviso siempre visible, formulario corto y datos de contacto por encima del pliegue.",
+      "Secciones claras por servicio y zona de cobertura orientadas al usuario de a pie.",
+      "Web rápida y sólida que transmite confianza y convierte la visita en un aviso real."
+    ]
+  },
+  "process": [
+    {
+      "title": "1. Briefing y auditoría",
+      "desc": "Definimos el objetivo único: generar avisos de servicio reales desde el primer clic."
+    },
+    {
+      "title": "2. Estructura orientada a acción",
+      "desc": "Diseñamos un recorrido simple: servicio, zona y aviso. Sin distracciones decorativas."
+    },
+    {
+      "title": "3. Desarrollo en Elementor",
+      "desc": "Construimos la web con Elementor sobre una base rápida y técnica sólida."
+    },
+    {
+      "title": "4. Entrega y puesta en marcha",
+      "desc": "Entregada en 23 días, lista para captar avisos desde el primer día."
+    }
+  ],
+  "stack": [
+    {
+      "name": "Elementor",
+      "logo": ""
+    },
+    {
+      "name": "WordPress",
+      "logo": ""
+    }
+  ],
+  "testimonial": {
+    "quote": "Por fin una web que trabaja por nosotros: la gente llega y pide su aviso. No es decoración, es nuestro mejor vendedor.",
+    "author": "Servitec Climatización",
+    "role": "Servicio técnico"
+  },
+  "gallery": [
+    "https://www.servitecclima.com/"
+  ]
+}

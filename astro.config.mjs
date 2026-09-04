@@ -15,7 +15,7 @@ export default defineConfig({
         context: 'server',
         access: 'public',
         optional: true,
-        default: 'https://wp.croilab.com',
+        default: 'https://core.croilab.com',
       }),
       // Credenciales de aplicación para contenido privado (borradores/preview) — opcionales
       WP_APP_USER: envField.string({ context: 'server', access: 'secret', optional: true }),

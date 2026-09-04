@@ -1,0 +1,35 @@
+{
+  "site": {
+    "name": "Croilab",
+    "slogan": "Ingeniería de conversiones digitales",
+    "description": "Diseñamos sistemas digitales donde estrategia, tecnología y adquisición trabajan juntos para transformar tráfico en clientes.",
+    "url": "https://croilab.com",
+    "email": "hola@croilab.com",
+    "whatsapp_number": "573000000000",
+    "whatsapp_message": "Hola Croilab, quiero un diagnóstico gratuito de mi negocio."
+  },
+  "social": [],
+  "differentiators": [
+    {
+      "num": "01",
+      "title": "Datos sobre opiniones",
+      "description": "Cada decisión se basa en datos del embudo, no en intuiciones. Medimos, iteramos y repetimos lo que funciona."
+    },
+    {
+      "num": "02",
+      "title": "Enfoque en conversión",
+      "description": "Cada diseño y cada campaña existe con un único objetivo: convertir tráfico en ingresos reales."
+    },
+    {
+      "num": "03",
+      "title": "Velocidad de ejecución",
+      "description": "Equipos reducidos y procesos ágiles para pasar del diagnóstico a resultados en semanas, no en meses."
+    },
+    {
+      "num": "04",
+      "title": "Transparencia total",
+      "description": "Reportes claros y métricas accesibles. Siempre sabes qué está haciendo tu inversión y por qué."
+    }
+  ],
+  "stack": []
+}

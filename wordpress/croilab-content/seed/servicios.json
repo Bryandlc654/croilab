@@ -1,0 +1,740 @@
+[
+  {
+    "slug": "ecommerce",
+    "title": "Ecommerce",
+    "num": "04",
+    "desc": "Tiendas online optimizadas para maximizar ventas y ticket medio.",
+    "icon": "<path d=\"M6 8h12l-1 12H7z\"/><path d=\"M9 8V6a3 3 0 016 0v2\"/>",
+    "hero": {
+      "kicker": "Ecommerce",
+      "title": "Tiendas online que ",
+      "highlight": "venden más",
+      "intro": "Optimizamos cada etapa de tu tienda para convertir más visitas en pedidos: velocidad, experiencia, checkout y CRO medidos con datos.",
+      "stats": [
+        {
+          "value": "+47%",
+          "label": "Conversión"
+        },
+        {
+          "value": "-28%",
+          "label": "Abandono de carrito"
+        },
+        {
+          "value": "2.4x",
+          "label": "Ticket medio"
+        }
+      ]
+    },
+    "problem": {
+      "title": "Tu tienda recibe visitas, pero no las convierte",
+      "intro": "El problema casi nunca es el producto: es el embudo que rodea al carrito. Los visitantes llegan, miran y se van.",
+      "points": [
+        "Más del 70% de los carritos se abandonan antes de pagar, normalmente por fricción en el checkout.",
+        "Fichas de producto que no resuelven dudas ni generan confianza para comprar.",
+        "Los datos de venta existen, pero nadie los usa para decidir qué mejorar."
+      ]
+    },
+    "solution": {
+      "title": "Un ecommerce diseñado para la venta final",
+      "intro": "Trabajamos sobre toda la experiencia de compra para que cada visita tenga más posibilidades de terminar en pedido.",
+      "points": [
+        {
+          "title": "Auditoría del embudo completo",
+          "description": "Detectamos dónde se pierde el dinero antes de proponer cualquier cambio."
+        },
+        {
+          "title": "Optimización de la experiencia",
+          "description": "Mejoramos ficha de producto, navegación y checkout con foco en quitar fricción."
+        },
+        {
+          "title": "Medición y experimentos",
+          "description": "Analytics reales y pruebas A/B para mejorar con datos, no con intuición."
+        }
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Más ventas",
+        "description": "Incrementos reales en tasa de conversión desde las primeras semanas."
+      },
+      {
+        "title": "Menos abandono",
+        "description": "Checkouts más cortos, con opciones de pago y envío claras."
+      },
+      {
+        "title": "Mejor ticket medio",
+        "description": "Recomendaciones y upsells que suman valor a cada pedido."
+      },
+      {
+        "title": "Decisiones con datos",
+        "description": "Sabes exactamente qué funciona y qué no, siempre."
+      }
+    ],
+    "process": [
+      {
+        "num": "01",
+        "title": "Diagnóstico",
+        "description": "Auditamos tu embudo, tu tráfico y tu competencia para encontrar fugas y oportunidades."
+      },
+      {
+        "num": "02",
+        "title": "Estrategia",
+        "description": "Definimos el plan: qué optimizar, dónde invertir y qué esperar en cada fase."
+      },
+      {
+        "num": "03",
+        "title": "Implementación",
+        "description": "Diseñamos, construimos y lanzamos las mejoras con foco en resultados."
+      },
+      {
+        "num": "04",
+        "title": "Escalado",
+        "description": "Medimos, iteramos y escalamos lo que funciona para crecer de forma sostenida."
+      }
+    ],
+    "features": [
+      {
+        "title": "Auditoría de conversión",
+        "description": "Revisión completa del embudo con prioridad por impacto."
+      },
+      {
+        "title": "Optimización de checkout",
+        "description": "Menos campos, más confianza, menos abandono."
+      },
+      {
+        "title": "Velocidad y rendimiento",
+        "description": "Páginas que cargan rápido en cualquier dispositivo."
+      },
+      {
+        "title": "Tracking y analytics",
+        "description": "Eventos de compra y embudo medibles de punta a punta."
+      },
+      {
+        "title": "Pruebas A/B",
+        "description": "Versiones de páginas probadas contra datos."
+      },
+      {
+        "title": "CRO continuo",
+        "description": "Mejoras incrementales mes a mes."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuánto tarda en verse resultado?",
+        "answer": "Los primeros cambios se notan en 4 a 6 semanas; la mejora sostenida llega con el ciclo continuo de optimización."
+      },
+      {
+        "question": "¿Trabajan con mi plataforma?",
+        "answer": "Sí: Shopify, WooCommerce, PrestaShop y tiendas a medida."
+      },
+      {
+        "question": "¿Necesito rediseñar toda la tienda?",
+        "answer": "No necesariamente. El diagnóstico define si basta con optimizar lo que tienes o si conviene rediseñar."
+      }
+    ],
+    "cta": {
+      "title": "¿Listo para que tu tienda ",
+      "highlight": "venda más?",
+      "subtitle": "Agenda un diagnóstico gratuito y descubre por qué tus visitas no se convierten en pedidos."
+    },
+    "relatedProjects": [
+      "Tienda de moda sostenible",
+      "Marketplace regional"
+    ],
+    "seo": {
+      "title": "Ecommerce | Croilab — Tiendas online que venden más",
+      "description": "Optimización de ecommerce: CRO, checkout, velocidad y analytics para convertir más visitas en pedidos. Diagnóstico gratuito."
+    },
+    "excerpt": "Optimizamos cada etapa de tu tienda para convertir más visitas en pedidos: velocidad, experiencia, checkout y CRO medidos con datos."
+  },
+  {
+    "slug": "meta-ads",
+    "title": "Meta Ads",
+    "num": "02",
+    "desc": "Campañas que captan tráfico cualificado y lo convierten en ingresos reales.",
+    "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M10 8.5l5 3.5-5 3.5z\" fill=\"currentColor\" stroke=\"none\"/>",
+    "hero": {
+      "kicker": "Meta Ads",
+      "title": "Campañas que ",
+      "highlight": "convierten en ingresos",
+      "intro": "Estrategia, creativos y optimización de Meta Ads para captar tráfico cualificado con un costo por adquisición sostenible.",
+      "stats": [
+        {
+          "value": "3.8x",
+          "label": "ROAS promedio"
+        },
+        {
+          "value": "-38%",
+          "label": "Costo por lead"
+        },
+        {
+          "value": "2.1x",
+          "label": "Retorno publicitario"
+        }
+      ]
+    },
+    "problem": {
+      "title": "Tu inversión publicitaria gasta, pero no rentabiliza",
+      "intro": "El problema no es publicar: es publicar sin sistema. Presupuesto que se quema en clics que no compran.",
+      "points": [
+        "Pujas y audiencias mal configuradas que gastan presupuesto sin retorno.",
+        "Creativos y mensajes que no conectan con el cliente ideal.",
+        "Sin medición confiable no se sabe qué funciona y qué se está quemando."
+      ]
+    },
+    "solution": {
+      "title": "Un sistema de adquisición predecible y escalable",
+      "intro": "Convertimos tu inversión publicitaria en un motor de adquisición medible, que escala sin perder rentabilidad.",
+      "points": [
+        {
+          "title": "Estrategia de cuentas",
+          "description": "Estructura por objetivo y etapa del embudo para no mezclar metas."
+        },
+        {
+          "title": "Creativos que venden",
+          "description": "Copys, imágenes y videos probados contra el mercado."
+        },
+        {
+          "title": "Optimización continua",
+          "description": "Puja, audiencias y presupuesto ajustados con datos."
+        }
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Costo por lead más bajo",
+        "description": "Campañas afinadas que aprovechan cada dólar de presupuesto."
+      },
+      {
+        "title": "Retorno predecible",
+        "description": "Modelos de costo por adquisición estables y planificables."
+      },
+      {
+        "title": "Escalado controlado",
+        "description": "Crecimiento del presupuesto sin romper el ROAS."
+      },
+      {
+        "title": "Reportes claros",
+        "description": "Métricas que entiende tu negocio, no tecnicismos."
+      }
+    ],
+    "process": [
+      {
+        "num": "01",
+        "title": "Diagnóstico",
+        "description": "Auditamos tu embudo, tu tráfico y tu competencia para encontrar fugas y oportunidades."
+      },
+      {
+        "num": "02",
+        "title": "Estrategia",
+        "description": "Definimos el plan: qué optimizar, dónde invertir y qué esperar en cada fase."
+      },
+      {
+        "num": "03",
+        "title": "Implementación",
+        "description": "Diseñamos, construimos y lanzamos las mejoras con foco en resultados."
+      },
+      {
+        "num": "04",
+        "title": "Escalado",
+        "description": "Medimos, iteramos y escalamos lo que funciona para crecer de forma sostenida."
+      }
+    ],
+    "features": [
+      {
+        "title": "Estrategia de campañas",
+        "description": "Arquitectura por objetivo y audiencia."
+      },
+      {
+        "title": "Creativos y copy",
+        "description": "Piezas pensadas para vender, no para gustar."
+      },
+      {
+        "title": "Audiencias",
+        "description": "Segmentación y lookalikes basados en datos."
+      },
+      {
+        "title": "Pixel y tracking",
+        "description": "Conversiones medidas con precisión."
+      },
+      {
+        "title": "Pruebas A/B",
+        "description": "Iteración constante de piezas y ofertas."
+      },
+      {
+        "title": "Escalado de presupuesto",
+        "description": "Aumento gradual con control de métricas."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuál es el presupuesto mínimo recomendado?",
+        "answer": "Depende del mercado, pero trabajamos desde 500 USD al mes con optimización continua."
+      },
+      {
+        "question": "¿Solo Facebook e Instagram?",
+        "answer": "Cubrimos Meta y nos integramos con Google Ads cuando la estrategia lo pide."
+      },
+      {
+        "question": "¿Cuándo veré resultados?",
+        "answer": "Los primeros datos aparecen en 1 a 2 semanas; la estabilización del ROAS toma 4 a 8 semanas."
+      }
+    ],
+    "cta": {
+      "title": "¿Listo para que tu publicidad ",
+      "highlight": "deje de gastar?",
+      "subtitle": "Recibe un diagnóstico de tus campañas actuales y encuentra las fugas de tu inversión."
+    },
+    "relatedProjects": [
+      "SaaS de gestión"
+    ],
+    "seo": {
+      "title": "Meta Ads | Croilab — Campañas que convierten en ingresos",
+      "description": "Estrategia, creativos y optimización de Meta Ads con costo por adquisición sostenible. Diagnóstico gratuito de tus campañas."
+    },
+    "excerpt": "Estrategia, creativos y optimización de Meta Ads para captar tráfico cualificado con un costo por adquisición sostenible."
+  },
+  {
+    "slug": "diseno-web",
+    "title": "Diseño Web",
+    "num": "03",
+    "desc": "Páginas rápidas, claras y diseñadas para vender desde el primer segundo.",
+    "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M7 6.5h.01M10 6.5h.01\"/>",
+    "hero": {
+      "kicker": "Diseño Web",
+      "title": "Páginas web que ",
+      "highlight": "venden desde el primer segundo",
+      "intro": "Diseñamos sitios rápidos, claros y pensados para convertir: cada sección tiene un objetivo y cada clic un propósito.",
+      "stats": [
+        {
+          "value": "2.5x",
+          "label": "Más leads"
+        },
+        {
+          "value": "-52%",
+          "label": "Tasa de rebote"
+        },
+        {
+          "value": "100/100",
+          "label": "Rendimiento"
+        }
+      ]
+    },
+    "problem": {
+      "title": "Una web bonita que no convierte es solo un gasto",
+      "intro": "Tu página es la primera impresión de tu negocio. Si no convence en segundos, el visitante se va a buscar otra opción.",
+      "points": [
+        "Diseños que priorizan la estética antes que la conversión.",
+        "Cargas lentas que matan la confianza en los primeros 3 segundos.",
+        "Contenido que habla de la empresa y no de los problemas del cliente."
+      ]
+    },
+    "solution": {
+      "title": "Páginas construidas alrededor de la conversión",
+      "intro": "Cada página se diseña con un objetivo claro: conseguir que el visitante actúe.",
+      "points": [
+        {
+          "title": "Estrategia de contenido",
+          "description": "Mensajes que conectan con el problema real del cliente."
+        },
+        {
+          "title": "Diseño de conversión",
+          "description": "Jerarquía visual, CTAs y prueba social en el lugar correcto."
+        },
+        {
+          "title": "Rendimiento real",
+          "description": "Sitios rápidos, accesibles y optimizados para SEO."
+        }
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Más conversión",
+        "description": "Páginas que guían al visitante hacia la acción."
+      },
+      {
+        "title": "Credibilidad",
+        "description": "Diseño profesional que inspira confianza."
+      },
+      {
+        "title": "Carga rápida",
+        "description": "Experiencias instantáneas en cualquier dispositivo."
+      },
+      {
+        "title": "Base SEO",
+        "description": "Estructura técnica lista para posicionar."
+      }
+    ],
+    "process": [
+      {
+        "num": "01",
+        "title": "Diagnóstico",
+        "description": "Auditamos tu embudo, tu tráfico y tu competencia para encontrar fugas y oportunidades."
+      },
+      {
+        "num": "02",
+        "title": "Estrategia",
+        "description": "Definimos el plan: qué optimizar, dónde invertir y qué esperar en cada fase."
+      },
+      {
+        "num": "03",
+        "title": "Implementación",
+        "description": "Diseñamos, construimos y lanzamos las mejoras con foco en resultados."
+      },
+      {
+        "num": "04",
+        "title": "Escalado",
+        "description": "Medimos, iteramos y escalamos lo que funciona para crecer de forma sostenida."
+      }
+    ],
+    "features": [
+      {
+        "title": "Diseño UX/UI",
+        "description": "Interfaces limpias y pensadas para el usuario."
+      },
+      {
+        "title": "Estrategia de mensaje",
+        "description": "Copy que conecta y convence."
+      },
+      {
+        "title": "Desarrollo a medida",
+        "description": "Calidad de producción con tu stack preferido."
+      },
+      {
+        "title": "Responsive total",
+        "description": "Perfecto en móvil, tablet y escritorio."
+      },
+      {
+        "title": "CMS fácil",
+        "description": "Edición de contenido sin tocar código."
+      },
+      {
+        "title": "SEO técnico",
+        "description": "Estructura, metadatos y velocidad optimizados."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuánto tarda el desarrollo?",
+        "answer": "Entre 4 y 8 semanas según la complejidad, con entregas parciales."
+      },
+      {
+        "question": "¿Puedo editar el contenido luego?",
+        "answer": "Sí, incluimos CMS para que edites textos e imágenes sin desarrollador."
+      },
+      {
+        "question": "¿Trabajan con nuestra identidad visual?",
+        "answer": "Sí, partimos de tu marca y la llevamos a un sistema de diseño consistente."
+      }
+    ],
+    "cta": {
+      "title": "¿Listo para una web que ",
+      "highlight": "convierta?",
+      "subtitle": "Cuéntanos qué necesita tu negocio y te proponemos el mejor camino para tu presencia digital."
+    },
+    "relatedProjects": [
+      "SaaS de gestión"
+    ],
+    "seo": {
+      "title": "Diseño Web | Croilab — Páginas que convierten",
+      "description": "Diseño y desarrollo de páginas web orientadas a la conversión: rápidas, claras y con estrategia de mensaje. Consulta gratis."
+    },
+    "excerpt": "Diseñamos sitios rápidos, claros y pensados para convertir: cada sección tiene un objetivo y cada clic un propósito."
+  },
+  {
+    "slug": "seo",
+    "title": "SEO",
+    "num": "01",
+    "desc": "Posicionamiento técnico y de contenido para llevar tu marca al primer resultado.",
+    "icon": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"M20 20l-5-5\"/><path d=\"M8 12l2-2.5 2 1.5 2.5-3\"/>",
+    "hero": {
+      "kicker": "SEO",
+      "title": "Posiciona y ",
+      "highlight": "deja de depender de los anuncios",
+      "intro": "SEO técnico y de contenido para llevar tu marca al primer resultado y construir tráfico orgánico que se acumula.",
+      "stats": [
+        {
+          "value": "3.2x",
+          "label": "Tráfico orgánico"
+        },
+        {
+          "value": "0",
+          "label": "Dependencia de ads"
+        },
+        {
+          "value": "#1",
+          "label": "Posiciones clave"
+        }
+      ]
+    },
+    "problem": {
+      "title": "Existes, pero tu cliente no te encuentra",
+      "intro": "Cuando alguien busca lo que ofreces, tu competencia aparece primero. El tráfico orgánico se construye, pero casi nadie lo hace bien.",
+      "points": [
+        "Páginas que no cargan o que Google no puede leer correctamente.",
+        "Contenido que no responde a lo que la gente realmente busca.",
+        "Dependencia total de la pauta para generar tráfico."
+      ]
+    },
+    "solution": {
+      "title": "Un motor de tráfico orgánico sostenible",
+      "intro": "Trabajamos la base técnica y el contenido para que Google te entienda y tus clientes te encuentren.",
+      "points": [
+        {
+          "title": "SEO técnico",
+          "description": "Arquitectura, velocidad y datos estructurados que Google premia."
+        },
+        {
+          "title": "Contenido orientado a intención",
+          "description": "Páginas y artículos que responden búsquedas reales."
+        },
+        {
+          "title": "Autoridad y enlaces",
+          "description": "Estrategia de autoridad para crecer posiciones."
+        }
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Tráfico acumulativo",
+        "description": "El SEO sigue generando visitas sin costo por clic."
+      },
+      {
+        "title": "Menor costo por cliente",
+        "description": "Conversiones sin pagar publicidad."
+      },
+      {
+        "title": "Posicionamiento de marca",
+        "description": "Estar donde tus clientes buscan."
+      },
+      {
+        "title": "Datos medibles",
+        "description": "Ranking y tráfico con seguimiento claro."
+      }
+    ],
+    "process": [
+      {
+        "num": "01",
+        "title": "Diagnóstico",
+        "description": "Auditamos tu embudo, tu tráfico y tu competencia para encontrar fugas y oportunidades."
+      },
+      {
+        "num": "02",
+        "title": "Estrategia",
+        "description": "Definimos el plan: qué optimizar, dónde invertir y qué esperar en cada fase."
+      },
+      {
+        "num": "03",
+        "title": "Implementación",
+        "description": "Diseñamos, construimos y lanzamos las mejoras con foco en resultados."
+      },
+      {
+        "num": "04",
+        "title": "Escalado",
+        "description": "Medimos, iteramos y escalamos lo que funciona para crecer de forma sostenida."
+      }
+    ],
+    "features": [
+      {
+        "title": "Auditoría técnica",
+        "description": "Diagnóstico completo de tu sitio."
+      },
+      {
+        "title": "Optimización on-page",
+        "description": "Títulos, metadatos y estructura interna."
+      },
+      {
+        "title": "Content strategy",
+        "description": "Calendario y creación de contenido."
+      },
+      {
+        "title": "Link building",
+        "description": "Autoridad de dominio sostenible."
+      },
+      {
+        "title": "Local SEO",
+        "description": "Visibilidad en búsquedas locales."
+      },
+      {
+        "title": "Reporting",
+        "description": "Métricas de posiciones y tráfico."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuánto tarda el SEO?",
+        "answer": "Los primeros movimientos se ven en 2 a 3 meses; resultados sólidos en 6 a 12 meses. Es una inversión acumulativa."
+      },
+      {
+        "question": "¿Tengo que cambiar mi web?",
+        "answer": "No siempre. Empezamos con una auditoría técnica y priorizamos lo de mayor impacto."
+      },
+      {
+        "question": "¿Hacen contenidos?",
+        "answer": "Sí, trabajamos una estrategia de contenido que responde a lo que buscan tus clientes."
+      }
+    ],
+    "cta": {
+      "title": "¿Listo para dejar de ",
+      "highlight": "pagar por cada clic?",
+      "subtitle": "Descubre qué oportunidades tiene tu web."
+    },
+    "relatedProjects": [
+      "Marketplace regional"
+    ],
+    "seo": {
+      "title": "Agencia SEO y Posicionamiento Web",
+      "description": "SEO técnico y de contenido para llegar al primer resultado y construir tráfico orgánico sostenible."
+    },
+    "excerpt": "SEO técnico y de contenido para llevar tu marca al primer resultado y construir tráfico orgánico que se acumula."
+  },
+  {
+    "slug": "conversiones",
+    "title": "Método Conversiones",
+    "num": "05",
+    "desc": "Un sistema probado para analizar, optimizar y escalar todo tu embudo digital.",
+    "icon": "<circle cx=\"12\" cy=\"5\" r=\"2.2\"/><circle cx=\"5\" cy=\"18\" r=\"2.2\"/><circle cx=\"19\" cy=\"18\" r=\"2.2\"/><path d=\"M11 7l-4.5 9.2M13 7l4.5 9.2M7.2 18h9.6\"/>",
+    "hero": {
+      "kicker": "Método Conversiones",
+      "title": "Un sistema que ",
+      "highlight": "optimiza todo tu embudo",
+      "intro": "Analizamos, optimizamos y escalamos cada etapa de tu embudo digital con un proceso probado: tráfico, experiencia y datos en un solo sistema.",
+      "stats": [
+        {
+          "value": "+42%",
+          "label": "Conversión media"
+        },
+        {
+          "value": "4x",
+          "label": "Retorno en 6 meses"
+        },
+        {
+          "value": "1",
+          "label": "Embudo medible"
+        }
+      ]
+    },
+    "problem": {
+      "title": "Tienes tráfico, pero el crecimiento se estancó",
+      "intro": "Las piezas existen: web, campañas, redes. Pero sin un sistema que las conecte, el crecimiento depende de la suerte y no del método.",
+      "points": [
+        "Cada canal trabaja por separado y nadie mide el embudo completo.",
+        "Optimizaciones aisladas que no mueven la aguja.",
+        "Sin datos confiables, cada decisión es una apuesta."
+      ]
+    },
+    "solution": {
+      "title": "Un método probado para convertir y escalar",
+      "intro": "Unificamos tráfico, experiencia y datos en un solo sistema de crecimiento.",
+      "points": [
+        {
+          "title": "Análisis del embudo",
+          "description": "Mapa completo de dónde entras y dónde pierdes clientes."
+        },
+        {
+          "title": "Optimización integral",
+          "description": "Tráfico, página y conversión alineados con el mismo objetivo."
+        },
+        {
+          "title": "Escalado con datos",
+          "description": "Replicamos lo que funciona y eliminamos lo que no."
+        }
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Visión completa",
+        "description": "Un embudo claro y medible de punta a punta."
+      },
+      {
+        "title": "Mejora continua",
+        "description": "Optimización constante de todo el sistema."
+      },
+      {
+        "title": "Resultados compuestos",
+        "description": "Cada mejora se acumula sobre la anterior."
+      },
+      {
+        "title": "Menos riesgo",
+        "description": "Decisiones basadas en datos, no en intuiciones."
+      }
+    ],
+    "process": [
+      {
+        "num": "01",
+        "title": "Diagnóstico",
+        "description": "Auditamos tu embudo, tu tráfico y tu competencia para encontrar fugas y oportunidades."
+      },
+      {
+        "num": "02",
+        "title": "Estrategia",
+        "description": "Definimos el plan: qué optimizar, dónde invertir y qué esperar en cada fase."
+      },
+      {
+        "num": "03",
+        "title": "Implementación",
+        "description": "Diseñamos, construimos y lanzamos las mejoras con foco en resultados."
+      },
+      {
+        "num": "04",
+        "title": "Escalado",
+        "description": "Medimos, iteramos y escalamos lo que funciona para crecer de forma sostenida."
+      }
+    ],
+    "features": [
+      {
+        "title": "Auditoría integral",
+        "description": "Diagnóstico del embudo completo."
+      },
+      {
+        "title": "Estrategia unificada",
+        "description": "Todos los canales con un mismo objetivo."
+      },
+      {
+        "title": "CRO",
+        "description": "Optimización de la conversión continua."
+      },
+      {
+        "title": "Analytics",
+        "description": "Métricas accionables en un solo panel."
+      },
+      {
+        "title": "Adquisición",
+        "description": "Campañas alineadas al embudo."
+      },
+      {
+        "title": "Escalado",
+        "description": "Plan de crecimiento por fases."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cómo funciona el método?",
+        "answer": "Cuatro fases: diagnóstico, estrategia, implementación y escalado, con medición en cada paso."
+      },
+      {
+        "question": "¿Es un servicio o un producto?",
+        "answer": "Es un servicio continuo con entregas mensuales y resultados medibles."
+      },
+      {
+        "question": "¿Para qué tipo de negocio?",
+        "answer": "Ideal para negocios con tráfico real que quieren convertir mejor antes de crecer."
+      }
+    ],
+    "cta": {
+      "title": "¿Listo para un sistema de ",
+      "highlight": "conversión real?",
+      "subtitle": "Agenda un diagnóstico y descubre qué mueve la aguja de tu negocio."
+    },
+    "relatedProjects": [
+      "Tienda de moda sostenible",
+      "SaaS de gestión",
+      "Marketplace regional"
+    ],
+    "seo": {
+      "title": "Método Conversiones | Croilab — Optimiza todo tu embudo",
+      "description": "El sistema de Croilab para analizar, optimizar y escalar tu embudo digital completo. Diagnóstico gratuito."
+    },
+    "excerpt": "Analizamos, optimizamos y escalamos cada etapa de tu embudo digital con un proceso probado: tráfico, experiencia y datos en un solo sistema."
+  }
+]
