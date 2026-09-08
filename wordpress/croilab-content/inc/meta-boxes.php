@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Definición declarativa de campos (metaboxes) para cada CPT.
  * Sin dependencias externas: se gestionan con metaboxes nativas de WordPress.
@@ -175,6 +175,7 @@ Croilab_Meta::add(
 			// — Información general —
 			array( 'name' => 'enlace_proyecto', 'label' => 'Enlace del proyecto', 'type' => 'url', 'instructions' => 'URL del sitio en vivo.' ),
 			array( 'name' => 'imagen_url',      'label' => 'Imagen URL', 'type' => 'image', 'instructions' => 'Imagen principal del proyecto.' ),
+			array( 'name' => 'logo_url',        'label' => 'Logo del cliente', 'type' => 'image', 'instructions' => 'Logo para mostrar en la seccion Confian en nosotros.' ),
 			array( 'name' => 'category', 'label' => 'Categoría', 'type' => 'select', 'choices' => array(
 				'ecommerce'   => 'Ecommerce',
 				'landing-ads' => 'Landing + Ads',

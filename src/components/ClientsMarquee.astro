@@ -1,6 +1,29 @@
 ---
-import { clients } from '../data/clients';
+import { getWpProjects } from '../lib/wp';
+import { clients as fallbackClients } from '../data/clients';
 import Container from './ui/Container.astro';
+
+let dynamicClients: { image: string; alt: string }[] = [];
+try {
+  // Obtenemos hasta 50 proyectos para sacar sus logos
+  const { items } = await getWpProjects({ per_page: '50' });
+  
+  // Filtramos solo los que tengan un logo configurado
+  const projectsWithLogos = items.filter(
+    (p) => p.croilab_proyecto?.logo_url
+  );
+
+  // Mapeamos al formato que espera el marquee
+  dynamicClients = projectsWithLogos.map((p) => ({
+    image: p.croilab_proyecto!.logo_url as string,
+    alt: p.title?.rendered || 'Cliente',
+  }));
+} catch (e) {
+  console.error("Error fetching projects for marquee:", e);
+}
+
+// Usamos los dinámicos si hay, de lo contrario caemos en los hardcodeados
+const clientsToRender = dynamicClients.length > 0 ? dynamicClients : fallbackClients;
 ---
 
 <section class="border-t border-black/10 bg-white py-14" aria-label="Clientes">
@@ -14,7 +37,7 @@ import Container from './ui/Container.astro';
   <div class="marquee marquee-mask">
     <div class="marquee-track">
       {
-        clients.map((client) => (
+        clientsToRender.map((client) => (
           <img 
             src={client.image} 
             alt={client.alt} 
@@ -24,7 +47,7 @@ import Container from './ui/Container.astro';
         ))
       }
       {
-        clients.map((client) => (
+        clientsToRender.map((client) => (
           <img 
             src={client.image} 
             alt={client.alt} 

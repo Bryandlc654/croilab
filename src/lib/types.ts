@@ -164,6 +164,7 @@ export interface WpProject extends WpPage {
     results?: WpResult[];
     testimonial?: WpTestimonialData;
     gallery?: string[];
+    logo_url?: string;
   };
 }
 
