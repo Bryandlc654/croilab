@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Tienda de moda sostenible">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0f6ff"/>
+      <stop offset="1" stop-color="#d9eaff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g stroke="#0878f9" stroke-opacity="0.06" stroke-width="1">
+    <path d="M0 150H800M0 300H800M0 450H800M150 0V600M300 0V600M450 0V600M600 0V600"/>
+  </g>
+  <circle cx="660" cy="120" r="150" fill="#0878f9" opacity="0.05"/>
+  <circle cx="130" cy="500" r="110" fill="#0878f9" opacity="0.07"/>
+  <circle cx="660" cy="480" r="60" fill="#0878f9" opacity="0.06"/>
+  <g transform="translate(400,310)">
+    <path d="M-110-30h220l-20 160a24 24 0 0 1-24 22H-86a24 24 0 0 1-24-22Z" fill="#ffffff" fill-opacity="0.55" stroke="#0878f9" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M-70-30q0-80 70-80t70 80" fill="none" stroke="#0878f9" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="0" cy="70" r="30" fill="#0878f9"/>
+    <circle cx="0" cy="70" r="12" fill="#ffffff"/>
+  </g>
+  <path d="M210 170c-2-40 22-58 40-62" fill="none" stroke="#0878f9" stroke-width="5" stroke-linecap="round"/>
+  <path d="M245 105c18-14 48-8 54 10-6 20-36 24-54 6Z" fill="#0878f9"/>
+</svg>

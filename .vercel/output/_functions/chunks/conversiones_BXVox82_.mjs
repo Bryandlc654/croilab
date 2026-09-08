@@ -1,0 +1,147 @@
+import { n as __exportAll, t as createComponent } from "./compiler_Cff8VUIR.mjs";
+import { i as getWpServiceBySlug, s as getWpTestimonials } from "./wp_I0wGGDjU.mjs";
+import { S as unescapeHTML, d as renderTemplate, f as maybeRenderHead, i as renderComponent, m as addAttribute } from "./server_Yceqtf1X.mjs";
+import { a as renderScript, i as $$Container, t as $$BaseLayout } from "./BaseLayout_CUM04enh.mjs";
+import { t as $$Breadcrumb } from "./Breadcrumb_CM0NWSvp.mjs";
+import { t as $$Cta } from "./Cta_Dahp83yV.mjs";
+import { n as $$MarqueeTestimonials, r as $$Calculator, t as $$ServiceHub } from "./ServiceHub_B-EMMzcx.mjs";
+import { t as $$ServiceStats } from "./ServiceStats_C4qXQpVW.mjs";
+import { t as $$ServiceCases } from "./ServiceCases_BzHqDzR6.mjs";
+//#region src/pages/conversiones.astro
+var conversiones_exports = /* @__PURE__ */ __exportAll({
+	default: () => $$Conversiones,
+	file: () => $$file,
+	url: () => $$url
+});
+var $$Conversiones = createComponent(async ($$result, $$props, $$slots) => {
+	let serviceData = null;
+	let dynamicTestimonials = [];
+	let heroBg = "";
+	try {
+		const service = await getWpServiceBySlug("conversiones");
+		if (service) {
+			serviceData = service.croilab_servicio;
+			if (service._embedded?.["wp:featuredmedia"]) heroBg = service._embedded["wp:featuredmedia"][0].source_url;
+		}
+		dynamicTestimonials = (await getWpTestimonials({ per_page: "100" })).items.filter((t) => t.croilab_testimonio?.related_service === "conversiones").map((t) => ({
+			quote: t.croilab_testimonio?.quote || t.title?.rendered,
+			name: t.croilab_testimonio?.author,
+			role: t.croilab_testimonio?.role,
+			rating: parseInt(t.croilab_testimonio?.stars || "5", 10),
+			avatar: t.croilab_testimonio?.avatar
+		}));
+	} catch (e) {
+		console.error("Error fetching dynamic service data:", e);
+	}
+	const conversionesTestimonials = [
+		{
+			quote: "Teníamos miles de visitas pero la conversión era del 0.8%. Después del rediseño subimos al 3.2%. Matemática pura y más ventas.",
+			name: "Javier T.",
+			role: "CEO, SaaS",
+			rating: 5
+		},
+		{
+			quote: "Pensábamos que el problema era el tráfico. Ellos nos demostraron con tests A/B que el problema era la fricción de nuestro funnel.",
+			name: "Marta S.",
+			role: "CMO, FinTech",
+			rating: 5
+		},
+		{
+			quote: "No adivinan, miden. Cada cambio en la página estuvo respaldado por datos de mapas de calor y grabaciones de usuarios.",
+			name: "Diego R.",
+			role: "Founder, B2B Services",
+			rating: 5
+		},
+		{
+			quote: "Redujeron nuestro costo de adquisición a la mitad simplemente logrando que la landing page dejara de perder prospectos.",
+			name: "Camila F.",
+			role: "Growth Lead",
+			rating: 5
+		},
+		{
+			quote: "Lograron una estructura donde el cliente siente que es absurdo no comprar. El enfoque persuasivo es magistral.",
+			name: "Andrés L.",
+			role: "VP Marketing",
+			rating: 5
+		},
+		{
+			quote: "Dejamos de quemar dinero en pauta. Ahora cada dólar que invertimos rinde tres veces más gracias a su ingeniería CRO.",
+			name: "Sofia M.",
+			role: "Ecommerce Director",
+			rating: 5
+		}
+	];
+	const wpEndpoint = "https://darkblue-flamingo-706734.hostingersite.com/wp-json/wp/v2/pages?slug=conversiones";
+	let rankMathSEO = null;
+	try {
+		const res = await fetch(wpEndpoint);
+		if (res.ok) {
+			const pages = await res.json();
+			if (pages && pages.length > 0) rankMathSEO = pages[0].rank_math_head || null;
+		}
+	} catch (e) {
+		console.error("Error fetching SEO:", e);
+	}
+	dynamicTestimonials.length;
+	return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, {
+		"title": "Optimización de Conversiones (CRO) | Croilab",
+		"description": "Tienes tráfico, pero estás dejando dinero en la mesa. Aumentamos tu tasa de conversión basándonos en datos, no en opiniones.",
+		"rankMathSEO": rankMathSEO
+	}, { "default": ($$result) => renderTemplate`${maybeRenderHead($$result)}<section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[#050505]"><!-- Imagen de fondo con textura y degradado vertical --><div class="absolute inset-0 z-0 pointer-events-none"><img${addAttribute(heroBg || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", "src")} alt="Data Analytics and CRO" class="w-full h-full object-cover object-top opacity-20 grayscale mix-blend-luminosity"><!-- Degradado vertical: Oscuro abajo (100%), Transparente arriba (0%) --><div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div><!-- Grid Arquitectónico superpuesto --><div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div><!-- Ruido (Grain) para textura premium --><div class="absolute inset-0 opacity-[0.25] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div></div><!-- Luces de fondo dinámicas --><div class="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div><div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>${renderComponent($$result, "Container", $$Container, { "class": "relative z-10 pt-40 pb-20 lg:pt-48 lg:pb-32" }, { "default": ($$result) => renderTemplate`<div class="mb-14">${renderComponent($$result, "Breadcrumb", $$Breadcrumb, { "items": [{
+		label: "Servicios",
+		href: "/#servicios"
+	}, { label: "Conversiones" }] })}</div><div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-20 items-center"><!-- Izquierda: Textos --><div class="flex flex-col text-left"><h1 class="gsap-title max-w-5xl text-[clamp(3.5rem,7vw,7.5rem)] font-bold leading-[0.9] tracking-tight text-white mb-8" data-custom-speed="0.8">${serviceData?.hero?.title || `Tienes tráfico, pero estás <br/>`}<span class="italic font-serif font-light text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-300 to-white/30">${serviceData?.hero?.highlight || `dejando dinero`}</span></h1><p class="max-w-xl text-[17px] md:text-[19px] leading-relaxed text-white/50 mb-12">${serviceData?.hero?.intro || `Inyectar más presupuesto en anuncios sin arreglar tu embudo es quemar dinero. Auditamos, experimentamos y escalamos tu tasa de conversión con datos, no con opiniones.`}</p><div class="flex flex-col sm:flex-row items-start gap-5"><a href="#metodologia" class="magnetic group relative flex items-center justify-center gap-4 rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] w-full sm:w-auto">Descubrir método<span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span></a><a href="/contacto" class="magnetic group flex items-center justify-center gap-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto">Quiero trabajar así</a></div></div><!-- Derecha: Mockup Animado CRO --><div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[4/4.5] flex items-center justify-center perspective-1000 mt-10 lg:mt-0"><!-- Glow de fondo cinemático --><div class="absolute inset-0 bg-gradient-to-tr from-red-500/20 via-orange-600/10 to-transparent rounded-[100px] blur-[120px] animate-glowDrift mix-blend-screen pointer-events-none"></div><!-- Interfaz Principal (Dashboard CRO) --><div class="relative w-full max-w-[480px] rounded-[24px] bg-[#0c0c0e]/95 backdrop-blur-2xl border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden animate-float"><!-- Header del navegador Mac OS style --><div class="h-14 bg-white/[0.03] border-b border-white/5 flex items-center px-6 gap-3"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-white/10"></div><div class="w-3 h-3 rounded-full bg-white/10"></div><div class="w-3 h-3 rounded-full bg-white/10"></div></div><div class="ml-4 h-7 flex-1 max-w-[240px] bg-black/40 rounded-md px-3 flex items-center border border-white/5 shadow-inner"><span class="text-[11px] text-white/50 font-mono tracking-wider">A/B Test Analytics</span></div></div><!-- Contenido CRO Mockup --><div class="relative min-h-[420px] bg-gradient-to-b from-[#050505] to-[#111115] p-6 flex flex-col items-center"><!-- Top Bar (AB Test Selector) --><div class="w-full flex items-center justify-between mb-8 border-b border-white/5 pb-4"><div class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-red-400"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg><div class="text-[12px] font-bold text-white tracking-wide">Checkout Flow Test</div></div><div class="flex gap-2"><span class="px-2 py-1 rounded bg-white/5 text-[9px] text-white/50 border border-white/10">Control (A)</span><span class="px-2 py-1 rounded bg-red-500/10 border border-red-500/30 text-[9px] text-red-400 font-bold shadow-[0_0_10px_rgba(248,113,113,0.15)] flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-red-400 animate-pulse"></span> Variante (B)</span></div></div><!-- Funnel Visualization --><div class="w-full mb-8 relative"><div class="flex flex-col gap-3"><!-- Step 1 --><div class="w-full flex justify-between items-center bg-white/[0.02] border border-white/5 rounded-xl p-3 relative overflow-hidden"><div class="absolute left-0 top-0 bottom-0 bg-white/5 w-full rounded-l-xl border-r border-white/10"></div><span class="text-[11px] text-white/80 z-10 font-medium">1. Inicio Checkout</span><span class="text-[11px] text-white/50 z-10">100% (14.2k)</span></div><!-- Step 2 --><div class="w-[90%] flex justify-between items-center bg-white/[0.02] border border-white/5 rounded-xl p-3 relative overflow-hidden"><div class="absolute left-0 top-0 bottom-0 bg-white/5 w-[52%] rounded-l-xl border-r border-white/10"></div><span class="text-[11px] text-white/80 z-10 font-medium">2. Envío</span><span class="text-[11px] text-white/50 z-10">52% (7.4k)</span></div><!-- Step 3 (Winner) --><div class="w-[75%] flex justify-between items-center bg-red-500/5 border border-red-500/20 rounded-xl p-3 relative overflow-hidden group shadow-[0_0_20px_rgba(248,113,113,0.05)]"><div class="absolute inset-0 bg-gradient-to-r from-transparent via-red-400/10 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></div><div class="absolute left-0 top-0 bottom-0 bg-red-500/20 w-[35%] rounded-l-xl border-r border-red-500/40"></div><div class="text-[11px] text-white z-10 font-bold flex items-center gap-2">3. Compra<span class="px-1.5 py-0.5 rounded text-[8px] bg-red-500 text-white font-bold tracking-wider shadow-[0_0_10px_rgba(248,113,113,0.4)]">WINNER</span></div><div class="text-[11px] font-bold text-red-400 z-10">35% (4.9k)</div></div></div></div><!-- Heatmap Area (Abstract Representation) --><div class="w-full h-24 rounded-xl border border-white/10 bg-white/[0.02] relative overflow-hidden flex items-center justify-center"><div class="absolute inset-0 opacity-40" style="background: radial-gradient(circle at 70% 30%, rgba(248,113,113,0.6) 0%, transparent 40%), radial-gradient(circle at 30% 60%, rgba(59,130,246,0.3) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(250,204,21,0.3) 0%, transparent 30%); filter: blur(10px);"></div><div class="relative z-10 bg-[#111115]/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] text-white/70 flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>Eye-Tracking Heatmap</div></div></div><!-- Fade out inferior --><div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0c0c0e] to-transparent pointer-events-none"></div></div><!-- Floating Badges --><div class="absolute -right-4 lg:-right-10 top-1/4 bg-[#111115]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float-delayed z-20 flex flex-col gap-1"><div class="text-[10px] font-bold uppercase tracking-wider text-white/50 flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-red-400"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>Lift de Conversión</div><div class="text-2xl font-bold text-white mt-1">+32.4%</div><div class="text-[10px] text-green-400 font-medium flex items-center gap-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>Confianza Estadística 99%</div></div><div class="absolute -left-6 lg:-left-12 bottom-1/3 bg-[#111115]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float z-20" style="animation-delay: 1.5s;"><div class="text-[10px] font-bold uppercase tracking-wider text-white/50 mb-2">Fricción Detectada</div><div class="flex items-center gap-3 bg-red-500/10 border border-red-500/20 px-3 py-2 rounded-lg"><div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div><div class="text-[12px] font-bold text-red-400">-15% Abandono</div></div></div></div></div>` })}</section>${renderComponent($$result, "ServiceStats", $$ServiceStats, {})}<section class="relative bg-[#f8f9fa] py-32 border-t border-black/5">${renderComponent($$result, "Container", $$Container, {}, { "default": ($$result) => renderTemplate`<div class="text-center max-w-3xl mx-auto mb-16"><span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Diagnóstico de Fugas</span><h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-tight">¿Tu embudo sufre de alguna de estas hemorragias?</h2></div><div class="grid grid-cols-1 md:grid-cols-3 gap-8">${[
+		{
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
+			title: "Carritos Abandonados",
+			desc: "Tus usuarios agregan productos al carrito, pero huyen misteriosamente en la página de pago."
+		},
+		{
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+			title: "CPA Inasumible",
+			desc: "Cada mes pagas más a Meta o Google por adquirir un cliente. El tráfico es cada vez más caro y el margen más estrecho."
+		},
+		{
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>`,
+			title: "Conversión Pobre",
+			desc: "Tienes miles de visitas mensuales, pero tu tasa de conversión global no logra superar el deprimente 1%."
+		}
+	].map((s) => renderTemplate`<div class="bg-white p-10 rounded-[2rem] border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] relative overflow-hidden" data-spotlight><div class="spotlight-glow"></div><div class="relative z-10 mb-6 grayscale opacity-80">${unescapeHTML(s.icon)}</div><h3 class="relative z-10 text-xl font-bold text-black mb-4">${s.title}</h3><p class="relative z-10 text-[15px] leading-relaxed text-black/60">${s.desc}</p></div>`)}</div>` })}</section><section class="relative bg-white py-32 lg:py-48 border-t border-black/5 pt-10">${renderComponent($$result, "Container", $$Container, {}, { "default": ($$result) => renderTemplate`<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"><div><h2 class="gsap-title text-4xl lg:text-6xl font-bold tracking-tight text-black mb-8 leading-[1.1]" data-custom-speed="0.9">Cambiar el color de un botón <span class="text-black/30 line-through">no es CRO.</span></h2><div class="space-y-6 text-[16px] leading-relaxed text-black/60"><p>El diseño bonito no vende. La psicología sí. Si sigues rediseñando tu web basándote en lo que "se ve bien" en lugar de analizar por qué los usuarios no hacen clic, seguirás perdiendo dinero.</p><p>En Croilab no adivinamos. Instalamos mapas de calor, grabamos sesiones de usuarios reales y lanzamos Test A/B estadísticamente rigurosos para encontrar los cuellos de botella que están bloqueando tus ventas.</p></div></div><div class="relative group" data-tilt="6"><div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent rounded-[2.5rem] border border-black/10 transition-colors duration-500 group-hover:border-black/20"></div><div class="relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-[#fbfbfb]"><div class="p-10 pb-0"><div class="text-7xl font-bold text-black mb-4">70%</div><p class="text-lg text-black/60 mb-10">de los carritos de compra son abandonados debido a fricciones ocultas en el diseño y en la experiencia de usuario que tÁº no estás viendo.</p></div><!-- MOCKUP HEATMAP --><div class="relative w-full h-[300px] mt-auto overflow-hidden bg-black"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" alt="Heatmap Mockup" class="absolute inset-0 w-full h-full object-cover object-top opacity-60 mix-blend-screen filter contrast-125 saturate-200 hue-rotate-90 transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-[#fbfbfb] via-transparent to-transparent"></div></div></div></div></div>` })}</section><section id="metodologia" class="relative bg-white py-32 border-t border-black/5">${renderComponent($$result, "Container", $$Container, {}, { "default": ($$result) => renderTemplate`<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 relative items-start"><div class="lg:sticky lg:top-40 flex flex-col gap-12"><div><span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Investigación + Testing</span><h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold leading-[1] tracking-tight text-black mb-6" data-custom-speed="0.95">Ingeniería <br><span class="italic font-serif font-normal text-black/40">de Conversión.</span></h2><p class="text-[16px] leading-relaxed text-black/60 max-w-sm">Convertimos las conjeturas en certezas matemáticas. Así es como destrabamos el potencial oculto de tu facturación actual.</p></div><div class="relative w-full aspect-square max-w-sm rounded-[2.5rem] overflow-hidden bg-black/5 border border-black/10 group"><img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2000&auto=format&fit=crop" alt="A/B Testing UI" class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 border-[4px] border-white/50 rounded-[2.5rem] m-4 pointer-events-none"></div></div></div><div class="flex flex-col gap-12">${[
+		{
+			title: "Auditoría Heurística",
+			desc: "Nuestros expertos revisan tu web pantalla por pantalla buscando fricciones de usabilidad y errores cognitivos que asustan a los clientes."
+		},
+		{
+			title: "Minería de Datos (Heatmaps)",
+			desc: "Instalamos mapas de calor y grabaciones para ver exactamente dónde hacen clic los usuarios y en qué momento exacto deciden abandonar la web."
+		},
+		{
+			title: "Test A/B y Experimentación",
+			desc: "No implementamos cambios ciegamente. Lanzamos dos versiones de tu web simultáneamente para que los datos nos digan cuál genera más dinero."
+		},
+		{
+			title: "Implementación Definitiva",
+			desc: "Una vez que encontramos el diseño ganador, lo codificamos directamente en tu plataforma (Shopify, WordPress, Astro) para asegurar la máxima velocidad."
+		}
+	].map((step, i) => renderTemplate`<div class="step-card group relative p-10 rounded-[2rem] border border-black/5 bg-[#f8f9fa] shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] overflow-hidden" data-spotlight><div class="spotlight-glow"></div><div class="text-[80px] font-bold text-black/[0.03] absolute top-4 right-8 select-none transition-all group-hover:text-black/[0.06] font-serif italic">0${i + 1}</div><h3 class="relative z-10 text-2xl font-semibold text-black mb-4">${step.title}</h3><p class="relative z-10 text-[15px] leading-relaxed text-black/60">${step.desc}</p></div>`)}</div></div>` })}</section><section class="relative bg-[#fbfbfb] py-32 lg:py-48 border-t border-black/5 overflow-hidden"><div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div><div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-black/5 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>${renderComponent($$result, "Container", $$Container, { "class": "relative z-10 text-center" }, { "default": ($$result) => renderTemplate`<h2 class="gsap-title text-[clamp(3rem,5vw,5rem)] font-bold tracking-tight text-black mb-16" data-custom-speed="0.85">Pequeños cambios. <br><span class="italic font-serif font-normal text-black/50">Retornos exponenciales.</span></h2><div class="relative mx-auto max-w-5xl aspect-[16/10] md:aspect-[21/9] mb-20 rounded-[2.5rem] overflow-hidden bg-[#111] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/10 group" data-tilt="4"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" alt="Dashboard Conversiones" class="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div><div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 p-4 md:p-6 rounded-3xl bg-white/90 backdrop-blur-xl shadow-2xl border border-black/5 flex items-center gap-4 md:gap-6 animate-pulse-slow transition-transform hover:scale-105"><div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-600 font-bold text-lg md:text-xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div><div class="text-left"><div class="text-[10px] md:text-sm font-bold text-black uppercase tracking-wider">Tasa de Conversión</div><div class="text-xl md:text-2xl font-black text-black">4.82%</div></div></div></div><div class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2 relative overflow-hidden" data-spotlight><div class="spotlight-glow"></div><div class="relative z-10 text-5xl font-bold text-black mb-2">+<span class="roi-count" data-target="45">0</span>%</div><div class="relative z-10 text-[13px] uppercase tracking-widest text-black/40 font-bold">Aumento de Conversión</div></div><div class="p-10 rounded-[2.5rem] bg-black text-white border border-black/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform md:-translate-y-6 transition-all hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:-translate-y-8 relative overflow-hidden" data-spotlight><div class="spotlight-glow"></div><div class="relative z-10 text-6xl font-bold text-white mb-2">+<span class="roi-count" data-target="120">0</span>%</div><div class="relative z-10 text-[13px] uppercase tracking-widest text-white/80 font-bold">Mejora de ROAS (Anuncios)</div></div><div class="p-10 rounded-[2.5rem] bg-white border border-black/10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2 relative overflow-hidden" data-spotlight><div class="spotlight-glow"></div><div class="relative z-10 text-5xl font-bold text-black mb-2">&lt; <span class="roi-count" data-target="3">0</span> M</div><div class="relative z-10 text-[13px] uppercase tracking-widest text-black/40 font-bold">Retorno de Inversión (ROI)</div></div></div>` })}</section>${renderComponent($$result, "MarqueeTestimonials", $$MarqueeTestimonials, { "testimonials": conversionesTestimonials })}${renderComponent($$result, "ServiceCases", $$ServiceCases, { "service": "conversion" })}${renderComponent($$result, "Calculator", $$Calculator, { "mode": "conversiones" })}<section class="relative bg-white py-32 lg:py-40 border-t border-black/5">${renderComponent($$result, "Container", $$Container, {}, { "default": ($$result) => renderTemplate`<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-start relative"><div class="lg:sticky lg:top-40"><span class="text-[11px] font-semibold uppercase tracking-[.25em] text-black/40 mb-6 block">Transparencia Radical</span><h2 class="gsap-title text-[clamp(2.5rem,4vw,3.5rem)] font-bold tracking-tight text-black mb-6 leading-[1.1]">Dudas frecuentes sobre optimización de conversiones.</h2><p class="text-[16px] leading-relaxed text-black/60 max-w-sm">Sabemos que el CRO suena a magia negra, pero es pura estadística. Aquí resolvemos tus dudas.</p></div><div class="flex flex-col gap-6">${[
+		{
+			q: "¿Cuánto tráfico necesito para hacer Test A/B?",
+			a: "Para que un Test A/B tenga validez estadística (y no dependa de la suerte), recomendamos tener al menos 10,000 visitas mensuales. Si tienes menos, aplicamos Optimización Heurística y mejores prácticas validadas para subir tus ventas sin testeo."
+		},
+		{
+			q: "¿Esto aplica para Ecommerce o para webs de Servicios (Leads)?",
+			a: "¡Para ambos! En un Ecommerce optimizamos el porcentaje de usuarios que terminan pagando en el checkout. En empresas B2B o de servicios, optimizamos el porcentaje de visitas que llenan un formulario o agendan una llamada."
+		},
+		{
+			q: "¿Garantizan que voy a vender más?",
+			a: "Garantizamos encontrar y reparar exactamente dónde estás perdiendo dinero. Si tu tráfico está cualificado, tapar las fugas del embudo matemáticamente resultará en más ventas con la misma inversión."
+		}
+	].map((faq) => renderTemplate`<div class="group bg-[#f8f9fa] p-8 md:p-10 rounded-[2rem] border border-black/5 transition-colors hover:bg-white hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)] relative overflow-hidden" data-spotlight><div class="spotlight-glow"></div><h3 class="relative z-10 text-xl font-bold text-black mb-4 flex items-start gap-4"><span class="text-black/20 font-serif italic text-2xl leading-none pt-1 group-hover:text-black/40 transition-colors">Q.</span>${faq.q}</h3><p class="relative z-10 text-[15px] leading-relaxed text-black/60 pl-8 md:pl-10">${faq.a}</p></div>`)}</div></div>` })}</section>${renderComponent($$result, "ServiceHub", $$ServiceHub, { "current": "conversion" })}${renderComponent($$result, "Cta", $$Cta, {})}` })}${renderScript($$result, "C:/Users/bdela/Desktop/Croilab/src/pages/conversiones.astro?astro&type=script&index=0&lang.ts")}`;
+}, "C:/Users/bdela/Desktop/Croilab/src/pages/conversiones.astro", void 0);
+var $$file = "C:/Users/bdela/Desktop/Croilab/src/pages/conversiones.astro";
+var $$url = "/conversiones";
+//#endregion
+//#region \0virtual:astro:page:src/pages/conversiones@_@astro
+var page = () => conversiones_exports;
+//#endregion
+export { page };

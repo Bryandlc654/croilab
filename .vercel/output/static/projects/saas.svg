@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="SaaS de gestión">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1430"/>
+      <stop offset="1" stop-color="#05070f"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4aa4ff"/>
+      <stop offset="1" stop-color="#0878f9"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
+    <path d="M0 150H800M0 300H800M0 450H800M150 0V600M300 0V600M450 0V600M600 0V600"/>
+  </g>
+  <circle cx="680" cy="100" r="140" fill="#0878f9" opacity="0.18"/>
+  <circle cx="120" cy="520" r="90" fill="#0878f9" opacity="0.12"/>
+  <g>
+    <rect x="210" y="300" width="60" height="200" rx="30" fill="#0878f9" opacity="0.4"/>
+    <rect x="300" y="250" width="60" height="250" rx="30" fill="#0878f9" opacity="0.6"/>
+    <rect x="390" y="200" width="60" height="300" rx="30" fill="#0878f9" opacity="0.85"/>
+    <rect x="480" y="140" width="60" height="360" rx="30" fill="url(#bar)"/>
+  </g>
+  <path d="M200 380 280 320 360 260 440 190 520 120" fill="none" stroke="#4aa4ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="520" cy="120" r="14" fill="#4aa4ff"/>
+  <circle cx="520" cy="120" r="6" fill="#ffffff"/>
+</svg>

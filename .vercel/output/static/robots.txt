@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://croilab.com/sitemap-index.xml

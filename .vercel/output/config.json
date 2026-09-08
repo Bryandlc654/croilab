@@ -1,0 +1,104 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/blog/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/blog/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/casos/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/contacto/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/conversiones/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/diseno-web/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/ecommerce/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/equipo/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/gracias/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/marca-blanca/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/meta-ads/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/nosotros/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/portal-cliente/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/privacidad/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/proyectos/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/proyectos/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/seo/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/404/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/.*$",
+			"dest": "_render",
+			"status": 404
+		}
+	]
+}
