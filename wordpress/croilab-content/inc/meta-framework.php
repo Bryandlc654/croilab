@@ -95,6 +95,25 @@ class Croilab_Meta {
 		}
 
 		add_action( 'admin_init', array( __CLASS__, 'register_settings' ) );
+
+		add_action(
+			'rest_api_init',
+			function () {
+				register_rest_route(
+					'croilab/v1',
+					'/settings',
+					array(
+						'methods'             => WP_REST_Server::READABLE,
+						'callback'            => function () {
+							$data = get_option( 'croilab_options', array() );
+							return new WP_REST_Response( is_array( $data ) ? $data : array(), 200 );
+						},
+						'permission_callback' => '__return_true',
+					)
+				);
+			}
+		);
+
 		add_action( 'admin_footer', array( __CLASS__, 'media_script' ) );
 	}
 
@@ -565,24 +584,6 @@ class Croilab_Meta {
 					return $sanitized;
 				},
 			)
-		);
-
-		add_action(
-			'rest_api_init',
-			function () {
-				register_rest_route(
-					'croilab/v1',
-					'/settings',
-					array(
-						'methods'             => WP_REST_Server::READABLE,
-						'callback'            => function () {
-							$data = get_option( 'croilab_options', array() );
-							return new WP_REST_Response( is_array( $data ) ? $data : array(), 200 );
-						},
-						'permission_callback' => '__return_true',
-					)
-				);
-			}
 		);
 	}
 
