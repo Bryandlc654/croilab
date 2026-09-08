@@ -285,7 +285,9 @@ Croilab_Meta::add_settings(
 				array( 'name' => 'name',  'label' => 'Nombre', 'type' => 'text' ),
 				array( 'name' => 'short', 'label' => 'Subtítulo', 'type' => 'text' ),
 				array( 'name' => 'icon',  'label' => 'Icono (SVG path)', 'type' => 'textarea' ),
+				array( 'name' => 'image', 'label' => 'Logo (Imagen, opcional si usas SVG)', 'type' => 'image' ),
 			),
 		),
 	)
 );
+

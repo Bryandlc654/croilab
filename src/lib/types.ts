@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Modelos de contenido gestionados por WordPress (REST API).
  * Coinciden con la estructura de respuesta del WP REST API v2.
  * Los objetos HTML (`*.rendered`) se inyectan con `set:html` donde sea necesario.
@@ -181,7 +181,7 @@ export interface WpSettings {
   };
   social?: { name?: string; icon?: string; url?: string }[];
   differentiators?: { num?: string; title?: string; description?: string }[];
-  stack?: { name?: string; short?: string; icon?: string }[];
+  stack?: { name?: string; short?: string; icon?: string; image?: string }[];
 }
 
 /** Respuesta estándar de un endpoint REST con paginación */
@@ -190,3 +190,4 @@ export interface WpCollectionResponse<T> {
   total: number;
   totalPages: number;
 }
+

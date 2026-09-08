@@ -59,6 +59,14 @@ function croilab_content_render_options_page(): void {
 													$fval  = isset( $item[ $sf['name'] ] ) ? $item[ $sf['name'] ] : '';
 													if ( 'textarea' === $sf['type'] ) {
 														echo '<textarea name="' . esc_attr( $fname ) . '" rows="2" style="width:100%;">' . esc_textarea( (string) $fval ) . '</textarea>';
+													} elseif ( 'image' === $sf['type'] ) {
+														echo '<div style="display:flex;gap:10px;align-items:flex-start;">';
+														echo '<div style="flex:1;"><input type="url" name="' . esc_attr( $fname ) . '" value="' . esc_url( (string) $fval ) . '" class="regular-text croilab-image-input" style="width:100%;" /></div>';
+														echo '<div><button type="button" class="button croilab-image-btn" data-input="input[name=\'' . esc_attr( $fname ) . '\']">Seleccionar imagen</button></div>';
+														echo '</div>';
+														if ( $fval ) {
+															echo '<div style="margin-top:8px;"><img src="' . esc_url( (string) $fval ) . '" style="max-height:80px;max-width:100%;border:1px solid #ddd;border-radius:4px;padding:4px;background:#fff;" /></div>';
+														}
 													} elseif ( 'url' === $sf['type'] || 'email' === $sf['type'] ) {
 														echo '<input type="' . esc_attr( $sf['type'] ) . '" name="' . esc_attr( $fname ) . '" value="' . esc_attr( (string) $fval ) . '" style="width:100%;" />';
 													} else {
@@ -108,6 +116,13 @@ function croilab_content_render_options_page(): void {
 				var fname = "croilab_options[" + group + "][items][{i}][" + sf.name + "]";
 				if (sf.type === 'textarea') {
 					h += '<textarea name="' + fname + '" rows="2" style="width:100%;"></textarea>';
+				} else if (sf.type === 'image') {
+					h += '<div style="display:flex;gap:10px;align-items:flex-start;">';
+					h += '<div style="flex:1;"><input type="url" name="' + fname + '" class="regular-text croilab-image-input" style="width:100%;" /></div>';
+					h += '<div><button type="button" class="button croilab-image-btn" data-input="input[name=\'' + fname + '\']">Seleccionar imagen</button></div>';
+					h += '</div>';
+				} else if (false) {
+					h += '<textarea name="' + fname + '" rows="2" style="width:100%;"></textarea>';
 				} else {
 					var t = (sf.type === 'url' || sf.type === 'email') ? sf.type : 'text';
 					h += '<input type="' + t + '" name="' + fname + '" style="width:100%;" />';
@@ -137,3 +152,4 @@ function croilab_content_render_options_page(): void {
 	</script>
 	<?php
 }
+
