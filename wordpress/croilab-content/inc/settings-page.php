@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Página de administración de configuración global de Croilab.
  *
@@ -133,7 +133,7 @@ function croilab_content_render_options_page(): void {
 
 		$(document).on('click', '.croilab-settings-add', function () {
 			var group = $(this).data('group');
-			var spec = $('.croilab-settings-repeater[data-group="' + group + '"] + input').val();
+			var spec = $('.croilab-settings-repeater[data-group="' + group + '"] ~ input').val();
 			var subfields = JSON.parse(spec || '[]');
 			var list = $('.croilab-settings-repeater[data-group="' + group + '"]');
 			var idx = list.find('.croilab-settings-row').length;
@@ -152,4 +152,5 @@ function croilab_content_render_options_page(): void {
 	</script>
 	<?php
 }
+
 
