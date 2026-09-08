@@ -1,7 +1,8 @@
 ---
 import Container from './ui/Container.astro';
+import { getWpSettings } from '../lib/wp';
 
-const faqs = [
+const fallbackFaqs = [
   { 
     q: "¿Qué es exactamente lo que hacen?", 
     a: "Somos una agencia de ingeniería de conversiones. No diseñamos webs bonitas por diseñar. Construimos sistemas digitales completos: adquisición de tráfico (SEO, Meta Ads), diseño de landing pages de alta conversión, y optimización de embudos para que cada visita tenga la máxima probabilidad de convertirse en cliente." 
@@ -27,6 +28,18 @@ const faqs = [
     a: "1) Llamada de diagnóstico y alineación. 2) Propuesta estratégica con KPIs claros. 3) Onboarding y configuración (5-7 días). 4) Ejecución continua con reportes semanales. 5) Optimización mensual basada en datos. Tienes acceso a tu portal del cliente para seguir todo en tiempo real." 
   },
 ];
+
+let dynamicFaqs = [];
+try {
+  const settings = await getWpSettings();
+  if (settings.faq && settings.faq.length > 0) {
+    dynamicFaqs = settings.faq;
+  }
+} catch (e) {
+  console.error("Error fetching FAQ settings:", e);
+}
+
+const faqs = dynamicFaqs.length > 0 ? dynamicFaqs : fallbackFaqs;
 ---
 
 <section class="relative overflow-hidden border-t border-black/10 bg-[#f8f9fa]">

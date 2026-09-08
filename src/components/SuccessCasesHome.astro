@@ -1,6 +1,7 @@
 ---
 import Container from './ui/Container.astro';
-import { serviceCases } from '../data/serviceCases';
+import { serviceCases as fallbackCases } from '../data/serviceCases';
+import { getWpCases } from '../lib/wp';
 
 interface Parsed {
   prefix: string;
@@ -28,7 +29,32 @@ function barHeight(value: string): number {
   return Math.max(n, 12);
 }
 
-const panels = serviceCases.map((c) => ({
+let wpCases: any[] = [];
+try {
+  const { items } = await getWpCases({ per_page: '3' });
+  wpCases = items.map((c) => {
+    const data = c.croilab_caso || {};
+    return {
+      slug: c.slug,
+      client: data.client || c.title?.rendered || 'Cliente',
+      industry: data.industry || 'Industria',
+      image: data.image || '',
+      description: data.description || '',
+      result: data.result || '',
+      metric: data.metric || '',
+      solution: data.solution || '',
+      actions: (data.actions || []).map((a: any) => a.action),
+      metrics: data.metrics || []
+    };
+  });
+} catch (e) {
+  console.error("Error fetching cases:", e);
+}
+
+const casesToRender = wpCases.length > 0 ? wpCases : fallbackCases;
+
+const panels = casesToRender.map((c) => ({
+  slug: c.slug,
   client: c.client,
   industry: c.industry,
   image: c.image,
@@ -36,7 +62,7 @@ const panels = serviceCases.map((c) => ({
   result: parseResult(c.result, c.metric),
   achieved: c.solution,
   actions: c.actions.slice(0, 3),
-  bars: c.metrics.map((m) => ({ value: m.value, label: m.label, barHeight: barHeight(m.value) })),
+  bars: c.metrics.map((m: any) => ({ value: m.value, label: m.label, barHeight: barHeight(m.value) })),
 }));
 ---
 
@@ -102,7 +128,7 @@ const panels = serviceCases.map((c) => ({
                 <h3 class="text-2xl font-bold text-black tracking-tight mb-4">{p.client}</h3>
                 <p class="text-[15px] leading-relaxed text-black/60">{p.summary}</p>
               </div>
-              <a href={`/casos/${serviceCases[i].slug}`} class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-black group-hover:text-blue-600 transition-colors">
+              <a href={`/casos/${p.slug}`} class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-black group-hover:text-blue-600 transition-colors">
                 Ver caso completo
                 <span class="transition-transform group-hover:translate-x-1">→</span>
               </a>

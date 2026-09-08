@@ -1,6 +1,19 @@
 ---
-import { differentiators } from '../data/differentiators';
+import { differentiators as fallbackDiffs } from '../data/differentiators';
+import { getWpSettings } from '../lib/wp';
 import Container from './ui/Container.astro';
+
+let dynamicDiffs = [];
+try {
+  const settings = await getWpSettings();
+  if (settings.differentiators && settings.differentiators.length > 0) {
+    dynamicDiffs = settings.differentiators;
+  }
+} catch (e) {
+  console.error("Error fetching differentiators:", e);
+}
+
+const differentiators = dynamicDiffs.length > 0 ? dynamicDiffs : fallbackDiffs;
 ---
 
 <section class="relative overflow-hidden border-t border-black/10 bg-white text-black">

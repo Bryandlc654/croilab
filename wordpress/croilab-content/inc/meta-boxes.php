@@ -22,7 +22,8 @@ Croilab_Meta::add(
 		'post_types' => array( 'caso' ),
 		'prefix'     => 'croilab_caso_',
 		'fields'     => array(
-			array( 'name' => 'service',   'label' => 'Servicio',     'type' => 'select', 'choices' => array( 'seo' => 'SEO', 'ads' => 'Meta Ads', 'conversion' => 'Conversión' ) ),
+			array( 'name' => 'related_service', 'label' => 'Servicio Relacionado', 'type' => 'text' ),
+			array( 'name' => 'related_project', 'label' => 'Proyecto Relacionado', 'type' => 'text' ),
 			array( 'name' => 'client',    'label' => 'Cliente',      'type' => 'text' ),
 			array( 'name' => 'industry',  'label' => 'Sector / Industria', 'type' => 'text' ),
 			array( 'name' => 'result',    'label' => 'Resultado destacado (ej. +312%)', 'type' => 'text' ),
@@ -81,6 +82,9 @@ Croilab_Meta::add(
 			array( 'name' => 'author', 'label' => 'Autor',    'type' => 'text' ),
 			array( 'name' => 'role',   'label' => 'Cargo / empresa', 'type' => 'text' ),
 			array( 'name' => 'avatar', 'label' => 'Avatar (opcional)', 'type' => 'image' ),
+			array( 'name' => 'stars', 'label' => 'Estrellas', 'type' => 'text', 'instructions' => 'Ej: 5' ),
+			array( 'name' => 'related_service', 'label' => 'Servicio Relacionado', 'type' => 'text' ),
+			array( 'name' => 'related_project', 'label' => 'Proyecto Relacionado', 'type' => 'text' ),
 		),
 	)
 );
@@ -291,3 +295,17 @@ Croilab_Meta::add_settings(
 	)
 );
 
+
+Croilab_Meta::add_settings(
+	'faq',
+	array(
+		'items' => array(
+			'label'    => 'Preguntas Frecuentes',
+			'type'     => 'repeater',
+			'sub_fields' => array(
+				array( 'name' => 'q', 'label' => 'Pregunta', 'type' => 'text' ),
+				array( 'name' => 'a', 'label' => 'Respuesta', 'type' => 'textarea' ),
+			),
+		),
+	)
+);

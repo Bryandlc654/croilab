@@ -1,5 +1,6 @@
-﻿---
-import { services } from '../data/services';
+---
+import { services as fallbackServices } from '../data/services';
+import { getWpServices } from '../lib/wp';
 import Container from './ui/Container.astro';
 
 // Clases para lograr la asimetría del Bento Grid (3 columnas en Desktop)
@@ -10,6 +11,26 @@ const bentoClasses = [
   "md:col-span-2 md:row-span-1", // 04: Rectángulo ancho horizontal
   "md:col-span-1 md:row-span-1"  // 05: Cuadrado pequeño
 ];
+
+let dynamicServices = [];
+try {
+  const { items } = await getWpServices({ per_page: '20' });
+  dynamicServices = items.map(s => {
+    const data = s.croilab_servicio || {};
+    return {
+      num: data.num || '00',
+      name: s.title?.rendered || 'Servicio',
+      slug: s.slug,
+      desc: data.desc || '',
+      icon: data.icon || '',
+      features: data.features || []
+    };
+  });
+} catch (e) {
+  console.error("Error fetching services:", e);
+}
+
+const services = dynamicServices.length > 0 ? dynamicServices : fallbackServices;
 ---
 
 <section id="servicios" class="border-t border-black/10 bg-white relative overflow-hidden">
@@ -40,383 +61,279 @@ const bentoClasses = [
       </p>
     </div>
 
-    <!-- BENTO GRID -->
+    
+    <!-- BENTO GRID DINÁMICO -->
     <div class="grid w-full grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
-      
-      <!-- 01: SEO (Grande) -->
-      <a href="/seo" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-2 md:row-span-2" data-speed="0.03" data-spotlight>
-        <div class="spotlight-glow"></div>
-        <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
-        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-black/[0.02] transition duration-700 group-hover:text-black/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">01</span>
-        
-        <!-- MOCKUP: SEARCH CONSOLE PREMIUM -->
-        <div class="absolute right-8 top-12 w-[340px] rounded-2xl border border-black/10 bg-white/90 backdrop-blur-xl p-5 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
+      {services.map((s, idx) => (
+        <a href={/} class={
+eveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between } data-speed="0.03" data-spotlight>
+          <div class="spotlight-glow"></div>
+          <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
+          <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
+          <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-black/[0.02] transition duration-700 group-hover:text-black/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">{s.num}</span>
           
-          <!-- Header / Filters -->
-          <div class="flex justify-between items-center mb-4">
-            <div class="flex gap-2 items-center">
-              <div class="h-4 w-4 bg-blue-500 rounded-sm flex items-center justify-center shadow-[0_0_10px_rgba(59,130,246,0.5)]">
-                <svg class="w-3 h-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          {s.slug === 'seo' && (
+            <Fragment set:html={\<\!\-\-\ \M\O\C\K\U\P\:\ \S\E\A\R\C\H\ \C\O\N\S\O\L\E\ \P\R\E\M\I\U\M\ \-\-\>\
+\ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \r\i\g\h\t\-\8\ \t\o\p\-\1\2\ \w\-\[\3\4\0\p\x\]\ \r\o\u\n\d\e\d\-\2\x\l\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\1\0\ \b\g\-\w\h\i\t\e\/\9\0\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\x\l\ \p\-\5\ \p\o\i\n\t\e\r\-\e\v\e\n\t\s\-\n\o\n\e\ \o\p\a\c\i\t\y\-\2\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \g\r\o\u\p\-\h\o\v\e\r\:\-\t\r\a\n\s\l\a\t\e\-\y\-\2\ \s\h\a\d\o\w\-\2\x\l\ \z\-\1\0\ \h\i\d\d\e\n\ \m\d\:\b\l\o\c\k\"\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \H\e\a\d\e\r\ \/\ \F\i\l\t\e\r\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \i\t\e\m\s\-\c\e\n\t\e\r\ \m\b\-\4\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \g\a\p\-\2\ \i\t\e\m\s\-\c\e\n\t\e\r\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\4\ \w\-\4\ \b\g\-\b\l\u\e\-\5\0\0\ \r\o\u\n\d\e\d\-\s\m\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\c\e\n\t\e\r\ \s\h\a\d\o\w\-\[\0\_\0\_\1\0\p\x\_\r\g\b\a\(\5\9\,\1\3\0\,\2\4\6\,\0\.\5\)\]\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\v\g\ \c\l\a\s\s\=\"\w\-\3\ \h\-\3\ \t\e\x\t\-\b\l\a\c\k\"\ \f\i\l\l\=\"\n\o\n\e\"\ \s\t\r\o\k\e\=\"\c\u\r\r\e\n\t\C\o\l\o\r\"\ \v\i\e\w\B\o\x\=\"\0\ \0\ \2\4\ \2\4\"\>\<\p\a\t\h\ \s\t\r\o\k\e\-\l\i\n\e\c\a\p\=\"\r\o\u\n\d\"\ \s\t\r\o\k\e\-\l\i\n\e\j\o\i\n\=\"\r\o\u\n\d\"\ \s\t\r\o\k\e\-\w\i\d\t\h\=\"\2\"\ \d\=\"\M\2\1\ \2\1\l\-\6\-\6\m\2\-\5\a\7\ \7\ \0\ \1\1\-\1\4\ \0\ \7\ \7\ \0\ \0\1\1\4\ \0\z\"\>\<\/\p\a\t\h\>\<\/\s\v\g\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\3\ \w\-\2\4\ \b\g\-\b\l\a\c\k\/\2\0\ \r\o\u\n\d\e\d\-\f\u\l\l\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\3\ \w\-\1\2\ \b\g\-\b\l\a\c\k\/\1\0\ \r\o\u\n\d\e\d\-\f\u\l\l\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \4\ \M\e\t\r\i\c\ \C\a\r\d\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\g\r\i\d\ \g\r\i\d\-\c\o\l\s\-\4\ \g\a\p\-\2\ \m\b\-\4\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\l\i\c\k\s\ \(\A\c\t\i\v\e\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\b\g\-\b\l\u\e\-\5\0\0\/\1\0\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\5\0\0\/\3\0\ \r\o\u\n\d\e\d\ \p\-\2\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \d\e\l\a\y\-\7\5\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\8\p\x\]\ \t\e\x\t\-\b\l\u\e\-\4\0\0\/\7\0\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\s\e\m\i\b\o\l\d\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\C\l\i\c\s\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\s\m\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\u\e\-\4\0\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\ \s\t\y\l\e\=\"\t\e\x\t\-\s\h\a\d\o\w\:\ \0\ \0\ \8\p\x\ \r\g\b\a\(\9\6\,\1\6\5\,\2\5\0\,\0\.\4\)\"\>\1\2\4\K\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \I\m\p\r\e\s\s\i\o\n\s\ \(\A\c\t\i\v\e\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\b\g\-\p\u\r\p\l\e\-\5\0\0\/\1\0\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\p\u\r\p\l\e\-\5\0\0\/\3\0\ \r\o\u\n\d\e\d\ \p\-\2\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \d\e\l\a\y\-\1\5\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\8\p\x\]\ \t\e\x\t\-\p\u\r\p\l\e\-\4\0\0\/\7\0\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\s\e\m\i\b\o\l\d\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\I\m\p\r\e\s\.\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\s\m\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\p\u\r\p\l\e\-\4\0\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\2\.\4\M\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\T\R\ \(\I\n\a\c\t\i\v\e\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\b\g\-\b\l\a\c\k\/\5\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\ \p\-\2\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \d\e\l\a\y\-\2\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\8\p\x\]\ \t\e\x\t\-\b\l\a\c\k\/\4\0\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\s\e\m\i\b\o\l\d\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\C\T\R\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\s\m\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\5\.\2\%\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \P\o\s\i\t\i\o\n\ \(\I\n\a\c\t\i\v\e\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\b\g\-\b\l\a\c\k\/\5\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\ \p\-\2\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \d\e\l\a\y\-\3\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\8\p\x\]\ \t\e\x\t\-\b\l\a\c\k\/\4\0\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\s\e\m\i\b\o\l\d\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\P\o\s\.\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\s\m\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\1\2\.\4\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\h\a\r\t\ \A\r\e\a\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\r\e\l\a\t\i\v\e\ \h\-\2\8\ \w\-\f\u\l\l\ \m\t\-\2\ \b\o\r\d\e\r\-\t\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \p\t\-\3\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \G\r\i\d\ \L\i\n\e\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \i\n\s\e\t\-\0\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \p\t\-\3\ \p\b\-\1\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\p\x\ \b\g\-\b\l\a\c\k\/\5\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\p\x\ \b\g\-\b\l\a\c\k\/\5\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\p\x\ \b\g\-\b\l\a\c\k\/\5\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \S\V\G\ \L\i\n\e\ \C\h\a\r\t\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\v\g\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \i\n\s\e\t\-\0\ \h\-\f\u\l\l\ \w\-\f\u\l\l\"\ \v\i\e\w\B\o\x\=\"\0\ \0\ \1\0\0\ \4\0\"\ \p\r\e\s\e\r\v\e\A\s\p\e\c\t\R\a\t\i\o\=\"\n\o\n\e\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\e\f\s\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \B\l\u\e\ \G\r\a\d\i\e\n\t\ \f\o\r\ \C\l\i\c\k\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\l\i\n\e\a\r\G\r\a\d\i\e\n\t\ \i\d\=\"\g\s\c\B\l\u\e\"\ \x\1\=\"\0\"\ \y\1\=\"\0\"\ \x\2\=\"\0\"\ \y\2\=\"\1\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\t\o\p\ \o\f\f\s\e\t\=\"\0\%\"\ \s\t\o\p\-\c\o\l\o\r\=\"\#\3\b\8\2\f\6\"\ \s\t\o\p\-\o\p\a\c\i\t\y\=\"\0\.\3\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\t\o\p\ \o\f\f\s\e\t\=\"\1\0\0\%\"\ \s\t\o\p\-\c\o\l\o\r\=\"\#\3\b\8\2\f\6\"\ \s\t\o\p\-\o\p\a\c\i\t\y\=\"\0\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\l\i\n\e\a\r\G\r\a\d\i\e\n\t\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \P\u\r\p\l\e\ \G\r\a\d\i\e\n\t\ \f\o\r\ \I\m\p\r\e\s\s\i\o\n\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\l\i\n\e\a\r\G\r\a\d\i\e\n\t\ \i\d\=\"\g\s\c\P\u\r\p\l\e\"\ \x\1\=\"\0\"\ \y\1\=\"\0\"\ \x\2\=\"\0\"\ \y\2\=\"\1\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\t\o\p\ \o\f\f\s\e\t\=\"\0\%\"\ \s\t\o\p\-\c\o\l\o\r\=\"\#\a\8\5\5\f\7\"\ \s\t\o\p\-\o\p\a\c\i\t\y\=\"\0\.\1\5\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\t\o\p\ \o\f\f\s\e\t\=\"\1\0\0\%\"\ \s\t\o\p\-\c\o\l\o\r\=\"\#\a\8\5\5\f\7\"\ \s\t\o\p\-\o\p\a\c\i\t\y\=\"\0\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\l\i\n\e\a\r\G\r\a\d\i\e\n\t\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\e\f\s\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \P\u\r\p\l\e\ \A\r\e\a\ \&\ \L\i\n\e\ \(\I\m\p\r\e\s\s\i\o\n\s\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\p\a\t\h\ \d\=\"\M\0\,\3\8\ \C\1\5\,\3\5\ \2\5\,\2\5\ \4\0\,\2\8\ \C\5\5\,\3\0\ \7\0\,\1\5\ \8\5\,\1\0\ \L\1\0\0\,\2\ \L\1\0\0\,\4\0\ \L\0\,\4\0\ \Z\"\ \f\i\l\l\=\"\u\r\l\(\#\g\s\c\P\u\r\p\l\e\)\"\ \c\l\a\s\s\=\"\o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\o\p\a\c\i\t\y\ \d\u\r\a\t\i\o\n\-\1\0\0\0\ \d\e\l\a\y\-\5\0\0\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\p\a\t\h\ \d\=\"\M\0\,\3\8\ \C\1\5\,\3\5\ \2\5\,\2\5\ \4\0\,\2\8\ \C\5\5\,\3\0\ \7\0\,\1\5\ \8\5\,\1\0\ \L\1\0\0\,\2\"\ \f\i\l\l\=\"\n\o\n\e\"\ \s\t\r\o\k\e\=\"\#\a\8\5\5\f\7\"\ \s\t\r\o\k\e\-\w\i\d\t\h\=\"\1\"\ \s\t\r\o\k\e\-\d\a\s\h\a\r\r\a\y\=\"\2\"\ \c\l\a\s\s\=\"\o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\o\p\a\c\i\t\y\ \d\u\r\a\t\i\o\n\-\1\0\0\0\ \d\e\l\a\y\-\5\0\0\"\ \/\>\
+\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \B\l\u\e\ \A\r\e\a\ \&\ \L\i\n\e\ \(\C\l\i\c\k\s\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\p\a\t\h\ \d\=\"\M\0\,\3\5\ \C\2\0\,\3\5\ \3\0\,\1\5\ \5\0\,\2\5\ \C\7\0\,\3\5\ \8\5\,\1\0\ \1\0\0\,\5\ \L\1\0\0\,\4\0\ \L\0\,\4\0\ \Z\"\ \f\i\l\l\=\"\u\r\l\(\#\g\s\c\B\l\u\e\)\"\ \c\l\a\s\s\=\"\o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\o\p\a\c\i\t\y\ \d\u\r\a\t\i\o\n\-\1\0\0\0\ \d\e\l\a\y\-\5\0\0\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\p\a\t\h\ \d\=\"\M\0\,\3\5\ \C\2\0\,\3\5\ \3\0\,\1\5\ \5\0\,\2\5\ \C\7\0\,\3\5\ \8\5\,\1\0\ \1\0\0\,\5\"\ \f\i\l\l\=\"\n\o\n\e\"\ \s\t\r\o\k\e\=\"\#\6\0\a\5\f\a\"\ \s\t\r\o\k\e\-\w\i\d\t\h\=\"\1\.\5\"\ \c\l\a\s\s\=\"\s\t\r\o\k\e\-\d\a\s\h\a\r\r\a\y\-\1\5\0\ \s\t\r\o\k\e\-\d\a\s\h\o\f\f\s\e\t\-\1\5\0\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\d\r\a\w\_\1\.\5\s\_\e\a\s\e\-\o\u\t\_\f\o\r\w\a\r\d\s\]\"\ \s\t\y\l\e\=\"\a\n\i\m\a\t\i\o\n\-\d\e\l\a\y\:\ \2\0\0\m\s\;\"\ \/\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\s\v\g\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \A\n\i\m\a\t\e\d\ \S\c\a\n\n\e\r\ \/\ \T\o\o\l\t\i\p\ \L\i\n\e\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \t\o\p\-\3\ \b\o\t\t\o\m\-\0\ \w\-\[\1\p\x\]\ \b\g\-\b\l\a\c\k\/\2\0\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\s\c\a\n\-\x\_\6\s\_\e\a\s\e\-\i\n\-\o\u\t\_\i\n\f\i\n\i\t\e\]\ \d\e\l\a\y\-\1\0\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \t\o\p\-\[\2\0\%\]\ \l\e\f\t\-\1\/\2\ \-\t\r\a\n\s\l\a\t\e\-\x\-\1\/\2\ \w\-\2\.\5\ \h\-\2\.\5\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\g\-\b\l\u\e\-\4\0\0\ \s\h\a\d\o\w\-\[\0\_\0\_\1\2\p\x\_\#\6\0\a\5\f\a\]\ \b\o\r\d\e\r\-\2\ \b\o\r\d\e\r\-\[\#\1\6\1\6\1\6\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \<\/\d\i\v\>\} />
+          )}
+          {s.slug === 'meta-ads' && (
+            <Fragment set:html={\<\!\-\-\ \M\O\C\K\U\P\:\ \M\E\T\A\ \A\D\S\ \P\R\E\M\I\U\M\ \-\-\>\
+\ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \r\i\g\h\t\-\6\ \t\o\p\-\8\ \w\-\[\2\0\0\p\x\]\ \r\o\u\n\d\e\d\-\x\l\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\1\0\ \b\g\-\w\h\i\t\e\/\9\0\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\m\d\ \p\-\4\ \p\o\i\n\t\e\r\-\e\v\e\n\t\s\-\n\o\n\e\ \o\p\a\c\i\t\y\-\2\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \g\r\o\u\p\-\h\o\v\e\r\:\-\t\r\a\n\s\l\a\t\e\-\y\-\2\ \s\h\a\d\o\w\-\2\x\l\ \z\-\1\0\ \h\i\d\d\e\n\ \m\d\:\b\l\o\c\k\"\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \S\t\a\t\u\s\ \B\a\r\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \g\a\p\-\2\ \m\b\-\3\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\r\e\l\a\t\i\v\e\ \f\l\e\x\ \h\-\2\ \w\-\2\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\a\n\i\m\a\t\e\-\p\i\n\g\ \a\b\s\o\l\u\t\e\ \i\n\l\i\n\e\-\f\l\e\x\ \h\-\f\u\l\l\ \w\-\f\u\l\l\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\g\-\g\r\e\e\n\-\4\0\0\ \o\p\a\c\i\t\y\-\7\5\"\>\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\r\e\l\a\t\i\v\e\ \i\n\l\i\n\e\-\f\l\e\x\ \r\o\u\n\d\e\d\-\f\u\l\l\ \h\-\2\ \w\-\2\ \b\g\-\g\r\e\e\n\-\5\0\0\"\>\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\2\ \w\-\2\0\ \b\g\-\b\l\a\c\k\/\3\0\ \r\o\u\n\d\e\d\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \M\e\t\r\i\c\:\ \R\O\A\S\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\b\g\-\b\l\u\e\-\5\0\0\/\1\0\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\5\0\0\/\2\0\ \r\o\u\n\d\e\d\ \p\-\2\ \m\b\-\2\ \f\l\e\x\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \i\t\e\m\s\-\e\n\d\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\x\-\4\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\x\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\1\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\.\5\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\8\ \b\g\-\b\l\u\e\-\4\0\0\/\5\0\ \r\o\u\n\d\e\d\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \g\a\p\-\1\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\1\1\p\x\]\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\u\e\-\4\0\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\4\.\8\x\ \R\O\A\S\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \g\a\p\-\0\.\5\ \i\t\e\m\s\-\e\n\d\ \h\-\4\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\ \b\g\-\b\l\u\e\-\5\0\0\/\4\0\ \h\-\[\4\0\%\]\ \r\o\u\n\d\e\d\-\t\-\s\m\ \o\r\i\g\i\n\-\b\o\t\t\o\m\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\g\r\o\w\_\1\s\_\e\a\s\e\-\o\u\t\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\ \b\g\-\b\l\u\e\-\5\0\0\/\6\0\ \h\-\[\7\0\%\]\ \r\o\u\n\d\e\d\-\t\-\s\m\ \o\r\i\g\i\n\-\b\o\t\t\o\m\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\g\r\o\w\_\1\s\_\e\a\s\e\-\o\u\t\_\0\.\1\s\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\ \b\g\-\b\l\u\e\-\4\0\0\ \h\-\[\1\0\0\%\]\ \r\o\u\n\d\e\d\-\t\-\s\m\ \o\r\i\g\i\n\-\b\o\t\t\o\m\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\g\r\o\w\_\1\s\_\e\a\s\e\-\o\u\t\_\0\.\2\s\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \M\e\t\r\i\c\:\ \C\P\A\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\b\g\-\b\l\a\c\k\/\5\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\ \p\-\2\ \m\b\-\3\ \f\l\e\x\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \i\t\e\m\s\-\c\e\n\t\e\r\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\x\-\4\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\x\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\2\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\.\5\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\8\ \b\g\-\b\l\a\c\k\/\2\0\ \r\o\u\n\d\e\d\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\1\0\p\x\]\ \f\o\n\t\-\s\e\m\i\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\$\1\2\.\5\0\ \C\P\A\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\4\ \w\-\4\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\o\r\d\e\r\-\2\ \b\o\r\d\e\r\-\b\l\a\c\k\/\2\0\ \b\o\r\d\e\r\-\t\-\g\r\e\e\n\-\4\0\0\ \a\n\i\m\a\t\e\-\s\p\i\n\"\ \s\t\y\l\e\=\"\a\n\i\m\a\t\i\o\n\-\d\u\r\a\t\i\o\n\:\ \2\s\;\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \T\a\r\g\e\t\ \A\u\d\i\e\n\c\e\ \D\o\t\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\r\e\l\a\t\i\v\e\ \h\-\1\2\ \w\-\f\u\l\l\ \b\o\r\d\e\r\-\t\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \p\t\-\2\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\c\e\n\t\e\r\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\3\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \i\n\s\e\t\-\0\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\c\e\n\t\e\r\ \o\p\a\c\i\t\y\-\3\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\8\ \h\-\8\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\5\0\0\/\5\0\ \a\b\s\o\l\u\t\e\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\6\ \h\-\1\6\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\5\0\0\/\3\0\ \a\b\s\o\l\u\t\e\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\1\.\5\ \b\g\-\b\l\u\e\-\4\0\0\ \r\o\u\n\d\e\d\-\f\u\l\l\ \s\h\a\d\o\w\-\[\0\_\0\_\8\p\x\_\#\6\0\a\5\f\a\]\ \a\n\i\m\a\t\e\-\p\u\l\s\e\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \w\-\1\ \h\-\1\ \b\g\-\w\h\i\t\e\ \r\o\u\n\d\e\d\-\f\u\l\l\ \t\o\p\-\3\ \l\e\f\t\-\4\ \a\n\i\m\a\t\e\-\p\i\n\g\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \w\-\1\ \h\-\1\ \b\g\-\w\h\i\t\e\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\o\t\t\o\m\-\3\ \r\i\g\h\t\-\5\ \a\n\i\m\a\t\e\-\p\i\n\g\"\ \s\t\y\l\e\=\"\a\n\i\m\a\t\i\o\n\-\d\u\r\a\t\i\o\n\:\ \1\.\5\s\;\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \<\/\d\i\v\>\} />
+          )}
+          {s.slug === 'diseno-web' && (
+            <Fragment set:html={\<\!\-\-\ \M\O\C\K\U\P\:\ \P\R\E\M\I\U\M\ \W\E\B\ \D\E\S\I\G\N\ \(\U\I\ \E\D\I\T\O\R\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \r\i\g\h\t\-\4\ \t\o\p\-\8\ \w\-\[\1\8\0\p\x\]\ \r\o\u\n\d\e\d\-\l\g\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\1\0\ \b\g\-\w\h\i\t\e\/\9\0\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\m\d\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\ \p\o\i\n\t\e\r\-\e\v\e\n\t\s\-\n\o\n\e\ \o\p\a\c\i\t\y\-\2\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \g\r\o\u\p\-\h\o\v\e\r\:\-\t\r\a\n\s\l\a\t\e\-\y\-\2\ \s\h\a\d\o\w\-\2\x\l\ \z\-\1\0\ \h\i\d\d\e\n\ \m\d\:\b\l\o\c\k\"\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \M\a\c\O\S\ \T\o\o\l\b\a\r\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \g\a\p\-\1\.\5\ \b\o\r\d\e\r\-\b\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \p\x\-\3\ \p\y\-\2\ \b\g\-\w\h\i\t\e\/\[\0\.\0\2\]\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\.\5\ \h\-\1\.\5\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\g\-\r\e\d\-\4\0\0\/\8\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\.\5\ \h\-\1\.\5\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\g\-\y\e\l\l\o\w\-\4\0\0\/\8\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\.\5\ \h\-\1\.\5\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\g\-\g\r\e\e\n\-\4\0\0\/\8\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \E\d\i\t\o\r\ \C\a\n\v\a\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\p\-\3\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\2\ \r\e\l\a\t\i\v\e\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \H\e\r\o\ \B\l\o\c\k\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \f\l\e\x\ \g\a\p\-\2\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\-\1\ \f\l\e\x\ \f\l\e\x\-\c\o\l\ \g\a\p\-\1\.\5\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\2\ \w\-\f\u\l\l\ \b\g\-\b\l\a\c\k\/\2\0\ \r\o\u\n\d\e\d\-\s\m\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\2\ \w\-\3\/\4\ \b\g\-\b\l\a\c\k\/\1\0\ \r\o\u\n\d\e\d\-\s\m\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\1\/\2\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\-\s\m\ \m\t\-\1\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\T\A\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\3\ \w\-\1\0\ \b\g\-\b\l\u\e\-\5\0\0\ \r\o\u\n\d\e\d\-\s\m\ \m\t\-\1\ \r\e\l\a\t\i\v\e\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \g\r\o\u\p\-\h\o\v\e\r\:\s\h\a\d\o\w\-\[\0\_\0\_\8\p\x\_\r\g\b\a\(\5\9\,\1\3\0\,\2\4\6\,\0\.\6\)\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \I\m\a\g\e\ \B\l\o\c\k\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\2\ \h\-\1\2\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\c\e\n\t\e\r\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \r\e\l\a\t\i\v\e\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \i\n\s\e\t\-\0\ \b\g\-\g\r\a\d\i\e\n\t\-\t\o\-\t\r\ \f\r\o\m\-\b\l\u\e\-\5\0\0\/\1\0\ \t\o\-\t\r\a\n\s\p\a\r\e\n\t\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\o\p\a\c\i\t\y\ \d\u\r\a\t\i\o\n\-\1\0\0\0\ \d\e\l\a\y\-\5\0\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\v\g\ \c\l\a\s\s\=\"\w\-\4\ \h\-\4\ \t\e\x\t\-\b\l\a\c\k\/\2\0\"\ \f\i\l\l\=\"\n\o\n\e\"\ \s\t\r\o\k\e\=\"\c\u\r\r\e\n\t\C\o\l\o\r\"\ \v\i\e\w\B\o\x\=\"\0\ \0\ \2\4\ \2\4\"\>\<\p\a\t\h\ \s\t\r\o\k\e\-\l\i\n\e\c\a\p\=\"\r\o\u\n\d\"\ \s\t\r\o\k\e\-\l\i\n\e\j\o\i\n\=\"\r\o\u\n\d\"\ \s\t\r\o\k\e\-\w\i\d\t\h\=\"\1\.\5\"\ \d\=\"\M\4\ \1\6\l\4\.\5\8\6\-\4\.\5\8\6\a\2\ \2\ \0\ \0\1\2\.\8\2\8\ \0\L\1\6\ \1\6\m\-\2\-\2\l\1\.\5\8\6\-\1\.\5\8\6\a\2\ \2\ \0\ \0\1\2\.\8\2\8\ \0\L\2\0\ \1\4\m\-\6\-\6\h\.\0\1\M\6\ \2\0\h\1\2\a\2\ \2\ \0\ \0\0\2\-\2\V\6\a\2\ \2\ \0\ \0\0\-\2\-\2\H\6\a\2\ \2\ \0\ \0\0\-\2\ \2\v\1\2\a\2\ \2\ \0\ \0\0\2\ \2\z\"\>\<\/\p\a\t\h\>\<\/\s\v\g\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \F\e\a\t\u\r\e\s\ \R\o\w\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \g\a\p\-\2\ \w\-\f\u\l\l\ \m\t\-\1\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\-\1\ \h\-\6\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\-\s\m\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\2\0\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\-\1\ \h\-\6\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\-\s\m\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\3\0\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\-\1\ \h\-\6\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\-\s\m\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\4\0\0\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \M\o\u\s\e\ \C\u\r\s\o\r\ \A\n\i\m\a\t\i\o\n\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \b\o\t\t\o\m\-\[\-\5\p\x\]\ \r\i\g\h\t\-\[\-\5\p\x\]\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\c\u\r\s\o\r\-\m\o\v\e\_\3\s\_\e\a\s\e\-\i\n\-\o\u\t\_\i\n\f\i\n\i\t\e\]\ \z\-\2\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\v\g\ \w\i\d\t\h\=\"\1\4\"\ \h\e\i\g\h\t\=\"\1\4\"\ \v\i\e\w\B\o\x\=\"\0\ \0\ \2\4\ \2\4\"\ \f\i\l\l\=\"\w\h\i\t\e\"\ \s\t\r\o\k\e\=\"\b\l\a\c\k\"\ \s\t\r\o\k\e\-\w\i\d\t\h\=\"\1\.\5\"\>\<\p\a\t\h\ \d\=\"\M\4\ \2\v\2\0\l\5\.\5\-\5\.\5\H\1\8\L\4\ \2\z\"\/\>\<\/\s\v\g\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\l\i\c\k\ \R\i\p\p\l\e\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \t\o\p\-\[\-\2\p\x\]\ \l\e\f\t\-\[\-\2\p\x\]\ \w\-\4\ \h\-\4\ \r\o\u\n\d\e\d\-\f\u\l\l\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\4\0\0\ \s\c\a\l\e\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\c\l\i\c\k\-\r\i\p\p\l\e\_\3\s\_\e\a\s\e\-\i\n\-\o\u\t\_\i\n\f\i\n\i\t\e\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \<\/\d\i\v\>\} />
+          )}
+          {s.slug === 'ecommerce' && (
+            <Fragment set:html={\<\!\-\-\ \M\O\C\K\U\P\:\ \E\C\O\M\M\E\R\C\E\ \P\R\E\M\I\U\M\ \(\F\A\N\ \O\U\T\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \r\i\g\h\t\-\8\ \t\o\p\-\1\/\2\ \-\t\r\a\n\s\l\a\t\e\-\y\-\1\/\2\ \w\-\[\1\2\0\p\x\]\ \h\-\[\1\2\0\p\x\]\ \p\o\i\n\t\e\r\-\e\v\e\n\t\s\-\n\o\n\e\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\c\e\n\t\e\r\ \z\-\1\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\a\r\d\ \1\ \(\B\o\t\t\o\m\,\ \m\o\v\e\s\ \l\e\f\t\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \w\-\[\1\1\0\p\x\]\ \b\g\-\w\h\i\t\e\/\9\5\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\1\0\ \r\o\u\n\d\e\d\-\l\g\ \p\-\2\ \s\h\a\d\o\w\-\x\l\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\m\d\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \e\a\s\e\-\o\u\t\ \t\r\a\n\s\f\o\r\m\ \g\r\o\u\p\-\h\o\v\e\r\:\-\t\r\a\n\s\l\a\t\e\-\x\-\1\6\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\2\ \g\r\o\u\p\-\h\o\v\e\r\:\-\r\o\t\a\t\e\-\1\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\6\0\ \z\-\1\0\ \d\e\l\a\y\-\1\0\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\1\0\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\ \m\b\-\2\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\3\/\4\ \b\g\-\b\l\a\c\k\/\2\0\ \r\o\u\n\d\e\d\ \m\b\-\1\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\2\.\5\ \w\-\1\/\3\ \b\g\-\b\l\u\e\-\5\0\0\/\3\0\ \r\o\u\n\d\e\d\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\a\r\d\ \2\ \(\M\i\d\d\l\e\,\ \m\o\v\e\s\ \r\i\g\h\t\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \w\-\[\1\1\0\p\x\]\ \b\g\-\w\h\i\t\e\/\9\5\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\1\0\ \r\o\u\n\d\e\d\-\l\g\ \p\-\2\ \s\h\a\d\o\w\-\x\l\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\m\d\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \e\a\s\e\-\o\u\t\ \t\r\a\n\s\f\o\r\m\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\x\-\1\6\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\2\ \g\r\o\u\p\-\h\o\v\e\r\:\r\o\t\a\t\e\-\1\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\6\0\ \z\-\2\0\ \d\e\l\a\y\-\1\5\0\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\1\0\ \b\g\-\b\l\a\c\k\/\5\ \r\o\u\n\d\e\d\ \m\b\-\2\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\3\/\4\ \b\g\-\b\l\a\c\k\/\2\0\ \r\o\u\n\d\e\d\ \m\b\-\1\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\2\.\5\ \w\-\1\/\3\ \b\g\-\p\u\r\p\l\e\-\5\0\0\/\3\0\ \r\o\u\n\d\e\d\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \C\a\r\d\ \3\ \(\T\o\p\,\ \M\a\i\n\)\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \w\-\[\1\3\0\p\x\]\ \b\g\-\w\h\i\t\e\/\9\5\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\2\0\ \r\o\u\n\d\e\d\-\l\g\ \p\-\2\.\5\ \s\h\a\d\o\w\-\2\x\l\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\x\l\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \e\a\s\e\-\o\u\t\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\4\ \g\r\o\u\p\-\h\o\v\e\r\:\-\t\r\a\n\s\l\a\t\e\-\y\-\8\ \g\r\o\u\p\-\h\o\v\e\r\:\s\c\a\l\e\-\1\1\0\ \o\p\a\c\i\t\y\-\3\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \z\-\3\0\ \s\h\a\d\o\w\-\[\0\_\2\0\p\x\_\4\0\p\x\_\r\g\b\a\(\0\,\0\,\0\,\0\.\5\)\]\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\1\4\ \b\g\-\g\r\a\d\i\e\n\t\-\t\o\-\t\r\ \f\r\o\m\-\b\l\u\e\-\5\0\0\/\2\0\ \t\o\-\t\r\a\n\s\p\a\r\e\n\t\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\5\0\0\/\2\0\ \r\o\u\n\d\e\d\ \m\b\-\2\.\5\ \r\e\l\a\t\i\v\e\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\c\e\n\t\e\r\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\v\g\ \c\l\a\s\s\=\"\w\-\5\ \h\-\5\ \t\e\x\t\-\b\l\u\e\-\4\0\0\ \o\p\a\c\i\t\y\-\8\0\"\ \f\i\l\l\=\"\n\o\n\e\"\ \s\t\r\o\k\e\=\"\c\u\r\r\e\n\t\C\o\l\o\r\"\ \v\i\e\w\B\o\x\=\"\0\ \0\ \2\4\ \2\4\"\>\<\p\a\t\h\ \s\t\r\o\k\e\-\l\i\n\e\c\a\p\=\"\r\o\u\n\d\"\ \s\t\r\o\k\e\-\l\i\n\e\j\o\i\n\=\"\r\o\u\n\d\"\ \s\t\r\o\k\e\-\w\i\d\t\h\=\"\1\.\5\"\ \d\=\"\M\1\6\ \1\1\V\7\a\4\ \4\ \0\ \0\0\-\8\ \0\v\4\M\5\ \9\h\1\4\l\1\ \1\2\H\4\L\5\ \9\z\"\>\<\/\p\a\t\h\>\<\/\s\v\g\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \S\h\i\n\e\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \t\o\p\-\0\ \b\o\t\t\o\m\-\0\ \w\-\6\ \b\g\-\b\l\a\c\k\/\2\0\ \s\k\e\w\-\x\-\[\-\2\0\d\e\g\]\ \-\l\e\f\t\-\1\0\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\s\h\i\n\e\_\2\s\_\e\a\s\e\-\i\n\-\o\u\t\_\i\n\f\i\n\i\t\e\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\f\u\l\l\ \b\g\-\b\l\a\c\k\/\3\0\ \r\o\u\n\d\e\d\ \m\b\-\1\.\5\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\1\.\5\ \w\-\2\/\3\ \b\g\-\b\l\a\c\k\/\1\0\ \r\o\u\n\d\e\d\ \m\b\-\2\.\5\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\f\l\e\x\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \i\t\e\m\s\-\c\e\n\t\e\r\ \b\o\r\d\e\r\-\t\ \b\o\r\d\e\r\-\b\l\a\c\k\/\5\ \p\t\-\2\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\9\p\x\]\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\ \l\e\a\d\i\n\g\-\n\o\n\e\"\>\$\1\2\9\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\h\-\3\ \w\-\1\2\ \b\g\-\b\l\u\e\-\5\0\0\ \r\o\u\n\d\e\d\ \s\h\a\d\o\w\-\[\0\_\0\_\8\p\x\_\r\g\b\a\(\5\9\,\1\3\0\,\2\4\6\,\0\.\5\)\]\"\>\<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \<\/\d\i\v\>\} />
+          )}
+          {s.slug === 'conversiones' && (
+            <Fragment set:html={\<\!\-\-\ \M\O\C\K\U\P\:\ \C\O\N\V\E\R\S\I\O\N\S\ \P\R\E\M\I\U\M\ \-\-\>\
+\ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \r\i\g\h\t\-\8\ \t\o\p\-\1\0\ \w\-\[\1\8\0\p\x\]\ \r\o\u\n\d\e\d\-\x\l\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\a\c\k\/\1\0\ \b\g\-\w\h\i\t\e\/\9\0\ \b\a\c\k\d\r\o\p\-\b\l\u\r\-\m\d\ \p\-\4\ \p\o\i\n\t\e\r\-\e\v\e\n\t\s\-\n\o\n\e\ \o\p\a\c\i\t\y\-\2\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\7\0\0\ \g\r\o\u\p\-\h\o\v\e\r\:\-\t\r\a\n\s\l\a\t\e\-\y\-\2\ \s\h\a\d\o\w\-\2\x\l\ \z\-\1\0\ \h\i\d\d\e\n\ \m\d\:\f\l\e\x\ \f\l\e\x\-\c\o\l\ \i\t\e\m\s\-\c\e\n\t\e\r\ \g\a\p\-\2\"\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \L\e\v\e\l\ \1\:\ \T\r\a\f\f\i\c\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\f\u\l\l\ \h\-\8\ \r\o\u\n\d\e\d\ \b\g\-\b\l\u\e\-\5\0\0\/\1\0\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\b\l\u\e\-\5\0\0\/\2\0\ \r\e\l\a\t\i\v\e\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\1\0\0\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \p\x\-\2\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\9\p\x\]\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\u\e\-\4\0\0\"\>\T\r\á\f\i\c\o\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\1\0\p\x\]\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\"\>\1\0\0\%\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \L\e\v\e\l\ \2\:\ \L\e\a\d\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\3\/\4\ \h\-\8\ \r\o\u\n\d\e\d\ \b\g\-\p\u\r\p\l\e\-\5\0\0\/\1\0\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\p\u\r\p\l\e\-\5\0\0\/\2\0\ \r\e\l\a\t\i\v\e\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\2\0\0\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \p\x\-\2\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\9\p\x\]\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\p\u\r\p\l\e\-\4\0\0\"\>\L\e\a\d\s\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\1\0\p\x\]\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\"\>\4\5\%\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \L\e\v\e\l\ \3\:\ \S\a\l\e\s\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\w\-\1\/\2\ \h\-\8\ \r\o\u\n\d\e\d\ \b\g\-\g\r\e\e\n\-\5\0\0\/\1\0\ \b\o\r\d\e\r\ \b\o\r\d\e\r\-\g\r\e\e\n\-\5\0\0\/\2\0\ \r\e\l\a\t\i\v\e\ \o\v\e\r\f\l\o\w\-\h\i\d\d\e\n\ \t\r\a\n\s\f\o\r\m\ \t\r\a\n\s\l\a\t\e\-\y\-\2\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\t\r\a\n\s\l\a\t\e\-\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\o\p\a\c\i\t\y\-\1\0\0\ \t\r\a\n\s\i\t\i\o\n\-\a\l\l\ \d\u\r\a\t\i\o\n\-\5\0\0\ \d\e\l\a\y\-\3\0\0\ \f\l\e\x\ \i\t\e\m\s\-\c\e\n\t\e\r\ \j\u\s\t\i\f\y\-\b\e\t\w\e\e\n\ \p\x\-\2\ \s\h\a\d\o\w\-\[\0\_\0\_\1\5\p\x\_\r\g\b\a\(\7\4\,\2\2\2\,\1\2\8\,\0\.\2\)\]\"\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\9\p\x\]\ \u\p\p\e\r\c\a\s\e\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\g\r\e\e\n\-\4\0\0\"\>\V\e\n\t\a\s\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \ \ \<\s\p\a\n\ \c\l\a\s\s\=\"\t\e\x\t\-\[\1\0\p\x\]\ \f\o\n\t\-\b\o\l\d\ \t\e\x\t\-\b\l\a\c\k\/\8\0\"\>\1\2\%\<\/\s\p\a\n\>\
+\ \ \ \ \ \ \ \ \ \ \<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \ \ \<\!\-\-\ \A\n\i\m\a\t\e\d\ \C\o\n\v\e\r\s\i\o\n\ \P\a\r\t\i\c\l\e\ \-\-\>\
+\ \ \ \ \ \ \ \ \ \ \<\d\i\v\ \c\l\a\s\s\=\"\a\b\s\o\l\u\t\e\ \t\o\p\-\2\ \l\e\f\t\-\[\5\0\%\]\ \m\l\-\[\-\3\p\x\]\ \w\-\1\.\5\ \h\-\4\ \b\g\-\w\h\i\t\e\ \r\o\u\n\d\e\d\-\f\u\l\l\ \s\h\a\d\o\w\-\[\0\_\0\_\8\p\x\_\w\h\i\t\e\]\ \o\p\a\c\i\t\y\-\0\ \g\r\o\u\p\-\h\o\v\e\r\:\a\n\i\m\a\t\e\-\[\d\r\o\p\_\2\.\5\s\_\e\a\s\e\-\i\n\-\o\u\t\_\i\n\f\i\n\i\t\e\]\ \d\e\l\a\y\-\1\0\0\0\"\>\<\/\d\i\v\>\
+\
+\ \ \ \ \ \ \ \ \<\/\d\i\v\>\} />
+          )}
+
+          <div class="relative z-10 flex flex-col h-full justify-between gap-12">
+            <div class="flex items-start justify-between">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-xl transition duration-500 group-hover:bg-black/10 group-hover:text-black" set:html={s.icon}>
               </div>
-              <div class="h-3 w-24 bg-black/20 rounded-full"></div>
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-black/10 text-sm text-black opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-black/10 group-hover:text-black">→</span>
             </div>
-            <div class="h-3 w-12 bg-black/10 rounded-full"></div>
-          </div>
-
-          <!-- 4 Metric Cards -->
-          <div class="grid grid-cols-4 gap-2 mb-4">
-            <!-- Clicks (Active) -->
-            <div class="bg-blue-500/10 border border-blue-500/30 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-75">
-              <span class="text-[8px] text-blue-400/70 uppercase font-semibold leading-none">Clics</span>
-              <span class="text-sm font-bold text-blue-400 leading-none" style="text-shadow: 0 0 8px rgba(96,165,250,0.4)">124K</span>
-            </div>
-            <!-- Impressions (Active) -->
-            <div class="bg-purple-500/10 border border-purple-500/30 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-150">
-              <span class="text-[8px] text-purple-400/70 uppercase font-semibold leading-none">Impres.</span>
-              <span class="text-sm font-bold text-purple-400 leading-none">2.4M</span>
-            </div>
-            <!-- CTR (Inactive) -->
-            <div class="bg-black/5 border border-black/5 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-200">
-              <span class="text-[8px] text-black/40 uppercase font-semibold leading-none">CTR</span>
-              <span class="text-sm font-bold text-black/80 leading-none">5.2%</span>
-            </div>
-            <!-- Position (Inactive) -->
-            <div class="bg-black/5 border border-black/5 rounded p-2 flex flex-col gap-1 transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 delay-300">
-              <span class="text-[8px] text-black/40 uppercase font-semibold leading-none">Pos.</span>
-              <span class="text-sm font-bold text-black/80 leading-none">12.4</span>
+            <div>
+              <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">{s.num} — Disciplina</span>
+              <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">{s.name}</h3>
+              <p class="text-[15px] leading-relaxed text-black/50 max-w-md">{s.desc}</p>
+              {s.features && s.features.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-5">
+                  {s.features.map((f) => (
+                    <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">{f.title}</span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-
-          <!-- Chart Area -->
-          <div class="relative h-28 w-full mt-2 border-t border-black/5 pt-3">
-            <!-- Grid Lines -->
-            <div class="absolute inset-0 flex flex-col justify-between pt-3 pb-1">
-              <div class="w-full h-px bg-black/5"></div>
-              <div class="w-full h-px bg-black/5"></div>
-              <div class="w-full h-px bg-black/5"></div>
-            </div>
-
-            <!-- SVG Line Chart -->
-            <svg class="absolute inset-0 h-full w-full" viewBox="0 0 100 40" preserveAspectRatio="none">
-              <defs>
-                <!-- Blue Gradient for Clicks -->
-                <linearGradient id="gscBlue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3" />
-                  <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
-                </linearGradient>
-                <!-- Purple Gradient for Impressions -->
-                <linearGradient id="gscPurple" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#a855f7" stop-opacity="0.15" />
-                  <stop offset="100%" stop-color="#a855f7" stop-opacity="0" />
-                </linearGradient>
-              </defs>
-              
-              <!-- Purple Area & Line (Impressions) -->
-              <path d="M0,38 C15,35 25,25 40,28 C55,30 70,15 85,10 L100,2 L100,40 L0,40 Z" fill="url(#gscPurple)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
-              <path d="M0,38 C15,35 25,25 40,28 C55,30 70,15 85,10 L100,2" fill="none" stroke="#a855f7" stroke-width="1" stroke-dasharray="2" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
-
-              <!-- Blue Area & Line (Clicks) -->
-              <path d="M0,35 C20,35 30,15 50,25 C70,35 85,10 100,5 L100,40 L0,40 Z" fill="url(#gscBlue)" class="opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500" />
-              <path d="M0,35 C20,35 30,15 50,25 C70,35 85,10 100,5" fill="none" stroke="#60a5fa" stroke-width="1.5" class="stroke-dasharray-150 stroke-dashoffset-150 group-hover:animate-[draw_1.5s_ease-out_forwards]" style="animation-delay: 200ms;" />
-            </svg>
-            
-            <!-- Animated Scanner / Tooltip Line -->
-            <div class="absolute top-3 bottom-0 w-[1px] bg-black/20 opacity-0 group-hover:opacity-100 group-hover:animate-[scan-x_6s_ease-in-out_infinite] delay-1000">
-              <div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_12px_#60a5fa] border-2 border-[#161616]"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
-          <div class="flex items-start justify-between">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-xl transition duration-500 group-hover:bg-black/10 group-hover:text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-5-5"/><path d="M8 12l2-2.5 2 1.5 2.5-3"/></svg>
-            </div>
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-black/10 text-sm text-black opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-black/10 group-hover:text-black">â†’</span>
-          </div>
-          <div>
-            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">01 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">SEO</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Posicionamiento técnico y de contenido para llevar tu marca al primer resultado.</p>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Google Search Console</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Ahrefs</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Screaming Frog</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">GA4</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 02: Meta Ads (Pequeño) -->
-      <a href="/meta-ads" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="-0.03" data-spotlight>
-        <div class="spotlight-glow"></div>
-        <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
-        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-black/[0.02] transition duration-700 group-hover:text-black/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">02</span>
-        
-        <!-- MOCKUP: META ADS PREMIUM -->
-        <div class="absolute right-6 top-8 w-[200px] rounded-xl border border-black/10 bg-white/90 backdrop-blur-md p-4 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
-          
-          <!-- Status Bar -->
-          <div class="flex items-center gap-2 mb-3">
-            <div class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </div>
-            <div class="h-2 w-20 bg-black/30 rounded"></div>
-          </div>
-
-          <!-- Metric: ROAS -->
-          <div class="bg-blue-500/10 border border-blue-500/20 rounded p-2 mb-2 flex justify-between items-end transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-            <div class="flex flex-col gap-1.5">
-              <div class="h-1.5 w-8 bg-blue-400/50 rounded"></div>
-              <div class="flex items-center gap-1">
-                <span class="text-[11px] font-bold text-blue-400 leading-none">4.8x ROAS</span>
-              </div>
-            </div>
-            <div class="flex gap-0.5 items-end h-4">
-              <div class="w-1 bg-blue-500/40 h-[40%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out]"></div>
-              <div class="w-1 bg-blue-500/60 h-[70%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out_0.1s]"></div>
-              <div class="w-1 bg-blue-400 h-[100%] rounded-t-sm origin-bottom group-hover:animate-[grow_1s_ease-out_0.2s]"></div>
-            </div>
-          </div>
-
-          <!-- Metric: CPA -->
-          <div class="bg-black/5 border border-black/5 rounded p-2 mb-3 flex justify-between items-center transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-200">
-            <div class="flex flex-col gap-1.5">
-              <div class="h-1.5 w-8 bg-black/20 rounded"></div>
-              <span class="text-[10px] font-semibold text-black/80 leading-none">$12.50 CPA</span>
-            </div>
-            <div class="h-4 w-4 rounded-full border-2 border-black/20 border-t-green-400 animate-spin" style="animation-duration: 2s;"></div>
-          </div>
-
-          <!-- Target Audience Dots -->
-          <div class="relative h-12 w-full border-t border-black/5 pt-2 flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300">
-            <div class="absolute inset-0 flex items-center justify-center opacity-30">
-              <div class="w-8 h-8 rounded-full border border-blue-500/50 absolute"></div>
-              <div class="w-16 h-16 rounded-full border border-blue-500/30 absolute"></div>
-            </div>
-            <div class="h-1.5 w-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_#60a5fa] animate-pulse"></div>
-            <div class="absolute w-1 h-1 bg-white rounded-full top-3 left-4 animate-ping"></div>
-            <div class="absolute w-1 h-1 bg-white rounded-full bottom-3 right-5 animate-ping" style="animation-duration: 1.5s;"></div>
-          </div>
-          
-        </div>
-
-        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
-          <div class="flex items-start justify-between">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-xl transition duration-500 group-hover:bg-black/10 group-hover:text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-black/10 text-sm text-black opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-black/10 group-hover:text-black">â†’</span>
-          </div>
-          <div>
-            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">02 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Meta Ads</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Campañas que captan tráfico cualificado y lo convierten en ingresos reales.</p>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Meta Ads Manager</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Looker Studio</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">CAPI</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Pixel</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 03: Diseño Web (Pequeño) -->
-      <a href="/diseno-web" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03" data-spotlight>
-        <div class="spotlight-glow"></div>
-        <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
-        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-black/[0.02] transition duration-700 group-hover:text-black/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">03</span>
-        
-        <!-- MOCKUP: PREMIUM WEB DESIGN (UI EDITOR) -->
-        <div class="absolute right-4 top-8 w-[180px] rounded-lg border border-black/10 bg-white/90 backdrop-blur-md overflow-hidden pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:block">
-          
-          <!-- MacOS Toolbar -->
-          <div class="flex items-center gap-1.5 border-b border-black/5 px-3 py-2 bg-white/[0.02]">
-            <div class="w-1.5 h-1.5 rounded-full bg-red-400/80"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-yellow-400/80"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-green-400/80"></div>
-          </div>
-
-          <!-- Editor Canvas -->
-          <div class="p-3 flex flex-col gap-2 relative">
-            
-            <!-- Hero Block -->
-            <div class="w-full flex gap-2">
-              <div class="flex-1 flex flex-col gap-1.5">
-                <div class="h-2 w-full bg-black/20 rounded-sm"></div>
-                <div class="h-2 w-3/4 bg-black/10 rounded-sm"></div>
-                <div class="h-1.5 w-1/2 bg-black/5 rounded-sm mt-1"></div>
-                <!-- CTA -->
-                <div class="h-3 w-10 bg-blue-500 rounded-sm mt-1 relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
-              </div>
-              <!-- Image Block -->
-              <div class="w-12 h-12 bg-black/5 rounded flex items-center justify-center border border-black/5 relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-500"></div>
-                <svg class="w-4 h-4 text-black/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              </div>
-            </div>
-
-            <!-- Features Row -->
-            <div class="flex gap-2 w-full mt-1">
-              <div class="flex-1 h-6 bg-black/5 rounded-sm border border-black/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
-              <div class="flex-1 h-6 bg-black/5 rounded-sm border border-black/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300"></div>
-              <div class="flex-1 h-6 bg-black/5 rounded-sm border border-black/5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-400"></div>
-            </div>
-
-            <!-- Mouse Cursor Animation -->
-            <div class="absolute bottom-[-5px] right-[-5px] opacity-0 group-hover:animate-[cursor-move_3s_ease-in-out_infinite] z-20">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M4 2v20l5.5-5.5H18L4 2z"/></svg>
-              <!-- Click Ripple -->
-              <div class="absolute top-[-2px] left-[-2px] w-4 h-4 rounded-full border border-blue-400 scale-0 group-hover:animate-[click-ripple_3s_ease-in-out_infinite]"></div>
-            </div>
-            
-          </div>
-        </div>
-
-        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
-          <div class="flex items-start justify-between">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-xl transition duration-500 group-hover:bg-black/10 group-hover:text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>
-            </div>
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-black/10 text-sm text-black opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-black/10 group-hover:text-black">â†’</span>
-          </div>
-          <div>
-            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">03 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Diseño Web</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Páginas rápidas, claras y diseñadas para vender desde el primer segundo.</p>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">UI/UX</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Figma</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Astro</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Tailwind CSS</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 04: Ecommerce (Horizontal) -->
-      <a href="/ecommerce" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-2 md:row-span-1" data-speed="-0.03" data-spotlight>
-        <div class="spotlight-glow"></div>
-        <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
-        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-black/[0.02] transition duration-700 group-hover:text-black/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">04</span>
-        
-        <!-- MOCKUP: ECOMMERCE PREMIUM (FAN OUT) -->
-        <div class="absolute right-8 top-1/2 -translate-y-1/2 w-[120px] h-[120px] pointer-events-none flex items-center justify-center z-10">
-          
-          <!-- Card 1 (Bottom, moves left) -->
-          <div class="absolute w-[110px] bg-white/95 border border-black/10 rounded-lg p-2 shadow-xl backdrop-blur-md transition-all duration-700 ease-out transform group-hover:-translate-x-16 group-hover:translate-y-2 group-hover:-rotate-12 opacity-0 group-hover:opacity-60 z-10 delay-100">
-            <div class="w-full h-10 bg-black/5 rounded mb-2"></div>
-            <div class="h-1.5 w-3/4 bg-black/20 rounded mb-1"></div>
-            <div class="h-2.5 w-1/3 bg-blue-500/30 rounded"></div>
-          </div>
-
-          <!-- Card 2 (Middle, moves right) -->
-          <div class="absolute w-[110px] bg-white/95 border border-black/10 rounded-lg p-2 shadow-xl backdrop-blur-md transition-all duration-700 ease-out transform group-hover:translate-x-16 group-hover:translate-y-2 group-hover:rotate-12 opacity-0 group-hover:opacity-60 z-20 delay-150">
-            <div class="w-full h-10 bg-black/5 rounded mb-2"></div>
-            <div class="h-1.5 w-3/4 bg-black/20 rounded mb-1"></div>
-            <div class="h-2.5 w-1/3 bg-purple-500/30 rounded"></div>
-          </div>
-
-          <!-- Card 3 (Top, Main) -->
-          <div class="absolute w-[130px] bg-white/95 border border-black/20 rounded-lg p-2.5 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out transform translate-y-4 group-hover:-translate-y-8 group-hover:scale-110 opacity-30 group-hover:opacity-100 z-30 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
-            <div class="w-full h-14 bg-gradient-to-tr from-blue-500/20 to-transparent border border-blue-500/20 rounded mb-2.5 relative overflow-hidden flex items-center justify-center">
-              <svg class="w-5 h-5 text-blue-400 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-              <!-- Shine -->
-              <div class="absolute top-0 bottom-0 w-6 bg-black/20 skew-x-[-20deg] -left-10 group-hover:animate-[shine_2s_ease-in-out_infinite]"></div>
-            </div>
-            <div class="h-1.5 w-full bg-black/30 rounded mb-1.5"></div>
-            <div class="h-1.5 w-2/3 bg-black/10 rounded mb-2.5"></div>
-            <div class="flex justify-between items-center border-t border-black/5 pt-2">
-              <span class="text-[9px] font-bold text-black/80 leading-none">$129</span>
-              <div class="h-3 w-12 bg-blue-500 rounded shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
-          <div class="flex items-start justify-between">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-xl transition duration-500 group-hover:bg-black/10 group-hover:text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
-            </div>
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-black/10 text-sm text-black opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-black/10 group-hover:text-black">â†’</span>
-          </div>
-          <div>
-            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">04 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Ecommerce</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Tiendas online optimizadas para maximizar ventas y ticket medio.</p>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Shopify</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">WooCommerce</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Stripe</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Klaviyo</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 05: Conversiones (Pequeño) -->
-      <a href="/conversiones" class="reveal-up group relative overflow-hidden rounded-3xl border border-black/10 transition duration-500 hover:border-black/20 p-8 lg:p-12 flex flex-col justify-between md:col-span-1 md:row-span-1" data-speed="0.03" data-spotlight>
-        <div class="spotlight-glow"></div>
-        <div class="absolute inset-0 bg-black/5 backdrop-blur-md"></div>
-        <div class="absolute -inset-px opacity-0 transition duration-700 group-hover:opacity-100 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-        <span class="absolute -right-4 -bottom-8 text-[clamp(120px,15vw,250px)] font-bold leading-none tracking-tighter text-black/[0.02] transition duration-700 group-hover:text-black/[0.04] group-hover:scale-105 pointer-events-none select-none z-0">05</span>
-        
-        <!-- MOCKUP: CONVERSIONS PREMIUM -->
-        <div class="absolute right-8 top-10 w-[180px] rounded-xl border border-black/10 bg-white/90 backdrop-blur-md p-4 pointer-events-none opacity-20 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 shadow-2xl z-10 hidden md:flex flex-col items-center gap-2">
-          
-          <!-- Level 1: Traffic -->
-          <div class="w-full h-8 rounded bg-blue-500/10 border border-blue-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 flex items-center justify-between px-2">
-            <span class="text-[9px] uppercase font-bold text-blue-400">Tráfico</span>
-            <span class="text-[10px] font-bold text-black/80">100%</span>
-          </div>
-          
-          <!-- Level 2: Leads -->
-          <div class="w-3/4 h-8 rounded bg-purple-500/10 border border-purple-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200 flex items-center justify-between px-2">
-            <span class="text-[9px] uppercase font-bold text-purple-400">Leads</span>
-            <span class="text-[10px] font-bold text-black/80">45%</span>
-          </div>
-
-          <!-- Level 3: Sales -->
-          <div class="w-1/2 h-8 rounded bg-green-500/10 border border-green-500/20 relative overflow-hidden transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300 flex items-center justify-between px-2 shadow-[0_0_15px_rgba(74,222,128,0.2)]">
-            <span class="text-[9px] uppercase font-bold text-green-400">Ventas</span>
-            <span class="text-[10px] font-bold text-black/80">12%</span>
-          </div>
-
-          <!-- Animated Conversion Particle -->
-          <div class="absolute top-2 left-[50%] ml-[-3px] w-1.5 h-4 bg-white rounded-full shadow-[0_0_8px_white] opacity-0 group-hover:animate-[drop_2.5s_ease-in-out_infinite] delay-1000"></div>
-
-        </div>
-
-        <div class="relative z-10 flex flex-col h-full justify-between gap-12">
-          <div class="flex items-start justify-between">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-xl transition duration-500 group-hover:bg-black/10 group-hover:text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M11 7l-4.5 9.2M13 7l4.5 9.2M7.2 18h9.6"/></svg>
-            </div>
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black/5 border border-black/10 text-sm text-black opacity-0 -translate-x-4 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-hover:bg-black/10 group-hover:text-black">â†’</span>
-          </div>
-          <div>
-            <span class="text-[10px] font-medium tracking-[.2em] text-blue-300/50 mb-4 block uppercase">05 â€” Disciplina</span>
-            <h3 class="text-3xl lg:text-4xl font-semibold text-black mb-4 transition duration-500 group-hover:translate-x-2">Método Conversiones</h3>
-            <p class="text-[15px] leading-relaxed text-black/50 max-w-md">Un sistema probado para analizar, optimizar y escalar todo tu embudo digital.</p>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">CRO</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Google Tag Manager</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">Hotjar</span>
-              <span class="px-2.5 py-1 text-[10px] font-semibold text-black/60 bg-black/5 border border-black/10 rounded-full transition-colors group-hover:bg-black/10 group-hover:text-black/90">A/B Testing</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
+        </a>
+      ))}
     </div>
+
 
     <!-- CUSTOM ANIMATION STYLE FOR MOCKUPS -->
     <style is:global>

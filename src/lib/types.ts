@@ -65,7 +65,8 @@ export interface WpTestimonialData {
 /** Post type personalizado: Casos de Éxito (wp/v2/casos) */
 export interface WpCase extends WpPage {
   croilab_caso?: {
-    service?: 'seo' | 'ads' | 'conversion';
+    related_service?: string;
+    related_project?: string;
     client?: string;
     industry?: string;
     result?: string;
@@ -95,6 +96,9 @@ export interface WpClient extends WpPage {
 export interface WpTestimonial extends WpPage {
   croilab_testimonio?: WpTestimonialData & {
     avatar?: string;
+    stars?: string;
+    related_service?: string;
+    related_project?: string;
   };
 }
 
@@ -181,6 +185,7 @@ export interface WpSettings {
   };
   social?: { name?: string; icon?: string; url?: string }[];
   differentiators?: { num?: string; title?: string; description?: string }[];
+  faq?: { q?: string; a?: string }[];
   stack?: { name?: string; short?: string; icon?: string; image?: string }[];
 }
 
@@ -190,4 +195,5 @@ export interface WpCollectionResponse<T> {
   total: number;
   totalPages: number;
 }
+
 
