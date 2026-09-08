@@ -1,1 +1,0 @@
-import{t as e}from"./gsap.CvDoa17S.js";import{t}from"./ScrollTrigger.CDDhF-DF.js";e.registerPlugin(t);var n=document.getElementById(`seo-mockup-container`);n&&e.fromTo(n,{scale:.85,opacity:.5,rotateX:10},{scale:1,opacity:1,rotateX:0,ease:`power2.out`,scrollTrigger:{trigger:n,start:`top 90%`,end:`top 30%`,scrub:!0}});

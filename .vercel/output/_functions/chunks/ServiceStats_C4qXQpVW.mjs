@@ -1,9 +1,0 @@
-import { t as createComponent } from "./compiler_Cff8VUIR.mjs";
-import { d as renderTemplate, f as maybeRenderHead, i as renderComponent } from "./server_Yceqtf1X.mjs";
-import { i as $$Container } from "./BaseLayout_CUM04enh.mjs";
-//#region src/components/ServiceStats.astro
-var $$ServiceStats = createComponent(($$result, $$props, $$slots) => {
-	return renderTemplate`${maybeRenderHead($$result)}<section class="border-y border-white/5 bg-[#080808] py-12 relative z-20">${renderComponent($$result, "Container", $$Container, {}, { "default": ($$result) => renderTemplate`<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-white/10"><div class="flex flex-col items-center justify-center text-center px-4"><span class="text-3xl lg:text-4xl font-bold text-white mb-2">+$15M</span><span class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Generados a clientes</span></div><div class="flex flex-col items-center justify-center text-center px-4"><span class="text-3xl lg:text-4xl font-bold text-white mb-2">94%</span><span class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Retención anual</span></div><div class="flex flex-col items-center justify-center text-center px-4"><span class="text-3xl lg:text-4xl font-bold text-white mb-2">+50</span><span class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Ecosistemas escalados</span></div><div class="flex flex-col items-center justify-center text-center px-4"><span class="text-3xl lg:text-4xl font-bold text-white mb-2">100%</span><span class="text-[10px] font-medium uppercase tracking-[.2em] text-white/40">Enfoque en ROI</span></div></div>` })}</section>`;
-}, "C:/Users/bdela/Desktop/Croilab/src/components/ServiceStats.astro", void 0);
-//#endregion
-export { $$ServiceStats as t };
