@@ -24,6 +24,16 @@ function croilab_content_add_options_page(): void {
 }
 add_action( 'admin_menu', 'croilab_content_add_options_page' );
 
+
+function croilab_content_enqueue_media( $hook ) {
+	if ( 'settings_page_croilab-settings' !== $hook ) {
+		return;
+	}
+	wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'croilab_content_enqueue_media' );
+
+
 /**
  * Render de la página de opciones.
  */
@@ -179,6 +189,7 @@ function croilab_content_render_options_page(): void {
 	</script>
 	<?php
 }
+
 
 
 
