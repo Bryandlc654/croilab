@@ -53,25 +53,27 @@ const tools = dynamicTools.length > 0 ? dynamicTools : fallbackTools;
   <div class="marquee marquee-mask">
     <div class="stack-track">
       {[...tools, ...tools].map((tool) => (
-        <div class="group mx-10 flex items-center gap-4 opacity-60 transition hover:opacity-100 sm:mx-14">
+        <div class="group mx-10 flex items-center justify-center opacity-60 transition hover:opacity-100 sm:mx-14">
           {tool.image ? (
-            <img src={tool.image} alt={tool.name} class="h-8 w-8 object-contain transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-          ) : (
-            <svg
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="h-8 w-8 shrink-0 text-white transition-transform duration-500 group-hover:scale-110"
-              aria-hidden="true"
-            >
-              <path d={tool.icon} />
-            </svg>
-          )}
-          <div class="text-left">
-            <div class="whitespace-nowrap text-[15px] font-bold text-white">{tool.name}</div>
-            <div class="whitespace-nowrap text-[10px] uppercase tracking-[.18em] text-white/40">
-              {tool.short}
-            </div>
-          </div>
+              <img src={tool.image} alt={tool.name} class="h-10 w-auto max-w-[150px] object-contain transition-transform duration-500 group-hover:scale-110 brightness-0 invert opacity-80" loading="lazy" />
+            ) : (
+              <div class="flex items-center gap-4">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-8 w-8 shrink-0 text-white transition-transform duration-500 group-hover:scale-110"
+                  aria-hidden="true"
+                >
+                  <path d={tool.icon} />
+                </svg>
+                <div class="text-left">
+                  <div class="whitespace-nowrap text-[15px] font-bold text-white">{tool.name}</div>
+                  <div class="whitespace-nowrap text-[10px] uppercase tracking-[.18em] text-white/40">
+                    {tool.short}
+                  </div>
+                </div>
+              </div>
+            )}
         </div>
       ))}
     </div>
@@ -94,4 +96,5 @@ const tools = dynamicTools.length > 0 ? dynamicTools : fallbackTools;
     }
   }
 </style>
+
 
