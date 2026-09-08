@@ -2,11 +2,14 @@
 import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import vercel from '@astrojs/vercel';
+
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://croilab.com',
-  output: 'static',
+  output: 'server',
+  adapter: vercel(),
   integrations: [sitemap()],
   env: {
     schema: {
