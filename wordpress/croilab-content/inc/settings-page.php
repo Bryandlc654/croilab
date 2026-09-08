@@ -145,6 +145,33 @@ function croilab_content_render_options_page(): void {
 			list.append(row);
 		});
 
+		
+		
+		$(document).on('click', '.croilab-image-btn', function(e) {
+			e.preventDefault();
+			var button = $(this);
+			var inputSelector = button.data('input');
+			var input = button.closest('.croilab-settings-row, tr').find(inputSelector);
+			if (input.length === 0) {
+				input = button.closest('div').prev('div').find('input');
+			}
+			
+			var customUploader = wp.media({
+				title: 'Seleccionar Imagen',
+				button: { text: 'Usar esta imagen' },
+				multiple: false
+			}).on('select', function() {
+				var attachment = customUploader.state().get('selection').first().toJSON();
+				input.val(attachment.url);
+				var imgPreview = button.closest('.croilab-settings-row').find('img');
+				if (imgPreview.length) {
+					imgPreview.attr('src', attachment.url);
+				} else {
+					button.closest('div').after('<div style="margin-top:8px;"><img src="' + attachment.url + '" style="max-height:80px;max-width:100%;border:1px solid #ddd;border-radius:4px;padding:4px;background:#fff;" /></div>');
+				}
+			}).open();
+		});
+
 		$(document).on('click', '.croilab-settings-remove', function () {
 			$(this).closest('.croilab-settings-row').remove();
 		});
@@ -152,5 +179,7 @@ function croilab_content_render_options_page(): void {
 	</script>
 	<?php
 }
+
+
 
 
