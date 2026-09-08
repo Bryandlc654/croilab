@@ -9,13 +9,13 @@
     
     <div class="mb-8">
       <h3 class="text-2xl font-bold text-black tracking-tight mb-2">Iniciar un proyecto</h3>
-      <p class="text-black/60 text-sm leading-relaxed">Djanos tus datos y nos pondremos en contacto contigo para agendar una llamada exploratoria.</p>
+      <p class="text-black/60 text-sm leading-relaxed">Déjanos tus datos y nos pondremos en contacto contigo para agendar una llamada exploratoria.</p>
     </div>
 
     <form id="lead-form" class="flex flex-col gap-5">
       <div>
         <label for="lead_nombre" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-black/50">Nombre completo</label>
-        <input type="text" id="lead_nombre" name="nombre" required class="w-full rounded-xl border border-black/10 bg-black/5 px-4 py-3 text-sm text-black placeholder:text-black/30 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Ej. Juan Prez" />
+        <input type="text" id="lead_nombre" name="nombre" required class="w-full rounded-xl border border-black/10 bg-black/5 px-4 py-3 text-sm text-black placeholder:text-black/30 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Ej. Juan Pérez" />
       </div>
       
       <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -24,17 +24,17 @@
           <input type="email" id="lead_correo" name="correo" required class="w-full rounded-xl border border-black/10 bg-black/5 px-4 py-3 text-sm text-black placeholder:text-black/30 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all" placeholder="juan@empresa.com" />
         </div>
         <div>
-          <label for="lead_telefono" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-black/50">Telfono</label>
+          <label for="lead_telefono" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-black/50">Teléfono</label>
           <input type="tel" id="lead_telefono" name="telefono" required class="w-full rounded-xl border border-black/10 bg-black/5 px-4 py-3 text-sm text-black placeholder:text-black/30 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all" placeholder="+34 600..." />
         </div>
       </div>
       
       <div>
-        <label for="lead_servicio" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-black/50">Servicio de inters</label>
+        <label for="lead_servicio" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-black/50">Servicio de interés</label>
         <select id="lead_servicio" name="servicio" required class="w-full rounded-xl border border-black/10 bg-black/5 px-4 py-3 text-sm text-black focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all">
-          <option value="" disabled selected>Selecciona una opcin</option>
-          <option value="Auditora CRO">Auditora CRO</option>
-          <option value="Desarrollo Web">Diseo y Desarrollo Web</option>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Auditoría CRO">Auditoría CRO</option>
+          <option value="Desarrollo Web">Diseño y Desarrollo Web</option>
           <option value="Meta & Google Ads">Publicidad (Ads)</option>
           <option value="Consultora SEO">SEO</option>
           <option value="Otro">Otro proyecto</option>
@@ -47,17 +47,17 @@
       </button>
 
       <div id="lead-success-msg" class="hidden mt-4 rounded-xl bg-green-50 p-4 border border-green-200">
-        <p class="text-sm font-semibold text-green-800 text-center">Gracias! Hemos recibido tus datos. Nos comunicaremos contigo a la brevedad.</p>
+        <p class="text-sm font-semibold text-green-800 text-center">¡Gracias! Hemos recibido tus datos. Nos comunicaremos contigo a la brevedad.</p>
       </div>
       <div id="lead-error-msg" class="hidden mt-4 rounded-xl bg-red-50 p-4 border border-red-200">
-        <p class="text-sm font-semibold text-red-800 text-center">Hubo un error al enviar tu solicitud. Intntalo de nuevo.</p>
+        <p class="text-sm font-semibold text-red-800 text-center">Hubo un error al enviar tu solicitud. Inténtalo de nuevo.</p>
       </div>
     </form>
   </div>
 </div>
 
 <script>
-  // Script para manejar el modal y el envo del form
+  // Script para manejar el modal y el envío del form
   document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('lead-modal-overlay');
     const content = document.getElementById('lead-modal-content');
