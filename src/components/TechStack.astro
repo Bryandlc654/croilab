@@ -1,4 +1,4 @@
----
+﻿---
 import Container from './ui/Container.astro';
 import { getWpSettings } from '../lib/wp';
 
@@ -34,8 +34,8 @@ const fallbackTools = [
 let dynamicTools = [];
 try {
   const settings = await getWpSettings();
-  if (settings.stack && settings.stack.length > 0) {
-    dynamicTools = settings.stack;
+  if (settings.stack && settings.stack.items && settings.stack.items.length > 0) {
+    dynamicTools = settings.stack.items;
   }
 } catch (e) {
   console.error("Error fetching stack settings:", e);
@@ -94,3 +94,4 @@ const tools = dynamicTools.length > 0 ? dynamicTools : fallbackTools;
     }
   }
 </style>
+

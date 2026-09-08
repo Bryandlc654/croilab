@@ -1,4 +1,4 @@
----
+﻿---
 import Container from './ui/Container.astro';
 import { getWpSettings } from '../lib/wp';
 
@@ -32,8 +32,8 @@ const fallbackFaqs = [
 let dynamicFaqs = [];
 try {
   const settings = await getWpSettings();
-  if (settings.faq && settings.faq.length > 0) {
-    dynamicFaqs = settings.faq;
+  if (settings.faq && settings.faq.items && settings.faq.items.length > 0) {
+    dynamicFaqs = settings.faq.items;
   }
 } catch (e) {
   console.error("Error fetching FAQ settings:", e);
