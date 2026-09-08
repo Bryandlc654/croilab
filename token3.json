@@ -1,0 +1,7 @@
+{
+  "grant_type": "authorization_code",
+  "code": "8100cf32577d45643eab64b7252eb3fa772ee339596beddbb34d1687ec9dce557e280bf86043e6249cbd9774854f13c9",
+  "redirect_uri": "https://example.com/callback",
+  "client_id": "c344c7d543d8173d2a58abc1a5de526669ced2cbc7eeaee7fbcf463a6e7bd017",
+  "code_verifier": "MCPTest-2026-ABC123456789XYZ987654321"
+}

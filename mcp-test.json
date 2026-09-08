@@ -1,0 +1,1 @@
+﻿{"redirect_uris":["https://example.com/callback"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"Test MCP Client","grant_types":["authorization_code","refresh_token"]}
