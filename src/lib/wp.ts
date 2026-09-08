@@ -1,4 +1,4 @@
-import { WP_APP_PASSWORD, WP_APP_USER, WP_URL } from 'astro:env/server';
+﻿import { WP_APP_PASSWORD, WP_APP_USER, WP_URL } from 'astro:env/server';
 import type {
   WpCase,
   WpClient,
@@ -92,7 +92,7 @@ export function getWpPosts(params: Record<string, string> = {}): Promise<WpColle
 }
 
 export async function getWpPostBySlug(slug: string): Promise<WpPost | null> {
-  const { items } = await wpCollection<WpPost>('posts', { slug });
+  const { items } = await wpCollection<WpPost>('posts', { slug, _embed: '1' });
   return items[0] ?? null;
 }
 
@@ -105,7 +105,7 @@ export function getWpCases(params: Record<string, string> = {}): Promise<WpColle
 }
 
 export async function getWpCaseBySlug(slug: string): Promise<WpCase | null> {
-  const { items } = await wpCollection<WpCase>('casos', { slug });
+  const { items } = await wpCollection<WpCase>('casos', { slug, _embed: '1' });
   return items[0] ?? null;
 }
 
@@ -134,7 +134,7 @@ export function getWpServices(params: Record<string, string> = {}): Promise<WpCo
 }
 
 export async function getWpServiceBySlug(slug: string): Promise<WpService | null> {
-  const { items } = await wpCollection<WpService>('servicios', { slug });
+  const { items } = await wpCollection<WpService>('servicios', { slug, _embed: '1' });
   return items[0] ?? null;
 }
 
@@ -147,7 +147,7 @@ export function getWpProjects(params: Record<string, string> = {}): Promise<WpCo
 }
 
 export async function getWpProjectBySlug(slug: string): Promise<WpProject | null> {
-  const { items } = await wpCollection<WpProject>('proyectos', { slug });
+  const { items } = await wpCollection<WpProject>('proyectos', { slug, _embed: '1' });
   return items[0] ?? null;
 }
 
@@ -158,3 +158,4 @@ export async function getWpProjectBySlug(slug: string): Promise<WpProject | null
 export function getWpSettings(): Promise<WpSettings> {
   return wpFetch<WpSettings>('/croilab/v1/settings');
 }
+
