@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Página de administración de configuración global de Croilab.
  *

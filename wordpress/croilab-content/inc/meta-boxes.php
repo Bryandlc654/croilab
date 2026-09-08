@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Definición declarativa de campos (metaboxes) para cada CPT.
  * Sin dependencias externas: se gestionan con metaboxes nativas de WordPress.
