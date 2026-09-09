@@ -53,8 +53,20 @@ function croilab_content_render_options_page(): void {
 			<?php settings_fields( 'croilab_options' ); ?>
 			<?php foreach ( $groups as $group_key => $fields ) : ?>
 				<?php $gv = isset( $data[ $group_key ] ) && is_array( $data[ $group_key ] ) ? $data[ $group_key ] : array(); ?>
-				<h2 style="margin-top:24px;"><?php echo esc_html( ucfirst( str_replace( '_', ' ', $group_key ) ) ); ?></h2>
-				<table class="form-table" role="presentation">
+				<?php 
+				$titles = array(
+					'stack' => 'Stack Tecnológico',
+					'faq'   => 'Preguntas Frecuentes',
+					'about' => 'Sección Nosotros (Video)'
+				);
+				$title = isset($titles[$group_key]) ? $titles[$group_key] : ucfirst(str_replace('_', ' ', $group_key));
+				?>
+				<div class="postbox" style="margin-top: 20px; border: 1px solid #c3c4c7; border-radius: 4px; box-shadow: 0 1px 1px rgba(0,0,0,.04); background: #fff;">
+					<div class="postbox-header" style="border-bottom: 1px solid #c3c4c7; padding: 15px; background: #f6f7f7;">
+						<h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #1d2327;"><?php echo esc_html( $title ); ?></h2>
+					</div>
+					<div class="inside" style="padding: 15px 20px; margin: 0;">
+						<table class="form-table" role="presentation" style="margin-top: 0;">
 					<?php foreach ( $fields as $name => $spec ) : ?>
 						<?php if ( 'items' === $name && 'repeater' === $spec['type'] ) : ?>
 							<tr>
@@ -113,7 +125,9 @@ function croilab_content_render_options_page(): void {
 							</tr>
 						<?php endif; ?>
 					<?php endforeach; ?>
-				</table>
+						</table>
+					</div>
+				</div>
 			<?php endforeach; ?>
 			<?php submit_button(); ?>
 		</form>
