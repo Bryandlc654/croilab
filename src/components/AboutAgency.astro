@@ -3,10 +3,23 @@ import Container from './ui/Container.astro';
 import { getWpSettings } from '../lib/wp';
 
 let videoUrl = "https://www.youtube.com/embed/J9-aEZ523bA?autoplay=1";
+let coverImage = "/images/video-cover.jpg";
+let title1 = "Obsesionados con la";
+let titleHighlight1 = "data";
+let title2 = "Creadores de";
+let titleHighlight2 = "conversiones";
+let description = "Diseñamos ecosistemas digitales donde la estética premium se encuentra con estrategias de adquisición implacables. Olvídate de proyectos interminables; construimos para escalar tu negocio hoy.";
+
 try {
   const settings = await getWpSettings();
-  if (settings?.about?.video_url) {
-    videoUrl = settings.about.video_url;
+  if (settings?.about) {
+    if (settings.about.video_url) videoUrl = settings.about.video_url;
+    if (settings.about.cover_image) coverImage = settings.about.cover_image;
+    if (settings.about.title_1) title1 = settings.about.title_1;
+    if (settings.about.title_highlight_1) titleHighlight1 = settings.about.title_highlight_1;
+    if (settings.about.title_2) title2 = settings.about.title_2;
+    if (settings.about.title_highlight_2) titleHighlight2 = settings.about.title_highlight_2;
+    if (settings.about.description) description = settings.about.description;
   }
 } catch (e) {
   console.error("Error fetching about video:", e);
@@ -69,20 +82,20 @@ try {
 
       <!-- MAIN TEXT -->
       <h2 class="title-reveal max-w-[800px] text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-.04em] text-black">
-        Obsesionados con la 
-        <span class="text-black font-serif italic font-normal drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">data</span>.
+        {title1} 
+        <span class="text-black font-serif italic font-normal drop-shadow-[0_0_10px_rgba(100,200,255,0.3)]">{titleHighlight1}</span>.
         <span class="block text-black/40 mt-2">
-          Creadores de
+          {title2}
         </span>
         <span class="relative inline-block mt-2">
-          conversiones
+          {titleHighlight2}
           <span class="absolute -right-4 top-2 h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulseSoft shadow-[0_0_10px_rgba(8,120,249,0.8)]"></span>
         </span>.
       </h2>
 
       <!-- DESCRIPTION -->
       <p class="reveal-up mt-8 max-w-[600px] text-[16px] leading-relaxed text-black/50">
-        Diseñamos ecosistemas digitales donde la estética premium se encuentra con estrategias de adquisición implacables. Olvídate de proyectos interminables; construimos para escalar tu negocio hoy.
+        {description}
       </p>
 
       <!-- CTA -->
@@ -110,7 +123,7 @@ try {
         <!-- The Cover -->
         <div id="video-cover" class="absolute inset-0 z-10 cursor-pointer flex items-center justify-center group">
           <img 
-            src="/images/video-cover.jpg" 
+            src={coverImage} 
             alt="Croilab Cover" 
             class="absolute inset-0 h-full w-full object-cover object-center opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition duration-700" 
           />

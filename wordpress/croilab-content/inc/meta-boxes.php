@@ -314,6 +314,16 @@ Croilab_Meta::add_settings(
 Croilab_Meta::add_settings(
 	'about',
 	array(
+		'title_1' => array( 'label' => 'Título principal 1', 'type' => 'text', 'desc' => 'Ej. Obsesionados con la' ),
+		'title_highlight_1' => array( 'label' => 'Palabra destacada 1 (Serif)', 'type' => 'text', 'desc' => 'Ej. data' ),
+		'title_2' => array( 'label' => 'Título principal 2', 'type' => 'text', 'desc' => 'Ej. Creadores de' ),
+		'title_highlight_2' => array( 'label' => 'Palabra destacada 2', 'type' => 'text', 'desc' => 'Ej. conversiones' ),
+		'description' => array( 'label' => 'Texto descriptivo', 'type' => 'textarea', 'desc' => 'Ej. Diseñamos ecosistemas digitales...' ),
+		'cover_image' => array(
+			'label' => 'Imagen de portada del video',
+			'type'  => 'image',
+			'desc'  => 'La imagen que se muestra antes de reproducir el video.'
+		),
 		'video_url' => array(
 			'label' => 'Video de la Agencia (YouTube o subido)',
 			'type'  => 'media',
