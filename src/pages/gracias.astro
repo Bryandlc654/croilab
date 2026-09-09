@@ -1,6 +1,6 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ClientsMarquee from '../components/ClientsMarquee.astro';
+import WebsMarquee from '../components/WebsMarquee.astro';
 import { whatsappLink } from '../data/site';
 ---
 
@@ -122,7 +122,7 @@ import { whatsappLink } from '../data/site';
       <span class="h-px bg-black/10 w-8 md:w-16"></span>
     </div>
     <!-- Re-use the existing marquee component -->
-    <ClientsMarquee />
+    <WebsMarquee />
   </div>
 
 </BaseLayout>
@@ -197,3 +197,4 @@ import { whatsappLink } from '../data/site';
     if (btn) btn.setAttribute('href', waUrl);
   });
 </script>
+
