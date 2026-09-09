@@ -185,6 +185,9 @@ class Croilab_Meta {
 				continue;
 			}
 			foreach ( $mb['fields'] as $field ) {
+				if ( 'heading' === $field['type'] ) {
+					continue;
+				}
 				$value = get_post_meta( $post_id, $prefix . $field['name'], true );
 				$out[ $field['name'] ] = self::sanitize_out( $field, $value );
 			}
@@ -204,6 +207,12 @@ class Croilab_Meta {
 		wp_nonce_field( 'croilab_save', "croilab_nonce_{$key}" );
 		echo '<div class="croilab-meta">';
 		foreach ( self::$metaboxes[ $key ]['fields'] as $field ) {
+			if ( 'heading' === $field['type'] ) {
+				echo '<div style="margin: 32px -12px 16px -12px; padding: 12px; background: #f0f0f1; border-top: 1px solid #dcdcdc; border-bottom: 1px solid #dcdcdc;">';
+				echo '<h3 style="margin: 0; padding: 0; font-size: 14px; font-weight: 600; color: #1d2327;">' . esc_html( $field['label'] ) . '</h3>';
+				echo '</div>';
+				continue;
+			}
 			$name  = $prefix . $field['name'];
 			$value = get_post_meta( $post->ID, $name, true );
 			echo '<div class="croilab-field" style="margin-bottom:16px;">';
@@ -432,6 +441,9 @@ class Croilab_Meta {
 		}
 
 		foreach ( $mb['fields'] as $field ) {
+			if ( 'heading' === $field['type'] ) {
+				continue;
+			}
 			$meta_key = $prefix . $field['name'];
 			$raw      = isset( $_POST[ $prefix . $field['name'] ] ) ? wp_unslash( $_POST[ $prefix . $field['name'] ] ) : null;
 			$value    = self::sanitize_in( $field, $raw );

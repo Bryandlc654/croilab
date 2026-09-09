@@ -14,7 +14,6 @@ if ( ! class_exists( 'Croilab_Meta' ) ) {
 
 // =====================================================================
 //  CASOS DE ÉXITO (CPT: caso)
-// =====================================================================
 Croilab_Meta::add(
 	'croilab_caso',
 	array(
@@ -22,30 +21,39 @@ Croilab_Meta::add(
 		'post_types' => array( 'caso' ),
 		'prefix'     => 'croilab_caso_',
 		'fields'     => array(
-			array( 'name' => 'related_service', 'label' => 'Servicio Relacionado', 'type' => 'text' ),
-			array( 'name' => 'related_project', 'label' => 'Proyecto Relacionado', 'type' => 'text' ),
+			array( 'name' => 'div1', 'type' => 'heading', 'label' => '1. Datos Principales' ),
 			array( 'name' => 'client',    'label' => 'Cliente',      'type' => 'text' ),
 			array( 'name' => 'industry',  'label' => 'Sector / Industria', 'type' => 'text' ),
-			array( 'name' => 'result',    'label' => 'Resultado destacado (ej. +312%)', 'type' => 'text' ),
-			array( 'name' => 'metric',    'label' => 'Métrica del resultado', 'type' => 'text' ),
-			array( 'name' => 'description', 'label' => 'Descripción', 'type' => 'textarea', 'rows' => 4 ),
-			array( 'name' => 'image',     'label' => 'Imagen',       'type' => 'image' ),
-			array( 'name' => 'challenge', 'label' => 'El reto',      'type' => 'textarea', 'rows' => 5 ),
-			array( 'name' => 'solution',  'label' => 'La solución',  'type' => 'textarea', 'rows' => 5 ),
-			array( 'name' => 'problems',  'label' => 'Problemas',    'type' => 'repeater', 'button_label' => 'Añadir problema', 'sub_fields' => array( array( 'name' => 'problem', 'label' => 'Problema', 'type' => 'textarea' ) ) ),
-			array( 'name' => 'actions',   'label' => 'Acciones (la ingeniería Croilab)', 'type' => 'repeater', 'button_label' => 'Añadir acción', 'sub_fields' => array( array( 'name' => 'action', 'label' => 'Acción', 'type' => 'textarea' ) ) ),
-			array( 'name' => 'metrics',   'label' => 'Métricas de impacto (3)', 'type' => 'repeater', 'button_label' => 'Añadir métrica', 'sub_fields' => array(
-				array( 'name' => 'value', 'label' => 'Valor', 'type' => 'text' ),
-				array( 'name' => 'label', 'label' => 'Etiqueta', 'type' => 'text' ),
+			array( 'name' => 'image',     'label' => 'Imagen Destacada', 'type' => 'image' ),
+			array( 'name' => 'related_service', 'label' => 'Servicio Relacionado', 'type' => 'text' ),
+			array( 'name' => 'related_project', 'label' => 'Proyecto Relacionado', 'type' => 'text' ),
+			array( 'name' => 'description', 'label' => 'Breve Descripción', 'type' => 'textarea', 'rows' => 3 ),
+
+			array( 'name' => 'div2', 'type' => 'heading', 'label' => '2. El Gran Resultado' ),
+			array( 'name' => 'result',    'label' => 'Cifra de impacto (ej. +312%)', 'type' => 'text' ),
+			array( 'name' => 'metric',    'label' => 'Métrica (ej. en leads mensuales)', 'type' => 'text' ),
+
+			array( 'name' => 'div3', 'type' => 'heading', 'label' => '3. Contexto: Reto y Solución' ),
+			array( 'name' => 'challenge', 'label' => 'El reto al que nos enfrentábamos', 'type' => 'textarea', 'rows' => 4 ),
+			array( 'name' => 'solution',  'label' => 'La solución aplicada', 'type' => 'textarea', 'rows' => 4 ),
+
+			array( 'name' => 'div4', 'type' => 'heading', 'label' => '4. Metodología y Acciones' ),
+			array( 'name' => 'problems',  'label' => 'Problemas Iniciales Identificados', 'type' => 'repeater', 'button_label' => 'Añadir problema', 'sub_fields' => array( array( 'name' => 'problem', 'label' => 'Problema', 'type' => 'textarea' ) ) ),
+			array( 'name' => 'actions',   'label' => 'Acciones / Ingeniería Croilab', 'type' => 'repeater', 'button_label' => 'Añadir acción', 'sub_fields' => array( array( 'name' => 'action', 'label' => 'Acción', 'type' => 'textarea' ) ) ),
+			array( 'name' => 'process',   'label' => 'Proceso detallado (Recomendado: 4 pasos)', 'type' => 'repeater', 'button_label' => 'Añadir paso', 'sub_fields' => array(
+				array( 'name' => 'title', 'label' => 'Título del paso', 'type' => 'text' ),
+				array( 'name' => 'desc',  'label' => 'Descripción del paso', 'type' => 'textarea' ),
 			) ),
-			array( 'name' => 'process',   'label' => 'Proceso (4 pasos)', 'type' => 'repeater', 'button_label' => 'Añadir paso', 'sub_fields' => array(
-				array( 'name' => 'title', 'label' => 'Título', 'type' => 'text' ),
-				array( 'name' => 'desc',  'label' => 'Descripción', 'type' => 'textarea' ),
+
+			array( 'name' => 'div5', 'type' => 'heading', 'label' => '5. Pruebas Sociales' ),
+			array( 'name' => 'metrics',   'label' => 'Otras métricas de impacto (Aparecen debajo del titular)', 'type' => 'repeater', 'button_label' => 'Añadir métrica', 'sub_fields' => array(
+				array( 'name' => 'value', 'label' => 'Valor (ej. 4x)', 'type' => 'text' ),
+				array( 'name' => 'label', 'label' => 'Etiqueta (ej. ROI de campañas)', 'type' => 'text' ),
 			) ),
 			array( 'name' => 'testimonial', 'label' => 'Testimonio del cliente', 'type' => 'group', 'sub_fields' => array(
-				array( 'name' => 'quote',  'label' => 'Cita',     'type' => 'textarea' ),
-				array( 'name' => 'author', 'label' => 'Autor',    'type' => 'text' ),
-				array( 'name' => 'role',   'label' => 'Cargo',    'type' => 'text' ),
+				array( 'name' => 'quote',  'label' => 'Cita literal',     'type' => 'textarea' ),
+				array( 'name' => 'author', 'label' => 'Autor (Nombre)',    'type' => 'text' ),
+				array( 'name' => 'role',   'label' => 'Cargo o Empresa',    'type' => 'text' ),
 			) ),
 		),
 	)
