@@ -120,9 +120,16 @@ try {
           </div>
         </div>
 
-        <!-- The iframe (hidden by default) -->
+        <!-- The player (hidden by default) -->
         <div id="video-player" class="absolute inset-0 z-20 hidden bg-black">
-          <iframe id="youtube-iframe" class="w-full h-full" width="1093" height="615" src="" data-video-url={videoUrl} title="Croilab Agencia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          {videoUrl.match(/\.(mp4|webm|ogg)(\?.*)?$/i) ? (
+            <video id="html5-video" class="w-full h-full object-cover" data-video-url={videoUrl} controls preload="none">
+              <source src={videoUrl} type="video/mp4" />
+              Tu navegador no soporta video HTML5.
+            </video>
+          ) : (
+            <iframe id="youtube-iframe" class="w-full h-full" width="1093" height="615" src="" data-video-url={videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          )}
         </div>
         
         <!-- Inner Shadow / Frame -->
@@ -133,16 +140,22 @@ try {
 </section>
 
 <script>
-  const cover = document.getElementById('video-cover');
-  const player = document.getElementById('video-player');
-  const iframe = document.getElementById('youtube-iframe');
+    const cover = document.getElementById('video-cover');
+    const player = document.getElementById('video-player');
+    const iframe = document.getElementById('youtube-iframe');
+    const html5Video = document.getElementById('html5-video');
 
-  if (cover && player && iframe) {
-    cover.addEventListener('click', () => {
-      cover.style.display = 'none';
-      player.classList.remove('hidden');
-      iframe.src = "https://www.youtube.com/embed/J9-aEZ523bA?autoplay=1";
-    });
-  }
-</script>
+    if (cover && player) {
+      cover.addEventListener('click', () => {
+        cover.style.display = 'none';
+        player.classList.remove('hidden');
+        if (iframe) {
+          iframe.src = iframe.dataset.videoUrl;
+        } else if (html5Video) {
+          html5Video.src = html5Video.dataset.videoUrl;
+          html5Video.play();
+        }
+      });
+    }
+  </script>
 

@@ -115,6 +115,19 @@ function croilab_content_render_options_page(): void {
 									$fval  = isset( $gv[ $name ] ) ? $gv[ $name ] : '';
 									if ( 'textarea' === $spec['type'] ) {
 										echo '<textarea name="' . esc_attr( $fname ) . '" rows="3" style="width:100%;">' . esc_textarea( (string) $fval ) . '</textarea>';
+									} elseif ( 'image' === $spec['type'] || 'media' === $spec['type'] ) {
+										echo '<div style="display:flex;gap:10px;align-items:flex-start;">';
+										echo '<div style="flex:1;"><input type="url" name="' . esc_attr( $fname ) . '" value="' . esc_url( (string) $fval ) . '" class="regular-text croilab-image-input" style="width:100%;" /></div>';
+										echo '<div><button type="button" class="button croilab-media-btn" data-input="input[name='' . esc_attr( $fname ) . '']">Seleccionar / Subir archivo</button></div>';
+										echo '</div>';
+										if ( $fval ) {
+											$ext = pathinfo( parse_url( $fval, PHP_URL_PATH ), PATHINFO_EXTENSION );
+											if ( in_array( strtolower( $ext ), array( 'mp4', 'webm', 'ogg' ) ) ) {
+												echo '<div style="margin-top:8px;"><video src="' . esc_url( (string) $fval ) . '" style="max-height:120px;max-width:100%;border:1px solid #ddd;border-radius:4px;padding:4px;background:#fff;" controls muted></video></div>';
+											} else {
+												echo '<div style="margin-top:8px;"><img src="' . esc_url( (string) $fval ) . '" style="max-height:120px;max-width:100%;border:1px solid #ddd;border-radius:4px;padding:4px;background:#fff;" /></div>';
+											}
+										}
 									} elseif ( 'url' === $spec['type'] || 'email' === $spec['type'] ) {
 										echo '<input type="' . esc_attr( $spec['type'] ) . '" name="' . esc_attr( $fname ) . '" value="' . esc_attr( (string) $fval ) . '" style="width:100%;" />';
 									} else {
@@ -173,7 +186,7 @@ function croilab_content_render_options_page(): void {
 
 		
 		
-		$(document).on('click', '.croilab-image-btn', function(e) {
+		$(document).on('click', '.croilab-image-btn, .croilab-media-btn', function(e) {
 			e.preventDefault();
 			var button = $(this);
 			var inputSelector = button.data('input');
@@ -183,7 +196,7 @@ function croilab_content_render_options_page(): void {
 			}
 			
 			var customUploader = wp.media({
-				title: 'Seleccionar Imagen',
+				title: 'Seleccionar Archivo',
 				button: { text: 'Usar esta imagen' },
 				multiple: false
 			}).on('select', function() {

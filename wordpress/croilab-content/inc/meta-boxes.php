@@ -315,9 +315,9 @@ Croilab_Meta::add_settings(
 	'about',
 	array(
 		'video_url' => array(
-			'label' => 'URL del Video (Youtube Embed)',
-			'type'  => 'text',
-			'desc'  => 'URL completa del video (Ej. https://www.youtube.com/embed/J9-aEZ523bA?autoplay=1)'
+			'label' => 'Video de la Agencia (YouTube o subido)',
+			'type'  => 'media',
+			'desc'  => 'Pega la URL de YouTube o súbelo directamente (.mp4).'
 		),
 	)
 );
