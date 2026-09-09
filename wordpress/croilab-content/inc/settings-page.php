@@ -14,19 +14,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registra la página en el menú.
  */
 function croilab_content_add_options_page(): void {
-	add_options_page(
-		'Configuración Croilab',
-		'Configuración Croilab',
+	add_menu_page(
+		'Contenido Inicio',
+		'Contenido Inicio',
 		'manage_options',
 		'croilab-settings',
-		'croilab_content_render_options_page'
+		'croilab_content_render_options_page',
+		'dashicons-admin-home',
+		3
 	);
 }
 add_action( 'admin_menu', 'croilab_content_add_options_page' );
 
 
 function croilab_content_enqueue_media( $hook ) {
-	if ( 'settings_page_croilab-settings' !== $hook ) {
+	if ( 'toplevel_page_croilab-settings' !== $hook && 'settings_page_croilab-settings' !== $hook ) {
 		return;
 	}
 	wp_enqueue_media();
@@ -45,7 +47,7 @@ function croilab_content_render_options_page(): void {
 	$data   = get_option( 'croilab_options', array() );
 	?>
 	<div class="wrap">
-		<h1>Configuración Croilab</h1>
+		<h1>Configuración de Inicio</h1>
 		<p>Estos valores se exponen en <code>GET /wp-json/croilab/v1/settings</code> para el frontend Astro.</p>
 		<form method="post" action="options.php">
 			<?php settings_fields( 'croilab_options' ); ?>
