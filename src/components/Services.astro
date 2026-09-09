@@ -26,6 +26,8 @@ try {
       features: data.features || []
     };
   });
+  // Sort by 'num' so 01 is first, 02 is second, etc.
+  dynamicServices.sort((a, b) => parseInt(a.num, 10) - parseInt(b.num, 10));
 } catch (e) {
   console.error("Error fetching services:", e);
 }

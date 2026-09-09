@@ -1,5 +1,6 @@
 ---
-import { services } from '../data/services';
+import { getWpServices } from '../lib/wp';
+import { services as fallbackServices } from '../data/services';
 import Container from './ui/Container.astro';
 
 interface Props {
@@ -7,6 +8,26 @@ interface Props {
 }
 
 const { current } = Astro.props;
+
+let dynamicServices = [];
+try {
+  const { items } = await getWpServices({ per_page: '20' });
+  dynamicServices = items.map(s => {
+    const data = s.croilab_servicio || {};
+    return {
+      num: data.num || '00',
+      name: s.title?.rendered || 'Servicio',
+      slug: s.slug,
+      desc: data.desc || '',
+      icon: data.icon || ''
+    };
+  });
+  dynamicServices.sort((a, b) => parseInt(a.num, 10) - parseInt(b.num, 10));
+} catch (e) {
+  console.error("Error fetching services for hub:", e);
+}
+
+const services = dynamicServices.length > 0 ? dynamicServices : fallbackServices;
 ---
 
 <section class="relative bg-[#f8f9fa] py-28 border-t border-black/5 overflow-hidden" id="servicios-hub">
