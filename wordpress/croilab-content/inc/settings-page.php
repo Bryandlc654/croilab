@@ -118,7 +118,7 @@ function croilab_content_render_options_page(): void {
 									} elseif ( 'image' === $spec['type'] || 'media' === $spec['type'] ) {
 										echo '<div style="display:flex;gap:10px;align-items:flex-start;">';
 										echo '<div style="flex:1;"><input type="url" name="' . esc_attr( $fname ) . '" value="' . esc_url( (string) $fval ) . '" class="regular-text croilab-image-input" style="width:100%;" /></div>';
-										echo '<div><button type="button" class="button croilab-media-btn" data-input="input[name='' . esc_attr( $fname ) . '']">Seleccionar / Subir archivo</button></div>';
+										echo '<div><button type="button" class="button croilab-media-btn" data-input="input[name=\'' . esc_attr( $fname ) . '\']">Seleccionar / Subir archivo</button></div>';
 										echo '</div>';
 										if ( $fval ) {
 											$ext = pathinfo( parse_url( $fval, PHP_URL_PATH ), PATHINFO_EXTENSION );
