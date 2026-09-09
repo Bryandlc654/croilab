@@ -123,12 +123,7 @@
         });
         
         if (res.ok) {
-          form.reset();
-          submitBtn.style.display = 'none';
-          successMsg?.classList.remove('hidden');
-          setTimeout(() => {
-            closeModal();
-          }, 4000);
+          window.location.href = '/gracias';
         } else {
           throw new Error('Server error');
         }
