@@ -2,23 +2,78 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/ui/Container.astro';
 import Cta from '../../components/ui/Cta.astro';
-import { serviceCases } from '../../data/serviceCases';
+import { getWpCaseBySlug, getWpCases } from '../../lib/wp';
 
-export function getStaticPaths() {
-  return serviceCases.map((c) => ({
-    params: { slug: c.slug },
-    props: { caseData: c },
-  }));
+const { slug } = Astro.params;
+
+// 1. Intentar obtener de WP
+let wpCase = null;
+try {
+  wpCase = await getWpCaseBySlug(slug as string);
+} catch (e) {
+  console.error("Error fetching caso:", e);
 }
 
-const { caseData } = Astro.props;
+if (!wpCase) {
+  return Astro.redirect('/404');
+}
+
+// 2. Mapear datos de WP al formato esperado
+const wpData = wpCase.croilab_caso_basicos || {};
+
+const caseData = {
+  slug: wpCase.slug,
+  service: wpData.related_service || 'seo', // Usado para related cases
+  client: wpData.client || wpCase.title?.rendered || 'Cliente',
+  industry: wpData.industry || 'Industria',
+  result: wpData.result || '+0%',
+  metric: wpData.metric || 'Métrica',
+  description: wpData.description || '',
+  image: wpData.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+  challenge: wpData.challenge || 'No hay reto especificado.',
+  solution: wpData.solution || 'No hay solución especificada.',
+  problems: wpData.problems?.map((p: any) => p.problem) || ['Problema 1', 'Problema 2'],
+  actions: wpData.actions?.map((a: any) => a.action) || ['Acción 1', 'Acción 2'],
+  process: wpData.process || [
+    { title: 'Fase 1', desc: 'Descripción fase 1' },
+    { title: 'Fase 2', desc: 'Descripción fase 2' }
+  ],
+  metrics: wpData.metrics || [
+    { value: 'X', label: 'Y' }
+  ],
+  testimonial: {
+    quote: wpData.testimonial?.quote || 'Excelente servicio.',
+    author: wpData.testimonial?.author || 'Anónimo',
+    role: wpData.testimonial?.role || 'Cliente'
+  }
+};
+
 const serviceLabels: Record<string, string> = {
   seo: 'SEO',
   ads: 'Meta Ads',
   conversion: 'Conversión',
 };
 
-const related = serviceCases.filter((c) => c.slug !== caseData.slug && c.service === caseData.service).slice(0, 2);
+// Obtener casos relacionados
+let related = [];
+try {
+  const { items } = await getWpCases({ per_page: '3' });
+  related = items
+    .filter(c => c.slug !== caseData.slug)
+    .map(c => {
+      const d = c.croilab_caso_basicos || {};
+      return {
+        slug: c.slug,
+        client: d.client || c.title?.rendered,
+        industry: d.industry || '',
+        image: d.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+        result: d.result || '',
+        metric: d.metric || '',
+      };
+    }).slice(0, 2);
+} catch (e) {
+  console.error("Error fetching related casos:", e);
+}
 ---
 
 <BaseLayout
