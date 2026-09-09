@@ -1,5 +1,16 @@
 ﻿---
 import Container from './ui/Container.astro';
+import { getWpSettings } from '../lib/wp';
+
+let videoUrl = "https://www.youtube.com/embed/J9-aEZ523bA?autoplay=1";
+try {
+  const settings = await getWpSettings();
+  if (settings?.about?.video_url) {
+    videoUrl = settings.about.video_url;
+  }
+} catch (e) {
+  console.error("Error fetching about video:", e);
+}
 ---
 
 <style>
@@ -111,7 +122,7 @@ import Container from './ui/Container.astro';
 
         <!-- The iframe (hidden by default) -->
         <div id="video-player" class="absolute inset-0 z-20 hidden bg-black">
-          <iframe id="youtube-iframe" class="w-full h-full" width="1093" height="615" src="" title="Croilab Agencia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe id="youtube-iframe" class="w-full h-full" width="1093" height="615" src="" data-video-url={videoUrl} title="Croilab Agencia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         
         <!-- Inner Shadow / Frame -->

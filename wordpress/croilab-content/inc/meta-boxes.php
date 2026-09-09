@@ -309,3 +309,15 @@ Croilab_Meta::add_settings(
 		),
 	)
 );
+
+
+Croilab_Meta::add_settings(
+	'about',
+	array(
+		'video_url' => array(
+			'label' => 'URL del Video (Youtube Embed)',
+			'type'  => 'text',
+			'desc'  => 'URL completa del video (Ej. https://www.youtube.com/embed/J9-aEZ523bA?autoplay=1)'
+		),
+	)
+);
