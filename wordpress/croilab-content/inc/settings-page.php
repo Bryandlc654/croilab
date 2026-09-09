@@ -55,9 +55,10 @@ function croilab_content_render_options_page(): void {
 				<?php $gv = isset( $data[ $group_key ] ) && is_array( $data[ $group_key ] ) ? $data[ $group_key ] : array(); ?>
 				<?php 
 				$titles = array(
-					'stack' => 'Stack Tecnológico',
-					'faq'   => 'Preguntas Frecuentes',
-					'about' => 'Sección Nosotros (Video)'
+					'stack'   => 'Stack Tecnológico',
+					'faq'     => 'Preguntas Frecuentes',
+					'about'   => 'Sección Nosotros (Video)',
+					'enfoque' => 'Imágenes Enfoque a Resultados'
 				);
 				$title = isset($titles[$group_key]) ? $titles[$group_key] : ucfirst(str_replace('_', ' ', $group_key));
 				?>

@@ -1,5 +1,29 @@
 ---
 import Container from './ui/Container.astro';
+import { getWpSettings } from '../lib/wp';
+
+let images = [
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDkPtBXOC8qYDiPm217BOQpUfZGXmCpXm-4XwVE_WZAwg2h6zuRMTr9kRfSgDFd6FhNaTdxAgJOTDQ3xDOBICP3iIAfWZxQYxFk1xLXN2PeCSFQ98BRlrHSF3Md653AzFvO4rMeIB2o2MkbuNiEUcOjpC1t7zlb8bSXM01xCJW_sQjaAN5Mzq5Tue7Z7b0smHBJM3aaV9N51fFu_wmlGS75GVA-IIPIiIvqgFXRpVrFjRonHW3RD1pl",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuAU03tREVagGYAahjY3-tHyLYjtLI8U_ZAs8OIfTbL63EappGLUxV0ep9kR2Ac9Yp46ipSu4-MtBQOSBVS5vzZ-Bq_u7b5_maEhtdZGhkZZP-zGN3lZv9nQLhPMXQXJlkrXOXViokqNsvPjWTIz3nt5q-CErBpV7ATGsStFubbl2fJHvCBN-UWFipK4EaEbfgbXTQvRYZtCxvOrI3bXuQ5B-7gVKpWU8kWLzUiGyDRRWUwm7aEGVjsw",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDO9bC3e22X2OZoJa0GjYgtYcz2tNLbm2v1EHrL2vYAqDiXEckfH9-juHMmX0Va3ilAvUBBlKHQRcwObzzinpiCDCTje_fE4WAYsQTBA3ylBnXmrJQK8yCiIs5LX-zr0DQ_8D025pRFfrMrUg9qPtQ-muD4igih8CrYbGZxtcZ7GCHPOHPT3GeHAZoEldflo3b-ouqlR_vyGxBTXJRctYGcKqqZkQ9wbZg1eWm7wTJa5V-YPMS1Q7a6",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuAGIXSrAeRNRTgu05AEDXy5oiuSXOARmeEYE8WgFdI7Ka4msBRjfc2Q3nC8Hx9JQh8RiOX8PYq2BxiX01vEgF2XQrA5gtGt4JhvTVuer_XtHIlTwLB0z7ZR5QqVaQiJ-upWOBPoSqNQ_uri2L7J30oShie2O6RFO5h3hp7LPqWuUTrcDW7ByHaPQFnIzlU589SKUTw30HEMWKISh51GyJTt_wgFqgx1G-OyhuL0nceSc5-vA0V6761K",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuC4VfKawM_uN1ekqw-3izvht76q0D1qGAKb23QSc9xG6uD5plChBv6QvD6oXaKBDFUdF_SlViIWKnjBj-Jg7iJ30Bqcl8mB-PwnDLd0WGNfCi3BG6V5zWJI-WsZIkcX0zuI8z0YwlceH1SZnC54nL16Df3xPn1pwhRrXv6T4j7nHKp0mj6evVIURKulVh3ovzwBJPWkYm66_3hV4iERu8JcxAbilV3iYZdbMceTNTAQeuTgQtO2TRpn",
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuBekG4WfUyQ5wreUF95AyTtmjA4PmV1YNgZWHSPpzZiRBb-x5KZoBNVoL7EmPBmP6sb78VRmYOE7GHdDZcJjtNyV1qHfbhlteKOZRUZTBZMW4GgkmRocPlIq3rfBkYTPvlnV2VagZhGwX4KRZBmZt_eL6lC7ZdD5iE_YrhrKg3PxYe0Mtdkr27WTEtyJyCk6Rk8pqIEOlUuwvua9X1p1Paby5uOzJUTfa2uESpXWSGtT08fsy_5XX-d"
+];
+
+try {
+  const settings = await getWpSettings();
+  if (settings?.enfoque) {
+    if (settings.enfoque.img1) images[0] = settings.enfoque.img1;
+    if (settings.enfoque.img2) images[1] = settings.enfoque.img2;
+    if (settings.enfoque.img3) images[2] = settings.enfoque.img3;
+    if (settings.enfoque.img4) images[3] = settings.enfoque.img4;
+    if (settings.enfoque.img5) images[4] = settings.enfoque.img5;
+    if (settings.enfoque.img6) images[5] = settings.enfoque.img6;
+  }
+} catch (e) {
+  console.error("Error fetching enfoque images:", e);
+}
 ---
 <section class="relative w-full min-h-[85vh] flex items-center justify-center bg-white px-4 py-32 overflow-hidden border-t border-black/5">
   
@@ -34,32 +58,32 @@ import Container from './ui/Container.astro';
     <!-- Floating Cards -->
     <!-- Top Left -->
     <div aria-hidden="true" class="absolute floating-card pos-tl hidden md:block z-0 shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-black/10 rounded-2xl overflow-hidden bg-white">
-      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkPtBXOC8qYDiPm217BOQpUfZGXmCpXm-4XwVE_WZAwg2h6zuRMTr9kRfSgDFd6FhNaTdxAgJOTDQ3xDOBICP3iIAfWZxQYxFk1xLXN2PeCSFQ98BRlrHSF3Md653AzFvO4rMeIB2o2MkbuNiEUcOjpC1t7zlb8bSXM01xCJW_sQjaAN5Mzq5Tue7Z7b0smHBJM3aaV9N51fFu_wmlGS75GVA-IIPIiIvqgFXRpVrFjRonHW3RD1pl"/>
+      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src={images[0]}/>
     </div>
     
     <!-- Top Right -->
     <div aria-hidden="true" class="absolute floating-card pos-tr hidden md:block z-0 shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-black/10 rounded-2xl overflow-hidden bg-white">
-      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU03tREVagGYAahjY3-tHyLYjtLI8U_ZAs8OIfTbL63EappGLUxV0ep9kR2Ac9Yp46ipSu4-MtBQOSBVS5vzZ-Bq_u7b5_maEhtdZGhkZZP-zGN3lZv9nQLhPMXQXJlkrXOXViokqNsvPjWTIz3nt5q-CErBpV7ATGsStFubbl2fJHvCBN-UWFipK4EaEbfgbXTQvRYZtCxvOrI3bXuQ5B-7gVKpWU8kWLzUiGyDRRWUwm7aEGVjsw"/>
+      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src={images[1]}/>
     </div>
     
     <!-- Middle Left -->
     <div aria-hidden="true" class="absolute floating-card pos-ml hidden lg:block z-0 shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-black/10 rounded-2xl overflow-hidden bg-white">
-      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO9bC3e22X2OZoJa0GjYgtYcz2tNLbm2v1EHrL2vYAqDiXEckfH9-juHMmX0Va3ilAvUBBlKHQRcwObzzinpiCDCTje_fE4WAYsQTBA3ylBnXmrJQK8yCiIs5LX-zr0DQ_8D025pRFfrMrUg9qPtQ-muD4igih8CrYbGZxtcZ7GCHPOHPT3GeHAZoEldflo3b-ouqlR_vyGxBTXJRctYGcKqqZkQ9wbZg1eWm7wTJa5V-YPMS1Q7a6"/>
+      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src={images[2]}/>
     </div>
     
     <!-- Middle Right -->
     <div aria-hidden="true" class="absolute floating-card pos-mr hidden lg:block z-0 shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-black/10 rounded-2xl overflow-hidden bg-white">
-      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGIXSrAeRNRTgu05AEDXy5oiuSXOARmeEYE8WgFdI7Ka4msBRjfc2Q3nC8Hx9JQh8RiOX8PYq2BxiX01vEgF2XQrA5gtGt4JhvTVuer_XtHIlTwLB0z7ZR5QqVaQiJ-upWOBPoSqNQ_uri2L7J30oShie2O6RFO5h3hp7LPqWuUTrcDW7ByHaPQFnIzlU589SKUTw30HEMWKISh51GyJTt_wgFqgx1G-OyhuL0nceSc5-vA0V6761K"/>
+      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src={images[3]}/>
     </div>
     
     <!-- Bottom Left -->
     <div aria-hidden="true" class="absolute floating-card pos-bl hidden md:block z-0 shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-black/10 rounded-2xl overflow-hidden bg-white">
-      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4VfKawM_uN1ekqw-3izvht76q0D1qGAKb23QSc9xG6uD5plChBv6QvD6oXaKBDFUdF_SlViIWKnjBj-Jg7iJ30Bqcl8mB-PwnDLd0WGNfCi3BG6V5zWJI-WsZIkcX0zuI8z0YwlceH1SZnC54nL16Df3xPn1pwhRrXv6T4j7nHKp0mj6evVIURKulVh3ovzwBJPWkYm66_3hV4iERu8JcxAbilV3iYZdbMceTNTAQeuTgQtO2TRpn"/>
+      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src={images[4]}/>
     </div>
     
     <!-- Bottom Right -->
     <div aria-hidden="true" class="absolute floating-card pos-br hidden md:block z-0 shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-black/10 rounded-2xl overflow-hidden bg-white">
-      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBekG4WfUyQ5wreUF95AyTtmjA4PmV1YNgZWHSPpzZiRBb-x5KZoBNVoL7EmPBmP6sb78VRmYOE7GHdDZcJjtNyV1qHfbhlteKOZRUZTBZMW4GgkmRocPlIq3rfBkYTPvlnV2VagZhGwX4KRZBmZt_eL6lC7ZdD5iE_YrhrKg3PxYe0Mtdkr27WTEtyJyCk6Rk8pqIEOlUuwvua9X1p1Paby5uOzJUTfa2uESpXWSGtT08fsy_5XX-d"/>
+      <img alt="Team member" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0 hover:scale-110 hover:opacity-100" src={images[5]}/>
     </div>
     
   </div>

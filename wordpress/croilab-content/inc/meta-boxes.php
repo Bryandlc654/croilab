@@ -321,3 +321,15 @@ Croilab_Meta::add_settings(
 		),
 	)
 );
+
+Croilab_Meta::add_settings(
+	'enfoque',
+	array(
+		'img1' => array( 'label' => 'Imagen 1 (Arriba Izquierda)', 'type' => 'image' ),
+		'img2' => array( 'label' => 'Imagen 2 (Arriba Derecha)',   'type' => 'image' ),
+		'img3' => array( 'label' => 'Imagen 3 (Medio Izquierda)',  'type' => 'image' ),
+		'img4' => array( 'label' => 'Imagen 4 (Medio Derecha)',    'type' => 'image' ),
+		'img5' => array( 'label' => 'Imagen 5 (Abajo Izquierda)',  'type' => 'image' ),
+		'img6' => array( 'label' => 'Imagen 6 (Abajo Derecha)',    'type' => 'image' ),
+	)
+);
